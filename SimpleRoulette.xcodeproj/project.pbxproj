@@ -18,6 +18,9 @@
 		D35C374C2480A2290029CDA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */; };
 		D35C37572480A2290029CDA8 /* SimpleRouletteDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */; };
 		D35C37622480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */; };
+		D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A648FF2480D7AD00BEC651 /* RouletteView.swift */; };
+		D3A649022480D7F900BEC651 /* RoulettePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A649012480D7F900BEC651 /* RoulettePart.swift */; };
+		D3A649042480DB6C00BEC651 /* Radian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A649032480DB6C00BEC651 /* Radian.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoUITests.swift; sourceTree = "<group>"; };
 		D35C37632480A22A0029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3A648FF2480D7AD00BEC651 /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
+		D3A649012480D7F900BEC651 /* RoulettePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePart.swift; sourceTree = "<group>"; };
+		D3A649032480DB6C00BEC651 /* Radian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radian.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,9 @@
 			children = (
 				D35C37222480A1F70029CDA8 /* SimpleRoulette.h */,
 				D35C37232480A1F70029CDA8 /* Info.plist */,
+				D3A648FF2480D7AD00BEC651 /* RouletteView.swift */,
+				D3A649012480D7F900BEC651 /* RoulettePart.swift */,
+				D3A649032480DB6C00BEC651 /* Radian.swift */,
 			);
 			path = SimpleRoulette;
 			sourceTree = "<group>";
@@ -296,6 +305,7 @@
 				TargetAttributes = {
 					D35C371E2480A1F70029CDA8 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 					D35C37272480A1F70029CDA8 = {
 						CreatedOnToolsVersion = 11.5;
@@ -381,6 +391,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A649022480D7F900BEC651 /* RoulettePart.swift in Sources */,
+				D3A649042480DB6C00BEC651 /* Radian.swift in Sources */,
+				D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +594,7 @@
 		D35C37342480A1F70029CDA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2X6AD4W323;
@@ -597,6 +611,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.SimpleRoulette;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -605,6 +620,7 @@
 		D35C37352480A1F70029CDA8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2X6AD4W323;
@@ -629,6 +645,7 @@
 		D35C37372480A1F70029CDA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X6AD4W323;
 				INFOPLIST_FILE = SimpleRouletteTests/Info.plist;
@@ -647,6 +664,7 @@
 		D35C37382480A1F70029CDA8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X6AD4W323;
 				INFOPLIST_FILE = SimpleRouletteTests/Info.plist;
