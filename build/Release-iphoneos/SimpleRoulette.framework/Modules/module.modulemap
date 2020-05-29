@@ -1,0 +1,6 @@
+framework module SimpleRoulette {
+  umbrella header "SimpleRoulette.h"
+
+  export *
+  module * { export * }
+}

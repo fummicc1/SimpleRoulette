@@ -10,6 +10,14 @@
 		D35C37292480A1F70029CDA8 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
 		D35C372E2480A1F70029CDA8 /* SimpleRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C372D2480A1F70029CDA8 /* SimpleRouletteTests.swift */; };
 		D35C37302480A1F70029CDA8 /* SimpleRoulette.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C37222480A1F70029CDA8 /* SimpleRoulette.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D35C37402480A2260029CDA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C373F2480A2260029CDA8 /* AppDelegate.swift */; };
+		D35C37422480A2260029CDA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37412480A2260029CDA8 /* SceneDelegate.swift */; };
+		D35C37442480A2260029CDA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37432480A2260029CDA8 /* ViewController.swift */; };
+		D35C37472480A2260029CDA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35C37452480A2260029CDA8 /* Main.storyboard */; };
+		D35C37492480A2290029CDA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35C37482480A2290029CDA8 /* Assets.xcassets */; };
+		D35C374C2480A2290029CDA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */; };
+		D35C37572480A2290029CDA8 /* SimpleRouletteDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */; };
+		D35C37622480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,6 +28,20 @@
 			remoteGlobalIDString = D35C371E2480A1F70029CDA8;
 			remoteInfo = SimpleRoulette;
 		};
+		D35C37532480A2290029CDA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D35C37162480A1F70029CDA8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D35C373C2480A2260029CDA8;
+			remoteInfo = SimpleRouletteDemo;
+		};
+		D35C375E2480A22A0029CDA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D35C37162480A1F70029CDA8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D35C373C2480A2260029CDA8;
+			remoteInfo = SimpleRouletteDemo;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +51,20 @@
 		D35C37282480A1F70029CDA8 /* SimpleRouletteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C372D2480A1F70029CDA8 /* SimpleRouletteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteTests.swift; sourceTree = "<group>"; };
 		D35C372F2480A1F70029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D35C373D2480A2260029CDA8 /* SimpleRouletteDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRouletteDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D35C373F2480A2260029CDA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D35C37412480A2260029CDA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D35C37432480A2260029CDA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D35C37462480A2260029CDA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D35C37482480A2290029CDA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D35C374B2480A2290029CDA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D35C374D2480A2290029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D35C37522480A2290029CDA8 /* SimpleRouletteDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoTests.swift; sourceTree = "<group>"; };
+		D35C37582480A2290029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoUITests.swift; sourceTree = "<group>"; };
+		D35C37632480A22A0029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +83,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D35C373A2480A2260029CDA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D35C374F2480A2290029CDA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D35C375A2480A2290029CDA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,6 +112,9 @@
 			children = (
 				D35C37212480A1F70029CDA8 /* SimpleRoulette */,
 				D35C372C2480A1F70029CDA8 /* SimpleRouletteTests */,
+				D35C373E2480A2260029CDA8 /* SimpleRouletteDemo */,
+				D35C37552480A2290029CDA8 /* SimpleRouletteDemoTests */,
+				D35C37602480A22A0029CDA8 /* SimpleRouletteDemoUITests */,
 				D35C37202480A1F70029CDA8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +124,9 @@
 			children = (
 				D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */,
 				D35C37282480A1F70029CDA8 /* SimpleRouletteTests.xctest */,
+				D35C373D2480A2260029CDA8 /* SimpleRouletteDemo.app */,
+				D35C37522480A2290029CDA8 /* SimpleRouletteDemoTests.xctest */,
+				D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,6 +147,38 @@
 				D35C372F2480A1F70029CDA8 /* Info.plist */,
 			);
 			path = SimpleRouletteTests;
+			sourceTree = "<group>";
+		};
+		D35C373E2480A2260029CDA8 /* SimpleRouletteDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D35C373F2480A2260029CDA8 /* AppDelegate.swift */,
+				D35C37412480A2260029CDA8 /* SceneDelegate.swift */,
+				D35C37432480A2260029CDA8 /* ViewController.swift */,
+				D35C37452480A2260029CDA8 /* Main.storyboard */,
+				D35C37482480A2290029CDA8 /* Assets.xcassets */,
+				D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */,
+				D35C374D2480A2290029CDA8 /* Info.plist */,
+			);
+			path = SimpleRouletteDemo;
+			sourceTree = "<group>";
+		};
+		D35C37552480A2290029CDA8 /* SimpleRouletteDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */,
+				D35C37582480A2290029CDA8 /* Info.plist */,
+			);
+			path = SimpleRouletteDemoTests;
+			sourceTree = "<group>";
+		};
+		D35C37602480A22A0029CDA8 /* SimpleRouletteDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */,
+				D35C37632480A22A0029CDA8 /* Info.plist */,
+			);
+			path = SimpleRouletteDemoUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +231,59 @@
 			productReference = D35C37282480A1F70029CDA8 /* SimpleRouletteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D35C37642480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemo" */;
+			buildPhases = (
+				D35C37392480A2260029CDA8 /* Sources */,
+				D35C373A2480A2260029CDA8 /* Frameworks */,
+				D35C373B2480A2260029CDA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleRouletteDemo;
+			productName = SimpleRouletteDemo;
+			productReference = D35C373D2480A2260029CDA8 /* SimpleRouletteDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D35C37512480A2290029CDA8 /* SimpleRouletteDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D35C37672480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoTests" */;
+			buildPhases = (
+				D35C374E2480A2290029CDA8 /* Sources */,
+				D35C374F2480A2290029CDA8 /* Frameworks */,
+				D35C37502480A2290029CDA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D35C37542480A2290029CDA8 /* PBXTargetDependency */,
+			);
+			name = SimpleRouletteDemoTests;
+			productName = SimpleRouletteDemoTests;
+			productReference = D35C37522480A2290029CDA8 /* SimpleRouletteDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D35C375C2480A2290029CDA8 /* SimpleRouletteDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D35C376A2480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoUITests" */;
+			buildPhases = (
+				D35C37592480A2290029CDA8 /* Sources */,
+				D35C375A2480A2290029CDA8 /* Frameworks */,
+				D35C375B2480A2290029CDA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D35C375F2480A22A0029CDA8 /* PBXTargetDependency */,
+			);
+			name = SimpleRouletteDemoUITests;
+			productName = SimpleRouletteDemoUITests;
+			productReference = D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -151,6 +299,17 @@
 					};
 					D35C37272480A1F70029CDA8 = {
 						CreatedOnToolsVersion = 11.5;
+					};
+					D35C373C2480A2260029CDA8 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					D35C37512480A2290029CDA8 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = D35C373C2480A2260029CDA8;
+					};
+					D35C375C2480A2290029CDA8 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = D35C373C2480A2260029CDA8;
 					};
 				};
 			};
@@ -169,6 +328,9 @@
 			targets = (
 				D35C371E2480A1F70029CDA8 /* SimpleRoulette */,
 				D35C37272480A1F70029CDA8 /* SimpleRouletteTests */,
+				D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */,
+				D35C37512480A2290029CDA8 /* SimpleRouletteDemoTests */,
+				D35C375C2480A2290029CDA8 /* SimpleRouletteDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -182,6 +344,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D35C37262480A1F70029CDA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D35C373B2480A2260029CDA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D35C374C2480A2290029CDA8 /* LaunchScreen.storyboard in Resources */,
+				D35C37492480A2290029CDA8 /* Assets.xcassets in Resources */,
+				D35C37472480A2260029CDA8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D35C37502480A2290029CDA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D35C375B2480A2290029CDA8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -206,6 +392,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D35C37392480A2260029CDA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D35C37442480A2260029CDA8 /* ViewController.swift in Sources */,
+				D35C37402480A2260029CDA8 /* AppDelegate.swift in Sources */,
+				D35C37422480A2260029CDA8 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D35C374E2480A2290029CDA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D35C37572480A2290029CDA8 /* SimpleRouletteDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D35C37592480A2290029CDA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D35C37622480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -214,7 +426,36 @@
 			target = D35C371E2480A1F70029CDA8 /* SimpleRoulette */;
 			targetProxy = D35C372A2480A1F70029CDA8 /* PBXContainerItemProxy */;
 		};
+		D35C37542480A2290029CDA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */;
+			targetProxy = D35C37532480A2290029CDA8 /* PBXContainerItemProxy */;
+		};
+		D35C375F2480A22A0029CDA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */;
+			targetProxy = D35C375E2480A22A0029CDA8 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D35C37452480A2260029CDA8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D35C37462480A2260029CDA8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D35C374B2480A2290029CDA8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D35C37312480A1F70029CDA8 /* Debug */ = {
@@ -421,6 +662,126 @@
 			};
 			name = Release;
 		};
+		D35C37652480A22A0029CDA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				INFOPLIST_FILE = SimpleRouletteDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D35C37662480A22A0029CDA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				INFOPLIST_FILE = SimpleRouletteDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D35C37682480A22A0029CDA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				INFOPLIST_FILE = SimpleRouletteDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleRouletteDemo.app/SimpleRouletteDemo";
+			};
+			name = Debug;
+		};
+		D35C37692480A22A0029CDA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				INFOPLIST_FILE = SimpleRouletteDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleRouletteDemo.app/SimpleRouletteDemo";
+			};
+			name = Release;
+		};
+		D35C376B2480A22A0029CDA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				INFOPLIST_FILE = SimpleRouletteDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SimpleRouletteDemo;
+			};
+			name = Debug;
+		};
+		D35C376C2480A22A0029CDA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				INFOPLIST_FILE = SimpleRouletteDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SimpleRouletteDemo;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -447,6 +808,33 @@
 			buildConfigurations = (
 				D35C37372480A1F70029CDA8 /* Debug */,
 				D35C37382480A1F70029CDA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D35C37642480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D35C37652480A22A0029CDA8 /* Debug */,
+				D35C37662480A22A0029CDA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D35C37672480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D35C37682480A22A0029CDA8 /* Debug */,
+				D35C37692480A22A0029CDA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D35C376A2480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D35C376B2480A22A0029CDA8 /* Debug */,
+				D35C376C2480A22A0029CDA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
