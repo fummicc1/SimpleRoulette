@@ -9,27 +9,27 @@
 import Foundation
 import UIKit
 
-class RouletteView: UIView {
+public class RouletteView: UIView {
     
     private(set) var parts: [RoulettePart] = []
     
-    override func draw(_ rect: CGRect) {
-        let center = self.center
-        let radius: Double = Double(frame.width / 2)
-        guard let context = UIGraphicsGetCurrentContext() else {
-            return
-        }
-        let total = parts.reduce(0, { $0 + $1.value })
+    public override func draw(_ rect: CGRect) {
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        let radius = rect.width / 2
+        
+        let path: UIBezierPath = .init()
         for part in parts {
-            let ratio: Double = part.value / total
-            let angle = Double(CGFloat(360).radian()) * ratio
-            let x = radius * cos(angle)
-            let y = radius * sin(angle)
+            part.fillColor.setFill()
+            part.strokeColor.setStroke()
+            path.move(to: center)
+            path.addArc(withCenter: center, radius: radius, startAngle: CGFloat(part.startAngle.value), endAngle: CGFloat(part.endAngle.value), clockwise: true)
+            path.fill()
+            path.stroke()
         }
     }
     
     public func update(parts: [RoulettePart]) {
         self.parts = parts
-        setNeedsLayout()
+        setNeedsDisplay()
     }
 }

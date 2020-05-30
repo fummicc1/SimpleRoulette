@@ -21,6 +21,8 @@
 		D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A648FF2480D7AD00BEC651 /* RouletteView.swift */; };
 		D3A649022480D7F900BEC651 /* RoulettePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A649012480D7F900BEC651 /* RoulettePart.swift */; };
 		D3A649042480DB6C00BEC651 /* Radian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A649032480DB6C00BEC651 /* Radian.swift */; };
+		D3C1267624827B470057D327 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
+		D3C1267724827B470057D327 /* SimpleRoulette.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +47,28 @@
 			remoteGlobalIDString = D35C373C2480A2260029CDA8;
 			remoteInfo = SimpleRouletteDemo;
 		};
+		D3C1267824827B470057D327 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D35C37162480A1F70029CDA8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D35C371E2480A1F70029CDA8;
+			remoteInfo = SimpleRoulette;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D3C1267A24827B470057D327 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D3C1267724827B470057D327 /* SimpleRoulette.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleRoulette.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3C1267624827B470057D327 /* SimpleRoulette.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +146,7 @@
 				D35C37552480A2290029CDA8 /* SimpleRouletteDemoTests */,
 				D35C37602480A22A0029CDA8 /* SimpleRouletteDemoUITests */,
 				D35C37202480A1F70029CDA8 /* Products */,
+				D3C1267524827B470057D327 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,6 +215,13 @@
 			path = SimpleRouletteDemoUITests;
 			sourceTree = "<group>";
 		};
+		D3C1267524827B470057D327 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -247,10 +279,12 @@
 				D35C37392480A2260029CDA8 /* Sources */,
 				D35C373A2480A2260029CDA8 /* Frameworks */,
 				D35C373B2480A2260029CDA8 /* Resources */,
+				D3C1267A24827B470057D327 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D3C1267924827B470057D327 /* PBXTargetDependency */,
 			);
 			name = SimpleRouletteDemo;
 			productName = SimpleRouletteDemo;
@@ -448,6 +482,11 @@
 			isa = PBXTargetDependency;
 			target = D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */;
 			targetProxy = D35C375E2480A22A0029CDA8 /* PBXContainerItemProxy */;
+		};
+		D3C1267924827B470057D327 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D35C371E2480A1F70029CDA8 /* SimpleRoulette */;
+			targetProxy = D3C1267824827B470057D327 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
