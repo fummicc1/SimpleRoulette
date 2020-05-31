@@ -9,45 +9,26 @@
 import Foundation
 import UIKit
 
-public struct RouletteAngle {
-    public let value: Double
-    
-    
-    /// initializer with radian
-    /// - Parameters:
-    ///   - radian: radian. range [0, 2pi)
-    ///   - fromTop: flag if zero is from top (pi / 2). default is false.
-    public init(radian: Double, fromTop: Bool = false) {
-        if fromTop {
-            self.value = radian
-        } else {
-            self.value = radian - Double.pi / 2
-        }
-    }
-    
-    /// initializer with degree.
-    /// - Parameters:
-    ///   - degree: degree. range [0, 360)
-    ///   - fromTop: flag if zero is from top (pi / 2). default is false.
-    public init(degree: Double, fromTop: Bool = false) {
-        if fromTop {
-            self.value = degree.radian()
-        } else {
-            self.value = degree.radian() - Double.pi / 2
-        }
-    }
+public protocol RoulettePartType {
+    var id: UUID { get }
+    var name: String { get }
+    var index: Int { get }
+    var startRadianAngle: Double { get }
+    var endRadianAngle: Double { get }
+    var fillColor: UIColor { get }
+    var strokeColor: UIColor { get }
 }
 
 public struct RoulettePart {
-    public let id: UUID = .init()
+    public var id: UUID = .init()
     /// text to display on Roulette.
-    public let name: String
-    public let startAngle: RouletteAngle
-    public let endAngle: RouletteAngle
+    public var name: String
+    public var startAngle: RouletteAngle
+    public var endAngle: RouletteAngle
     /// position.
-    public let index: Int
-    public let fillColor: UIColor
-    public let strokeColor: UIColor
+    public var index: Int
+    public var fillColor: UIColor
+    public var strokeColor: UIColor
     
     public init(name: String, startAngle: RouletteAngle, endAngle: RouletteAngle, index: Int, fillColor: UIColor = .black, strokeColor: UIColor = .gray) {
         self.name = name
@@ -56,5 +37,55 @@ public struct RoulettePart {
         self.index = index
         self.fillColor = fillColor
         self.strokeColor = strokeColor
+    }
+    
+    /// initializer with Huge
+    /// - Parameters:
+    ///   - huge: Huge enum.
+    ///   - elements: all of Huges. nessecarry to calculate ratio value.
+    ///   - total: total value. [value = ratio * total] Not radian but degree.
+    ///   - fromTop:flag if zero is from top (pi / 2). default is false.
+    public init(
+        name: String,
+        index: Int,
+        fillColor: UIColor = .black,
+        strokeColor: UIColor = .gray,
+        huge: Huge,
+        elements: [Huge],
+        total: Double = Double.pi * 2,
+        fromTop: Bool = false
+    ) {
+        fatalError()
+    }
+}
+
+extension RoulettePart: RoulettePartType {
+    public var startRadianAngle: Double {
+        startAngle.value
+    }
+    
+    public var endRadianAngle: Double {
+        endAngle.value
+    }
+}
+
+extension RoulettePart {
+    public enum Huge {
+        case large
+        case normal
+        case small
+        
+        var value: Int {
+            switch self {
+            case .large:
+                return 3
+                
+            case .normal:
+                return 2
+                
+            case .small:
+                return 1
+            }
+        }
     }
 }

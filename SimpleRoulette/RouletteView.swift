@@ -11,7 +11,7 @@ import UIKit
 
 public class RouletteView: UIView {
     
-    private(set) var parts: [RoulettePart] = [] {
+    private(set) var parts: [RoulettePartType] = [] {
         didSet {
             let rect = bounds
             let radius = rect.width / 4
@@ -25,7 +25,7 @@ public class RouletteView: UIView {
                 layer.string = part.name
                 layer.frame = .init(origin: .zero, size: layer.preferredFrameSize())
                 
-                let meanAngle = (part.startAngle.value + part.endAngle.value) / 2
+                let meanAngle = (part.startRadianAngle + part.endRadianAngle) / 2
                 let dx: CGFloat = radius * CGFloat(cos(meanAngle))
                 let dy: CGFloat = radius * CGFloat(sin(meanAngle))
                 layer.position = .init(x: center.x + dx, y: center.y + dy)
@@ -54,7 +54,7 @@ public class RouletteView: UIView {
             part.fillColor.setFill()
             part.strokeColor.setStroke()
             path.move(to: center)
-            path.addArc(withCenter: center, radius: radius, startAngle: CGFloat(part.startAngle.value), endAngle: CGFloat(part.endAngle.value), clockwise: true)
+            path.addArc(withCenter: center, radius: radius, startAngle: CGFloat(part.startRadianAngle), endAngle: CGFloat(part.endRadianAngle), clockwise: true)
             path.fill()
             path.stroke()
         }
