@@ -60,7 +60,7 @@ public class RouletteView: UIView {
         }
     }
     
-    public func update(parts: [RoulettePart]) {
+    public func update(parts: [RoulettePartType]) {
         self.parts = parts
         setNeedsDisplay()
     }
@@ -72,5 +72,15 @@ public class RouletteView: UIView {
         animation.duration = 3
         animation.repeatCount = .greatestFiniteMagnitude
         layer.add(animation, forKey: "animation")
+    }
+}
+
+extension RouletteView: RoulettePartHugeDelegate {
+    public var total: Double {
+        Double.pi * 2
+    }
+    
+    public var allHuge: [RoulettePartHuge] {
+        parts.map { $0 as! RoulettePart.HugeType }.map { $0.huge }
     }
 }

@@ -19,47 +19,66 @@ public protocol RoulettePartType {
     var strokeColor: UIColor { get }
 }
 
-public struct RoulettePart {
-    public var id: UUID = .init()
-    /// text to display on Roulette.
-    public var name: String
-    public var startAngle: RouletteAngle
-    public var endAngle: RouletteAngle
-    /// position.
-    public var index: Int
-    public var fillColor: UIColor
-    public var strokeColor: UIColor
+public enum RoulettePart {
     
-    public init(name: String, startAngle: RouletteAngle, endAngle: RouletteAngle, index: Int, fillColor: UIColor = .black, strokeColor: UIColor = .gray) {
-        self.name = name
-        self.startAngle = startAngle
-        self.endAngle = endAngle
-        self.index = index
-        self.fillColor = fillColor
-        self.strokeColor = strokeColor
+    public struct HugeType {
+        public var id: UUID = .init()
+        /// text to display on Roulette.
+        public var name: String
+        public var huge: RoulettePartHuge
+        public weak var delegate: RoulettePartHugeDelegate?
+        /// position.
+        public var index: Int
+        public var fillColor: UIColor
+        public var strokeColor: UIColor
+        
+        public init(
+            name: String,
+            huge: RoulettePartHuge,
+            delegate: RoulettePartHugeDelegate,
+            index: Int,
+            fillColor: UIColor = .black,
+            strokeColor: UIColor = .gray
+        ) {
+            self.name = name
+            self.huge = huge
+            self.delegate = delegate
+            self.index = index
+            self.fillColor = fillColor
+            self.strokeColor = strokeColor
+        }
     }
     
-    /// initializer with Huge
-    /// - Parameters:
-    ///   - huge: Huge enum.
-    ///   - elements: all of Huges. nessecarry to calculate ratio value.
-    ///   - total: total value. [value = ratio * total] Not radian but degree.
-    ///   - fromTop:flag if zero is from top (pi / 2). default is false.
-    public init(
-        name: String,
-        index: Int,
-        fillColor: UIColor = .black,
-        strokeColor: UIColor = .gray,
-        huge: Huge,
-        elements: [Huge],
-        total: Double = Double.pi * 2,
-        fromTop: Bool = false
-    ) {
-        fatalError()
+    public struct AngleType {
+        public var id: UUID = .init()
+        /// text to display on Roulette.
+        public var name: String
+        public var startAngle: RouletteAngle
+        public var endAngle: RouletteAngle
+        /// position.
+        public var index: Int
+        public var fillColor: UIColor
+        public var strokeColor: UIColor
+        
+        public init(
+            name: String,
+            startAngle: RouletteAngle,
+            endAngle: RouletteAngle,
+            index: Int,
+            fillColor: UIColor = .black,
+            strokeColor: UIColor = .gray
+        ) {
+            self.name = name
+            self.startAngle = startAngle
+            self.endAngle = endAngle
+            self.index = index
+            self.fillColor = fillColor
+            self.strokeColor = strokeColor
+        }
     }
 }
 
-extension RoulettePart: RoulettePartType {
+extension RoulettePart.AngleType: RoulettePartType {
     public var startRadianAngle: Double {
         startAngle.value
     }
@@ -69,23 +88,62 @@ extension RoulettePart: RoulettePartType {
     }
 }
 
-extension RoulettePart {
-    public enum Huge {
-        case large
-        case normal
-        case small
-        
-        var value: Int {
-            switch self {
-            case .large:
-                return 3
-                
-            case .normal:
-                return 2
-                
-            case .small:
-                return 1
+extension RoulettePart.HugeType: RoulettePartType {
+    
+    func getPreviousEndAngle() -> Double {
+        guard let delegate = delegate else {
+            assert(false, "No delegate.")
+            return .zero
+        }
+        var previousEndAngle: Double = 0
+        if index > 0 {
+            for i in 0..<index {
+                let thatHuge = delegate.allHuge[i]
+                let ratio = Double(thatHuge.value) / Double(delegate.allHuge.reduce(0, { $0 + $1.value }))
+                previousEndAngle += ratio * delegate.total
             }
         }
+        return previousEndAngle
     }
+    
+    public var startRadianAngle: Double {
+        return getPreviousEndAngle()
+    }
+    
+    public var endRadianAngle: Double {
+        guard let delegate = delegate else {
+            assert(false, "No delegate.")
+            return .zero
+        }
+        let ratio = Double(huge.value) / Double(delegate.allHuge.reduce(0, { $0 + $1.value }))
+        return delegate.total * ratio + getPreviousEndAngle()
+    }
+}
+
+extension RoulettePart {
+}
+
+public enum RoulettePartHuge: Hashable {
+    case large
+    case normal
+    case small
+    
+    var value: Int {
+        switch self {
+        case .large:
+            return 3
+            
+        case .normal:
+            return 2
+            
+        case .small:
+            return 1
+        }
+    }
+}
+
+
+public protocol RoulettePartHugeDelegate: AnyObject {
+    var allHuge: [RoulettePartHuge] { get }
+    var total: Double { get }
 }
