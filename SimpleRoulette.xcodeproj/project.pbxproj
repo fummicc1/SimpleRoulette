@@ -18,6 +18,8 @@
 		D35C37572480A2290029CDA8 /* SimpleRouletteDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */; };
 		D35C37622480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */; };
 		D387CBB42483ABA10097F6AD /* RouletteAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387CBB32483ABA10097F6AD /* RouletteAngle.swift */; };
+		D3894FC52483FABE0087895A /* RoulettePointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3894FC42483FABE0087895A /* RoulettePointView.swift */; };
+		D3894FC72483FF710087895A /* RouletteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3894FC62483FF710087895A /* RouletteContentView.swift */; };
 		D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A648FF2480D7AD00BEC651 /* RouletteView.swift */; };
 		D3A649022480D7F900BEC651 /* RoulettePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A649012480D7F900BEC651 /* RoulettePart.swift */; };
 		D3A649042480DB6C00BEC651 /* Radian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A649032480DB6C00BEC651 /* Radian.swift */; };
@@ -91,6 +93,8 @@
 		D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoUITests.swift; sourceTree = "<group>"; };
 		D35C37632480A22A0029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D387CBB32483ABA10097F6AD /* RouletteAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAngle.swift; sourceTree = "<group>"; };
+		D3894FC42483FABE0087895A /* RoulettePointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePointView.swift; sourceTree = "<group>"; };
+		D3894FC62483FF710087895A /* RouletteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteContentView.swift; sourceTree = "<group>"; };
 		D3A648FF2480D7AD00BEC651 /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
 		D3A649012480D7F900BEC651 /* RoulettePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePart.swift; sourceTree = "<group>"; };
 		D3A649032480DB6C00BEC651 /* Radian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radian.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 		D35C37212480A1F70029CDA8 /* SimpleRoulette */ = {
 			isa = PBXGroup;
 			children = (
+				D3894FC82483FF760087895A /* Internal */,
 				D35C37222480A1F70029CDA8 /* SimpleRoulette.h */,
 				D35C37232480A1F70029CDA8 /* Info.plist */,
 				D3A649032480DB6C00BEC651 /* Radian.swift */,
@@ -213,6 +218,15 @@
 				D35C37632480A22A0029CDA8 /* Info.plist */,
 			);
 			path = SimpleRouletteDemoUITests;
+			sourceTree = "<group>";
+		};
+		D3894FC82483FF760087895A /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				D3894FC42483FABE0087895A /* RoulettePointView.swift */,
+				D3894FC62483FF710087895A /* RouletteContentView.swift */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 		D3C1267524827B470057D327 /* Frameworks */ = {
@@ -424,10 +438,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3894FC72483FF710087895A /* RouletteContentView.swift in Sources */,
 				D3A649022480D7F900BEC651 /* RoulettePart.swift in Sources */,
 				D387CBB42483ABA10097F6AD /* RouletteAngle.swift in Sources */,
 				D3A649042480DB6C00BEC651 /* Radian.swift in Sources */,
 				D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */,
+				D3894FC52483FABE0087895A /* RoulettePointView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

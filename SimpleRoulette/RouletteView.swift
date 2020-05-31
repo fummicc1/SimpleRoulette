@@ -11,6 +11,13 @@ import UIKit
 
 public class RouletteView: UIView {
     
+    private weak var pointView: RoulettePointView?
+    public var pointSize: CGSize = .init(width: 32, height: 32) {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+    
     private(set) var parts: [RoulettePartType] = [] {
         didSet {
             let rect = bounds
@@ -45,11 +52,32 @@ public class RouletteView: UIView {
         }
     }
     
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        let pointView: RoulettePointView = .init(frame: .zero)
+        self.pointView = pointView
+        addSubview(pointView)
+    }
+    
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        let pointView: RoulettePointView = .init(frame: .zero)
+        self.pointView = pointView
+        addSubview(pointView)
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        pointView?.frame = .init(origin: .init(x: frame.midX - pointSize.width / 2, y: frame.midY - frame.width / 2 - pointSize.height), size: pointSize)
+    }
+    
     public override func draw(_ rect: CGRect) {
         let center = CGPoint(x: rect.midX, y: rect.midY)
         let radius = rect.width / 2
         
         let path: UIBezierPath = .init()
+        
+        // MARK: Content
         for part in parts {
             part.fillColor.setFill()
             part.strokeColor.setStroke()
