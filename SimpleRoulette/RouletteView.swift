@@ -12,7 +12,6 @@ import UIKit
 public class RouletteView: UIView {
     
     private(set) var parts: [RoulettePart] = []
-    private var animator: UIViewPropertyAnimator?
     
     public override func draw(_ rect: CGRect) {
         let center = CGPoint(x: rect.midX, y: rect.midY)
@@ -35,10 +34,11 @@ public class RouletteView: UIView {
     }
     
     public func start(clockwise: Bool = true) {
-        animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) { [weak self] in
-            self?.transform.rotated(by: .pi * 2)
-        }
-        animator?.isReversed = true
-        animator?.startAnimation()
+        let animation: CABasicAnimation = .init(keyPath: "transform.rotation")
+        animation.fromValue = 0.0
+        animation.toValue = CGFloat.pi * 2
+        animation.duration = 3
+        animation.repeatCount = .greatestFiniteMagnitude
+        layer.add(animation, forKey: "animation")
     }
 }
