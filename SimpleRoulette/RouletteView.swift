@@ -11,7 +11,39 @@ import UIKit
 
 public class RouletteView: UIView {
     
-    private(set) var parts: [RoulettePart] = []
+    private(set) var parts: [RoulettePart] = [] {
+        didSet {
+            let rect = bounds
+            let radius = rect.width / 4
+            
+            var layers: [CATextLayer] = []
+            
+            for part in parts {
+                let layer = CATextLayer()
+                layer.foregroundColor = UIColor.white.cgColor
+                layer.fontSize = 24
+                layer.string = part.name
+                layer.frame = .init(origin: .zero, size: layer.preferredFrameSize())
+                
+                let meanAngle = (part.startAngle.value + part.endAngle.value) / 2
+                let dx: CGFloat = radius * CGFloat(cos(meanAngle))
+                let dy: CGFloat = radius * CGFloat(sin(meanAngle))
+                layer.position = .init(x: center.x + dx, y: center.y + dy)
+                
+                layers.append(layer)
+            }
+            self.nameLayers = layers
+            setNeedsDisplay()
+        }
+    }
+    private var nameLayers: [CATextLayer] = [] {
+        didSet {
+            oldValue.forEach { old in layer.sublayers?.removeAll(where: { sub in sub == old }) }
+            for nameLayer in nameLayers {
+                layer.addSublayer(nameLayer)
+            }
+        }
+    }
     
     public override func draw(_ rect: CGRect) {
         let center = CGPoint(x: rect.midX, y: rect.midY)
