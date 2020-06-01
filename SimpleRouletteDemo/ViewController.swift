@@ -43,9 +43,9 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         rouletteView.update(parts: [
-            RoulettePart.HugeType(name: "Title A", huge: .large, delegate: rouletteView, index: 0),
-            RoulettePart.HugeType(name: "Title B", huge: .normal, delegate: rouletteView, index: 1),
-            RoulettePart.HugeType(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+            RoulettePart.AngleType(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
+            RoulettePart.AngleType(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
+            RoulettePart.AngleType(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 360), index: 2)
         ])
     }
     
