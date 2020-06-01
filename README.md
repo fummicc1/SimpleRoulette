@@ -1,11 +1,10 @@
-![Images](./Assets/SimeplRoulette.png)
-
-# SimpleRoulette
+![Images](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/SimpleRoulette.png"SimpleRoulette")
 
 **WARNING: still an alpha version.**
 
 ## Demo
-![demo](https://gifs.com/gif/simpleroulette-71qvBG)
+
+![demo](https://j.gifs.com/71qvBG.gif)
 
 ## Usage
 
