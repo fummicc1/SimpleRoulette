@@ -102,4 +102,4 @@ class ViewController: UIViewController {
 
 
 ## License
-[MIT LICENSE](https://github.com/fummicc1/SimpleRoulette/blob/master/LISENCE)
+[MIT LICENSE](https://github.com/fummicc1/SimpleRoulette/blob/master/LICENSE)
