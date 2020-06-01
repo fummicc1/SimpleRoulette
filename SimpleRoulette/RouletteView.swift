@@ -78,7 +78,9 @@ public class RouletteView: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        partContentLayer?.frame = bounds
+        partContentLayer?.bounds = bounds
+        // Note: position uses anchorPoint but frame does not.
+        partContentLayer?.position = center
         pointView?.frame = .init(origin: .init(x: frame.midX - pointSize.width / 2, y: frame.midY - frame.width / 2 - pointSize.height), size: pointSize)
     }
     
