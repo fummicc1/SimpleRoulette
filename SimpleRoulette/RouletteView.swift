@@ -23,9 +23,7 @@ public class RouletteView: UIView {
             let rect = bounds
             let radius = rect.width / 4
             
-            var layers: [CATextLayer] = []
-            
-            for part in parts {
+            for (index, part) in parts.enumerated() {
                 let layer = CATextLayer()
                 layer.foregroundColor = UIColor.white.cgColor
                 layer.fontSize = 24
@@ -37,25 +35,35 @@ public class RouletteView: UIView {
                 let dy: CGFloat = radius * CGFloat(sin(meanAngle))
                 layer.position = .init(x: center.x + dx, y: center.y + dy)
                 
-                layers.append(layer)
+                if layers.count > index {
+                    layers[index].textLayer = layer
+                } else {
+                    layers.append(RouletteLayerData(circleShapeLayer: nil, textLayer: layer))
+                }
             }
-            self.nameLayers = layers
             setNeedsDisplay()
         }
     }
-    private var nameLayers: [CATextLayer] = [] {
+    private var layers: [RouletteLayerData] = [] {
         didSet {
-            oldValue.forEach { old in layer.sublayers?.removeAll(where: { sub in sub == old }) }
-            for nameLayer in nameLayers {
-                layer.addSublayer(nameLayer)
+            oldValue.forEach { old in partContentLayer?.sublayers?.removeAll(where: { $0 == old.contentLayer }) }
+            layers.forEach { $0.createContentLayer(rect: self.bounds) }
+            layers.compactMap { $0.contentLayer }.forEach {
+                self.partContentLayer?.addSublayer($0)                
             }
         }
     }
+    private var partContentLayer: CAShapeLayer? = {
+        let layer:  CAShapeLayer = .init()
+        layer.strokeColor = UIColor.systemGray4.cgColor
+        return layer
+    }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         let pointView: RoulettePointView = .init(frame: .zero)
         self.pointView = pointView
+        layer.addSublayer(partContentLayer!)
         addSubview(pointView)
     }
     
@@ -63,11 +71,13 @@ public class RouletteView: UIView {
         super.init(coder: coder)
         let pointView: RoulettePointView = .init(frame: .zero)
         self.pointView = pointView
+        layer.addSublayer(partContentLayer!)
         addSubview(pointView)
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
+        partContentLayer?.frame = bounds
         pointView?.frame = .init(origin: .init(x: frame.midX - pointSize.width / 2, y: frame.midY - frame.width / 2 - pointSize.height), size: pointSize)
     }
     
@@ -75,17 +85,29 @@ public class RouletteView: UIView {
         let center = CGPoint(x: rect.midX, y: rect.midY)
         let radius = rect.width / 2
         
-        let path: UIBezierPath = .init()
+        var layers: [RouletteLayerData] = self.layers
         
         // MARK: Content
-        for part in parts {
-            part.fillColor.setFill()
-            part.strokeColor.setStroke()
+        for (index, part) in parts.enumerated() {
+            let path: UIBezierPath = .init()
             path.move(to: center)
             path.addArc(withCenter: center, radius: radius, startAngle: CGFloat(part.startRadianAngle), endAngle: CGFloat(part.endRadianAngle), clockwise: true)
-            path.fill()
-            path.stroke()
+            
+            let partLayer: CAShapeLayer = .init()
+            partLayer.path = path.cgPath
+            partLayer.lineWidth = 2
+            partLayer.fillColor = part.fillColor.cgColor
+            partLayer.strokeColor = part.strokeColor.cgColor
+            partLayer.frame = bounds
+            partLayer.backgroundColor = UIColor.clear.cgColor
+            
+            if layers.count > index {
+                layers[index].circleShapeLayer = partLayer
+            } else {
+                layers.append(RouletteLayerData(circleShapeLayer: partLayer, textLayer: nil))
+            }
         }
+        self.layers = layers
     }
     
     public func update(parts: [RoulettePartType]) {
@@ -99,7 +121,7 @@ public class RouletteView: UIView {
         animation.toValue = CGFloat.pi * 2
         animation.duration = 3
         animation.repeatCount = .greatestFiniteMagnitude
-        layer.add(animation, forKey: "animation")
+        partContentLayer?.add(animation, forKey: "animation")
     }
 }
 
