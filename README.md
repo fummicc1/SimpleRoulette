@@ -18,6 +18,14 @@ dependencies: [
 
 ## Usage
 
+1. First, create RouletteView instance.
+
+```swift
+let rouletteView: RouletteView = .init(frame: .zero)
+```
+
+2. Next, insert data with `RouletteView().update`.
+
 ### Sample Code
 
 #### With Angle
@@ -64,8 +72,6 @@ rouletteView.update(parts: [
 ])
 ```
 
-##### Sample Demo
-
 #### With Huge
 
 Create RouletteView with Huge initializer.
@@ -79,24 +85,12 @@ enum RoulettePartHuge: Hashable {
 ```
 
 ```swift
-class ViewController: UIViewController {
-    
-    let rouletteView: RouletteView = RouletteView(frame: .zero)
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        rouletteView.update(parts: [
-            RoulettePart.HugeType(name: "Title A", huge: .large, delegate: rouletteView, index: 0),
-            RoulettePart.HugeType(name: "Title B", huge: .normal, delegate: rouletteView, index: 1),
-            RoulettePart.HugeType(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
-        ])
-    }
-}
+rouletteView.update(parts: [
+    RoulettePart.HugeType(name: "Title A", huge: .large, delegate: rouletteView, index: 0),
+    RoulettePart.HugeType(name: "Title B", huge: .normal, delegate: rouletteView, index: 1),
+    RoulettePart.HugeType(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+])
 ```
-
-##### Sample Demo
-
-
 
 **IMPORTANT: can not combine Huge with Angle in RouletteView Initializer.**
 
