@@ -1,4 +1,4 @@
-![Images](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/SimpleRoulette.png"SimpleRoulette")
+![Images](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/SimpleRoulette.png)
 
 **WARNING: still an alpha version.**
 
