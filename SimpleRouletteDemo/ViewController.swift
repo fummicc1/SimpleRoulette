@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     let startButton: UIButton = {
        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Start", for: .normal)
         button.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
         return button
     }()
@@ -22,6 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(rouletteView)
+        
         rouletteView.translatesAutoresizingMaskIntoConstraints = false
         rouletteView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         rouletteView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -32,7 +34,7 @@ class ViewController: UIViewController {
         startButton.layer.cornerRadius = 16
         startButton.layer.borderColor = UIColor.systemGray3.cgColor
         startButton.layer.borderWidth = 2
-        startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -48).isActive = true
         startButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         startButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
         startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -48,6 +50,11 @@ class ViewController: UIViewController {
     }
     
     @objc func didTapStartButton() {
-        rouletteView.start()
+        if rouletteView.isAnimating {
+            rouletteView.stop()
+        } else {
+            rouletteView.start()
+        }
+        startButton.setTitle(rouletteView.isAnimating ? "Stop" : "Start", for: .normal)
     }
 }

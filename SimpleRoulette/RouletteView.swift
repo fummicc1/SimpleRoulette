@@ -11,6 +11,7 @@ import UIKit
 
 public class RouletteView: UIView {
     
+    public private(set) var isAnimating: Bool = false
     private weak var pointView: RoulettePointView?
     public var pointSize: CGSize = .init(width: 32, height: 32) {
         didSet {
@@ -122,6 +123,16 @@ public class RouletteView: UIView {
         animation.duration = 3
         animation.repeatCount = .greatestFiniteMagnitude
         partContentLayer?.add(animation, forKey: "animation")
+        isAnimating = true
+    }
+    
+    public func stop() {
+        guard let presentation = partContentLayer?.presentation() else {
+            return
+        }
+        partContentLayer?.transform = presentation.transform
+        partContentLayer?.removeAnimation(forKey: "animation")
+        isAnimating = false
     }
 }
 
