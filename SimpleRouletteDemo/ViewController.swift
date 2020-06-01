@@ -24,6 +24,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(rouletteView)
         
+        rouletteView.delegate = self
+        
         rouletteView.translatesAutoresizingMaskIntoConstraints = false
         rouletteView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         rouletteView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -56,5 +58,11 @@ class ViewController: UIViewController {
             rouletteView.start()
         }
         startButton.setTitle(rouletteView.isAnimating ? "Stop" : "Start", for: .normal)
+    }
+}
+
+extension ViewController: RouletteViewDelegate {
+    func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
+        print(part)
     }
 }

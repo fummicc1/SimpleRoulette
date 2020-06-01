@@ -10,12 +10,12 @@ import Foundation
 
 public struct RouletteAngle {
 
+    /// Radian
     public let value: Double
-    
     
     /// initializer with radian
     /// - Parameters:
-    ///   - radian: radian. range [0, 2pi)
+    ///   - radian: radian. range [0, 2pi) but if fromTop is true, [-1/2pi, 3/2pi)
     ///   - fromTop: flag if zero is from top (pi / 2). default is false.
     public init(radian: Double, fromTop: Bool = false) {
         if fromTop {
@@ -27,7 +27,7 @@ public struct RouletteAngle {
     
     /// initializer with degree.
     /// - Parameters:
-    ///   - degree: degree. range [0, 360)
+    ///   - degree: degree. range [0, 360) but if fromTop is true, [-90, 270)
     ///   - fromTop: flag if zero is from top (pi / 2). default is false.
     public init(degree: Double, fromTop: Bool = false) {
         if fromTop {

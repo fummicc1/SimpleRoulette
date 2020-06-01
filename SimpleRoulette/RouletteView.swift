@@ -9,10 +9,15 @@
 import Foundation
 import UIKit
 
+public protocol RouletteViewDelegate: AnyObject {
+    func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType)
+}
+
 public class RouletteView: UIView {
     
     public private(set) var isAnimating: Bool = false
     private weak var pointView: RoulettePointView?
+    public weak var delegate: RouletteViewDelegate?
     public var pointSize: CGSize = .init(width: 32, height: 32) {
         didSet {
             setNeedsLayout()
@@ -132,9 +137,28 @@ public class RouletteView: UIView {
         guard let presentation = partContentLayer?.presentation() else {
             return
         }
-        partContentLayer?.transform = presentation.transform
+        let transform = presentation.transform
+        partContentLayer?.transform = transform
         partContentLayer?.removeAnimation(forKey: "animation")
         isAnimating = false
+                
+        let m11 = transform.m11
+        
+        var thetaWithRadian = -acos(m11)
+        if thetaWithRadian > CGFloat.pi * 3/2 {
+            thetaWithRadian -= CGFloat.pi * 2
+        } else if thetaWithRadian < -CGFloat.pi / 2 {
+            thetaWithRadian += CGFloat.pi * 2
+        }
+        
+        print(thetaWithRadian)
+        
+        let ranges = parts.map({ (part: $0, range: ($0.startRadianAngle...$0.endRadianAngle)) })
+        for range in ranges {
+            if range.range.contains(Double(thetaWithRadian)) {
+                delegate?.rouletteView(self, didStopAt: range.part)
+            }
+        }
     }
 }
 
