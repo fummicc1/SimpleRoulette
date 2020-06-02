@@ -11,28 +11,31 @@ import Foundation
 public struct RouletteAngle {
 
     /// Radian
-    public let value: Double
+    public var value: Double {
+        accuracy.value
+    }
+    
+    var accuracy: AccurateDouble
     
     /// initializer with radian
     /// - Parameters:
     ///   - radian: radian. range [0, 2pi) but if fromTop is true, [-1/2pi, 3/2pi)
     ///   - fromTop: flag if zero is from top (pi / 2). default is false.
     public init(radian: Double, fromTop: Bool = false) {
-        var radian = radian
+        accuracy = .init(value: radian)
         if fromTop {
-            if radian >= Double.pi * 2/3 {
-                radian -= Double.pi * 2
-            } else if radian < Double.pi * -1/2 {
-                radian += Double.pi * 2
+            if value >= Double.pi * 2/3 {
+                accuracy.subtract(Double.pi * 2)
+            } else if value < Double.pi * -1/2 {
+                accuracy.add(Double.pi * 2)
             }
-            self.value = radian
         } else {
-            if radian >= Double.pi * 2 {
-                radian -= Double.pi * 2
-            } else if radian < 0 {
-                radian += Double.pi * 2
+            if value >= Double.pi * 2 {
+                accuracy.subtract(Double.pi * 2)
+            } else if value < 0 {
+                accuracy.add(Double.pi * 2)
             }
-            self.value = radian - Double.pi / 2
+            accuracy.subtract(Double.pi * 1/2)
         }
     }
     
@@ -41,10 +44,20 @@ public struct RouletteAngle {
     ///   - degree: degree. range [0, 360) but if fromTop is true, [-90, 270)
     ///   - fromTop: flag if zero is from top (pi / 2). default is false.
     public init(degree: Double, fromTop: Bool = false) {
+        accuracy = .init(value: degree.radian())
         if fromTop {
-            self.value = degree.radian()
+            if value >= Double.pi * 2/3 {
+                accuracy.subtract(Double.pi * 2)
+            } else if value < Double.pi * -1/2 {
+                accuracy.add(Double.pi * 2)
+            }
         } else {
-            self.value = degree.radian() - Double.pi / 2
+            if value >= Double.pi * 2 {
+                accuracy.subtract(Double.pi * 2)
+            } else if value < 0 {
+                accuracy.add(Double.pi * 2)
+            }
+            accuracy.subtract(Double.pi * 1/2)
         }
     }
 }

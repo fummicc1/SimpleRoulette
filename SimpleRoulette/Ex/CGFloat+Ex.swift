@@ -1,5 +1,5 @@
 //
-//  Double+Ex.swift
+//  CGFloat+Ex.swift
 //  SimpleRoulette
 //
 //  Created by Fumiya Tanaka on 2020/06/02.
@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-extension Double {
+extension CGFloat {
     func radian() -> Self {
         Self.pi * (self/180)
     }
@@ -17,7 +18,7 @@ extension Double {
         self / Self.pi * 180
     }
     
-    func accurate() -> AccurateDouble {
+    func accurate() -> AccurateCGFloat {
         .init(value: self)
     }
 }

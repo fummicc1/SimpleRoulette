@@ -12,6 +12,8 @@
 		D34054ED24864495005D54FB /* Double+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054EC24864495005D54FB /* Double+Ex.swift */; };
 		D34054EF248647E7005D54FB /* AccurateDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054EE248647E7005D54FB /* AccurateDouble.swift */; };
 		D34054F12486486A005D54FB /* AccuracyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054F02486486A005D54FB /* AccuracyType.swift */; };
+		D34054F324864CA0005D54FB /* AccurateCGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054F224864CA0005D54FB /* AccurateCGFloat.swift */; };
+		D34054F5248655D3005D54FB /* CGFloat+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054F4248655D3005D54FB /* CGFloat+Ex.swift */; };
 		D35C37292480A1F70029CDA8 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
 		D35C372E2480A1F70029CDA8 /* SimpleRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C372D2480A1F70029CDA8 /* SimpleRouletteTests.swift */; };
 		D35C37302480A1F70029CDA8 /* SimpleRoulette.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C37222480A1F70029CDA8 /* SimpleRoulette.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,7 +28,6 @@
 		D3894FC52483FABE0087895A /* RoulettePointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3894FC42483FABE0087895A /* RoulettePointView.swift */; };
 		D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A648FF2480D7AD00BEC651 /* RouletteView.swift */; };
 		D3A649022480D7F900BEC651 /* RoulettePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A649012480D7F900BEC651 /* RoulettePart.swift */; };
-		D3A649042480DB6C00BEC651 /* Float+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A649032480DB6C00BEC651 /* Float+Ex.swift */; };
 		D3C1267624827B470057D327 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
 		D3C1267724827B470057D327 /* SimpleRoulette.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -82,6 +83,8 @@
 		D34054EC24864495005D54FB /* Double+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ex.swift"; sourceTree = "<group>"; };
 		D34054EE248647E7005D54FB /* AccurateDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccurateDouble.swift; sourceTree = "<group>"; };
 		D34054F02486486A005D54FB /* AccuracyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccuracyType.swift; sourceTree = "<group>"; };
+		D34054F224864CA0005D54FB /* AccurateCGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccurateCGFloat.swift; sourceTree = "<group>"; };
+		D34054F4248655D3005D54FB /* CGFloat+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ex.swift"; sourceTree = "<group>"; };
 		D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleRoulette.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C37222480A1F70029CDA8 /* SimpleRoulette.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleRoulette.h; sourceTree = "<group>"; };
 		D35C37232480A1F70029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,7 +108,6 @@
 		D3894FC42483FABE0087895A /* RoulettePointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePointView.swift; sourceTree = "<group>"; };
 		D3A648FF2480D7AD00BEC651 /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
 		D3A649012480D7F900BEC651 /* RoulettePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePart.swift; sourceTree = "<group>"; };
-		D3A649032480DB6C00BEC651 /* Float+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Ex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,10 +154,20 @@
 		D34054EB24864483005D54FB /* Ex */ = {
 			isa = PBXGroup;
 			children = (
-				D3A649032480DB6C00BEC651 /* Float+Ex.swift */,
+				D34054F4248655D3005D54FB /* CGFloat+Ex.swift */,
 				D34054EC24864495005D54FB /* Double+Ex.swift */,
 			);
 			path = Ex;
+			sourceTree = "<group>";
+		};
+		D34054F6248658AF005D54FB /* Accurate */ = {
+			isa = PBXGroup;
+			children = (
+				D34054F02486486A005D54FB /* AccuracyType.swift */,
+				D34054F224864CA0005D54FB /* AccurateCGFloat.swift */,
+				D34054EE248647E7005D54FB /* AccurateDouble.swift */,
+			);
+			path = Accurate;
 			sourceTree = "<group>";
 		};
 		D35C37152480A1F70029CDA8 = {
@@ -241,10 +253,9 @@
 		D3894FC82483FF760087895A /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				D34054F6248658AF005D54FB /* Accurate */,
 				D3284FF32484CF7B00B1DF90 /* RouletteLayerData.swift */,
 				D3894FC42483FABE0087895A /* RoulettePointView.swift */,
-				D34054EE248647E7005D54FB /* AccurateDouble.swift */,
-				D34054F02486486A005D54FB /* AccuracyType.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -459,11 +470,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3A649022480D7F900BEC651 /* RoulettePart.swift in Sources */,
+				D34054F5248655D3005D54FB /* CGFloat+Ex.swift in Sources */,
 				D3284FF42484CF7B00B1DF90 /* RouletteLayerData.swift in Sources */,
 				D34054EF248647E7005D54FB /* AccurateDouble.swift in Sources */,
 				D34054F12486486A005D54FB /* AccuracyType.swift in Sources */,
+				D34054F324864CA0005D54FB /* AccurateCGFloat.swift in Sources */,
 				D387CBB42483ABA10097F6AD /* RouletteAngle.swift in Sources */,
-				D3A649042480DB6C00BEC651 /* Float+Ex.swift in Sources */,
 				D34054ED24864495005D54FB /* Double+Ex.swift in Sources */,
 				D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */,
 				D3894FC52483FABE0087895A /* RoulettePointView.swift in Sources */,
