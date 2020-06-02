@@ -1,5 +1,5 @@
 //
-//  RouletteAngleTests.swift
+//  OperatorTests.swift
 //  SimpleRouletteTests
 //
 //  Created by Fumiya Tanaka on 2020/06/02.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import SimpleRoulette
 
-class RouletteAngleTests: XCTestCase {
+class OperatorTests: XCTestCase {
 
     func testExample() throws {
         // This is an example of a functional test case.
@@ -23,12 +23,9 @@ class RouletteAngleTests: XCTestCase {
         }
     }
 
-    func testAngle_BiggerThan2pi() throws {
-        let radian: Double = Double.pi * 4
-        let angle = Roulette.Angle.init(degree: radian)
-        XCTAssertEqual(angle.value, Double.pi * -1/2)
-        XCTAssertTrue(angle.value.degree() <= Double.pi * 2, "Degree is too big.")
+    func testOperator() {
+        var r = Double(360).radian().accurate()
+        let l = Double(0).radian().accurate()
+        XCTAssertTrue(r ~=~ l)
     }
-    
-    
 }

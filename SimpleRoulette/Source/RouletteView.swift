@@ -134,6 +134,15 @@ public class RouletteView: UIView {
     }
     
     public func stop() {
+        
+        
+        func checkIfContainsPoint(from source: CGFloat, to destination: CGFloat, point: CGFloat) -> Bool {
+            return source <= point && destination > point
+        }
+        
+        guard let delegate = delegate else {
+            fatalError("No Delegate")
+        }
         guard let presentation = partContentLayer?.presentation() else {
             return
         }
@@ -141,22 +150,45 @@ public class RouletteView: UIView {
         partContentLayer?.transform = transform
         partContentLayer?.removeAnimation(forKey: "animation")
         isAnimating = false
-                
-        let m11 = transform.m11
         
-        var thetaWithRadian = -acos(m11)
-        if thetaWithRadian > CGFloat.pi * 3/2 {
-            thetaWithRadian -= CGFloat.pi * 2
-        } else if thetaWithRadian < -CGFloat.pi / 2 {
-            thetaWithRadian += CGFloat.pi * 2
+        let m11 = transform.m11
+        let m12 = transform.m21
+        var radianTheta = acos(m11)
+        var asinValue = asin(m12)
+        
+        var addition: Double = Double.pi * 0.5
+        
+        if asinValue < 0, radianTheta > 0 {
+            print("AAA")
+            radianTheta = CGFloat.pi * 2 - abs(radianTheta)
         }
         
-        print(thetaWithRadian)
+        if asinValue < 0, radianTheta < 0 {
+            print("BBB")
+        }
         
-        let ranges = parts.map({ (part: $0, range: ($0.startRadianAngle...$0.endRadianAngle)) })
-        for range in ranges {
-            if range.range.contains(Double(thetaWithRadian)) {
-                delegate?.rouletteView(self, didStopAt: range.part)
+        if asinValue > 0, radianTheta < 0 {
+            print("CCC")
+        }
+        
+        if asinValue > 0, radianTheta > 0 {
+            print("DDD")
+            if radianTheta.degree() < 90 {
+                radianTheta = CGFloat.pi * 2 - abs(radianTheta)
+            }
+        }
+        
+        print("theta: \(radianTheta.degree())")
+        print("asin: \(asinValue.degree())")
+        
+        for part in parts {
+            var start = part.startRadianAngle + addition
+            var end = part.endRadianAngle + addition
+            print("start: \(start.degree())")
+            print("end: \(end.degree())")
+            
+            if checkIfContainsPoint(from: CGFloat(start), to: CGFloat(end), point: radianTheta) {
+                delegate.rouletteView(self, didStopAt: part)
             }
         }
     }
@@ -167,7 +199,7 @@ extension RouletteView: RoulettePartHugeDelegate {
         Double.pi * 2
     }
     
-    public var allHuge: [RoulettePartHuge] {
-        parts.map { $0 as! RoulettePart.HugeType }.map { $0.huge }
+    public var allHuge: [Roulette.HugePart.Kind] {
+        parts.map { $0 as! Roulette.HugePart }.map { $0.huge }
     }
 }
