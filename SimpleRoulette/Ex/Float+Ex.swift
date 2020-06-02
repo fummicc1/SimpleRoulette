@@ -13,10 +13,8 @@ extension CGFloat {
     func radian() -> CGFloat {
         CGFloat.pi * (self/180)
     }
-}
-
-extension Double {
-    func radian() -> Double {
-        Double.pi * (self/180)
+    
+    func degree() -> CGFloat {
+        self / CGFloat.pi * 180
     }
 }
