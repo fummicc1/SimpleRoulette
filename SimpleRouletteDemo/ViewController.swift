@@ -45,9 +45,9 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         rouletteView.update(parts: [
-            RoulettePart.AngleType(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
-            RoulettePart.AngleType(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
-            RoulettePart.AngleType(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 360), index: 2)
+            Roulette.AnglePart(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
+            Roulette.AnglePart(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
+            Roulette.AnglePart(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 360), index: 2)
         ])
     }
     
@@ -64,5 +64,9 @@ class ViewController: UIViewController {
 extension ViewController: RouletteViewDelegate {
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
         print(part)
+    }
+    
+    func isStartedFromTop(_ rouletteView: RouletteView) -> Bool {
+        false
     }
 }

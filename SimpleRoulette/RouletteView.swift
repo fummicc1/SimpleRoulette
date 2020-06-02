@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 public protocol RouletteViewDelegate: AnyObject {
+    func isStartedFromTop(_ rouletteView: RouletteView) -> Bool
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType)
 }
 
@@ -173,7 +174,7 @@ extension RouletteView: RoulettePartHugeDelegate {
         Double.pi * 2
     }
     
-    public var allHuge: [RoulettePartHuge] {
-        parts.map { $0 as! RoulettePart.HugeType }.map { $0.huge }
+    public var allHuge: [Roulette.HugePart.Kind] {
+        parts.map { $0 as! Roulette.HugePart }.map { $0.huge }
     }
 }
