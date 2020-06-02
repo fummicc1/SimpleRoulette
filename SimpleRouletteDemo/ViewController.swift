@@ -64,6 +64,9 @@ class ViewController: UIViewController {
 extension ViewController: RouletteViewDelegate {
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
         print(part)
+        let alert = UIAlertController(title: "結果", message: part.name, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     func isStartedFromTop(_ rouletteView: RouletteView) -> Bool {
