@@ -32,8 +32,8 @@ class RouletteAngleTests: XCTestCase {
     }
 
     func testAngle_BiggerThan2pi() throws {
-        let degree: Double = Double.pi * 4
-        let angle = RouletteAngle.init(degree: degree)
+        let radian: Double = Double.pi * 4
+        let angle = RouletteAngle.init(degree: radian)
         XCTAssertEqual(angle.value, Double.pi * -1/2)
         XCTAssertTrue(angle.value.degree() <= Double.pi * 2, "Degree is too big.")
     }
