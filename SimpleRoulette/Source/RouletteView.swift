@@ -137,7 +137,7 @@ public class RouletteView: UIView {
         
         
         func checkIfContainsPoint(from source: CGFloat, to destination: CGFloat, point: CGFloat) -> Bool {
-            source <= point && destination > point
+            return source <= point && destination > point
         }
         
         guard let delegate = delegate else {
@@ -153,31 +153,41 @@ public class RouletteView: UIView {
         
         let m11 = transform.m11
         let m12 = transform.m21
-        var thetaWithRadian = acos(m11)
-        thetaWithRadian -= CGFloat.pi * 0.5
-        var thetaWithRadianTwo = asin(m12).accurate()
-        thetaWithRadianTwo.subtract(CGFloat.pi * 0.5, mutate: true)
+        var radianTheta = acos(m11)
+        var asinValue = asin(m12)
         
-        print("Angle: \(parts.last?.endRadianAngle.degree())")
-        print("transform: \(transform)")
-        print("theta: \(thetaWithRadian.degree())")
-        print("theta2: \(thetaWithRadianTwo.value.degree())")
-                
-        if thetaWithRadianTwo.value < 0 {
-            // 左回転
-            thetaWithRadian = CGFloat.pi * 2 - thetaWithRadian
-            print("theta edited: \(thetaWithRadian.degree())")
-        } else {
-            // 右回転
+        var addition: Double = Double.pi * 0.5
+        
+        if asinValue < 0, radianTheta > 0 {
+            print("AAA")
+            radianTheta = CGFloat.pi * 2 - abs(radianTheta)
         }
         
+        if asinValue < 0, radianTheta < 0 {
+            print("BBB")
+        }
+        
+        if asinValue > 0, radianTheta < 0 {
+            print("CCC")
+        }
+        
+        if asinValue > 0, radianTheta > 0 {
+            print("DDD")
+            if radianTheta.degree() < 90 {
+                radianTheta = CGFloat.pi * 2 - abs(radianTheta)
+            }
+        }
+        
+        print("theta: \(radianTheta.degree())")
+        print("asin: \(asinValue.degree())")
+        
         for part in parts {
+            var start = part.startRadianAngle + addition
+            var end = part.endRadianAngle + addition
+            print("start: \(start.degree())")
+            print("end: \(end.degree())")
             
-            print(part.name)
-            print(part.startRadianAngle)
-            print(part.endRadianAngle)
-            
-            if checkIfContainsPoint(from: CGFloat(part.startRadianAngle), to: CGFloat(part.endRadianAngle), point: thetaWithRadian) {
+            if checkIfContainsPoint(from: CGFloat(start), to: CGFloat(end), point: radianTheta) {
                 delegate.rouletteView(self, didStopAt: part)
             }
         }

@@ -28,11 +28,12 @@ extension CGFloat {
     }
     
     func reverse() -> Self {
-        let value = Self.pi * 2 - self
-        if value.degree() > 270 {
-            return Self.pi * 2 - value
-        } else if value.degree() < -90 {
-            return Self.pi * 2 + value
+        var value = Self.pi * 2 - self
+        while value > Self.pi * 2 {
+            value -= Self.pi * 2
+        }
+        while value < 0 {
+            value += Self.pi * 2
         }
         return value
     }

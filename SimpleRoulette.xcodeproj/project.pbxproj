@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3112F7F2486B3B900F1E174 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3112F7E2486B3B900F1E174 /* Calculation.swift */; };
 		D316BBE424868C8000D1844A /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316BBE324868C8000D1844A /* OperatorTests.swift */; };
 		D3284FF42484CF7B00B1DF90 /* RouletteLayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3284FF32484CF7B00B1DF90 /* RouletteLayerData.swift */; };
 		D34054EA248643C2005D54FB /* RouletteAngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054E9248643C2005D54FB /* RouletteAngleTests.swift */; };
@@ -17,7 +18,6 @@
 		D34054F5248655D3005D54FB /* CGFloat+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054F4248655D3005D54FB /* CGFloat+Ex.swift */; };
 		D3485E132486893A00BC203F /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3485E122486893A00BC203F /* Operator.swift */; };
 		D35C37292480A1F70029CDA8 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
-		D35C372E2480A1F70029CDA8 /* SimpleRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C372D2480A1F70029CDA8 /* SimpleRouletteTests.swift */; };
 		D35C37302480A1F70029CDA8 /* SimpleRoulette.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C37222480A1F70029CDA8 /* SimpleRoulette.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D35C37402480A2260029CDA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C373F2480A2260029CDA8 /* AppDelegate.swift */; };
 		D35C37422480A2260029CDA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37412480A2260029CDA8 /* SceneDelegate.swift */; };
@@ -80,6 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D3112F7E2486B3B900F1E174 /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		D316BBE324868C8000D1844A /* OperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
 		D3284FF32484CF7B00B1DF90 /* RouletteLayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteLayerData.swift; sourceTree = "<group>"; };
 		D34054E9248643C2005D54FB /* RouletteAngleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAngleTests.swift; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		D35C37222480A1F70029CDA8 /* SimpleRoulette.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleRoulette.h; sourceTree = "<group>"; };
 		D35C37232480A1F70029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D35C37282480A1F70029CDA8 /* SimpleRouletteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D35C372D2480A1F70029CDA8 /* SimpleRouletteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteTests.swift; sourceTree = "<group>"; };
 		D35C372F2480A1F70029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D35C373D2480A2260029CDA8 /* SimpleRouletteDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRouletteDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C373F2480A2260029CDA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -226,8 +226,8 @@
 			children = (
 				D35C372F2480A1F70029CDA8 /* Info.plist */,
 				D34054E9248643C2005D54FB /* RouletteAngleTests.swift */,
-				D35C372D2480A1F70029CDA8 /* SimpleRouletteTests.swift */,
 				D316BBE324868C8000D1844A /* OperatorTests.swift */,
+				D3112F7E2486B3B900F1E174 /* Calculation.swift */,
 			);
 			path = SimpleRouletteTests;
 			sourceTree = "<group>";
@@ -501,9 +501,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D35C372E2480A1F70029CDA8 /* SimpleRouletteTests.swift in Sources */,
 				D316BBE424868C8000D1844A /* OperatorTests.swift in Sources */,
 				D34054EA248643C2005D54FB /* RouletteAngleTests.swift in Sources */,
+				D3112F7F2486B3B900F1E174 /* Calculation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
