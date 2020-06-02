@@ -26,4 +26,14 @@ extension CGFloat {
         let str = String.init(describing: self)
         return .init(string: str)
     }
+    
+    func reverse() -> Self {
+        let value = Self.pi * 2 - self
+        if value.degree() > 270 {
+            return Self.pi * 2 - value
+        } else if value.degree() < -90 {
+            return Self.pi * 2 + value
+        }
+        return value
+    }
 }

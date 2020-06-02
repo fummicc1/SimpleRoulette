@@ -13,7 +13,9 @@ public protocol RoulettePartType {
     var id: UUID { get }
     var name: String { get }
     var index: Int { get }
+    /// From [-1/2 pi, 3/2 pi)
     var startRadianAngle: Double { get }
+    /// From [-1/2 pi, 3/2 pi)
     var endRadianAngle: Double { get }
     var fillColor: UIColor { get }
     var strokeColor: UIColor { get }
@@ -27,7 +29,7 @@ public enum Roulette {
         public var name: String
         public var huge: Kind
         public weak var delegate: RoulettePartHugeDelegate?
-        /// position.
+        /// position. Start from 0.
         public var index: Int
         public var fillColor: UIColor
         public var strokeColor: UIColor
@@ -53,8 +55,8 @@ public enum Roulette {
         public var id: UUID = .init()
         /// text to display on Roulette.
         public var name: String
-        public var startAngle: RouletteAngle
-        public var endAngle: RouletteAngle
+        public var startAngle: Roulette.Angle
+        public var endAngle: Roulette.Angle
         /// position.
         public var index: Int
         public var fillColor: UIColor
@@ -62,8 +64,8 @@ public enum Roulette {
         
         public init(
             name: String,
-            startAngle: RouletteAngle,
-            endAngle: RouletteAngle,
+            startAngle: Roulette.Angle,
+            endAngle: Roulette.Angle,
             index: Int,
             fillColor: UIColor = .black,
             strokeColor: UIColor = .gray

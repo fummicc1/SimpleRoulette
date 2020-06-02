@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 public protocol RouletteViewDelegate: AnyObject {
-    func isStartedFromTop(_ rouletteView: RouletteView) -> Bool
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType)
 }
 
@@ -135,6 +134,15 @@ public class RouletteView: UIView {
     }
     
     public func stop() {
+        
+        
+        func checkIfContainsPoint(from source: CGFloat, to destination: CGFloat, point: CGFloat) -> Bool {
+            source <= point && destination > point
+        }
+        
+        guard let delegate = delegate else {
+            fatalError("No Delegate")
+        }
         guard let presentation = partContentLayer?.presentation() else {
             return
         }
@@ -142,28 +150,35 @@ public class RouletteView: UIView {
         partContentLayer?.transform = transform
         partContentLayer?.removeAnimation(forKey: "animation")
         isAnimating = false
-                
-        let m11 = transform.m11
         
-        var thetaWithRadian = -acos(m11)
-        if thetaWithRadian > CGFloat.pi * 3/2 {
-            thetaWithRadian -= CGFloat.pi * 2
-        } else if thetaWithRadian < -CGFloat.pi / 2 {
-            thetaWithRadian += CGFloat.pi * 2
+        let m11 = transform.m11
+        let m12 = transform.m21
+        var thetaWithRadian = acos(m11)
+        thetaWithRadian -= CGFloat.pi * 0.5
+        var thetaWithRadianTwo = asin(m12).accurate()
+        thetaWithRadianTwo.subtract(CGFloat.pi * 0.5, mutate: true)
+        
+        print("Angle: \(parts.last?.endRadianAngle.degree())")
+        print("transform: \(transform)")
+        print("theta: \(thetaWithRadian.degree())")
+        print("theta2: \(thetaWithRadianTwo.value.degree())")
+                
+        if thetaWithRadianTwo.value < 0 {
+            // 左回転
+            thetaWithRadian = CGFloat.pi * 2 - thetaWithRadian
+            print("theta edited: \(thetaWithRadian.degree())")
+        } else {
+            // 右回転
         }
         
-        print(thetaWithRadian)
-        
-        let ranges = parts.map({ part -> (part: RoulettePartType, range: ClosedRange<Double>) in
-            if part.startRadianAngle < part.endRadianAngle {
-                return (part: part, range: (part.startRadianAngle...part.endRadianAngle))
-            } else {
-                return (part: part, range: (part.endRadianAngle...part.startRadianAngle))
-            }
-        })
-        for range in ranges {
-            if range.range.contains(Double(thetaWithRadian)) {
-                delegate?.rouletteView(self, didStopAt: range.part)
+        for part in parts {
+            
+            print(part.name)
+            print(part.startRadianAngle)
+            print(part.endRadianAngle)
+            
+            if checkIfContainsPoint(from: CGFloat(part.startRadianAngle), to: CGFloat(part.endRadianAngle), point: thetaWithRadian) {
+                delegate.rouletteView(self, didStopAt: part)
             }
         }
     }

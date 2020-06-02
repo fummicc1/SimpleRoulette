@@ -59,22 +59,22 @@ struct AccurateCGFloat: AccuracyType {
     }
     
     @discardableResult
-    mutating func add<Accuracy>(_ accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+    mutating func add<Accuracy>(_ accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, AccurateCGFloat.Value == Accuracy.Value {
         add(accuray.value, mutate: mutate)
     }
     
     @discardableResult
-    mutating func subtract<Accuracy>(_ accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+    mutating func subtract<Accuracy>(_ accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, AccurateCGFloat.Value == Accuracy.Value {
         subtract(accuray.value, mutate: mutate)
     }
     
     @discardableResult
-    mutating func multiply<Accuracy>(with accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+    mutating func multiply<Accuracy>(with accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, AccurateCGFloat.Value == Accuracy.Value {
         multiply(with: accuray.value, mutate: mutate)
     }
     
     @discardableResult
-    mutating func divide<Accuracy>(by accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+    mutating func divide<Accuracy>(by accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, AccurateCGFloat.Value == Accuracy.Value {
         divide(by: accuray.value, mutate: mutate)
     }
 }
