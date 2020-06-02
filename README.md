@@ -4,7 +4,7 @@
 
 ## Demo
 
-![demo](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/demo_1_0_2.gif)
+![demo](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/demo_0_0_2.gif)
 
 ## Install
 
