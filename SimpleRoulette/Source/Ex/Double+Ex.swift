@@ -20,4 +20,20 @@ extension Double {
     func accurate() -> AccurateDouble {
         .init(value: self)
     }
+    
+    func decimal() -> NSDecimalNumber {
+        let str = String(self)
+        return .init(string: str)
+    }
+    
+    func reverse() -> Self {
+        var value = Self.pi * 2 - self
+        while value > Self.pi * 2 {
+            value -= Self.pi * 2
+        }
+        while value < 0 {
+            value += Self.pi * 2
+        }
+        return value
+    }
 }

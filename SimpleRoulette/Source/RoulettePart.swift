@@ -13,28 +13,30 @@ public protocol RoulettePartType {
     var id: UUID { get }
     var name: String { get }
     var index: Int { get }
+    /// From [-1/2 pi, 3/2 pi)
     var startRadianAngle: Double { get }
+    /// From [-1/2 pi, 3/2 pi)
     var endRadianAngle: Double { get }
     var fillColor: UIColor { get }
     var strokeColor: UIColor { get }
 }
 
-public enum RoulettePart {
+public enum Roulette {
     
-    public struct HugeType {
+    public struct HugePart {
         public var id: UUID = .init()
         /// text to display on Roulette.
         public var name: String
-        public var huge: RoulettePartHuge
+        public var huge: Kind
         public weak var delegate: RoulettePartHugeDelegate?
-        /// position.
+        /// position. Start from 0.
         public var index: Int
         public var fillColor: UIColor
         public var strokeColor: UIColor
         
         public init(
             name: String,
-            huge: RoulettePartHuge,
+            huge: Kind,
             delegate: RoulettePartHugeDelegate,
             index: Int,
             fillColor: UIColor = .black,
@@ -49,12 +51,12 @@ public enum RoulettePart {
         }
     }
     
-    public struct AngleType {
+    public struct AnglePart {
         public var id: UUID = .init()
         /// text to display on Roulette.
         public var name: String
-        public var startAngle: RouletteAngle
-        public var endAngle: RouletteAngle
+        public var startAngle: Roulette.Angle
+        public var endAngle: Roulette.Angle
         /// position.
         public var index: Int
         public var fillColor: UIColor
@@ -62,8 +64,8 @@ public enum RoulettePart {
         
         public init(
             name: String,
-            startAngle: RouletteAngle,
-            endAngle: RouletteAngle,
+            startAngle: Roulette.Angle,
+            endAngle: Roulette.Angle,
             index: Int,
             fillColor: UIColor = .black,
             strokeColor: UIColor = .gray
@@ -78,7 +80,7 @@ public enum RoulettePart {
     }
 }
 
-extension RoulettePart.AngleType: RoulettePartType {
+extension Roulette.AnglePart: RoulettePartType {
     public var startRadianAngle: Double {
         startAngle.value
     }
@@ -88,7 +90,7 @@ extension RoulettePart.AngleType: RoulettePartType {
     }
 }
 
-extension RoulettePart.HugeType: RoulettePartType {
+extension Roulette.HugePart: RoulettePartType {
     
     func getPreviousEndAngle() -> Double {
         guard let delegate = delegate else {
@@ -118,32 +120,29 @@ extension RoulettePart.HugeType: RoulettePartType {
         let ratio = Double(huge.value) / Double(delegate.allHuge.reduce(0, { $0 + $1.value }))
         return delegate.total * ratio + getPreviousEndAngle()
     }
-}
-
-extension RoulettePart {
-}
-
-public enum RoulettePartHuge: Hashable {
-    case large
-    case normal
-    case small
     
-    var value: Int {
-        switch self {
-        case .large:
-            return 3
-            
-        case .normal:
-            return 2
-            
-        case .small:
-            return 1
+    public enum Kind: Hashable {
+        case large
+        case normal
+        case small
+        
+        var value: Int {
+            switch self {
+            case .large:
+                return 3
+                
+            case .normal:
+                return 2
+                
+            case .small:
+                return 1
+            }
         }
     }
 }
 
 
 public protocol RoulettePartHugeDelegate: AnyObject {
-    var allHuge: [RoulettePartHuge] { get }
+    var allHuge: [Roulette.HugePart.Kind] { get }
     var total: Double { get }
 }
