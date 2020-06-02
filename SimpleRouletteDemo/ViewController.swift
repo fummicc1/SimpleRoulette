@@ -19,6 +19,32 @@ class ViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
         return button
     }()
+    let hugeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Huge", for: .normal)
+        button.addTarget(self, action: #selector(didTapHugePartButton), for: .touchUpInside)
+        return button
+    }()
+    let angleButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Angle", for: .normal)
+        button.addTarget(self, action: #selector(didTapAnglePartButton), for: .touchUpInside)
+        return button
+    }()
+    lazy var stackView: UIStackView = {
+        let stackView: UIStackView = .init(arrangedSubviews: [
+           hugeButton,
+           startButton,
+           angleButton
+       ])
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 16
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +58,40 @@ class ViewController: UIViewController {
         rouletteView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         rouletteView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         
-        view.addSubview(startButton)
+        view.addSubview(stackView)
         startButton.layer.cornerRadius = 16
         startButton.layer.borderColor = UIColor.systemGray3.cgColor
         startButton.layer.borderWidth = 2
-        startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -48).isActive = true
-        startButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        startButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
-        startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        angleButton.layer.cornerRadius = 16
+        angleButton.layer.borderColor = UIColor.systemGray3.cgColor
+        angleButton.layer.borderWidth = 2
+        
+        hugeButton.layer.cornerRadius = 16
+        hugeButton.layer.borderColor = UIColor.systemGray3.cgColor
+        hugeButton.layer.borderWidth = 2
+        
+        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -48).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    @objc
+    func didTapHugePartButton() {
+        rouletteView.update(parts: [
+            Roulette.HugePart(name: "Title A", huge: .small, delegate: rouletteView, index: 0),
+            Roulette.HugePart(name: "Title B", huge: .large, delegate: rouletteView, index: 1),
+            Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+        ])
+    }
+    
+    @objc
+    func didTapAnglePartButton() {
         rouletteView.update(parts: [
             Roulette.AnglePart(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
             Roulette.AnglePart(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
@@ -51,7 +99,8 @@ class ViewController: UIViewController {
         ])
     }
     
-    @objc func didTapStartButton() {
+    @objc
+    func didTapStartButton() {
         if rouletteView.isAnimating {
             rouletteView.stop()
         } else {
