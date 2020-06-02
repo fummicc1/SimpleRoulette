@@ -153,7 +153,13 @@ public class RouletteView: UIView {
         
         print(thetaWithRadian)
         
-        let ranges = parts.map({ (part: $0, range: ($0.startRadianAngle...$0.endRadianAngle)) })
+        let ranges = parts.map({ part -> (part: RoulettePartType, range: ClosedRange<Double>) in
+            if part.startRadianAngle < part.endRadianAngle {
+                return (part: part, range: (part.startRadianAngle...part.endRadianAngle))
+            } else {
+                return (part: part, range: (part.endRadianAngle...part.startRadianAngle))
+            }
+        })
         for range in ranges {
             if range.range.contains(Double(thetaWithRadian)) {
                 delegate?.rouletteView(self, didStopAt: range.part)

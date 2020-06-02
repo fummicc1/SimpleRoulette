@@ -21,4 +21,9 @@ extension CGFloat {
     func accurate() -> AccurateCGFloat {
         .init(value: self)
     }
+    
+    func decimal() -> NSDecimalNumber {
+        let str = String.init(describing: self)
+        return .init(string: str)
+    }
 }

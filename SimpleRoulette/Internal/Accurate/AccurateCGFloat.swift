@@ -12,93 +12,69 @@ import UIKit
 struct AccurateCGFloat: AccuracyType {
     typealias Value = CGFloat
     
-    private var _value: Value
+    private var _value: CGFloat
     
-    init(value: Value) {
+    init(value: CGFloat) {
         self._value = value
     }
     
-    var value: Value {
+    var value: CGFloat {
         _value
     }
     
     @discardableResult
-    mutating func add(_ v: Value) -> Value {
-        let vStr = String(describing: v)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(describing: value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = CGFloat(valueDecimal.adding(vDecimal).floatValue)
+    mutating func add(_ v: CGFloat, mutate: Bool = false) -> CGFloat {
+        if !mutate {
+            return CGFloat(value.decimal().adding(v.decimal()).doubleValue)
+        }
+        _value = CGFloat(value.decimal().adding(v.decimal()).doubleValue)
         return value
     }
     
     @discardableResult
-    mutating func subtract(_ v: Value) -> Value {
-        let vStr = String(describing: v)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(describing: value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = CGFloat(valueDecimal.subtracting(vDecimal).floatValue)
+    mutating func subtract(_ v: CGFloat, mutate: Bool = false) -> CGFloat {
+        if !mutate {
+            return CGFloat(value.decimal().subtracting(v.decimal()).doubleValue)
+        }
+        _value = CGFloat(value.decimal().subtracting(v.decimal()).doubleValue)
         return value
     }
     
     @discardableResult
-    mutating func multiply(with v: Value) -> Value {
-        let vStr = String(describing: v)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(describing: value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = CGFloat(valueDecimal.multiplying(by: vDecimal).floatValue)
+    mutating func multiply(with v: CGFloat, mutate: Bool = false) -> CGFloat {
+        if !mutate {
+            return CGFloat(value.decimal().multiplying(by: v.decimal()).doubleValue)
+        }
+        _value = CGFloat(value.decimal().multiplying(by: v.decimal()).doubleValue)
         return value
     }
     
     @discardableResult
-    mutating func divide(by v: Value) -> Value {
-        let vStr = String(describing: v)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(describing: value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = CGFloat(valueDecimal.dividing(by: vDecimal).floatValue)
+    mutating func divide(by v: CGFloat, mutate: Bool = false) -> CGFloat {
+        if !mutate {
+            return CGFloat(value.decimal().dividing(by: v.decimal()).doubleValue)
+        }
+        _value = CGFloat(value.decimal().dividing(by: v.decimal()).doubleValue)
         return value
     }
     
     @discardableResult
-    mutating func add<Accuracy>(_ accuray: Accuracy) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
-        let vStr = String(describing: accuray.value)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(describing: value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = CGFloat(valueDecimal.adding(vDecimal).floatValue)
-        return value
+    mutating func add<Accuracy>(_ accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        add(accuray.value, mutate: mutate)
     }
     
     @discardableResult
-    mutating func subtract<Accuracy>(_ accuray: Accuracy) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
-        let vStr = String(describing: accuray.value)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(describing: value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = CGFloat(valueDecimal.subtracting(vDecimal).floatValue)
-        return value
+    mutating func subtract<Accuracy>(_ accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        subtract(accuray.value, mutate: mutate)
     }
     
     @discardableResult
-    mutating func multiply<Accuracy>(with accuray: Accuracy) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
-        let vStr = String(describing: accuray.value)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(describing: value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = CGFloat(valueDecimal.multiplying(by: vDecimal).floatValue)
-        return value
+    mutating func multiply<Accuracy>(with accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        multiply(with: accuray.value, mutate: mutate)
     }
     
     @discardableResult
-    mutating func divide<Accuracy>(by accuray: Accuracy) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
-        let vStr = String(describing: accuray.value)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(describing: value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = CGFloat(valueDecimal.dividing(by: vDecimal).floatValue)
-        return value
+    mutating func divide<Accuracy>(by accuray: Accuracy, mutate: Bool = false) -> CGFloat where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        divide(by: accuray.value, mutate: mutate)
     }
 }

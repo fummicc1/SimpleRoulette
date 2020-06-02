@@ -13,29 +13,52 @@ class RoulettePointView: UIView {
     
     override func draw(_ rect: CGRect) {
         let path: UIBezierPath = .init()
-        // MARK: Head
-        let length: CGFloat = rect.width
-        let radian: Double = Double(60).radian()
         UIColor.systemOrange.setStroke()
-        let originY = rect.maxY
-        let originX = rect.midX
-        path.move(to: .init(x: originX, y: originY))
-        path.addLine(to: .init(x: originX + length * CGFloat(cos(radian)), y: originY - length * CGFloat(sin(radian))))
+        
+        // MARK: Head
+        var length: AccurateCGFloat = .init(value: rect.width)
+        let radian: AccurateDouble = .init(value: 60.radian())
+        var originY: AccurateCGFloat = .init(value: rect.maxY)
+        var originX: AccurateCGFloat = .init(value: rect.midX)
+        
+        path.move(to:
+            .init(x: originX.value, y: originY.value)
+        )
+        
+        path.addLine(to:
+            .init(
+                x: originX.add(length.multiply(with: CGFloat(cos(radian.value)))),
+                y: originY.subtract(length.multiply(with: CGFloat(sin(radian.value))))
+            )
+        )
         /*
          
                /
               /
              /
         */
-        path.move(to: .init(x: originX, y: originY))
-        path.addLine(to: .init(x: originX - length * CGFloat(cos(radian)), y: originY - length * CGFloat(sin(radian))))
+        path.move(to:
+            .init(x: originX.value, y: originY.value)
+        )
+        
+        path.addLine(to:
+            .init(
+                x: originX.subtract(length.multiply(with: CGFloat(cos(radian.value)))),
+                y: originY.subtract(length.multiply(with: CGFloat(sin(radian.value))))
+            )
+        )
         /*
           
           \    /
            \  /
             \/
         */
-        path.addLine(to: .init(x: originX + length * CGFloat(cos(radian)), y: originY - length * CGFloat(sin(radian))))
+        path.addLine(to:
+            .init(
+                x: originX.add(length.multiply(with: CGFloat(cos(radian.value)))),
+                y: originY.subtract(length.multiply(with: CGFloat(sin(radian.value))))
+            )
+        )
         /*
          ______
          \    /

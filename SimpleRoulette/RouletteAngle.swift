@@ -23,20 +23,7 @@ public struct RouletteAngle {
     ///   - fromTop: flag if zero is from top (pi / 2). default is false.
     public init(radian: Double, fromTop: Bool = false) {
         accuracy = .init(value: radian)
-        if fromTop {
-            if value >= Double.pi * 2/3 {
-                accuracy.subtract(Double.pi * 2)
-            } else if value < Double.pi * -1/2 {
-                accuracy.add(Double.pi * 2)
-            }
-        } else {
-            if value >= Double.pi * 2 {
-                accuracy.subtract(Double.pi * 2)
-            } else if value < 0 {
-                accuracy.add(Double.pi * 2)
-            }
-            accuracy.subtract(Double.pi * 1/2)
-        }
+        calculateRadian(fromTop: fromTop)
     }
     
     /// initializer with degree.
@@ -45,19 +32,24 @@ public struct RouletteAngle {
     ///   - fromTop: flag if zero is from top (pi / 2). default is false.
     public init(degree: Double, fromTop: Bool = false) {
         accuracy = .init(value: degree.radian())
+        calculateRadian(fromTop: fromTop)
+    }
+    
+    private
+    mutating func calculateRadian(fromTop: Bool) {
         if fromTop {
             if value >= Double.pi * 2/3 {
-                accuracy.subtract(Double.pi * 2)
+                accuracy.subtract(Double.pi * 2, mutate: true)
             } else if value < Double.pi * -1/2 {
-                accuracy.add(Double.pi * 2)
+                accuracy.add(Double.pi * 2, mutate: true)
             }
         } else {
             if value >= Double.pi * 2 {
-                accuracy.subtract(Double.pi * 2)
+                accuracy.subtract(Double.pi * 2, mutate: true)
             } else if value < 0 {
-                accuracy.add(Double.pi * 2)
+                accuracy.add(Double.pi * 2, mutate: true)
             }
-            accuracy.subtract(Double.pi * 1/2)
+            accuracy.subtract(Double.pi * 1/2, mutate: true)
         }
     }
 }

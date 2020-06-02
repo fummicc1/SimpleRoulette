@@ -20,4 +20,9 @@ extension Double {
     func accurate() -> AccurateDouble {
         .init(value: self)
     }
+    
+    func decimal() -> NSDecimalNumber {
+        let str = String(self)
+        return .init(string: str)
+    }
 }

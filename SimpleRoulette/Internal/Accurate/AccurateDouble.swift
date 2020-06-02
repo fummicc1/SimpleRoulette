@@ -12,7 +12,7 @@ import Foundation
 struct AccurateDouble: AccuracyType {
     typealias Value = Double
     
-    private var _value: Value
+    private var _value: Double
     
     init(value: Double) {
         self._value = value
@@ -23,82 +23,58 @@ struct AccurateDouble: AccuracyType {
     }
     
     @discardableResult
-    mutating func add(_ v: Double) -> Double {
-        let vStr = String(v)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(_value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = valueDecimal.adding(vDecimal).doubleValue
+    mutating func add(_ v: Double, mutate: Bool = false) -> Double {
+        if !mutate {
+            return value.decimal().adding(v.decimal()).doubleValue
+        }
+        _value = value.decimal().adding(v.decimal()).doubleValue
         return value
     }
     
     @discardableResult
-    mutating func subtract(_ v: Double) -> Double {
-        let vStr = String(v)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(_value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = valueDecimal.subtracting(vDecimal).doubleValue
+    mutating func subtract(_ v: Double, mutate: Bool = false) -> Double {
+        if !mutate {
+            return value.decimal().subtracting(v.decimal()).doubleValue
+        }
+        _value = value.decimal().subtracting(v.decimal()).doubleValue
         return value
     }
     
     @discardableResult
-    mutating func multiply(with v: Double) -> Double {
-        let vStr = String(v)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(_value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = valueDecimal.multiplying(by: vDecimal).doubleValue
+    mutating func multiply(with v: Double, mutate: Bool = false) -> Double {
+        if !mutate {
+            return value.decimal().multiplying(by: v.decimal()).doubleValue
+        }
+        _value = value.decimal().multiplying(by: v.decimal()).doubleValue
         return value
     }
     
     @discardableResult
-    mutating func divide(by v: Double) -> Double {
-        let vStr = String(v)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(_value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = valueDecimal.dividing(by: vDecimal).doubleValue
+    mutating func divide(by v: Double, mutate: Bool = false) -> Double {
+        if !mutate {
+            return value.decimal().dividing(by: v.decimal()).doubleValue
+        }
+        _value = value.decimal().dividing(by: v.decimal()).doubleValue
         return value
     }
     
     @discardableResult
-    mutating func add<Accuracy>(_ accuray: Accuracy) -> Double where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
-        let vStr = String(accuray.value)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(_value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = valueDecimal.adding(vDecimal).doubleValue
-        return value
+    mutating func add<Accuracy>(_ accuray: Accuracy, mutate: Bool = false) -> Double where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        add(accuray.value, mutate: mutate)
     }
     
     @discardableResult
-    mutating func subtract<Accuracy>(_ accuray: Accuracy) -> Double where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
-        let vStr = String(accuray.value)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(_value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = valueDecimal.subtracting(vDecimal).doubleValue
-        return value
+    mutating func subtract<Accuracy>(_ accuray: Accuracy, mutate: Bool = false) -> Double where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        subtract(accuray.value, mutate: mutate)
     }
     
     @discardableResult
-    mutating func multiply<Accuracy>(with accuray: Accuracy) -> Double where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
-        let vStr = String(accuray.value)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(_value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = valueDecimal.multiplying(by: vDecimal).doubleValue
-        return value
+    mutating func multiply<Accuracy>(with accuray: Accuracy, mutate: Bool = false) -> Double where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        multiply(with: accuray.value, mutate: mutate)
     }
     
     @discardableResult
-    mutating func divide<Accuracy>(by accuray: Accuracy) -> Double where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
-        let vStr = String(accuray.value)
-        let vDecimal = NSDecimalNumber(string: vStr)
-        let valueStr = String(_value)
-        let valueDecimal = NSDecimalNumber(string: valueStr)
-        _value = valueDecimal.dividing(by: vDecimal).doubleValue
-        return value
+    mutating func divide<Accuracy>(by accuray: Accuracy, mutate: Bool = false) -> Double where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        divide(by: accuray.value, mutate: mutate)
     }
 }
