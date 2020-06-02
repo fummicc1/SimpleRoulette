@@ -122,8 +122,4 @@ extension ViewController: RouletteViewDelegate {
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
-    func isStartedFromTop(_ rouletteView: RouletteView) -> Bool {
-        false
-    }
 }

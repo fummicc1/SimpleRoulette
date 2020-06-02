@@ -32,9 +32,26 @@ IMPORTANT: you have to call RouletteView().update after view'frame is decided be
 
 You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift).
 
-### Sample Code
+3. Detect when stopping roulette using `RouletteViewDelegate`.
 
-#### With Angle
+- Example
+
+```swift
+extension ViewController: RouletteViewDelegate {
+    func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
+        print(part)
+        let alert = UIAlertController(title: "結果", message: part.name, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+}
+```
+
+![example](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/Alert.jpeg)
+
+### Sample Code of updating RouletteView().parts.
+
+#### update with Angle
 Create `Roulette.AnglePart`.
 
 **you can choose radian or angle**
@@ -48,7 +65,7 @@ rouletteView.update(parts: [
 ])
 ```
 
-#### With Huge
+#### update with Huge
 
 Create `Roulette.HugePart`.
 
