@@ -24,45 +24,17 @@ dependencies: [
 let rouletteView: RouletteView = .init(frame: .zero)
 ```
 
-2. Next, insert data with `RouletteView().update`.
+2. Next, insert parts with `RouletteView().update`.
+
+You can choose parts from [RoulettePart.AngleType](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/RoulettePart.swift) or [RoulettePart.HugeType](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/RoulettePart.swift).
 
 ### Sample Code
 
 #### With Angle
-Create RouletteView with Angle initializer.
+Create `RoulettePart.AngleType`.
 
 **you can choose radian or angle**
 
-```swift
-public struct RouletteAngle {
-
-    public let value: Double
-    
-    /// initializer with radian
-    /// - Parameters:
-    ///   - radian: radian. range [0, 2pi)
-    ///   - fromTop: flag if zero is from top (pi / 2). default is false.
-    public init(radian: Double, fromTop: Bool = false) {
-        if fromTop {
-            self.value = radian
-        } else {
-            self.value = radian - Double.pi / 2
-        }
-    }
-    
-    /// initializer with degree.
-    /// - Parameters:
-    ///   - degree: degree. range [0, 360)
-    ///   - fromTop: flag if zero is from top (pi / 2). default is false.
-    public init(degree: Double, fromTop: Bool = false) {
-        if fromTop {
-            self.value = degree.radian()
-        } else {
-            self.value = degree.radian() - Double.pi / 2
-        }
-    }
-}
-```
 
 ```swift
 rouletteView.update(parts: [
@@ -74,15 +46,7 @@ rouletteView.update(parts: [
 
 #### With Huge
 
-Create RouletteView with Huge initializer.
-
-```swift
-enum RoulettePartHuge: Hashable {
-    case large
-    case normal
-    case small
-}
-```
+Create `RoulettePart.AngleType`.
 
 ```swift
 rouletteView.update(parts: [
