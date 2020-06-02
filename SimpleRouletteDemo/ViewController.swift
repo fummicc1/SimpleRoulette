@@ -79,6 +79,11 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        rouletteView.update(parts: [
+            Roulette.HugePart(name: "Title A", huge: .small, delegate: rouletteView, index: 0),
+            Roulette.HugePart(name: "Title B", huge: .large, delegate: rouletteView, index: 1),
+            Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+        ])
     }
     
     @objc

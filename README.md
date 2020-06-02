@@ -4,7 +4,7 @@
 
 ## Demo
 
-![demo](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/demo.gif)
+![demo](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/demo_1_0_2.gif)
 
 ## Install
 
@@ -26,33 +26,37 @@ let rouletteView: RouletteView = .init(frame: .zero)
 
 2. Next, insert parts with `RouletteView().update`.
 
-You can choose parts from [RoulettePart.AngleType](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/RoulettePart.swift) or [RoulettePart.HugeType](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/RoulettePart.swift).
+```
+IMPORTANT: you have to call RouletteView().update after view'frame is decided because Title Layer's frame is using view's frame in the internal of library.
+```
+
+You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift).
 
 ### Sample Code
 
 #### With Angle
-Create `RoulettePart.AngleType`.
+Create `Roulette.AnglePart`.
 
 **you can choose radian or angle**
 
 
 ```swift
 rouletteView.update(parts: [
-    RoulettePart.AngleType(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
-    RoulettePart.AngleType(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
-    RoulettePart.AngleType(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 360), index: 2)
+    Roulette.AnglePart(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
+    Roulette.AnglePart(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
+    Roulette.AnglePart(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 360), index: 2)
 ])
 ```
 
 #### With Huge
 
-Create `RoulettePart.AngleType`.
+Create `Roulette.HugePart`.
 
 ```swift
 rouletteView.update(parts: [
-    RoulettePart.HugeType(name: "Title A", huge: .large, delegate: rouletteView, index: 0),
-    RoulettePart.HugeType(name: "Title B", huge: .normal, delegate: rouletteView, index: 1),
-    RoulettePart.HugeType(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+    Roulette.HugePart(name: "Title A", huge: .small, delegate: rouletteView, index: 0),
+    Roulette.HugePart(name: "Title B", huge: .large, delegate: rouletteView, index: 1),
+    Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
 ])
 ```
 
