@@ -36,7 +36,9 @@ public class RouletteView: UIView {
                 layer.string = part.name
                 layer.frame = .init(origin: .zero, size: layer.preferredFrameSize())
                 
-                let meanAngle = (part.startRadianAngle + part.endRadianAngle) / 2
+                var startAngle = part.startRadianAngle.accurate()
+                let endAngle = part.endRadianAngle.accurate()
+                let meanAngle = (startAngle + endAngle).value / 2
                 let dx: CGFloat = radius * CGFloat(cos(meanAngle))
                 let dy: CGFloat = radius * CGFloat(sin(meanAngle))
                 layer.position = .init(x: center.x + dx, y: center.y + dy)
@@ -118,7 +120,7 @@ public class RouletteView: UIView {
         self.layers = layers
     }
     
-    public func update(parts: [RoulettePartType]) {
+    public func configure(parts: [RoulettePartType]) {
         self.parts = parts
         setNeedsDisplay()
     }
@@ -137,6 +139,14 @@ public class RouletteView: UIView {
         
         
         func checkIfContainsPoint(from source: CGFloat, to destination: CGFloat, point: CGFloat) -> Bool {
+            var point = point
+            if destination - point > CGFloat.pi * 2 {
+                point += CGFloat.pi * 2
+            }
+            if point - destination > CGFloat.pi * 2 {
+                point -= CGFloat.pi * 2
+            }
+            print("Point: \(point.degree())")
             return source <= point && destination > point
         }
         
@@ -151,43 +161,25 @@ public class RouletteView: UIView {
         partContentLayer?.removeAnimation(forKey: "animation")
         isAnimating = false
         
-        let m11 = transform.m11
-        let m12 = transform.m21
-        var radianTheta = acos(m11)
-        var asinValue = asin(m12)
+        var angle: CGFloat = atan2(transform.m12, transform.m11)
         
-        var addition: Double = Double.pi * 0.5
-        
-        if asinValue < 0, radianTheta > 0 {
-            print("AAA")
-            radianTheta = CGFloat.pi * 2 - abs(radianTheta)
+        if angle < 0 {
+            angle += CGFloat.pi * 2
         }
         
-        if asinValue < 0, radianTheta < 0 {
-            print("BBB")
+        if angle > CGFloat.pi * 2 {
+            angle -= CGFloat.pi * 2
         }
         
-        if asinValue > 0, radianTheta < 0 {
-            print("CCC")
-        }
-        
-        if asinValue > 0, radianTheta > 0 {
-            print("DDD")
-            if radianTheta.degree() < 90 {
-                radianTheta = CGFloat.pi * 2 - abs(radianTheta)
-            }
-        }
-        
-        print("theta: \(radianTheta.degree())")
-        print("asin: \(asinValue.degree())")
-        
+        print("Angle: \(angle.degree())")
+
         for part in parts {
-            var start = part.startRadianAngle + addition
-            var end = part.endRadianAngle + addition
+            let start = part.startRadianAngle + Double(angle)
+            let end = part.endRadianAngle + Double(angle)
             print("start: \(start.degree())")
             print("end: \(end.degree())")
             
-            if checkIfContainsPoint(from: CGFloat(start), to: CGFloat(end), point: radianTheta) {
+            if checkIfContainsPoint(from: CGFloat(start), to: CGFloat(end), point: CGFloat.pi * 1.5) {
                 delegate.rouletteView(self, didStopAt: part)
             }
         }

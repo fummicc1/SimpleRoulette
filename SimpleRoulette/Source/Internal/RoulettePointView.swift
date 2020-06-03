@@ -25,10 +25,13 @@ class RoulettePointView: UIView {
             .init(x: originX.value, y: originY.value)
         )
         
+        var x = originX + length * AccurateCGFloat(value: CGFloat(cos(radian.value)))
+        var y = originY - length * AccurateCGFloat(value: CGFloat(sin(radian.value)))
+        
         path.addLine(to:
             .init(
-                x: originX.add(length.multiply(with: CGFloat(cos(radian.value)))),
-                y: originY.subtract(length.multiply(with: CGFloat(sin(radian.value))))
+                x: x.value,
+                y: y.value
             )
         )
         /*
@@ -41,10 +44,12 @@ class RoulettePointView: UIView {
             .init(x: originX.value, y: originY.value)
         )
         
+        x = originX - length * AccurateCGFloat(value: CGFloat(cos(radian.value)))
+        y = originY - length * AccurateCGFloat(value: CGFloat(sin(radian.value)))
         path.addLine(to:
             .init(
-                x: originX.subtract(length.multiply(with: CGFloat(cos(radian.value)))),
-                y: originY.subtract(length.multiply(with: CGFloat(sin(radian.value))))
+                x: x.value,
+                y: y.value
             )
         )
         /*
@@ -53,10 +58,12 @@ class RoulettePointView: UIView {
            \  /
             \/
         */
+        x = originX + length * AccurateCGFloat(value: CGFloat(cos(radian.value)))
+        y = originY - length * AccurateCGFloat(value: CGFloat(sin(radian.value)))
         path.addLine(to:
             .init(
-                x: originX.add(length.multiply(with: CGFloat(cos(radian.value)))),
-                y: originY.subtract(length.multiply(with: CGFloat(sin(radian.value))))
+                x: x.value,
+                y: y.value
             )
         )
         /*

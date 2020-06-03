@@ -35,4 +35,16 @@ protocol AccuracyType {
     
     @discardableResult
     mutating func divide<Accuracy: AccuracyType>(by accuray: Accuracy, mutate: Bool) -> Value where Accuracy.Value == Self.Value
+    
+    @discardableResult
+    mutating func add<Accuracy: AccuracyType>(_ accuray: Accuracy, mutate: Bool) -> Self where Accuracy.Value == Self.Value
+    
+    @discardableResult
+    mutating func subtract<Accuracy: AccuracyType>(_ accuray: Accuracy, mutate: Bool) -> Self where Accuracy.Value == Self.Value
+    
+    @discardableResult
+    mutating func multiply<Accuracy: AccuracyType>(with accuray: Accuracy, mutate: Bool) -> Self where Accuracy.Value == Self.Value
+    
+    @discardableResult
+    mutating func divide<Accuracy: AccuracyType>(by accuray: Accuracy, mutate: Bool) -> Self where Accuracy.Value == Self.Value
 }

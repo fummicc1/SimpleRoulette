@@ -77,4 +77,24 @@ struct AccurateDouble: AccuracyType {
     mutating func divide<Accuracy>(by accuray: Accuracy, mutate: Bool = false) -> Double where Accuracy : AccuracyType, AccurateDouble.Value == Accuracy.Value {
         divide(by: accuray.value, mutate: mutate)
     }
+    
+    @discardableResult
+    mutating func add<Accuracy>(_ accuray: Accuracy, mutate: Bool) -> AccurateDouble where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        return .init(value: add(accuray, mutate: mutate))
+    }
+    
+    @discardableResult
+    mutating func subtract<Accuracy>(_ accuray: Accuracy, mutate: Bool) -> AccurateDouble where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        .init(value: subtract(accuray, mutate: mutate))
+    }
+    
+    @discardableResult
+    mutating func multiply<Accuracy>(with accuray: Accuracy, mutate: Bool) -> AccurateDouble where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        .init(value: multiply(with: accuray, mutate: mutate))
+    }
+    
+    @discardableResult
+    mutating func divide<Accuracy>(by accuray: Accuracy, mutate: Bool) -> AccurateDouble where Accuracy : AccuracyType, Self.Value == Accuracy.Value {
+        .init(value: divide(by: accuray, mutate: mutate))
+    }
 }
