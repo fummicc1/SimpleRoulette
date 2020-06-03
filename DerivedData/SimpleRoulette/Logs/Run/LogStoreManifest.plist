@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>1B12F89A-5BD9-4EFF-AE98-8886496A683B</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>1B12F89A-5BD9-4EFF-AE98-8886496A683B.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SimpleRoulette project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SimpleRouletteDemo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>timeStartedRecording</key>
+			<real>612884994.911466</real>
+			<key>timeStoppedRecording</key>
+			<real>612885113.87493896</real>
+			<key>title</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>uniqueIdentifier</key>
+			<string>1B12F89A-5BD9-4EFF-AE98-8886496A683B</string>
+		</dict>
+		<key>1CEDED5A-B3DA-431D-9F76-95DEE56D943C</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>1CEDED5A-B3DA-431D-9F76-95DEE56D943C.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SimpleRoulette project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SimpleRouletteDemo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>timeStartedRecording</key>
+			<real>612885123.62566996</real>
+			<key>timeStoppedRecording</key>
+			<real>612885128.84838903</real>
+			<key>title</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>uniqueIdentifier</key>
+			<string>1CEDED5A-B3DA-431D-9F76-95DEE56D943C</string>
+		</dict>
+		<key>515CA689-C09E-4066-A4D3-B81D33238470</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>515CA689-C09E-4066-A4D3-B81D33238470.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SimpleRoulette project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SimpleRouletteDemo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>timeStartedRecording</key>
+			<real>612884885.75792396</real>
+			<key>timeStoppedRecording</key>
+			<real>612884984.05839097</real>
+			<key>title</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>uniqueIdentifier</key>
+			<string>515CA689-C09E-4066-A4D3-B81D33238470</string>
+		</dict>
+		<key>7B62C8F6-05A9-458D-A52A-AB6F4FDF4F81</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>7B62C8F6-05A9-458D-A52A-AB6F4FDF4F81.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SimpleRoulette project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SimpleRouletteDemo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>timeStartedRecording</key>
+			<real>612884630.02567697</real>
+			<key>timeStoppedRecording</key>
+			<real>612884876.04952395</real>
+			<key>title</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>uniqueIdentifier</key>
+			<string>7B62C8F6-05A9-458D-A52A-AB6F4FDF4F81</string>
+		</dict>
+		<key>7C79F2EE-2A3F-446C-A3A3-AB22085AE122</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>7C79F2EE-2A3F-446C-A3A3-AB22085AE122.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SimpleRoulette project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SimpleRouletteDemo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>timeStartedRecording</key>
+			<real>612884546.31201196</real>
+			<key>timeStoppedRecording</key>
+			<real>612884566.25459099</real>
+			<key>title</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>uniqueIdentifier</key>
+			<string>7C79F2EE-2A3F-446C-A3A3-AB22085AE122</string>
+		</dict>
+		<key>E6A0855A-2FB8-43EC-8C85-E86951FA0168</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>E6A0855A-2FB8-43EC-8C85-E86951FA0168.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SimpleRoulette project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SimpleRouletteDemo</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>timeStartedRecording</key>
+			<real>612884877.02077496</real>
+			<key>timeStoppedRecording</key>
+			<real>612884884.81360102</real>
+			<key>title</key>
+			<string>Run SimpleRouletteDemo</string>
+			<key>uniqueIdentifier</key>
+			<string>E6A0855A-2FB8-43EC-8C85-E86951FA0168</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

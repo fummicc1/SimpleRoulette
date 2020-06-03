@@ -24,13 +24,25 @@ dependencies: [
 let rouletteView: RouletteView = .init(frame: .zero)
 ```
 
+or you can initiate RouletteView with Storyboard.
+
+```swift
+@IBOutlet weak var rouletteView: RouletteView!
+```
+
 2. Next, insert parts with `RouletteView().configure`.
 
 `IMPORTANT: you have to call RouletteView().configure after viewDidLayoutSubviews which has decided view' frame, because Title's frame is calculated with view's frame in the internal library.`
 
 You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift).
 
-3. Detect when stopping roulette using `RouletteViewDelegate`.
+3. Start Roulette by `RouletteView().start`.
+
+You can check if Rotating via `RouletteView().isAnimating`.
+
+4. Stop Roulette by `RouletteView().stop`
+
+5. Detect when stopping roulette using `RouletteViewDelegate`.
 
 - Example
 
