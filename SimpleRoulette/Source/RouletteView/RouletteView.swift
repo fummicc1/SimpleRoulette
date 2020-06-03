@@ -69,7 +69,7 @@ public class RouletteView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        let pointView: RoulettePointView = .init(frame: .zero)
+        let pointView: RoulettePointView = createRoulettePointView()
         self.pointView = pointView
         layer.addSublayer(partContentLayer!)
         addSubview(pointView)
@@ -77,7 +77,7 @@ public class RouletteView: UIView {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        let pointView: RoulettePointView = .init(frame: .zero)
+        let pointView: RoulettePointView = createRoulettePointView()
         self.pointView = pointView
         layer.addSublayer(partContentLayer!)
         addSubview(pointView)
@@ -183,6 +183,12 @@ public class RouletteView: UIView {
                 delegate.rouletteView(self, didStopAt: part)
             }
         }
+    }
+    
+    private func createRoulettePointView() -> RoulettePointView {
+        let pointView: RoulettePointView = .init(frame: .zero)
+        pointView.backgroundColor = .clear
+        return pointView
     }
 }
 
