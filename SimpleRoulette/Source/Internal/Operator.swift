@@ -18,14 +18,14 @@ func +<Accuracy: AccuracyType>(rhs: inout Accuracy, lhs: Accuracy) -> Accuracy {
     return rhs.add(lhs, mutate: false)
 }
 
-func -<Accuracy: AccuracyType>(rhs: inout Accuracy, lhs: Accuracy) -> Accuracy.Value {
+func -<Accuracy: AccuracyType>(rhs: inout Accuracy, lhs: Accuracy) -> Accuracy {
     return rhs.subtract(lhs, mutate: false)
 }
 
-func *<Accuracy: AccuracyType>(rhs: inout Accuracy, lhs: Accuracy) -> Accuracy.Value {
+func *<Accuracy: AccuracyType>(rhs: inout Accuracy, lhs: Accuracy) -> Accuracy {
     return rhs.multiply(with: lhs, mutate: false)
 }
 
-func /<Accuracy: AccuracyType>(rhs: inout Accuracy, lhs: Accuracy) -> Accuracy.Value {
+func /<Accuracy: AccuracyType>(rhs: inout Accuracy, lhs: Accuracy) -> Accuracy {
     return rhs.divide(by: lhs, mutate: false)
 }
