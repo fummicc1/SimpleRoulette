@@ -83,6 +83,9 @@ class ViewController: UIViewController {
             Roulette.HugePart(name: "Title A", huge: .small, delegate: rouletteView, index: 0),
             Roulette.HugePart(name: "Title B", huge: .large, delegate: rouletteView, index: 1),
             Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+            Roulette.HugePart(name: "Title D", huge: .small, delegate: rouletteView, index: 3),
+            Roulette.HugePart(name: "Title E", huge: .large, delegate: rouletteView, index: 4),
+            Roulette.HugePart(name: "Title F", huge: .normal, delegate: rouletteView, index: 5),
         ])
     }
     
@@ -92,6 +95,9 @@ class ViewController: UIViewController {
             Roulette.HugePart(name: "Title A", huge: .small, delegate: rouletteView, index: 0),
             Roulette.HugePart(name: "Title B", huge: .large, delegate: rouletteView, index: 1),
             Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+            Roulette.HugePart(name: "Title D", huge: .small, delegate: rouletteView, index: 3),
+            Roulette.HugePart(name: "Title E", huge: .large, delegate: rouletteView, index: 4),
+            Roulette.HugePart(name: "Title F", huge: .normal, delegate: rouletteView, index: 5),
         ])
     }
     
@@ -100,7 +106,10 @@ class ViewController: UIViewController {
         rouletteView.configure(parts: [
             Roulette.AnglePart(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
             Roulette.AnglePart(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
-            Roulette.AnglePart(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 360), index: 2)
+            Roulette.AnglePart(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 240), index: 2),
+            Roulette.AnglePart(name: "Title D", startAngle: .init(degree: 240), endAngle: .init(degree: 300), index: 3),
+            Roulette.AnglePart(name: "Title E", startAngle: .init(degree: 300), endAngle: .init(degree: 320), index: 4),
+            Roulette.AnglePart(name: "Title F", startAngle: .init(degree: 320), endAngle: .init(degree: 360), index: 5),
         ])
     }
     
@@ -117,7 +126,6 @@ class ViewController: UIViewController {
 
 extension ViewController: RouletteViewDelegate {
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
-        print(part)
         let alert = UIAlertController(title: "結果", message: part.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
