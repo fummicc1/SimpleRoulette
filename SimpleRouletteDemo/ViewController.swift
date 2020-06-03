@@ -49,9 +49,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(rouletteView)
-        
         rouletteView.delegate = self
-        
         rouletteView.translatesAutoresizingMaskIntoConstraints = false
         rouletteView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         rouletteView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
