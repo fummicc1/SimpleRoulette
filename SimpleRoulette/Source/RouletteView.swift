@@ -118,7 +118,7 @@ public class RouletteView: UIView {
         self.layers = layers
     }
     
-    public func update(parts: [RoulettePartType]) {
+    public func configure(parts: [RoulettePartType]) {
         self.parts = parts
         setNeedsDisplay()
     }

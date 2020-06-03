@@ -79,7 +79,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        rouletteView.update(parts: [
+        rouletteView.configure(parts: [
             Roulette.HugePart(name: "Title A", huge: .small, delegate: rouletteView, index: 0),
             Roulette.HugePart(name: "Title B", huge: .large, delegate: rouletteView, index: 1),
             Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     
     @objc
     func didTapHugePartButton() {
-        rouletteView.update(parts: [
+        rouletteView.configure(parts: [
             Roulette.HugePart(name: "Title A", huge: .small, delegate: rouletteView, index: 0),
             Roulette.HugePart(name: "Title B", huge: .large, delegate: rouletteView, index: 1),
             Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
     
     @objc
     func didTapAnglePartButton() {
-        rouletteView.update(parts: [
+        rouletteView.configure(parts: [
             Roulette.AnglePart(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
             Roulette.AnglePart(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
             Roulette.AnglePart(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 360), index: 2)
