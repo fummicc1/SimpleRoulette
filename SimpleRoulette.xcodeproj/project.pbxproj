@@ -26,6 +26,8 @@
 		D35C374C2480A2290029CDA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */; };
 		D35C37572480A2290029CDA8 /* SimpleRouletteDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */; };
 		D35C37622480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */; };
+		D3693B092487DEDF00CDAB41 /* IBRouletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3693B082487DEDF00CDAB41 /* IBRouletteViewController.swift */; };
+		D3693B0C2487DEF000CDAB41 /* IBRouletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3693B0B2487DEF000CDAB41 /* IBRouletteViewController.storyboard */; };
 		D387CBB42483ABA10097F6AD /* RouletteAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387CBB32483ABA10097F6AD /* RouletteAngle.swift */; };
 		D3894FC52483FABE0087895A /* RoulettePointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3894FC42483FABE0087895A /* RoulettePointView.swift */; };
 		D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A648FF2480D7AD00BEC651 /* RouletteView.swift */; };
@@ -110,6 +112,8 @@
 		D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoUITests.swift; sourceTree = "<group>"; };
 		D35C37632480A22A0029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3693B082487DEDF00CDAB41 /* IBRouletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBRouletteViewController.swift; sourceTree = "<group>"; };
+		D3693B0B2487DEF000CDAB41 /* IBRouletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IBRouletteViewController.storyboard; sourceTree = "<group>"; };
 		D387CBB32483ABA10097F6AD /* RouletteAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAngle.swift; sourceTree = "<group>"; };
 		D3894FC42483FABE0087895A /* RoulettePointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePointView.swift; sourceTree = "<group>"; };
 		D3A648FF2480D7AD00BEC651 /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
@@ -239,12 +243,13 @@
 		D35C373E2480A2260029CDA8 /* SimpleRouletteDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D35C374D2480A2290029CDA8 /* Info.plist */,
 				D35C373F2480A2260029CDA8 /* AppDelegate.swift */,
 				D35C37412480A2260029CDA8 /* SceneDelegate.swift */,
 				D35C37432480A2260029CDA8 /* ViewController.swift */,
 				D35C37482480A2290029CDA8 /* Assets.xcassets */,
+				D3693B0D2487DF5600CDAB41 /* IB */,
 				D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */,
-				D35C374D2480A2290029CDA8 /* Info.plist */,
 			);
 			path = SimpleRouletteDemo;
 			sourceTree = "<group>";
@@ -265,6 +270,15 @@
 				D35C37632480A22A0029CDA8 /* Info.plist */,
 			);
 			path = SimpleRouletteDemoUITests;
+			sourceTree = "<group>";
+		};
+		D3693B0D2487DF5600CDAB41 /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				D3693B082487DEDF00CDAB41 /* IBRouletteViewController.swift */,
+				D3693B0B2487DEF000CDAB41 /* IBRouletteViewController.storyboard */,
+			);
+			path = IB;
 			sourceTree = "<group>";
 		};
 		D3894FC82483FF760087895A /* Internal */ = {
@@ -473,6 +487,7 @@
 			files = (
 				D35C374C2480A2290029CDA8 /* LaunchScreen.storyboard in Resources */,
 				D35C37492480A2290029CDA8 /* Assets.xcassets in Resources */,
+				D3693B0C2487DEF000CDAB41 /* IBRouletteViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +545,7 @@
 				D35C37442480A2260029CDA8 /* ViewController.swift in Sources */,
 				D35C37402480A2260029CDA8 /* AppDelegate.swift in Sources */,
 				D35C37422480A2260029CDA8 /* SceneDelegate.swift in Sources */,
+				D3693B092487DEDF00CDAB41 /* IBRouletteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

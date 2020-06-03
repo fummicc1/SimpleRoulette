@@ -12,7 +12,7 @@
 With SPM, create `Package.swift` and add dependency like below.
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.0.1")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.0.3")
 ]
 ```
 
@@ -24,11 +24,9 @@ dependencies: [
 let rouletteView: RouletteView = .init(frame: .zero)
 ```
 
-2. Next, insert parts with `RouletteView().update`.
+2. Next, insert parts with `RouletteView().configure`.
 
-```
-IMPORTANT: you have to call RouletteView().update after view'frame is decided because Title Layer's frame is using view's frame in the internal of library.
-```
+`IMPORTANT: you have to call RouletteView().configure after viewDidLayoutSubviews which has decided view' frame, because Title's frame is calculated with view's frame in the internal library.`
 
 You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift).
 
@@ -39,7 +37,6 @@ You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/Simpl
 ```swift
 extension ViewController: RouletteViewDelegate {
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
-        print(part)
         let alert = UIAlertController(title: "結果", message: part.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
@@ -58,7 +55,7 @@ Create `Roulette.AnglePart`.
 
 
 ```swift
-rouletteView.update(parts: [
+rouletteView.configure(parts: [
     Roulette.AnglePart(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
     Roulette.AnglePart(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
     Roulette.AnglePart(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 360), index: 2)
@@ -70,14 +67,14 @@ rouletteView.update(parts: [
 Create `Roulette.HugePart`.
 
 ```swift
-rouletteView.update(parts: [
+rouletteView.configure(parts: [
     Roulette.HugePart(name: "Title A", huge: .small, delegate: rouletteView, index: 0),
     Roulette.HugePart(name: "Title B", huge: .large, delegate: rouletteView, index: 1),
     Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
 ])
 ```
 
-**IMPORTANT: can not combine Huge with Angle in RouletteView Initializer.**
+**IMPORTANT: can not combine Huge with Angle in RouletteView().configure.**
 
 
 ## License
