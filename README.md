@@ -9,11 +9,17 @@
 ## Install
 
 ### Swift Package Manager
-With SPM, create `Package.swift` and add dependency like below.
+Create `Package.swift` and add dependency like below.
 ```swift
 dependencies: [
     .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.0.3")
 ]
+```
+
+## Carthage
+Create `Cartfile` and add dependency like below.
+```swift
+github "fummicc1/SimpleRoulette"
 ```
 
 ## Usage
@@ -47,7 +53,36 @@ You can check if Rotating via `RouletteView().isAnimating`.
 - Example
 
 ```swift
-extension ViewController: RouletteViewDelegate {
+class IBRouletteViewController: UIViewController {
+    
+    @IBOutlet var rouletteView: RouletteView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        rouletteView.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        rouletteView.configure(parts: [
+            Roulette.HugePart(name: "Title A", huge: .large, delegate: rouletteView, index: 0),
+            Roulette.HugePart(name: "Title B", huge: .small, delegate: rouletteView, index: 1),
+            Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+            Roulette.HugePart(name: "Title D", huge: .small, delegate: rouletteView, index: 3),
+        ])
+        
+        rouletteView.start()
+
+        // can check if animating
+        // if rouletteView.isAnimating { }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.rouletteView.stop()
+        }
+    }
+}
+
+extension IBRouletteViewController: RouletteViewDelegate {
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
         let alert = UIAlertController(title: "結果", message: part.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
@@ -63,7 +98,7 @@ extension ViewController: RouletteViewDelegate {
 #### update with Angle
 Create `Roulette.AnglePart`.
 
-**you can choose radian or angle**
+**you can choose radian or degree**
 
 
 ```swift
