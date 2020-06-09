@@ -14,8 +14,7 @@ public protocol RouletteViewDelegate: AnyObject {
 }
 
 public enum RouletteMode {
-    case linear
-    case custom(UIView.AnimationOptions)
+    case normal
 }
 
 public class RouletteView: UIView {
@@ -28,7 +27,7 @@ public class RouletteView: UIView {
             setNeedsLayout()
         }
     }
-    public var mode: RouletteMode = .linear
+    public var mode: RouletteMode = .normal
     
     private(set) var parts: [RoulettePartType] = [] {
         didSet {

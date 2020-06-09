@@ -37,6 +37,7 @@
 		D3CDF97124877F4600A96A07 /* RouletteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CDF97024877F4600A96A07 /* RouletteViewInteractor.swift */; };
 		D3CDF97424877FBF00A96A07 /* RouletteViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CDF97324877FBF00A96A07 /* RouletteViewPresenter.swift */; };
 		D3F0040A248F4ED800C81C87 /* PartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F00409248F4ED800C81C87 /* PartContentView.swift */; };
+		D3F0040C248F641600C81C87 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D3F0040B248F641600C81C87 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		D3CDF97024877F4600A96A07 /* RouletteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewInteractor.swift; sourceTree = "<group>"; };
 		D3CDF97324877FBF00A96A07 /* RouletteViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewPresenter.swift; sourceTree = "<group>"; };
 		D3F00409248F4ED800C81C87 /* PartContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartContentView.swift; sourceTree = "<group>"; };
+		D3F0040B248F641600C81C87 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 		D35C37152480A1F70029CDA8 = {
 			isa = PBXGroup;
 			children = (
+				D3F0040B248F641600C81C87 /* README.md */,
 				D35C37212480A1F70029CDA8 /* SimpleRoulette */,
 				D35C372C2480A1F70029CDA8 /* SimpleRouletteTests */,
 				D35C373E2480A2260029CDA8 /* SimpleRouletteDemo */,
@@ -474,6 +477,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F0040C248F641600C81C87 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
