@@ -54,24 +54,23 @@ public class RouletteView: UIView {
     }
     private var layers: [RouletteLayerData] = [] {
         didSet {
-            oldValue.forEach { old in partContentLayer?.sublayers?.removeAll(where: { $0 == old.contentLayer }) }
+            oldValue.forEach { old in partContentView.layer.sublayers?.removeAll(where: { $0 == old.contentLayer }) }
             layers.forEach { $0.createContentLayer(rect: self.bounds) }
             layers.compactMap { $0.contentLayer }.forEach {
-                self.partContentLayer?.addSublayer($0)                
+                self.partContentView.layer.addSublayer($0)
             }
         }
     }
-    private var partContentLayer: CAShapeLayer? = {
-        let layer:  CAShapeLayer = .init()
-        layer.strokeColor = UIColor.systemGray4.cgColor
-        return layer
+    private var partContentView: PartContentView = {
+        let view = PartContentView(frame: .zero)
+        return view
     }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         let pointView: RoulettePointView = createRoulettePointView()
         self.pointView = pointView
-        layer.addSublayer(partContentLayer!)
+        addSubview(partContentView)
         addSubview(pointView)
     }
     
@@ -79,15 +78,14 @@ public class RouletteView: UIView {
         super.init(coder: coder)
         let pointView: RoulettePointView = createRoulettePointView()
         self.pointView = pointView
-        layer.addSublayer(partContentLayer!)
+        addSubview(partContentView)
         addSubview(pointView)
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        partContentLayer?.bounds = bounds
         // Note: position uses anchorPoint but frame does not.
-        partContentLayer?.position = center
+        partContentView.bounds = .init(x: 0, y: 0, width: bounds.width, height: bounds.width)
         pointView?.frame = .init(origin: .init(x: frame.midX - pointSize.width / 2, y: frame.midY - frame.width / 2 - pointSize.height), size: pointSize)
     }
     
@@ -126,13 +124,22 @@ public class RouletteView: UIView {
     }
     
     public func start(clockwise: Bool = true) {
+        startAnimateWithQuartsCore()
+        isAnimating = true
+    }
+    
+    private func startAnimateWithQuartsCore() {
         let animation: CABasicAnimation = .init(keyPath: "transform.rotation")
         animation.fromValue = 0.0
         animation.toValue = CGFloat.pi * 2
         animation.duration = 3
+        animation.isCumulative = true
         animation.repeatCount = .greatestFiniteMagnitude
-        partContentLayer?.add(animation, forKey: "animation")
-        isAnimating = true
+        partContentView.layer.add(animation, forKey: "animation")
+    }
+    
+    private func startAnimateWithUIViewTransform() {
+        fatalError()
     }
     
     public func stop() {
@@ -153,12 +160,12 @@ public class RouletteView: UIView {
         guard let delegate = delegate else {
             fatalError("No Delegate")
         }
-        guard let presentation = partContentLayer?.presentation() else {
+        guard let presentation = partContentView.layer.presentation() else {
             return
         }
         let transform = presentation.transform
-        partContentLayer?.transform = transform
-        partContentLayer?.removeAnimation(forKey: "animation")
+        partContentView.layer.transform = transform
+        partContentView.layer.removeAnimation(forKey: "animation")
         isAnimating = false
         
         var angle: CGFloat = atan2(transform.m12, transform.m11)

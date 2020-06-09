@@ -36,6 +36,7 @@
 		D3C1267724827B470057D327 /* SimpleRoulette.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3CDF97124877F4600A96A07 /* RouletteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CDF97024877F4600A96A07 /* RouletteViewInteractor.swift */; };
 		D3CDF97424877FBF00A96A07 /* RouletteViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CDF97324877FBF00A96A07 /* RouletteViewPresenter.swift */; };
+		D3F0040A248F4ED800C81C87 /* PartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F00409248F4ED800C81C87 /* PartContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		D3A649012480D7F900BEC651 /* RoulettePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePart.swift; sourceTree = "<group>"; };
 		D3CDF97024877F4600A96A07 /* RouletteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewInteractor.swift; sourceTree = "<group>"; };
 		D3CDF97324877FBF00A96A07 /* RouletteViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewPresenter.swift; sourceTree = "<group>"; };
+		D3F00409248F4ED800C81C87 /* PartContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,11 +168,12 @@
 		D3004E09248675390015053D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D3CDF97224877F8200A96A07 /* RouletteView */,
-				D3A649012480D7F900BEC651 /* RoulettePart.swift */,
+				D3F00409248F4ED800C81C87 /* PartContentView.swift */,
 				D387CBB32483ABA10097F6AD /* RouletteAngle.swift */,
+				D3A649012480D7F900BEC651 /* RoulettePart.swift */,
 				D34054EB24864483005D54FB /* Ex */,
 				D3894FC82483FF760087895A /* Internal */,
+				D3CDF97224877F8200A96A07 /* RouletteView */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				D34054F324864CA0005D54FB /* AccurateCGFloat.swift in Sources */,
 				D387CBB42483ABA10097F6AD /* RouletteAngle.swift in Sources */,
 				D34054ED24864495005D54FB /* Double+Ex.swift in Sources */,
+				D3F0040A248F4ED800C81C87 /* PartContentView.swift in Sources */,
 				D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */,
 				D3894FC52483FABE0087895A /* RoulettePointView.swift in Sources */,
 			);
