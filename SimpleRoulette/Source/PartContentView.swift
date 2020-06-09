@@ -21,7 +21,6 @@ class PartContentView: UIView {
         super.init(coder: coder)
         layer.strokeColor = UIColor.systemGray4.cgColor
     }
-    
 }
 
 extension PartContentView {

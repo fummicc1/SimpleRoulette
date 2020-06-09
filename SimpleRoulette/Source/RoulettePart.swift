@@ -39,8 +39,8 @@ public enum Roulette {
             huge: Kind,
             delegate: RoulettePartHugeDelegate,
             index: Int,
-            fillColor: UIColor = .black,
-            strokeColor: UIColor = .gray
+            fillColor: UIColor = .secondarySystemBackground,
+            strokeColor: UIColor = .systemGray4
         ) {
             self.name = name
             self.huge = huge
