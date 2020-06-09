@@ -13,6 +13,10 @@ public protocol RouletteViewDelegate: AnyObject {
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType)
 }
 
+public enum RouletteMode {
+    case normal
+}
+
 public class RouletteView: UIView {
     
     public private(set) var isAnimating: Bool = false
@@ -23,6 +27,7 @@ public class RouletteView: UIView {
             setNeedsLayout()
         }
     }
+    public var mode: RouletteMode = .normal
     
     private(set) var parts: [RoulettePartType] = [] {
         didSet {
@@ -31,7 +36,7 @@ public class RouletteView: UIView {
             
             for (index, part) in parts.enumerated() {
                 let layer = CATextLayer()
-                layer.foregroundColor = UIColor.white.cgColor
+                layer.foregroundColor = UIColor.label.cgColor
                 layer.fontSize = 24
                 layer.string = part.name
                 layer.frame = .init(origin: .zero, size: layer.preferredFrameSize())
@@ -39,9 +44,10 @@ public class RouletteView: UIView {
                 var startAngle = part.startRadianAngle.accurate()
                 let endAngle = part.endRadianAngle.accurate()
                 let meanAngle = (startAngle + endAngle).value / 2
+                let centerX: CGFloat = partContentView.bounds.width / 2
                 let dx: CGFloat = radius * CGFloat(cos(meanAngle))
                 let dy: CGFloat = radius * CGFloat(sin(meanAngle))
-                layer.position = .init(x: center.x + dx, y: center.y + dy)
+                layer.position = .init(x: centerX + dx, y: centerX + dy)
                 
                 if layers.count > index {
                     layers[index].textLayer = layer
@@ -54,24 +60,24 @@ public class RouletteView: UIView {
     }
     private var layers: [RouletteLayerData] = [] {
         didSet {
-            oldValue.forEach { old in partContentLayer?.sublayers?.removeAll(where: { $0 == old.contentLayer }) }
-            layers.forEach { $0.createContentLayer(rect: self.bounds) }
+            oldValue.forEach { old in partContentView.layer.sublayers?.removeAll(where: { $0 == old.contentLayer }) }
+            layers.forEach { $0.createContentLayer(rect: partContentView.bounds) }
             layers.compactMap { $0.contentLayer }.forEach {
-                self.partContentLayer?.addSublayer($0)                
+                self.partContentView.layer.addSublayer($0)
             }
         }
     }
-    private var partContentLayer: CAShapeLayer? = {
-        let layer:  CAShapeLayer = .init()
-        layer.strokeColor = UIColor.systemGray4.cgColor
-        return layer
+    private var partContentView: PartContentView = {
+        let view = PartContentView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         let pointView: RoulettePointView = createRoulettePointView()
         self.pointView = pointView
-        layer.addSublayer(partContentLayer!)
+        addSubview(partContentView)
         addSubview(pointView)
     }
     
@@ -79,20 +85,20 @@ public class RouletteView: UIView {
         super.init(coder: coder)
         let pointView: RoulettePointView = createRoulettePointView()
         self.pointView = pointView
-        layer.addSublayer(partContentLayer!)
+        addSubview(partContentView)
         addSubview(pointView)
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        partContentLayer?.bounds = bounds
-        // Note: position uses anchorPoint but frame does not.
-        partContentLayer?.position = center
+        // Note: position uses anchorPoint but frame does not.x
+        partContentView.bounds = .init(x: 0, y: 0, width: bounds.width, height: bounds.width)
+        partContentView.center = center
         pointView?.frame = .init(origin: .init(x: frame.midX - pointSize.width / 2, y: frame.midY - frame.width / 2 - pointSize.height), size: pointSize)
     }
     
     public override func draw(_ rect: CGRect) {
-        let center = CGPoint(x: rect.midX, y: rect.midY)
+        let center = CGPoint(x: partContentView.bounds.width / 2, y: partContentView.bounds.width / 2)
         let radius = rect.width / 2
         
         var layers: [RouletteLayerData] = self.layers
@@ -108,7 +114,7 @@ public class RouletteView: UIView {
             partLayer.lineWidth = 2
             partLayer.fillColor = part.fillColor.cgColor
             partLayer.strokeColor = part.strokeColor.cgColor
-            partLayer.frame = bounds
+            partLayer.frame = partContentView.bounds
             partLayer.backgroundColor = UIColor.clear.cgColor
             
             if layers.count > index {
@@ -125,13 +131,18 @@ public class RouletteView: UIView {
         setNeedsDisplay()
     }
     
-    public func start(clockwise: Bool = true) {
+    public func start(clockwise: Bool = true, animated: Bool = true) {
         let animation: CABasicAnimation = .init(keyPath: "transform.rotation")
+        if animated {
+            animation.timingFunction = .init(name: .easeInEaseOut)
+        }
         animation.fromValue = 0.0
         animation.toValue = CGFloat.pi * 2
         animation.duration = 3
+        animation.isCumulative = true
         animation.repeatCount = .greatestFiniteMagnitude
-        partContentLayer?.add(animation, forKey: "animation")
+        partContentView.layer.add(animation, forKey: "animation")
+        
         isAnimating = true
     }
     
@@ -153,12 +164,12 @@ public class RouletteView: UIView {
         guard let delegate = delegate else {
             fatalError("No Delegate")
         }
-        guard let presentation = partContentLayer?.presentation() else {
+        guard let presentation = partContentView.layer.presentation() else {
             return
         }
         let transform = presentation.transform
-        partContentLayer?.transform = transform
-        partContentLayer?.removeAnimation(forKey: "animation")
+        partContentView.layer.transform = transform
+        partContentView.layer.removeAnimation(forKey: "animation")
         isAnimating = false
         
         var angle: CGFloat = atan2(transform.m12, transform.m11)
