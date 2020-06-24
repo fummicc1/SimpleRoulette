@@ -28,6 +28,9 @@ public class RouletteView: UIView {
         }
     }
     public var mode: RouletteMode = .normal
+    private var contetnSize: CGSize {
+        .init(width: bounds.width - pointSize.width, height: bounds.height - pointSize.height)
+    }
     
     private(set) var parts: [RoulettePartType] = [] {
         didSet {
@@ -38,6 +41,7 @@ public class RouletteView: UIView {
                 let layer = CATextLayer()
                 layer.foregroundColor = UIColor.label.cgColor
                 layer.fontSize = 24
+                layer.alignmentMode = .center
                 layer.string = part.name
                 layer.frame = .init(origin: .zero, size: layer.preferredFrameSize())
                 
@@ -92,13 +96,13 @@ public class RouletteView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         // Note: position uses anchorPoint but frame does not.x
-        partContentView.bounds = .init(x: 0, y: 0, width: bounds.width, height: bounds.width)
-        partContentView.center = center
-        pointView?.frame = .init(origin: .init(x: frame.midX - pointSize.width / 2, y: frame.midY - frame.width / 2 - pointSize.height), size: pointSize)
+        partContentView.frame = .init(origin: CGPoint(x: .zero, y: pointSize.height), size: contetnSize)
+        partContentView.layer.position = .zero
+        pointView?.frame = .init(origin: .init(x: bounds.width / 2 - pointSize.width / 2, y: 0), size: pointSize)
     }
     
     public override func draw(_ rect: CGRect) {
-        let center = CGPoint(x: partContentView.bounds.width / 2, y: partContentView.bounds.width / 2)
+        let center = CGPoint(x: partContentView.bounds.width / 2, y: partContentView.bounds.height / 2)
         let radius = rect.width / 2
         
         var layers: [RouletteLayerData] = self.layers

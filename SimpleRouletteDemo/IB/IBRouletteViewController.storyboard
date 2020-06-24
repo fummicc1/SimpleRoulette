@@ -11,14 +11,43 @@
         <scene sceneID="eVp-o4-97A">
             <objects>
                 <viewController id="Xy7-La-cY9" customClass="IBRouletteViewController" customModule="SimpleRouletteDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Uwh-UJ-Uex" customClass="RouletteView" customModule="SimpleRoulette">
+                    <view key="view" contentMode="scaleToFill" id="Uwh-UJ-Uex">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="dQf-cE-ImC">
+                                <rect key="frame" x="87" y="196" width="240" height="504"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAe-NW-ZyR" customClass="RouletteView" customModule="SimpleRoulette">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="240" id="QIm-Zu-wgS"/>
+                                            <constraint firstAttribute="width" secondItem="hAe-NW-ZyR" secondAttribute="height" id="XwZ-Od-YAW"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cnx-0o-4Mz" customClass="RouletteView" customModule="SimpleRoulette">
+                                        <rect key="frame" x="0.0" y="264" width="240" height="240"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Cnx-0o-4Mz" secondAttribute="height" id="6EX-dR-saH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dQf-cE-ImC" firstAttribute="leading" secondItem="Vq2-VU-Ypy" secondAttribute="leading" priority="250" constant="48" id="FIj-i4-qtV"/>
+                            <constraint firstItem="Vq2-VU-Ypy" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dQf-cE-ImC" secondAttribute="bottom" constant="40" id="H1p-fT-3EQ"/>
+                            <constraint firstItem="dQf-cE-ImC" firstAttribute="centerY" secondItem="Uwh-UJ-Uex" secondAttribute="centerY" id="eR2-1M-kI0"/>
+                            <constraint firstItem="dQf-cE-ImC" firstAttribute="centerX" secondItem="Uwh-UJ-Uex" secondAttribute="centerX" id="mGc-xp-aie"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Vq2-VU-Ypy"/>
                     </view>
                     <connections>
-                        <outlet property="rouletteView" destination="Uwh-UJ-Uex" id="Ysx-4Q-wvz"/>
+                        <outlet property="rouletteView" destination="hAe-NW-ZyR" id="WhB-ME-zve"/>
+                        <outlet property="secondRouletteView" destination="Cnx-0o-4Mz" id="tgv-Q2-bcc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3k-pB-DnC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

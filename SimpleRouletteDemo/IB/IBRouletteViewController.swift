@@ -12,10 +12,12 @@ import SimpleRoulette
 class IBRouletteViewController: UIViewController {
     
     @IBOutlet var rouletteView: RouletteView!
+    @IBOutlet var secondRouletteView: RouletteView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         rouletteView.delegate = self
+        secondRouletteView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,10 +29,19 @@ class IBRouletteViewController: UIViewController {
             Roulette.HugePart(name: "Title D", huge: .small, delegate: rouletteView, index: 3),
         ])
         
+        secondRouletteView.configure(parts: [
+            Roulette.HugePart(name: "Title E", huge: .large, delegate: rouletteView, index: 0),
+            Roulette.HugePart(name: "Title F", huge: .small, delegate: rouletteView, index: 1),
+            Roulette.HugePart(name: "Title G", huge: .large, delegate: rouletteView, index: 2),
+            Roulette.HugePart(name: "Title H", huge: .normal, delegate: rouletteView, index: 3),
+        ])
+        
         rouletteView.start()
+        secondRouletteView.start()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.rouletteView.stop()
+            self.secondRouletteView.stop()
         }
     }
 }
