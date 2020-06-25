@@ -1,10 +1,4 @@
-//
-//  Package.swift
-//  SimpleRoulette
-//
-//  Created by Fumiya Tanaka on 2020/06/24.
-//  Copyright © 2020 Fumiya Tanaka. All rights reserved.
-//
+// swift-tools-version:5.2
 
 import PackageDescription
 
