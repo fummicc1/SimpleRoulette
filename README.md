@@ -13,7 +13,7 @@
 Create `Package.swift` and add dependency like below.
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.0.3")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.0.7")
 ]
 ```
 
