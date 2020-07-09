@@ -11,6 +11,21 @@ import UIKit
 
 class RoulettePointView: UIView {
     
+    private var size: CGSize = .zero
+    
+    init(frame: CGRect, size: CGSize) {
+        self.size = size
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        size
+    }
+    
     override func draw(_ rect: CGRect) {
         let path: UIBezierPath = .init()
         UIColor.systemOrange.setStroke()

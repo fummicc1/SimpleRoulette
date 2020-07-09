@@ -31,11 +31,11 @@ public class RouletteView: UIView {
     private var contetnSize: CGSize {
         .init(width: bounds.width - pointSize.width, height: bounds.height - pointSize.height)
     }
+    private weak var verticalStackView: UIStackView?
     
     private(set) var parts: [RoulettePartType] = [] {
         didSet {
-            let rect = bounds
-            let radius = rect.width / 4
+            let radius = partContentView.frame.width / 2
             
             for (index, part) in parts.enumerated() {
                 let layer = CATextLayer()
@@ -69,6 +69,7 @@ public class RouletteView: UIView {
             layers.compactMap { $0.contentLayer }.forEach {
                 self.partContentView.layer.addSublayer($0)
             }
+//            partContentView.updateIntrinsicContentSize(.init(width: bounds.width - , height: <#T##CGFloat#>))
         }
     }
     private var partContentView: PartContentView = {
@@ -79,25 +80,33 @@ public class RouletteView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        let pointView: RoulettePointView = createRoulettePointView()
-        self.pointView = pointView
-        addSubview(partContentView)
-        addSubview(pointView)
+        initializeView()
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
+        initializeView()
+    }
+    
+    private func initializeView() {
         let pointView: RoulettePointView = createRoulettePointView()
         self.pointView = pointView
-        addSubview(partContentView)
-        addSubview(pointView)
+        let stackView = UIStackView(arrangedSubviews: [pointView, partContentView])
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackView)        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+        self.verticalStackView = stackView
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        // Note: position uses anchorPoint but frame does not.x
-        pointView?.frame = .init(origin: .init(x: bounds.width / 2 - pointSize.width / 2, y: 0), size: pointSize)
-        partContentView.frame = .init(x: pointSize.width / 2, y: pointSize.height, width: contetnSize.width - pointSize.width, height: contetnSize.height - pointSize.height)
     }
     
     public override func draw(_ rect: CGRect) {
@@ -201,7 +210,8 @@ public class RouletteView: UIView {
     }
     
     private func createRoulettePointView() -> RoulettePointView {
-        let pointView: RoulettePointView = .init(frame: .zero)
+        let pointView: RoulettePointView = .init(frame: .zero, size: pointSize)
+        pointView.translatesAutoresizingMaskIntoConstraints = false
         pointView.backgroundColor = .clear
         return pointView
     }
