@@ -28,14 +28,14 @@ class IBRouletteViewController: UIViewController {
             Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
             Roulette.HugePart(name: "Title D", huge: .small, delegate: rouletteView, index: 3),
         ])
-        
+
         secondRouletteView.configure(parts: [
             Roulette.HugePart(name: "Title E", huge: .large, delegate: rouletteView, index: 0),
             Roulette.HugePart(name: "Title F", huge: .small, delegate: rouletteView, index: 1),
             Roulette.HugePart(name: "Title G", huge: .large, delegate: rouletteView, index: 2),
             Roulette.HugePart(name: "Title H", huge: .normal, delegate: rouletteView, index: 3),
         ])
-        
+
         rouletteView.start()
         secondRouletteView.start()
         

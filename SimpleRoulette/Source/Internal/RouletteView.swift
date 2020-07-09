@@ -40,7 +40,7 @@ public class RouletteView: UIView {
             for (index, part) in parts.enumerated() {
                 let layer = CATextLayer()
                 layer.foregroundColor = UIColor.label.cgColor
-                layer.fontSize = 24
+                layer.fontSize = 16
                 layer.alignmentMode = .center
                 layer.string = part.name
                 layer.frame = .init(origin: .zero, size: layer.preferredFrameSize())
@@ -96,14 +96,13 @@ public class RouletteView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         // Note: position uses anchorPoint but frame does not.x
-        partContentView.frame = .init(origin: CGPoint(x: .zero, y: pointSize.height), size: contetnSize)
-        partContentView.layer.position = .zero
         pointView?.frame = .init(origin: .init(x: bounds.width / 2 - pointSize.width / 2, y: 0), size: pointSize)
+        partContentView.frame = .init(x: pointSize.width / 2, y: pointSize.height, width: contetnSize.width - pointSize.width, height: contetnSize.height - pointSize.height)
     }
     
     public override func draw(_ rect: CGRect) {
         let center = CGPoint(x: partContentView.bounds.width / 2, y: partContentView.bounds.height / 2)
-        let radius = rect.width / 2
+        let radius = partContentView.frame.width / 2
         
         var layers: [RouletteLayerData] = self.layers
         
@@ -144,6 +143,8 @@ public class RouletteView: UIView {
         animation.toValue = CGFloat.pi * 2
         animation.duration = 3
         animation.isCumulative = true
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
         animation.repeatCount = .greatestFiniteMagnitude
         partContentView.layer.add(animation, forKey: "animation")
         
@@ -172,7 +173,6 @@ public class RouletteView: UIView {
             return
         }
         let transform = presentation.transform
-        partContentView.layer.transform = transform
         partContentView.layer.removeAnimation(forKey: "animation")
         isAnimating = false
         

@@ -26,14 +26,18 @@
                                             <constraint firstAttribute="width" secondItem="hAe-NW-ZyR" secondAttribute="height" id="XwZ-Od-YAW"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cnx-0o-4Mz" customClass="RouletteView" customModule="SimpleRoulette">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gek-Wb-H1h" customClass="RouletteView" customModule="SimpleRoulette">
                                         <rect key="frame" x="0.0" y="264" width="240" height="240"/>
                                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Cnx-0o-4Mz" secondAttribute="height" id="6EX-dR-saH"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="240" id="77Z-Ak-lJF"/>
+                                            <constraint firstAttribute="width" secondItem="Gek-Wb-H1h" secondAttribute="height" id="LkY-8T-Kq7"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Gek-Wb-H1h" firstAttribute="width" secondItem="Gek-Wb-H1h" secondAttribute="height" id="N1N-l6-rfw"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -47,7 +51,7 @@
                     </view>
                     <connections>
                         <outlet property="rouletteView" destination="hAe-NW-ZyR" id="WhB-ME-zve"/>
-                        <outlet property="secondRouletteView" destination="Cnx-0o-4Mz" id="tgv-Q2-bcc"/>
+                        <outlet property="secondRouletteView" destination="Gek-Wb-H1h" id="Fmn-nc-YN2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3k-pB-DnC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
