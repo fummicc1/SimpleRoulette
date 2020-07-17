@@ -21,6 +21,9 @@ public protocol RoulettePartType {
     var strokeColor: UIColor { get }
 }
 
+extension RoulettePartType {
+}
+
 public enum Roulette {
     
     public struct HugePart {
@@ -101,7 +104,7 @@ extension Roulette.HugePart: RoulettePartType {
         if index > 0 {
             for i in 0..<index {
                 let thatHuge = delegate.allHuge[i]
-                let ratio = Double(thatHuge.value) / Double(delegate.allHuge.reduce(0, { $0 + $1.value }))
+                let ratio = Double(thatHuge.index) / Double(delegate.allHuge.reduce(0, { $0 + $1.index }))
                 previousEndAngle += ratio * delegate.total
             }
         }
@@ -117,7 +120,7 @@ extension Roulette.HugePart: RoulettePartType {
             assert(false, "No delegate.")
             return .zero
         }
-        let ratio = Double(huge.value) / Double(delegate.allHuge.reduce(0, { $0 + $1.value }))
+        let ratio = Double(huge.index) / Double(delegate.allHuge.reduce(0, { $0 + $1.index }))
         return delegate.total * ratio + getPreviousEndAngle()
     }
     
@@ -126,7 +129,7 @@ extension Roulette.HugePart: RoulettePartType {
         case normal
         case small
         
-        var value: Int {
+        var index: Int {
             switch self {
             case .large:
                 return 3

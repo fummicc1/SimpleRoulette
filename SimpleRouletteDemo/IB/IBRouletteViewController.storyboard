@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xy7-La-cY9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xy7-La-cY9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,37 +15,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="dQf-cE-ImC">
-                                <rect key="frame" x="87" y="196" width="240" height="504"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAe-NW-ZyR" customClass="RouletteView" customModule="SimpleRoulette">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="240" id="QIm-Zu-wgS"/>
-                                            <constraint firstAttribute="width" secondItem="hAe-NW-ZyR" secondAttribute="height" id="XwZ-Od-YAW"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gek-Wb-H1h" customClass="RouletteView" customModule="SimpleRoulette">
-                                        <rect key="frame" x="0.0" y="264" width="240" height="240"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="240" id="77Z-Ak-lJF"/>
-                                            <constraint firstAttribute="width" secondItem="Gek-Wb-H1h" secondAttribute="height" id="LkY-8T-Kq7"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Gek-Wb-H1h" firstAttribute="width" secondItem="Gek-Wb-H1h" secondAttribute="height" id="N1N-l6-rfw"/>
-                                </constraints>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAe-NW-ZyR" customClass="RouletteView" customModule="SimpleRoulette">
+                                <rect key="frame" x="40" y="108" width="334" height="269"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gek-Wb-H1h" customClass="RouletteView" customModule="SimpleRoulette">
+                                <rect key="frame" x="40" y="409" width="334" height="268.5"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="dQf-cE-ImC" firstAttribute="leading" secondItem="Vq2-VU-Ypy" secondAttribute="leading" priority="250" constant="48" id="FIj-i4-qtV"/>
-                            <constraint firstItem="Vq2-VU-Ypy" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dQf-cE-ImC" secondAttribute="bottom" constant="40" id="H1p-fT-3EQ"/>
-                            <constraint firstItem="dQf-cE-ImC" firstAttribute="centerY" secondItem="Uwh-UJ-Uex" secondAttribute="centerY" id="eR2-1M-kI0"/>
-                            <constraint firstItem="dQf-cE-ImC" firstAttribute="centerX" secondItem="Uwh-UJ-Uex" secondAttribute="centerX" id="mGc-xp-aie"/>
+                            <constraint firstItem="hAe-NW-ZyR" firstAttribute="centerX" secondItem="Uwh-UJ-Uex" secondAttribute="centerX" id="8Rx-hH-EDX"/>
+                            <constraint firstItem="hAe-NW-ZyR" firstAttribute="height" secondItem="Gek-Wb-H1h" secondAttribute="height" id="AFl-p8-O6y"/>
+                            <constraint firstItem="hAe-NW-ZyR" firstAttribute="leading" secondItem="Vq2-VU-Ypy" secondAttribute="leading" constant="40" id="ALU-w9-hsw"/>
+                            <constraint firstItem="Gek-Wb-H1h" firstAttribute="height" secondItem="Uwh-UJ-Uex" secondAttribute="height" multiplier="0.3" id="Lxf-hX-YCz"/>
+                            <constraint firstItem="Gek-Wb-H1h" firstAttribute="centerX" secondItem="Uwh-UJ-Uex" secondAttribute="centerX" id="WXe-aj-0vQ"/>
+                            <constraint firstItem="hAe-NW-ZyR" firstAttribute="top" secondItem="Vq2-VU-Ypy" secondAttribute="top" constant="64" id="cRp-YF-VJG"/>
+                            <constraint firstItem="Gek-Wb-H1h" firstAttribute="top" secondItem="hAe-NW-ZyR" secondAttribute="bottom" constant="32" id="em0-9q-7Kz"/>
+                            <constraint firstItem="Gek-Wb-H1h" firstAttribute="leading" secondItem="hAe-NW-ZyR" secondAttribute="leading" id="jtC-dF-R8w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vq2-VU-Ypy"/>
                     </view>

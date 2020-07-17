@@ -13,7 +13,7 @@ class RoulettePointView: UIView {
     
     private var size: CGSize = .zero
     
-    init(frame: CGRect, size: CGSize) {
+    init(frame: CGRect = .zero, size: CGSize) {
         self.size = size
         super.init(frame: frame)
     }
