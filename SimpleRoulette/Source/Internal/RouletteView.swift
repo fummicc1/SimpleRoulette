@@ -35,25 +35,17 @@ public class RouletteView: UIView {
     
     private(set) var parts: [RoulettePartType] = [] {
         didSet {
-            
+            partContentView.layer.sublayers?.removeAll(where: { $0 is RoulettePartTextLayer })
             for part in parts {
                 let layer = RoulettePartTextLayer()
                 layer.part = part
                 layer.foregroundColor = UIColor.label.cgColor
                 layer.string = part.name
+                layer.alignmentMode = .center
                 layer.fontSize = 16
-                let startAngle = part.startRadianAngle
-                let endAngle = part.endRadianAngle
-                let meanAngle = (startAngle + endAngle) / 2
-                let centerX: CGFloat = radius / 2
-                let centerY: CGFloat = radius / 2
-                let dx: CGFloat = radius / 2 * CGFloat(cos(meanAngle))
-                let dy: CGFloat = radius / 2 * CGFloat(sin(meanAngle))
-                layer.position = .init(x: centerX + dx, y: centerY + dy)
                 layer.frame.size = layer.preferredFrameSize()
                 partContentView.layer.addSublayer(layer)
             }
-            setNeedsDisplay()
         }
     }
     
@@ -116,6 +108,27 @@ public class RouletteView: UIView {
             
             partContentView.layer.insertSublayer(partLayer, at: 0)
         }
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        partContentView.layer.sublayers?.compactMap { $0 as? RoulettePartTextLayer }.forEach { textLayer in
+            textLayer.position = self.getPosition(of: textLayer)
+        }
+    }
+    
+    private func getPosition(of layer: RoulettePartTextLayer) -> CGPoint {
+        guard let part = layer.part else {
+            return .zero
+        }
+        let startAngle = part.startRadianAngle
+        let endAngle = part.endRadianAngle
+        let meanAngle = (startAngle + endAngle) / 2
+        let centerX: CGFloat = radius
+        let centerY: CGFloat = radius
+        let dx: CGFloat = radius / 2 * CGFloat(cos(meanAngle))
+        let dy: CGFloat = radius / 2 * CGFloat(sin(meanAngle))
+        return .init(x: centerX + dx, y: centerY + dy)
     }
     
     public func configure(parts: [RoulettePartType]) {
