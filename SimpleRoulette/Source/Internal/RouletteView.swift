@@ -63,6 +63,10 @@ public class RouletteView: UIView {
         return view
     }()
     
+    public override var intrinsicContentSize: CGSize {
+        bounds.size
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initializeView()
