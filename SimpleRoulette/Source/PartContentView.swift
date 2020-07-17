@@ -11,6 +11,7 @@ import UIKit
 
 class PartContentView: UIView {
     
+    private var _intrinsicContentSize: CGSize = .zero
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,6 +21,15 @@ class PartContentView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         layer.strokeColor = UIColor.systemGray4.cgColor
+    }
+    
+    public func updateIntrinsicContentSize(_ contentSize: CGSize = .zero) {
+        _intrinsicContentSize = contentSize
+        invalidateIntrinsicContentSize()
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        _intrinsicContentSize
     }
 }
 

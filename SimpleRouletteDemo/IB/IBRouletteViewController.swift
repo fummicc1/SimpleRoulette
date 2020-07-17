@@ -12,26 +12,34 @@ import SimpleRoulette
 class IBRouletteViewController: UIViewController {
     
     @IBOutlet var rouletteView: RouletteView!
+    @IBOutlet var secondRouletteView: RouletteView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         rouletteView.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        secondRouletteView.delegate = self
         rouletteView.configure(parts: [
             Roulette.HugePart(name: "Title A", huge: .large, delegate: rouletteView, index: 0),
             Roulette.HugePart(name: "Title B", huge: .small, delegate: rouletteView, index: 1),
             Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
-            Roulette.HugePart(name: "Title D", huge: .small, delegate: rouletteView, index: 3),
         ])
-        
-        rouletteView.start()
-        
+
+        secondRouletteView.configure(parts: [
+            Roulette.HugePart(name: "Title E", huge: .large, delegate: rouletteView, index: 0),
+            Roulette.HugePart(name: "Title F", huge: .small, delegate: rouletteView, index: 1),
+            Roulette.HugePart(name: "Title G", huge: .normal, delegate: rouletteView, index: 2),
+        ])
+
+//        rouletteView.start()
+        secondRouletteView.start()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.rouletteView.stop()
+//            self.rouletteView.stop()
+            self.secondRouletteView.stop()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 }
 
