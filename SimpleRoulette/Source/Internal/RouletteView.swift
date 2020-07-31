@@ -97,7 +97,11 @@ public class RouletteView: UIView {
     }
     
     public func setPointView(_ customView: UIView, size: CGSize) {
-        
+        if let pointView = pointView {
+            verticalStackView?.removeArrangedSubview(pointView)
+            pointView.removeFromSuperview()
+        }
+        verticalStackView?.insertArrangedSubview(customView, at: 0)
         pointView = customView
         pointSize = size
         if let stackView = verticalStackView {

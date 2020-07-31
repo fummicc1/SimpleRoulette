@@ -40,6 +40,11 @@ class IBRouletteViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let view =  UIView(frame: CGRect(origin: .zero, size: .init(width: 32, height: 32)))
+        view.layer.cornerRadius = 16
+        view.backgroundColor = .green
+        view.layer.masksToBounds = true
+        rouletteView.setPointView(view, size: view.frame.size)
     }
 }
 
