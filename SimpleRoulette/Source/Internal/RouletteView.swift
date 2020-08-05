@@ -19,7 +19,7 @@ public enum RouletteMode {
 
 public class RouletteView: UIView {
     public private(set) var isAnimating: Bool = false
-    private weak var pointView: RoulettePointView?
+    private weak var pointView: UIView?
     public weak var delegate: RouletteViewDelegate?
     public var pointSize: CGSize = .init(width: 32, height: 32) {
         didSet {
@@ -61,22 +61,26 @@ public class RouletteView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        initializeView()
+        initializeView(pointView: createRoulettePointView())
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        initializeView()
+        initializeView(pointView: createRoulettePointView())
     }
     
-    private func initializeView() {
-        let pointView: RoulettePointView = createRoulettePointView()
+    private func initializeView(pointView: UIView) {
         self.pointView = pointView
         let stackView = UIStackView(arrangedSubviews: [pointView, partContentView])
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
+        setLayout(stackView: stackView, pointView: pointView, partContentView: partContentView)
+        self.verticalStackView = stackView
+    }
+    
+    private func setLayout(stackView: UIStackView, pointView: UIView, partContentView: PartContentView) {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -86,7 +90,20 @@ public class RouletteView: UIView {
         pointView.heightAnchor.constraint(equalToConstant: pointSize.height).isActive = true
         pointView.widthAnchor.constraint(equalToConstant: pointSize.width).isActive = true
         partContentView.heightAnchor.constraint(equalTo: partContentView.widthAnchor, multiplier: 1).isActive = true
-        self.verticalStackView = stackView
+    }
+    
+    public func setPointView(_ customView: UIView, size: CGSize) {
+        if let pointView = pointView {
+            verticalStackView?.removeArrangedSubview(pointView)
+            pointView.removeFromSuperview()
+        }
+        verticalStackView?.insertArrangedSubview(customView, at: 0)
+        pointView = customView
+        pointSize = size
+        if let stackView = verticalStackView {
+            setLayout(stackView: stackView, pointView: customView, partContentView: partContentView)
+            setNeedsDisplay()
+        }
     }
     
     public override func draw(_ rect: CGRect) {
