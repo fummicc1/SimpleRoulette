@@ -8,43 +8,17 @@
 
 import Foundation
 
-protocol AccuracyType {
-    associatedtype Value
-    var value: Value { get }
+protocol AccuracyType: Comparable {
     
     @discardableResult
-    mutating func add(_ v: Value, mutate: Bool) -> Value
+    mutating func add(_ v: Self, mutate: Bool) -> Self
     
     @discardableResult
-    mutating func subtract(_ v: Value, mutate: Bool) -> Value
+    mutating func subtract(_ v: Self, mutate: Bool) -> Self
     
     @discardableResult
-    mutating func multiply(with v: Value, mutate: Bool) -> Value
+    mutating func multiply(with v: Self, mutate: Bool) -> Self
     
     @discardableResult
-    mutating func divide(by v: Value, mutate: Bool) -> Value
-    
-    @discardableResult
-    mutating func add<Accuracy: AccuracyType>(_ accuray: Accuracy, mutate: Bool) -> Value where Accuracy.Value == Self.Value
-    
-    @discardableResult
-    mutating func subtract<Accuracy: AccuracyType>(_ accuray: Accuracy, mutate: Bool) -> Value where Accuracy.Value == Self.Value
-    
-    @discardableResult
-    mutating func multiply<Accuracy: AccuracyType>(with accuray: Accuracy, mutate: Bool) -> Value where Accuracy.Value == Self.Value
-    
-    @discardableResult
-    mutating func divide<Accuracy: AccuracyType>(by accuray: Accuracy, mutate: Bool) -> Value where Accuracy.Value == Self.Value
-    
-    @discardableResult
-    mutating func add<Accuracy: AccuracyType>(_ accuray: Accuracy, mutate: Bool) -> Self where Accuracy.Value == Self.Value
-    
-    @discardableResult
-    mutating func subtract<Accuracy: AccuracyType>(_ accuray: Accuracy, mutate: Bool) -> Self where Accuracy.Value == Self.Value
-    
-    @discardableResult
-    mutating func multiply<Accuracy: AccuracyType>(with accuray: Accuracy, mutate: Bool) -> Self where Accuracy.Value == Self.Value
-    
-    @discardableResult
-    mutating func divide<Accuracy: AccuracyType>(by accuray: Accuracy, mutate: Bool) -> Self where Accuracy.Value == Self.Value
+    mutating func divide(by v: Self, mutate: Bool) -> Self
 }

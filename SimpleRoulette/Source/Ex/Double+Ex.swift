@@ -17,10 +17,6 @@ extension Double {
         self / Self.pi * 180
     }
     
-    func accurate() -> AccurateDouble {
-        .init(value: self)
-    }
-    
     func decimal() -> NSDecimalNumber {
         let str = String(self)
         return .init(string: str)

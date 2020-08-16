@@ -18,10 +18,6 @@ extension CGFloat {
         self / Self.pi * 180
     }
     
-    func accurate() -> AccurateCGFloat {
-        .init(value: self)
-    }
-    
     func decimal() -> NSDecimalNumber {
         let str = String.init(describing: self)
         return .init(string: str)
