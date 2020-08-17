@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D3112F7F2486B3B900F1E174 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3112F7E2486B3B900F1E174 /* Calculation.swift */; };
 		D316BBE424868C8000D1844A /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316BBE324868C8000D1844A /* OperatorTests.swift */; };
+		D31FE2E224EADBFD0072C5CB /* RoulettePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FE2E124EADBFD0072C5CB /* RoulettePartView.swift */; };
 		D322738924C1A2C100E928B5 /* RoulettePartShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D322738824C1A2C100E928B5 /* RoulettePartShapeLayer.swift */; };
 		D34054EA248643C2005D54FB /* RouletteAngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054E9248643C2005D54FB /* RouletteAngleTests.swift */; };
 		D34054ED24864495005D54FB /* Double+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054EC24864495005D54FB /* Double+Ex.swift */; };
@@ -35,7 +36,7 @@
 		D3A79E9024C1AC2A005D3E17 /* RoulettePartTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A79E8F24C1AC2A005D3E17 /* RoulettePartTextLayer.swift */; };
 		D3C1267624827B470057D327 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
 		D3C1267724827B470057D327 /* SimpleRoulette.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D3F0040A248F4ED800C81C87 /* PartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F00409248F4ED800C81C87 /* PartContentView.swift */; };
+		D3F0040A248F4ED800C81C87 /* PartContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F00409248F4ED800C81C87 /* PartContainerView.swift */; };
 		D3F0040C248F641600C81C87 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D3F0040B248F641600C81C87 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 /* Begin PBXFileReference section */
 		D3112F7E2486B3B900F1E174 /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		D316BBE324868C8000D1844A /* OperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
+		D31FE2E124EADBFD0072C5CB /* RoulettePartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePartView.swift; sourceTree = "<group>"; };
 		D322738824C1A2C100E928B5 /* RoulettePartShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePartShapeLayer.swift; sourceTree = "<group>"; };
 		D34054E9248643C2005D54FB /* RouletteAngleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAngleTests.swift; sourceTree = "<group>"; };
 		D34054EC24864495005D54FB /* Double+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ex.swift"; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 		D3A648FF2480D7AD00BEC651 /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
 		D3A649012480D7F900BEC651 /* RoulettePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePart.swift; sourceTree = "<group>"; };
 		D3A79E8F24C1AC2A005D3E17 /* RoulettePartTextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePartTextLayer.swift; sourceTree = "<group>"; };
-		D3F00409248F4ED800C81C87 /* PartContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartContentView.swift; sourceTree = "<group>"; };
+		D3F00409248F4ED800C81C87 /* PartContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartContainerView.swift; sourceTree = "<group>"; };
 		D3F0040B248F641600C81C87 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,9 +170,13 @@
 		D3004E09248675390015053D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D3F00409248F4ED800C81C87 /* PartContentView.swift */,
+				D3F00409248F4ED800C81C87 /* PartContainerView.swift */,
 				D387CBB32483ABA10097F6AD /* RouletteAngle.swift */,
 				D3A649012480D7F900BEC651 /* RoulettePart.swift */,
+				D31FE2E124EADBFD0072C5CB /* RoulettePartView.swift */,
+				D322738824C1A2C100E928B5 /* RoulettePartShapeLayer.swift */,
+				D3A79E8F24C1AC2A005D3E17 /* RoulettePartTextLayer.swift */,
+				D3894FC42483FABE0087895A /* RoulettePointView.swift */,
 				D34054EB24864483005D54FB /* Ex */,
 				D3894FC82483FF760087895A /* Internal */,
 			);
@@ -289,10 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				D34054F6248658AF005D54FB /* Accurate */,
-				D3894FC42483FABE0087895A /* RoulettePointView.swift */,
 				D3A648FF2480D7AD00BEC651 /* RouletteView.swift */,
-				D322738824C1A2C100E928B5 /* RoulettePartShapeLayer.swift */,
-				D3A79E8F24C1AC2A005D3E17 /* RoulettePartTextLayer.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3A649022480D7F900BEC651 /* RoulettePart.swift in Sources */,
+				D31FE2E224EADBFD0072C5CB /* RoulettePartView.swift in Sources */,
 				D34054F5248655D3005D54FB /* CGFloat+Ex.swift in Sources */,
 				D34054EF248647E7005D54FB /* AccurateDouble.swift in Sources */,
 				D34054F12486486A005D54FB /* AccuracyType.swift in Sources */,
@@ -517,7 +521,7 @@
 				D34054F324864CA0005D54FB /* AccurateCGFloat.swift in Sources */,
 				D387CBB42483ABA10097F6AD /* RouletteAngle.swift in Sources */,
 				D34054ED24864495005D54FB /* Double+Ex.swift in Sources */,
-				D3F0040A248F4ED800C81C87 /* PartContentView.swift in Sources */,
+				D3F0040A248F4ED800C81C87 /* PartContainerView.swift in Sources */,
 				D3A649002480D7AD00BEC651 /* RouletteView.swift in Sources */,
 				D3894FC52483FABE0087895A /* RoulettePointView.swift in Sources */,
 				D3579E2F24E8E99D001E3AC5 /* AccurateDegree.swift in Sources */,

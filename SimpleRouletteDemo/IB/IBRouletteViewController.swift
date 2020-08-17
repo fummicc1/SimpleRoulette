@@ -25,13 +25,16 @@ class IBRouletteViewController: UIViewController {
         ])
 
         secondRouletteView.configure(parts: [
-            Roulette.HugePart(name: "Title E", huge: .large, delegate: rouletteView, index: 0),
-            Roulette.HugePart(name: "Title F", huge: .small, delegate: rouletteView, index: 1),
-            Roulette.HugePart(name: "Title G", huge: .normal, delegate: rouletteView, index: 2),
+            Roulette.HugePart(name: "Title E", huge: .large, delegate: secondRouletteView, index: 0),
+            Roulette.HugePart(name: "Title F", huge: .small, delegate: secondRouletteView, index: 1),
+            Roulette.HugePart(name: "Title G", huge: .normal, delegate: secondRouletteView, index: 2),
+            Roulette.HugePart(name: "Title H", huge: .large, delegate: secondRouletteView, index: 3),
+            Roulette.HugePart(name: "Title I", huge: .small, delegate: secondRouletteView, index: 4),
+            Roulette.HugePart(name: "Title J", huge: .normal, delegate: secondRouletteView, index: 5),
         ])
 
 //        rouletteView.start()
-        secondRouletteView.start()
+        secondRouletteView.start(duration: 10)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
 //            self.rouletteView.stop()
             self.secondRouletteView.stop()

@@ -23,7 +23,7 @@ class PartContainerView: UIView {
         layer.strokeColor = UIColor.systemGray4.cgColor
     }
     
-    public func updateIntrinsicContentSize(_ contentSize: CGSize) {
+    public func updateIntrinsicContentSize(_ contentSize: CGSize = .zero) {
         _intrinsicContentSize = contentSize
         invalidateIntrinsicContentSize()
     }
