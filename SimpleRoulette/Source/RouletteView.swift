@@ -173,6 +173,7 @@ public class RouletteView: UIView {
             
             if checkIfContainsPoint(from: CGFloat(start), to: CGFloat(end), point: CGFloat.pi * 1.5) {
                 delegate.rouletteView(self, didStopAt: part)
+                break
             }
         }
     }

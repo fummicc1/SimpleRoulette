@@ -56,5 +56,10 @@ extension IBRouletteViewController: RouletteViewDelegate {
         let alert = UIAlertController(title: "結果", message: part.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+        rouletteView.configure(parts: [
+            Roulette.HugePart(name: "Title A", huge: .large, delegate: rouletteView, index: 0),
+            Roulette.HugePart(name: "Title B", huge: .small, delegate: rouletteView, index: 1),
+            Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+        ])
     }
 }
