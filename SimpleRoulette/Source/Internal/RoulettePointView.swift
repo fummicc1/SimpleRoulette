@@ -11,7 +11,7 @@ import UIKit
 
 class RoulettePointView: UIView {
     
-    private var size: CGSize = .zero
+    private let size: CGSize
     
     init(frame: CGRect = .zero, size: CGSize) {
         self.size = size
@@ -19,7 +19,7 @@ class RoulettePointView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError()
     }
     
     override var intrinsicContentSize: CGSize {
@@ -31,22 +31,24 @@ class RoulettePointView: UIView {
         UIColor.systemOrange.setStroke()
         
         // MARK: Head
-        var length: AccurateCGFloat = .init(value: rect.width)
-        let radian: AccurateDouble = .init(value: 60.radian())
-        var originY: AccurateCGFloat = .init(value: rect.maxY)
-        var originX: AccurateCGFloat = .init(value: rect.midX)
+        var length = rect.width
+        let radian = 60.radian()
+        var originY = rect.maxY
+        var originX = rect.midX
         
         path.move(to:
-            .init(x: originX.value, y: originY.value)
+            .init(x: originX, y: originY)
         )
         
-        var x = originX + length * AccurateCGFloat(value: CGFloat(cos(radian.value)))
-        var y = originY - length * AccurateCGFloat(value: CGFloat(sin(radian.value)))
+        var x = length.multiply(with: CGFloat(cos(radian)), mutate: false)
+        _ = x.add(originX, mutate: true)
+        var y = length.multiply(with: CGFloat(sin(radian)), mutate: false)
+        y = originY.subtract(y, mutate: false)
         
         path.addLine(to:
             .init(
-                x: x.value,
-                y: y.value
+                x: x,
+                y: y
             )
         )
         /*
@@ -56,15 +58,18 @@ class RoulettePointView: UIView {
              /
         */
         path.move(to:
-            .init(x: originX.value, y: originY.value)
+            .init(x: originX, y: originY)
         )
         
-        x = originX - length * AccurateCGFloat(value: CGFloat(cos(radian.value)))
-        y = originY - length * AccurateCGFloat(value: CGFloat(sin(radian.value)))
+        x = length.multiply(with: CGFloat(cos(radian)), mutate: false)
+        x = originX.subtract(x, mutate: false)
+        y = length.multiply(with: CGFloat(sin(radian)), mutate: false)
+        y = originY.subtract(y, mutate: false)
+        
         path.addLine(to:
             .init(
-                x: x.value,
-                y: y.value
+                x: x,
+                y: y
             )
         )
         /*
@@ -73,12 +78,14 @@ class RoulettePointView: UIView {
            \  /
             \/
         */
-        x = originX + length * AccurateCGFloat(value: CGFloat(cos(radian.value)))
-        y = originY - length * AccurateCGFloat(value: CGFloat(sin(radian.value)))
+        x = originX.add(length, mutate: false)
+        y = length.multiply(with: CGFloat(sin(radian)), mutate: false)
+        y = originY.subtract(y, mutate: false)
+        
         path.addLine(to:
             .init(
-                x: x.value,
-                y: y.value
+                x: x,
+                y: y
             )
         )
         /*

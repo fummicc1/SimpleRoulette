@@ -9,10 +9,24 @@
 import Foundation
 import UIKit
 
-class RoulettePartTextLayer: CATextLayer, RoulettePartLayer {
-    var part: RoulettePartType?
+class RoulettePartTextLayer: CATextLayer {
+    let part: RoulettePartType!
+    
+    init(part: RoulettePartType) {
+        self.part = part
+        super.init()
+    }
+    
+    override init(layer: Any) {
+        part = nil
+        super.init(layer: layer)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     static func ==(rhs: RoulettePartTextLayer, lhs: RoulettePartTextLayer) -> Bool {
-        lhs.part?.id == rhs.part?.id
+        lhs.part.id == rhs.part.id
     }
 }

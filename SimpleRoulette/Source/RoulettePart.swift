@@ -70,8 +70,8 @@ public enum Roulette {
             startAngle: Roulette.Angle,
             endAngle: Roulette.Angle,
             index: Int,
-            fillColor: UIColor = .black,
-            strokeColor: UIColor = .gray
+            fillColor: UIColor = .secondarySystemBackground,
+            strokeColor: UIColor = .systemGray4
         ) {
             self.name = name
             self.startAngle = startAngle
@@ -104,10 +104,12 @@ extension Roulette.HugePart: RoulettePartType {
         if index > 0 {
             for i in 0..<index {
                 let thatHuge = delegate.allHuge[i]
-                let ratio = Double(thatHuge.index) / Double(delegate.allHuge.reduce(0, { $0 + $1.index }))
+                let ratio = Double(thatHuge.area) / Double(delegate.allHuge.reduce(0, { $0 + $1.area }))
                 previousEndAngle += ratio * delegate.total
             }
         }
+        previousEndAngle -= Double.pi / 2
+        assert(previousEndAngle >= -Double.pi / 2 && previousEndAngle <= Double.pi * 1.5)
         return previousEndAngle
     }
     
@@ -120,7 +122,7 @@ extension Roulette.HugePart: RoulettePartType {
             assert(false, "No delegate.")
             return .zero
         }
-        let ratio = Double(huge.index) / Double(delegate.allHuge.reduce(0, { $0 + $1.index }))
+        let ratio = Double(huge.area) / Double(delegate.allHuge.reduce(0, { $0 + $1.area }))
         return delegate.total * ratio + getPreviousEndAngle()
     }
     
@@ -129,7 +131,7 @@ extension Roulette.HugePart: RoulettePartType {
         case normal
         case small
         
-        var index: Int {
+        var area: Int {
             switch self {
             case .large:
                 return 3

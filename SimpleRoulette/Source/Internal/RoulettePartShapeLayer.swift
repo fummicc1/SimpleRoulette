@@ -8,14 +8,24 @@
 
 import UIKit
 
-protocol RoulettePartLayer {
-    var part: RoulettePartType? { get }
-}
-
-class RoulettePartShapeLayer: CAShapeLayer, RoulettePartLayer {
-    var part: RoulettePartType?
+class RoulettePartShapeLayer: CAShapeLayer {
+    let part: RoulettePartType!
+    
+    init(part: RoulettePartType) {
+        self.part = part
+        super.init()
+    }
+    
+    override init(layer: Any) {
+        part = nil
+        super.init(layer: layer)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     static func ==(rhs: RoulettePartShapeLayer, lhs: RoulettePartShapeLayer) -> Bool {
-        lhs.part?.id == rhs.part?.id
+        lhs.part.id == rhs.part.id
     }
 }

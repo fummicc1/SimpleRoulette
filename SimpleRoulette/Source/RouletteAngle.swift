@@ -15,20 +15,20 @@ extension Roulette {
             accuracy.value
         }
         
-        var accuracy: AccurateDouble
+        var accuracy: AccurateDegree<Double>
         
         /// initializer with radian
         /// - Parameters:
         ///   - radian: radian. range [0, 2pi)
         public init(radian: Double) {
-            accuracy = .init(value: radian)
+            accuracy = .init(value: radian, isRadian: true)
         }
         
         /// initializer with degree.
         /// - Parameters:
         ///   - degree: degree. range [0, 360)
         public init(degree: Double) {
-            accuracy = .init(value: degree.radian())
+            accuracy = .init(value: degree.radian(), isRadian: false)
         }
     }
 }
