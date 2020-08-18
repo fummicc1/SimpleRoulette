@@ -1,7 +1,5 @@
 ![Images](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/SimpleRoulette.png)
 
-**WARNING: still an alpha version.**
-
 ## Demo
 
 ![demo](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/demo_0.0.2.gif)
@@ -13,7 +11,7 @@
 Create `Package.swift` and add dependency like below.
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.0.10")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.1.0")
 ]
 ```
 
