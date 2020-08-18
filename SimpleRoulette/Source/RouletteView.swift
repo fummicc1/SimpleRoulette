@@ -13,53 +13,46 @@ public protocol RouletteViewDelegate: AnyObject {
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType)
 }
 
-public enum RouletteMode {
-    case normal
-}
-
 public class RouletteView: UIView {
     public private(set) var isAnimating: Bool = false
     private weak var pointView: UIView?
     public weak var delegate: RouletteViewDelegate?
-    public var pointSize: CGSize = .init(width: 32, height: 32) {
+    private(set) var pointSize: CGSize = .init(width: 32, height: 32) {
         didSet {
             setNeedsLayout()
             setNeedsDisplay()
         }
     }
-    public var mode: RouletteMode = .normal
     private var radius: CGFloat {
         (bounds.height - pointSize.height) / 2
+    }
+    private var length: CGFloat {
+        min(frame.size.width, frame.size.height - pointSize.height)
     }
     private weak var verticalStackView: UIStackView?
     
     private(set) var parts: [RoulettePartType] = [] {
         didSet {
-            
-            for part in parts {
-                let layer = RoulettePartTextLayer()
-                layer.part = part
-                layer.foregroundColor = UIColor.label.cgColor
-                layer.string = part.name
-                layer.fontSize = 16
-                let startAngle = part.startRadianAngle
-                let endAngle = part.endRadianAngle
-                let meanAngle = (startAngle + endAngle) / 2
-                let centerX: CGFloat = radius / 2
-                let centerY: CGFloat = radius / 2
-                let dx: CGFloat = radius / 2 * CGFloat(cos(meanAngle))
-                let dy: CGFloat = radius / 2 * CGFloat(sin(meanAngle))
-                layer.position = .init(x: centerX + dx, y: centerY + dy)
-                layer.frame.size = layer.preferredFrameSize()
-                partContentView.layer.addSublayer(layer)
+            partViews = parts.map { RoulettePartView(frame: .init(origin: .zero, size: .init(width: length, height: length)), part: $0) }
+        }
+    }
+    
+    private var partViews: [RoulettePartView] = [] {
+        didSet {
+            if !oldValue.isEmpty {
+                oldValue.forEach { $0.removeFromSuperview() }
             }
+            partViews.forEach { self.containerView.addSubview($0) }
+            self.containerView.updateIntrinsicContentSize(CGSize(width: length, height: length))
+            layoutIfNeeded()
             setNeedsDisplay()
         }
     }
     
-    private var partContentView: PartContentView = {
-        let view = PartContentView(frame: .zero)
+    private lazy var containerView: PartContainerView = {
+        let view = PartContainerView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(view)
         return view
     }()
     
@@ -73,27 +66,30 @@ public class RouletteView: UIView {
         initializeView(pointView: createRoulettePointView())
     }
     
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        partViews.forEach { $0.updateFrame(.init(origin: .zero, size: .init(width: length, height: length))) }
+    }
+    
     private func initializeView(pointView: UIView) {
         self.pointView = pointView
-        let stackView = UIStackView(arrangedSubviews: [pointView, partContentView])
+        let stackView = UIStackView(arrangedSubviews: [pointView, containerView])
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
-        setLayout(stackView: stackView, pointView: pointView, partContentView: partContentView)
+        setLayout(stackView: stackView, pointView: pointView, containerView: containerView)
         self.verticalStackView = stackView
     }
     
-    private func setLayout(stackView: UIStackView, pointView: UIView, partContentView: PartContentView) {
+    private func setLayout(stackView: UIStackView, pointView: UIView, containerView: PartContainerView) {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         pointView.heightAnchor.constraint(equalToConstant: pointSize.height).isActive = true
         pointView.widthAnchor.constraint(equalToConstant: pointSize.width).isActive = true
-        partContentView.heightAnchor.constraint(equalTo: partContentView.widthAnchor, multiplier: 1).isActive = true
+        containerView.heightAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 1).isActive = true
     }
     
     public func setPointView(_ customView: UIView, size: CGSize) {
@@ -105,36 +101,13 @@ public class RouletteView: UIView {
         pointView = customView
         pointSize = size
         if let stackView = verticalStackView {
-            setLayout(stackView: stackView, pointView: customView, partContentView: partContentView)
+            setLayout(stackView: stackView, pointView: customView, containerView: containerView)
             setNeedsDisplay()
-        }
-    }
-    
-    public override func draw(_ rect: CGRect) {
-        let center = CGPoint(x: radius, y: radius)
-        
-        // MARK: Content
-        for part in parts {
-            let path: UIBezierPath = .init()
-            path.move(to: center)
-            path.addArc(withCenter: center, radius: radius, startAngle: CGFloat(part.startRadianAngle), endAngle: CGFloat(part.endRadianAngle), clockwise: true)
-            
-            let partLayer: RoulettePartShapeLayer = .init()
-            partLayer.path = path.cgPath
-            partLayer.lineWidth = 2
-            partLayer.fillColor = part.fillColor.cgColor
-            partLayer.strokeColor = part.strokeColor.cgColor
-            partLayer.backgroundColor = UIColor.clear.cgColor
-            partLayer.frame = partContentView.bounds
-            
-            partContentView.layer.insertSublayer(partLayer, at: 0)
         }
     }
     
     public func configure(parts: [RoulettePartType]) {
         self.parts = parts
-        setNeedsLayout()
-        setNeedsDisplay()
     }
     
     public func start(duration: Double = 2, clockwise: Bool = true, animated: Bool = true) {
@@ -148,7 +121,7 @@ public class RouletteView: UIView {
         animation.repeatCount = .greatestFiniteMagnitude
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
-        partContentView.layer.add(animation, forKey: "animation")
+        containerView.layer.add(animation, forKey: "animation")
         
         isAnimating = true
     }
@@ -171,12 +144,12 @@ public class RouletteView: UIView {
         guard let delegate = delegate else {
             fatalError("No Delegate")
         }
-        guard let presentation = partContentView.layer.presentation() else {
+        guard let presentation = containerView.layer.presentation() else {
             return
         }
         let transform = presentation.transform
-        partContentView.layer.transform = transform
-        partContentView.layer.removeAnimation(forKey: "animation")
+        containerView.layer.transform = transform
+        containerView.layer.removeAnimation(forKey: "animation")
         
         isAnimating = false
         

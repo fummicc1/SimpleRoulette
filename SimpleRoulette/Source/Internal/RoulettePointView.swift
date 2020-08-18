@@ -11,7 +11,7 @@ import UIKit
 
 class RoulettePointView: UIView {
     
-    private var size: CGSize = .zero
+    private let size: CGSize
     
     init(frame: CGRect = .zero, size: CGSize) {
         self.size = size
@@ -19,7 +19,7 @@ class RoulettePointView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError()
     }
     
     override var intrinsicContentSize: CGSize {
