@@ -78,20 +78,18 @@ public class RouletteView: UIView {
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
-        setLayout(stackView: stackView, pointView: pointView, partContainerView: containerView)
+        setLayout(stackView: stackView, pointView: pointView, containerView: containerView)
         self.verticalStackView = stackView
     }
     
-    private func setLayout(stackView: UIStackView, pointView: UIView, partContainerView: PartContainerView) {
+    private func setLayout(stackView: UIStackView, pointView: UIView, containerView: PartContainerView) {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         pointView.heightAnchor.constraint(equalToConstant: pointSize.height).isActive = true
         pointView.widthAnchor.constraint(equalToConstant: pointSize.width).isActive = true
-        partContainerView.heightAnchor.constraint(equalTo: partContainerView.widthAnchor, multiplier: 1).isActive = true
+        containerView.heightAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 1).isActive = true
     }
     
     public func setPointView(_ customView: UIView, size: CGSize) {
@@ -103,7 +101,7 @@ public class RouletteView: UIView {
         pointView = customView
         pointSize = size
         if let stackView = verticalStackView {
-            setLayout(stackView: stackView, pointView: customView, partContainerView: containerView)
+            setLayout(stackView: stackView, pointView: customView, containerView: containerView)
             setNeedsDisplay()
         }
     }

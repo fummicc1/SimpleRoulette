@@ -10,11 +10,16 @@ import Foundation
 import UIKit
 
 class RoulettePartTextLayer: CATextLayer {
-    let part: RoulettePartType
+    let part: RoulettePartType!
     
     init(part: RoulettePartType) {
         self.part = part
         super.init()
+    }
+    
+    override init(layer: Any) {
+        part = nil
+        super.init(layer: layer)
     }
     
     required init?(coder: NSCoder) {

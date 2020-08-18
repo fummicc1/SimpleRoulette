@@ -13,32 +13,12 @@ class PartContainerView: UIView {
     
     private var _intrinsicContentSize: CGSize = .zero
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        layer.strokeColor = UIColor.systemGray4.cgColor
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        layer.strokeColor = UIColor.systemGray4.cgColor
-    }
-    
-    public func updateIntrinsicContentSize(_ contentSize: CGSize = .zero) {
+    public func updateIntrinsicContentSize(_ contentSize: CGSize) {
         _intrinsicContentSize = contentSize
         invalidateIntrinsicContentSize()
     }
     
     override var intrinsicContentSize: CGSize {
         _intrinsicContentSize
-    }
-}
-
-extension PartContainerView {
-    override class var layerClass: AnyClass {
-        CAShapeLayer.self
-    }
-    
-    override var layer: CAShapeLayer {
-        super.layer as! CAShapeLayer
     }
 }

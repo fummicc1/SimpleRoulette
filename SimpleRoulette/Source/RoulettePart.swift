@@ -70,8 +70,8 @@ public enum Roulette {
             startAngle: Roulette.Angle,
             endAngle: Roulette.Angle,
             index: Int,
-            fillColor: UIColor = .black,
-            strokeColor: UIColor = .gray
+            fillColor: UIColor = .secondarySystemBackground,
+            strokeColor: UIColor = .systemGray4
         ) {
             self.name = name
             self.startAngle = startAngle
