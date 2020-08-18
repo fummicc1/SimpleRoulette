@@ -105,7 +105,6 @@ public class RouletteView: UIView {
             setNeedsDisplay()
         }
     }
-    
     public func configure(parts: [RoulettePartType]) {
         self.parts = parts
     }

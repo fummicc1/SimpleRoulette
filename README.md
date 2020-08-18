@@ -13,7 +13,7 @@
 Create `Package.swift` and add dependency like below.
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.0.7")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.0.10")
 ]
 ```
 
@@ -39,8 +39,6 @@ or you can initiate RouletteView with Storyboard.
 
 2. Next, insert parts with `RouletteView().configure`.
 
-`IMPORTANT: you have to call RouletteView().configure after viewDidLayoutSubviews which has decided view' frame, because Title's frame is calculated with view's frame in the internal library.`
-
 You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift).
 
 3. Start Roulette by `RouletteView().start`.
@@ -61,10 +59,6 @@ class IBRouletteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rouletteView.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         rouletteView.configure(parts: [
             Roulette.HugePart(name: "Title A", huge: .large, delegate: rouletteView, index: 0),
             Roulette.HugePart(name: "Title B", huge: .small, delegate: rouletteView, index: 1),
