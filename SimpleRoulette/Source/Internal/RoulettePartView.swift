@@ -18,6 +18,7 @@ class RoulettePartView: UIView {
     init(frame: CGRect, part: RoulettePartType) {
         self.part = part
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
     }
     

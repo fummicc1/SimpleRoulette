@@ -69,6 +69,7 @@ public class RouletteView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         partViews.forEach { $0.updateFrame(.init(origin: .zero, size: .init(width: length, height: length))) }
+        containerView.updateIntrinsicContentSize(CGSize(width: length, height: length))
     }
     
     private func initializeView(pointView: UIView) {
