@@ -1,5 +1,14 @@
 ![Images](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/SimpleRoulette.png)
 
+![Pod Platform](https://img.shields.io/cocoapods/p/SimpleRoulette.svg?style=flat)
+![Pod License](https://img.shields.io/cocoapods/l/SimpleRoulette.svg?style=flat)
+[![Pod Version](https://img.shields.io/cocoapods/v/SimpleRoulette.svg?style=flat)](http://cocoapods.org/pods/AMClockView)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+
+## SimpleRoulette
+SimpleRoulette is a UIView to make customizable Roulette.
+
 ## Demo
 
 ![demo](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/demo_0.0.2.gif)
@@ -8,16 +17,22 @@
 ## Install
 
 ### Swift Package Manager
-Create `Package.swift` and add dependency like below.
+Create `Package.swift` and add dependency like following.
 ```swift
 dependencies: [
     .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.1.1")
 ]
 ```
 
+## Cocoapods
+Create `Podfile` and add dependency like following.
+```ruby
+pod 'SimpleRoulette', '~> 0.1'
+```
+
 ## Carthage
-Create `Cartfile` and add dependency like below.
-```swift
+Create `Cartfile` and add dependency like following.
+```
 github "fummicc1/SimpleRoulette"
 ```
 
@@ -37,9 +52,9 @@ or you can initiate RouletteView with Storyboard.
 
 2. Next, insert parts with `RouletteView().configure`.
 
-You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/master/SimpleRoulette/Source/RoulettePart.swift).
+You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/41d77fb2a98f0112a13b1e5fa58ed096bd572142/SimpleRoulette/Sources/RoulettePart.swift#L57) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/41d77fb2a98f0112a13b1e5fa58ed096bd572142/SimpleRoulette/Sources/RoulettePart.swift#L29).
 
-3. Start Roulette by `RouletteView().start`.
+1. Start Roulette by `RouletteView().start`.
 
 You can check if Rotating via `RouletteView().isAnimating`.
 
