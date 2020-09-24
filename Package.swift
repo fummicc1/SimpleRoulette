@@ -16,6 +16,6 @@ let package = Package(
         .target(
             name: "SimpleRoulette",
             dependencies: [],
-            path: "SimpleRoulette/Source"),
+            path: "SimpleRoulette/Sources"),
     ]
 )
