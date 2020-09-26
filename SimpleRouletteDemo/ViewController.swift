@@ -58,15 +58,15 @@ class ViewController: UIViewController {
         
         view.addSubview(stackView)
         startButton.layer.cornerRadius = 16
-        startButton.layer.borderColor = UIColor.systemGray3.cgColor
+        startButton.layer.borderColor = UIColor.systemGray3.resolvedColor(with: traitCollection).cgColor
         startButton.layer.borderWidth = 2
         
         angleButton.layer.cornerRadius = 16
-        angleButton.layer.borderColor = UIColor.systemGray3.cgColor
+        angleButton.layer.borderColor = UIColor.systemGray3.resolvedColor(with: traitCollection).cgColor
         angleButton.layer.borderWidth = 2
         
         hugeButton.layer.cornerRadius = 16
-        hugeButton.layer.borderColor = UIColor.systemGray3.cgColor
+        hugeButton.layer.borderColor = UIColor.systemGray3.resolvedColor(with: traitCollection).cgColor
         hugeButton.layer.borderWidth = 2
         
         stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -48).isActive = true

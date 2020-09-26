@@ -52,9 +52,9 @@ class RoulettePartView: UIView {
         
         layer.path = path.cgPath
         layer.lineWidth = 2
-        layer.fillColor = part.fillColor.cgColor
-        layer.strokeColor = part.strokeColor.cgColor
-        layer.backgroundColor = UIColor.clear.cgColor
+        layer.fillColor = part.fillColor.resolvedColor(with: traitCollection).cgColor
+        layer.strokeColor = part.strokeColor.resolvedColor(with: traitCollection).cgColor
+        layer.backgroundColor = UIColor.clear.resolvedColor(with: traitCollection).cgColor
         layer.frame = frame
         
         self.layer.addSublayer(layer)
@@ -70,7 +70,7 @@ class RoulettePartView: UIView {
         let endAngle = part.endRadianAngle
         let meanAngle = (startAngle + endAngle) / 2
         layer.alignmentMode = .center
-        layer.foregroundColor = UIColor.label.cgColor
+        layer.foregroundColor = UIColor.label.resolvedColor(with: traitCollection).cgColor
         layer.string = part.name
         layer.fontSize = 16
         let centerX: CGFloat = radius
