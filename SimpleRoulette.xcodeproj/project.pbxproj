@@ -37,6 +37,9 @@
 		D37D9352251CB44D00607AD0 /* RouletteAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9344251CB44D00607AD0 /* RouletteAngle.swift */; };
 		D3C1267624827B470057D327 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
 		D3C1267724827B470057D327 /* SimpleRoulette.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3D26B0C2524CE32002D2516 /* RouletteViewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26B0B2524CE32002D2516 /* RouletteViewSwiftUI.swift */; };
+		D3D26B122524D008002D2516 /* RouletteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26B112524D008002D2516 /* RouletteViewModel.swift */; };
+		D3D26B182524E543002D2516 /* RouletteShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26B172524E543002D2516 /* RouletteShape.swift */; };
 		D3F0040C248F641600C81C87 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D3F0040B248F641600C81C87 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +126,9 @@
 		D37D9342251CB44D00607AD0 /* RouletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
 		D37D9343251CB44D00607AD0 /* RoulettePart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoulettePart.swift; sourceTree = "<group>"; };
 		D37D9344251CB44D00607AD0 /* RouletteAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteAngle.swift; sourceTree = "<group>"; };
+		D3D26B0B2524CE32002D2516 /* RouletteViewSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewSwiftUI.swift; sourceTree = "<group>"; };
+		D3D26B112524D008002D2516 /* RouletteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewModel.swift; sourceTree = "<group>"; };
+		D3D26B172524E543002D2516 /* RouletteShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteShape.swift; sourceTree = "<group>"; };
 		D3F0040B248F641600C81C87 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,6 +264,7 @@
 		D37D9333251CB44D00607AD0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D3D26B0A2524CE12002D2516 /* SwiftUI */,
 				D37D9334251CB44D00607AD0 /* Ex */,
 				D37D9337251CB44D00607AD0 /* Internal */,
 				D37D9342251CB44D00607AD0 /* RouletteView.swift */,
@@ -305,6 +312,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3D26B0A2524CE12002D2516 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				D3D26B0B2524CE32002D2516 /* RouletteViewSwiftUI.swift */,
+				D3D26B112524D008002D2516 /* RouletteViewModel.swift */,
+				D3D26B172524E543002D2516 /* RouletteShape.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,9 +530,12 @@
 			files = (
 				D37D9345251CB44D00607AD0 /* Double+Ex.swift in Sources */,
 				D37D934B251CB44D00607AD0 /* RoulettePartTextLayer.swift in Sources */,
+				D3D26B122524D008002D2516 /* RouletteViewModel.swift in Sources */,
 				D37D934F251CB44D00607AD0 /* AccurateDouble.swift in Sources */,
+				D3D26B182524E543002D2516 /* RouletteShape.swift in Sources */,
 				D37D934C251CB44D00607AD0 /* AccuracyType.swift in Sources */,
 				D37D9350251CB44D00607AD0 /* RouletteView.swift in Sources */,
+				D3D26B0C2524CE32002D2516 /* RouletteViewSwiftUI.swift in Sources */,
 				D37D934A251CB44D00607AD0 /* RoulettePartView.swift in Sources */,
 				D37D934E251CB44D00607AD0 /* AccurateCGFloat.swift in Sources */,
 				D37D9347251CB44D00607AD0 /* RoulettePointView.swift in Sources */,
