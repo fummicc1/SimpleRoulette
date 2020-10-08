@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D3112F7F2486B3B900F1E174 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3112F7E2486B3B900F1E174 /* Calculation.swift */; };
 		D316BBE424868C8000D1844A /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316BBE324868C8000D1844A /* OperatorTests.swift */; };
+		D326FBC9252F3FD9004BFB89 /* RouletteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D326FBC8252F3FD9004BFB89 /* RouletteConfig.swift */; };
 		D34054EA248643C2005D54FB /* RouletteAngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054E9248643C2005D54FB /* RouletteAngleTests.swift */; };
 		D35C37292480A1F70029CDA8 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
 		D35C37302480A1F70029CDA8 /* SimpleRoulette.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C37222480A1F70029CDA8 /* SimpleRoulette.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,6 +92,7 @@
 /* Begin PBXFileReference section */
 		D3112F7E2486B3B900F1E174 /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		D316BBE324868C8000D1844A /* OperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
+		D326FBC8252F3FD9004BFB89 /* RouletteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteConfig.swift; sourceTree = "<group>"; };
 		D34054E9248643C2005D54FB /* RouletteAngleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAngleTests.swift; sourceTree = "<group>"; };
 		D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleRoulette.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C37222480A1F70029CDA8 /* SimpleRoulette.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleRoulette.h; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				D3D26B0B2524CE32002D2516 /* RouletteViewSwiftUI.swift */,
 				D3D26B112524D008002D2516 /* RouletteViewModel.swift */,
 				D3D26B172524E543002D2516 /* RouletteShape.swift */,
+				D326FBC8252F3FD9004BFB89 /* RouletteConfig.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				D37D9345251CB44D00607AD0 /* Double+Ex.swift in Sources */,
 				D37D934B251CB44D00607AD0 /* RoulettePartTextLayer.swift in Sources */,
 				D3D26B122524D008002D2516 /* RouletteViewModel.swift in Sources */,
+				D326FBC9252F3FD9004BFB89 /* RouletteConfig.swift in Sources */,
 				D37D934F251CB44D00607AD0 /* AccurateDouble.swift in Sources */,
 				D3D26B182524E543002D2516 /* RouletteShape.swift in Sources */,
 				D37D934C251CB44D00607AD0 /* AccuracyType.swift in Sources */,

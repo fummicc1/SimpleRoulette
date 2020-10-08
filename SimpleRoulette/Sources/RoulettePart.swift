@@ -21,9 +21,6 @@ public protocol RoulettePartType {
     var strokeColor: UIColor { get }
 }
 
-extension RoulettePartType {
-}
-
 public enum Roulette {
     
     public struct HugePart {
@@ -97,7 +94,6 @@ extension Roulette.HugePart: RoulettePartType {
     
     func getPreviousEndAngle() -> Double {
         guard let delegate = delegate else {
-            assert(false, "No delegate.")
             return .zero
         }
         var previousEndAngle: Double = 0
@@ -118,8 +114,7 @@ extension Roulette.HugePart: RoulettePartType {
     }
     
     public var endRadianAngle: Double {
-        guard let delegate = delegate else {
-            assert(false, "No delegate.")
+        guard let delegate = delegate else { 
             return .zero
         }
         let ratio = Double(huge.area) / Double(delegate.allHuge.reduce(0, { $0 + $1.area }))
