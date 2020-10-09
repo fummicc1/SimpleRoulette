@@ -38,30 +38,32 @@ public struct RouletteViewSwiftUI: View {
     @State private var pointSize: CGSize = CGSize(width: 32, height: 32)
     
     var pointView: AnyView
+    var onDecide: (RoulettePartType) -> Void
     
     public var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Spacer()
             pointView.frame(width: pointSize.width, height: pointSize.height)
             GeometryReader { geometry in
-                ZStack(alignment: Alignment(horizontal: Alignment.horizontalStack, vertical: Alignment.verticalStack)) {
-                    content
-                    annotations
-                }
-                .aspectRatio(1, contentMode: .fit)
-                .rotationEffect(viewModel.config.angle)
-                .onAppear(perform: {
-                    radius = min(geometry.size.width / 2, geometry.size.height / 2)
-                    let midX = geometry.frame(in: .global).midX
-                    let midY = geometry.frame(in: .global).midY
-                    center = CGPoint(x: midX, y: midY)
-                    if viewModel.state.canStart {
-                        viewModel.start()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            viewModel.stop()
+                content
+                    .aspectRatio(1, contentMode: .fit)
+                    .rotationEffect(viewModel.config.angle)
+                    .onAppear(perform: {
+                        let midX = geometry.frame(in: .global).midX
+                        let midY = geometry.frame(in: .global).midY
+                        let centerValue = min(midX, midY)
+                        center = CGPoint(x: centerValue, y: centerValue)
+                        radius = centerValue
+                        if viewModel.state.canStart {
+                            viewModel.start()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                viewModel.stop()
+                            }
                         }
-                    }
-                })
+                        if case let RouletteState.stop(location) = viewModel.state {
+                            onDecide(location)
+                        }
+                    })
             }
             Spacer()
         }
@@ -72,16 +74,16 @@ public struct RouletteViewSwiftUI: View {
             let part = viewModel.parts[index]
             return AnyView(
                 Text(part.name)
-//                    .alignmentGuide(Alignment.horizontalStack, computeValue: { (dimension) -> CGFloat in
-//                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
-//                        let x: CGFloat = radius / 2 * CGFloat(cos(mean))
-//                        return dimension[HorizontalAlignment.center] + x
-//                    })
-//                    .alignmentGuide(Alignment.verticalStack, computeValue: { (dimension) -> CGFloat in
-//                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
-//                        let y: CGFloat = radius / 2 * CGFloat(sin(mean))
-//                        return dimension[VerticalAlignment.center] + y
-//                    })
+                    //                    .alignmentGuide(Alignment.horizontalStack, computeValue: { (dimension) -> CGFloat in
+                    //                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
+                    //                        let x: CGFloat = radius / 2 * CGFloat(cos(mean))
+                    //                        return dimension[HorizontalAlignment.center] + x
+                    //                    })
+                    //                    .alignmentGuide(Alignment.verticalStack, computeValue: { (dimension) -> CGFloat in
+                    //                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
+                    //                        let y: CGFloat = radius / 2 * CGFloat(sin(mean))
+                    //                        return dimension[VerticalAlignment.center] + y
+                    //                    })
                     .offset(CGSize(width: { _ -> CGFloat in
                         let mean = (part.startRadianAngle + part.endRadianAngle) / 2
                         let x: CGFloat = radius / 2 * CGFloat(cos(mean))
@@ -98,28 +100,24 @@ public struct RouletteViewSwiftUI: View {
     }
     
     private var content: some View {
-        ForEach(viewModel.parts.indices) { (index: Int) -> AnyView in
+        ForEach(viewModel.parts.indices) { (index: Int) -> RoulettePartSwiftUIView in
             let part = viewModel.parts[index]
-            return AnyView(
-                RouletteShape(
-                    startAngle: Angle(radians: part.startRadianAngle),
-                    endAngle: Angle(radians: part.endRadianAngle),
-                    radius: radius,
-                    center: center,
-                    fillColor: Color(part.fillColor),
-                    strokeColor: Color(part.strokeColor))
-                    .offset(CGSize(width: 0, height: -radius))
+            return RoulettePartSwiftUIView(
+                radius: radius,
+                center: center,
+                part: part
             )
         }
     }
     
-    public init(viewModel: RouletteViewModel, pointView: AnyView? = nil) {
+    public init(viewModel: RouletteViewModel, pointView: AnyView? = nil, onDecide: @escaping (RoulettePartType) -> Void) {
         self.viewModel = viewModel
         if let pointView = pointView {
             self.pointView = pointView
         } else {
             self.pointView = AnyView(Image(systemName: "arrowtriangle.down").font(.system(size: 32)))
         }
+        self.onDecide = onDecide
     }
 }
 
@@ -132,6 +130,6 @@ struct RouletteViewSwiftUI_Previews: PreviewProvider {
             Roulette.HugePart(name: "Test C", huge: .normal, delegate: viewModel, index: 2),
             Roulette.HugePart(name: "Test D", huge: .normal, delegate: viewModel, index: 3),
         ])
-        return RouletteViewSwiftUI(viewModel: viewModel)
+        return RouletteViewSwiftUI(viewModel: viewModel, onDecide: { _ in })
     }
 }

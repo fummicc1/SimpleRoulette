@@ -61,8 +61,10 @@ public final class RouletteViewModel: ObservableObject {
             state = .prepare
             timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
                 self.state = .run
-                self.config.angle.degrees += 1
-                self.objectWillChange.send()
+                withAnimation {
+                    self.config.angle.degrees += 1
+                    self.objectWillChange.send()
+                }
             })
         }
     }
@@ -73,11 +75,11 @@ public final class RouletteViewModel: ObservableObject {
         }
         timer.invalidate()
         var angle = CGFloat(config.angle.degrees)
-        if angle < 0 {
+        while angle < 0 {
             angle += CGFloat.pi * 2
         }
         
-        if angle > CGFloat.pi * 2 {
+        while angle > CGFloat.pi * 2 {
             angle -= CGFloat.pi * 2
         }
         

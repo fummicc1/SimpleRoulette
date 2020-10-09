@@ -37,7 +37,7 @@ public enum Roulette {
         public init(
             name: String,
             huge: Kind,
-            delegate: RoulettePartHugeDelegate,
+            delegate: RoulettePartHugeDelegate?,
             index: Int,
             fillColor: UIColor = .secondarySystemBackground,
             strokeColor: UIColor = .systemGray4

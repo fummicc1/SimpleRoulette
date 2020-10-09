@@ -28,7 +28,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             Roulette.HugePart(name: "Test C", huge: .normal, delegate: viewModel, index: 2, fillColor: UIColor.systemYellow),
             Roulette.HugePart(name: "Test D", huge: .normal, delegate: viewModel, index: 3, fillColor: UIColor.systemGreen),
         ])
-        window.rootViewController = UIHostingController(rootView: RouletteViewSwiftUI(viewModel: viewModel))
+        window.rootViewController = UIHostingController(rootView: RouletteViewSwiftUI(viewModel: viewModel, onDecide: { (part) in
+            let alert = UIAlertController(title: part.name, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            window.rootViewController?.present(alert, animated: true, completion: nil)
+        }))
         window.rootViewController?.view.frame = UIScreen.main.bounds
         window.makeKeyAndVisible()
         self.window = window

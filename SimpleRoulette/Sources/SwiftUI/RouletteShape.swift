@@ -8,20 +8,29 @@
 
 import SwiftUI
 
-struct RouletteShape: View {
-    var startAngle: Angle
-    var endAngle: Angle
+struct RouletteShape: Shape {
+    var startAngle: Angle {
+        Angle(radians: part.startRadianAngle)
+    }
+    var endAngle: Angle {
+        Angle(radians: part.endRadianAngle)
+    }
     var radius: CGFloat
     var center: CGPoint
-    var fillColor: Color
-    var strokeColor: Color
+    var fillColor: Color {
+        Color(part.fillColor)
+    }
+    var strokeColor: Color {
+        Color(part.strokeColor)
+    }
     
-    var body: some View {
+    var part: RoulettePartType
+    
+    func path(in rect: CGRect) -> Path {
         Path { path in
             path.move(to: center)
             path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false, transform: .identity)
         }
-        .fill(fillContent: fillColor, strokeContent: strokeColor)
     }
 }
 
@@ -40,6 +49,6 @@ extension Shape {
 
 struct RouletteShape_Previews: PreviewProvider {
     static var previews: some View {
-        RouletteShape(startAngle: .zero, endAngle: Angle(degrees: 120), radius: 96, center: .init(x: 100, y: 100), fillColor: .blue, strokeColor: .orange)
+        RouletteShape(radius: 96, center: .init(x: 100, y: 100), part: Roulette.HugePart(name: "Test A", huge: .normal, delegate: nil, index: 0, fillColor: .systemRed, strokeColor: .systemBlue))
     }
 }
