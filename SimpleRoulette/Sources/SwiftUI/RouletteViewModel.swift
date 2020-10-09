@@ -9,6 +9,14 @@
 import Foundation
 import SwiftUI
 
+public struct RouletteSpeed: ExpressibleByFloatLiteral {
+    var value: Double
+    
+    public init(floatLiteral value: FloatLiteralType) {
+        self.value = value
+    }
+}
+
 enum RouletteState {
     case start
     case prepare
@@ -53,23 +61,26 @@ public final class RouletteViewModel: ObservableObject {
     
     private var timer: Timer = Timer()
     
-    public init() {
+    private var onDecide: (RoulettePartType) -> Void
+    
+    public init(onDecide: @escaping (RoulettePartType) -> Void) {
+        self.onDecide = onDecide
     }
     
-    func start() {
+    public func start(speed: RouletteSpeed = 3.0) {
         if state.canStart {
             state = .prepare
             timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
                 self.state = .run
                 withAnimation {
-                    self.config.angle.degrees += 1
+                    self.config.angle.degrees += speed.value
                     self.objectWillChange.send()
                 }
             })
         }
     }
     
-    func stop() {
+    public func stop() {
         if !state.isAnimating {
             return
         }
@@ -83,16 +94,21 @@ public final class RouletteViewModel: ObservableObject {
             angle -= CGFloat.pi * 2
         }
         
+        #if SIMPLEROULETTE
         print("Angle: \(angle.degree())")
+        #endif
 
         for part in parts {
             let start = part.startRadianAngle + Double(angle)
             let end = part.endRadianAngle + Double(angle)
+            #if SIMPLEROULETTE
             print("start: \(start.degree())")
             print("end: \(end.degree())")
+            #endif
             
             if checkIfContainsPoint(from: CGFloat(start), to: CGFloat(end), point: CGFloat.pi * 1.5) {
                 state = .stop(location: part)
+                onDecide(part)
                 config.angle.degrees = 0
                 objectWillChange.send()
                 break
@@ -119,7 +135,7 @@ public final class RouletteViewModel: ObservableObject {
         return source <= point && destination > point
     }
     
-    public func updateParts(_ parts: [RoulettePartType]) {
+    public func configureParts(_ parts: [RoulettePartType]) {
         self.parts = parts
     }
 }

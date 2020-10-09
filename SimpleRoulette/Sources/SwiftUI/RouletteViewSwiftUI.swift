@@ -38,7 +38,6 @@ public struct RouletteViewSwiftUI: View {
     @State private var pointSize: CGSize = CGSize(width: 32, height: 32)
     
     var pointView: AnyView
-    var onDecide: (RoulettePartType) -> Void
     
     public var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -54,15 +53,6 @@ public struct RouletteViewSwiftUI: View {
                         let centerValue = min(midX, midY)
                         center = CGPoint(x: centerValue, y: centerValue)
                         radius = centerValue
-                        if viewModel.state.canStart {
-                            viewModel.start()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                viewModel.stop()
-                            }
-                        }
-                        if case let RouletteState.stop(location) = viewModel.state {
-                            onDecide(location)
-                        }
                     })
             }
             Spacer()
@@ -110,26 +100,25 @@ public struct RouletteViewSwiftUI: View {
         }
     }
     
-    public init(viewModel: RouletteViewModel, pointView: AnyView? = nil, onDecide: @escaping (RoulettePartType) -> Void) {
+    public init(viewModel: RouletteViewModel, pointView: AnyView? = nil) {
         self.viewModel = viewModel
         if let pointView = pointView {
             self.pointView = pointView
         } else {
             self.pointView = AnyView(Image(systemName: "arrowtriangle.down").font(.system(size: 32)))
         }
-        self.onDecide = onDecide
     }
 }
 
 struct RouletteViewSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = RouletteViewModel()
-        viewModel.updateParts([
+        let viewModel = RouletteViewModel(onDecide: { _ in })
+        viewModel.configureParts([
             Roulette.HugePart(name: "Test A", huge: .normal, delegate: viewModel, index: 0),
             Roulette.HugePart(name: "Test B", huge: .normal, delegate: viewModel, index: 1),
             Roulette.HugePart(name: "Test C", huge: .normal, delegate: viewModel, index: 2),
             Roulette.HugePart(name: "Test D", huge: .normal, delegate: viewModel, index: 3),
         ])
-        return RouletteViewSwiftUI(viewModel: viewModel, onDecide: { _ in })
+        return RouletteViewSwiftUI(viewModel: viewModel)
     }
 }

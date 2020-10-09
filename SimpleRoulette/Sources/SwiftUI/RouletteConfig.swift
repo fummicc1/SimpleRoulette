@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-public final class RouletteConfig: ObservableObject {
-    @Published public var angle: Angle = Angle(degrees: 0)
-    @Published public var duration: CGFloat = 3
+public final class RouletteConfig {
+    public var angle: Angle = Angle(degrees: 0)
+    public var duration: CGFloat = 3
 }

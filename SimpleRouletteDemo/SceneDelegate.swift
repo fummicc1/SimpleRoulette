@@ -21,20 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = scene as? UIWindowScene else { return }
         let window = UIWindow(windowScene: windowScene)
-        let viewModel = RouletteViewModel()
-        viewModel.updateParts([
-            Roulette.HugePart(name: "Test AAAAAAAAAAAAA", huge: .normal, delegate: viewModel, index: 0, fillColor: UIColor.systemRed),
-            Roulette.HugePart(name: "Test B", huge: .normal, delegate: viewModel, index: 1, fillColor: UIColor.systemBlue),
-            Roulette.HugePart(name: "Test C", huge: .normal, delegate: viewModel, index: 2, fillColor: UIColor.systemYellow),
-            Roulette.HugePart(name: "Test D", huge: .normal, delegate: viewModel, index: 3, fillColor: UIColor.systemGreen),
-        ])
-        window.rootViewController = UIHostingController(rootView: RouletteViewSwiftUI(viewModel: viewModel, onDecide: { (part) in
-            let alert = UIAlertController(title: part.name, message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            window.rootViewController?.present(alert, animated: true, completion: nil)
-        }))
+        window.rootViewController = UIStoryboard(name: "IBRouletteViewController", bundle: nil).instantiateInitialViewController()
         window.rootViewController?.view.frame = UIScreen.main.bounds
-        window.makeKeyAndVisible()
+        window.makeKeyAndVisible() 
         self.window = window
     }
 
