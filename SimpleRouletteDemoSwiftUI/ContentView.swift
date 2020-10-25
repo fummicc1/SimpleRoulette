@@ -13,9 +13,9 @@ struct ContentView: View {
     @ObservedObject var viewModel: RouletteViewModel = {
         let viewModel = RouletteViewModel(duration: 5)
         viewModel.configureParts([
-            Roulette.HugePart(name: "Title A", huge: .large, delegate: viewModel, index: 0),
-            Roulette.HugePart(name: "Title B", huge: .small, delegate: viewModel, index: 1),
-            Roulette.HugePart(name: "Title C", huge: .normal, delegate: viewModel, index: 2),
+            Roulette.HugePart(name: "Title A", huge: .large, delegate: viewModel, index: 0, fillColor: UIColor.systemTeal),
+            Roulette.HugePart(name: "Title B", huge: .small, delegate: viewModel, index: 1, fillColor: UIColor.systemBlue),
+            Roulette.HugePart(name: "Title C", huge: .normal, delegate: viewModel, index: 2, fillColor: UIColor.systemRed),
         ])
         return viewModel
     }()

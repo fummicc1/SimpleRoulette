@@ -59,6 +59,7 @@ public struct RouletteViewSwiftUI: View {
                         let y: CGFloat = radius / 2 * CGFloat(sin(mean))
                         return y
                     }(())))
+                    .font(.body)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: radius * 0.8, maxHeight: radius * 0.8)
             )
