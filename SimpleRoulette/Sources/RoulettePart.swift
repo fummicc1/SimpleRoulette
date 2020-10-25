@@ -13,9 +13,9 @@ public protocol RoulettePartType {
     var id: UUID { get }
     var name: String { get }
     var index: Int { get }
-    /// From [-1/2 pi, 3/2 pi)
+    /// From [0, 2pi)
     var startRadianAngle: Double { get }
-    /// From [-1/2 pi, 3/2 pi)
+    /// From [0, 2pi)
     var endRadianAngle: Double { get }
     var fillColor: UIColor { get }
     var strokeColor: UIColor { get }

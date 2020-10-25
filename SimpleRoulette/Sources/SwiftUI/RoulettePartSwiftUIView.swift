@@ -14,7 +14,7 @@ struct RoulettePartSwiftUIView: View {
     var radius: CGFloat
     var center: CGPoint
     var part: RoulettePartType
-
+    var currentAngle: Angle
     
     var body: some View {
         ZStack {

@@ -10,29 +10,11 @@ import UIKit
 import SwiftUI
 import SimpleRoulette
 
-class IBRouletteViewController: UIViewController {
+class ViewController: UIViewController {
     
     @IBOutlet var rouletteView: RouletteView!
     @IBOutlet var secondRouletteView: RouletteView!
     @IBOutlet var stackView: UIStackView!
-    
-    weak var viewModel: RouletteViewModel?
-    
-    lazy var rouletteSwiftUIViewController: UIViewController = {
-        let viewModel = RouletteViewModel(onDecide: { (part) in
-            let alert = UIAlertController(title: part.name, message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.view.window?.rootViewController?.present(alert, animated: true, completion: nil)
-        })
-        viewModel.configureParts([
-            Roulette.HugePart(name: "Test AAAAAAAAAAAAA", huge: .normal, delegate: viewModel, index: 0, fillColor: UIColor.systemRed),
-            Roulette.HugePart(name: "Test B", huge: .normal, delegate: viewModel, index: 1, fillColor: UIColor.systemBlue),
-            Roulette.HugePart(name: "Test C", huge: .normal, delegate: viewModel, index: 2, fillColor: UIColor.systemYellow),
-            Roulette.HugePart(name: "Test D", huge: .normal, delegate: viewModel, index: 3, fillColor: UIColor.systemGreen),
-        ])
-        self.viewModel = viewModel
-        return UIHostingController(rootView: RouletteViewSwiftUI(viewModel: viewModel))
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,16 +34,14 @@ class IBRouletteViewController: UIViewController {
             Roulette.HugePart(name: "Title I", huge: .small, delegate: secondRouletteView, index: 4),
             Roulette.HugePart(name: "Title J", huge: .normal, delegate: secondRouletteView, index: 5),
         ])
-        
-        stackView.addArrangedSubview(rouletteSwiftUIViewController.view)
 
-        viewModel?.start()
         rouletteView.start()
         secondRouletteView.start(duration: 10)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//            self.rouletteView.stop()
-//            self.secondRouletteView.stop()
-            self.viewModel?.stop()
+            self.rouletteView.stop()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.secondRouletteView.stop()
         }
     }
     
@@ -75,7 +55,7 @@ class IBRouletteViewController: UIViewController {
     }
 }
 
-extension IBRouletteViewController: RouletteViewDelegate {
+extension ViewController: RouletteViewDelegate {
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
         let alert = UIAlertController(title: "結果", message: part.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))

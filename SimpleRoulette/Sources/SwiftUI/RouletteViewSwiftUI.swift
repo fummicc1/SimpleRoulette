@@ -9,50 +9,36 @@
 import SwiftUI
 import UIKit
 
-extension Alignment {
-    enum HorizontalStackAlignment: AlignmentID {
-        static func defaultValue(in context: ViewDimensions) -> CGFloat {
-            context[HorizontalAlignment.center]
-        }
-    }
-    
-    static let horizontalStack: HorizontalAlignment = HorizontalAlignment(HorizontalStackAlignment.self)
-    
-    static let verticalStack: VerticalAlignment = VerticalAlignment(VerticalStackAlignment.self)
-    
-    enum VerticalStackAlignment: AlignmentID {
-        static func defaultValue(in context: ViewDimensions) -> CGFloat {
-            context[VerticalAlignment.center]
-        }
-        
-        
-    }
-}
-
 public struct RouletteViewSwiftUI: View {
     
     @ObservedObject var viewModel: RouletteViewModel
     
     @State private var radius: CGFloat = 0
     @State private var center: CGPoint = .zero
-    @State private var pointSize: CGSize = CGSize(width: 32, height: 32)
+    @State private var currentAngle: Angle = .init()
     
-    var pointView: AnyView
+    let pointSize: CGSize = CGSize(width: 32, height: 32)
+    let pointView: AnyView
     
     public var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+        VStack {
             Spacer()
             pointView.frame(width: pointSize.width, height: pointSize.height)
             GeometryReader { geometry in
                 content
                     .aspectRatio(1, contentMode: .fit)
-                    .rotationEffect(viewModel.config.angle)
+                    .rotationEffect(currentAngle)
                     .onAppear(perform: {
-                        let midX = geometry.frame(in: .global).midX
-                        let midY = geometry.frame(in: .global).midY
+                        let midX = geometry.frame(in: .local).midX
+                        let midY = geometry.frame(in: .local).midY
                         let centerValue = min(midX, midY)
                         center = CGPoint(x: centerValue, y: centerValue)
                         radius = centerValue
+                    })
+                    .onReceive(viewModel.$state, perform: { state in
+                        withAnimation(.easeOut(duration: viewModel.duration)) {
+                            self.currentAngle = state.angle
+                        }
                     })
             }
             Spacer()
@@ -64,16 +50,6 @@ public struct RouletteViewSwiftUI: View {
             let part = viewModel.parts[index]
             return AnyView(
                 Text(part.name)
-                    //                    .alignmentGuide(Alignment.horizontalStack, computeValue: { (dimension) -> CGFloat in
-                    //                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
-                    //                        let x: CGFloat = radius / 2 * CGFloat(cos(mean))
-                    //                        return dimension[HorizontalAlignment.center] + x
-                    //                    })
-                    //                    .alignmentGuide(Alignment.verticalStack, computeValue: { (dimension) -> CGFloat in
-                    //                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
-                    //                        let y: CGFloat = radius / 2 * CGFloat(sin(mean))
-                    //                        return dimension[VerticalAlignment.center] + y
-                    //                    })
                     .offset(CGSize(width: { _ -> CGFloat in
                         let mean = (part.startRadianAngle + part.endRadianAngle) / 2
                         let x: CGFloat = radius / 2 * CGFloat(cos(mean))
@@ -84,7 +60,7 @@ public struct RouletteViewSwiftUI: View {
                         return y
                     }(())))
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: radius * 0.8, maxHeight: radius * 0.8, alignment: Alignment(horizontal: Alignment.horizontalStack, vertical: Alignment.verticalStack))
+                    .frame(maxWidth: radius * 0.8, maxHeight: radius * 0.8)
             )
         }
     }
@@ -95,7 +71,8 @@ public struct RouletteViewSwiftUI: View {
             return RoulettePartSwiftUIView(
                 radius: radius,
                 center: center,
-                part: part
+                part: part,
+                currentAngle: viewModel.state.angle
             )
         }
     }
@@ -112,7 +89,7 @@ public struct RouletteViewSwiftUI: View {
 
 struct RouletteViewSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = RouletteViewModel(onDecide: { _ in })
+        let viewModel = RouletteViewModel(duration: 5)
         viewModel.configureParts([
             Roulette.HugePart(name: "Test A", huge: .normal, delegate: viewModel, index: 0),
             Roulette.HugePart(name: "Test B", huge: .normal, delegate: viewModel, index: 1),

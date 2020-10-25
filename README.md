@@ -4,15 +4,21 @@
 ![Pod License](https://img.shields.io/cocoapods/l/SimpleRoulette.svg?style=flat)
 [![Pod Version](https://img.shields.io/cocoapods/v/SimpleRoulette.svg?style=flat)](http://cocoapods.org/pods/SimpleRoulette)
 ![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
-![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)]
+![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)
+
+---
 
 ## SimpleRoulette
-SimpleRoulette is a UIView to make customizable Roulette.
+SimpleRoulette helps you to create customizable Roulette **both UIView and View**.
+
+---
 
 ## Demo
 
 ![demo](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/demo_0.0.2.gif)
 ![demo](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/demo_0.0.5.gif)
+
+---
 
 ## Install
 
@@ -20,23 +26,26 @@ SimpleRoulette is a UIView to make customizable Roulette.
 Create `Package.swift` and add dependency like following.
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.1.1")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.2.0")
 ]
 ```
 
-## Cocoapods
+### Cocoapods
 Create `Podfile` and add dependency like following.
 ```ruby
-pod 'SimpleRoulette', '~> 0.1'
+pod 'SimpleRoulette', '~> 0.2'
 ```
 
-## Carthage
+### Carthage
 Create `Cartfile` and add dependency like following.
 ```
 github "fummicc1/SimpleRoulette"
 ```
+---
 
 ## Usage
+
+### UIKit without Storyboard
 
 1. First, create RouletteView instance.
 
@@ -44,70 +53,43 @@ github "fummicc1/SimpleRoulette"
 let rouletteView: RouletteView = .init(frame: .zero)
 ```
 
-or you can initiate RouletteView with Storyboard.
+2. Next, insert parts with `RouletteView#.configure`.
+
+You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/41d77fb2a98f0112a13b1e5fa58ed096bd572142/SimpleRoulette/Sources/RoulettePart.swift#L57) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/41d77fb2a98f0112a13b1e5fa58ed096bd572142/SimpleRoulette/Sources/RoulettePart.swift#L29).
+
+1. Start Roulette by `RouletteView#.start`.
+
+You can check if Rotating via `RouletteView().isAnimating`.
+
+4. Stop Roulette by `RouletteView#.stop`
+
+5. Detect when stopping roulette using `RouletteViewDelegate`.
+
+### UIKit with Storyboard
+you can use RouletteView with Storyboard.
 
 ```swift
 @IBOutlet weak var rouletteView: RouletteView!
 ```
 
-2. Next, insert parts with `RouletteView().configure`.
+### SwiftUI
+Documentation is not ready. please contribute if possilble :)
 
-You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/41d77fb2a98f0112a13b1e5fa58ed096bd572142/SimpleRoulette/Sources/RoulettePart.swift#L57) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/41d77fb2a98f0112a13b1e5fa58ed096bd572142/SimpleRoulette/Sources/RoulettePart.swift#L29).
+---
 
-1. Start Roulette by `RouletteView().start`.
+## Example [WIP]
+- [UIKit without Storyboard]()
+- [UIKit with Storyboard]()
+- [SwiftUI]()
 
-You can check if Rotating via `RouletteView().isAnimating`.
 
-4. Stop Roulette by `RouletteView().stop`
+---
 
-5. Detect when stopping roulette using `RouletteViewDelegate`.
+## About RoulettePartType
+`RoulettePartType` is either `Roulette.Huge` or `Roulette.AnglePart`.
 
-- Example
-
-```swift
-class IBRouletteViewController: UIViewController {
-    
-    @IBOutlet var rouletteView: RouletteView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        rouletteView.delegate = self
-        rouletteView.configure(parts: [
-            Roulette.HugePart(name: "Title A", huge: .large, delegate: rouletteView, index: 0),
-            Roulette.HugePart(name: "Title B", huge: .small, delegate: rouletteView, index: 1),
-            Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
-            Roulette.HugePart(name: "Title D", huge: .small, delegate: rouletteView, index: 3),
-        ])
-        
-        rouletteView.start()
-
-        // can check if animating
-        // if rouletteView.isAnimating { }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.rouletteView.stop()
-        }
-    }
-}
-
-extension IBRouletteViewController: RouletteViewDelegate {
-    func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
-        let alert = UIAlertController(title: "結果", message: part.name, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-}
-```
-
-![example](https://github.com/fummicc1/SimpleRoulette/blob/master/Assets/Alert.jpeg)
-
-### Sample Code of updating RouletteView().parts.
-
-#### update with Angle
-Create `Roulette.AnglePart`.
-
-**you can choose radian or degree**
-
+### About Roulette.AnglePart
+This struct needs both degrees from start to end precisely like the following.
 
 ```swift
 rouletteView.configure(parts: [
@@ -117,9 +99,11 @@ rouletteView.configure(parts: [
 ])
 ```
 
-#### update with Huge
+If you think configuring each degree is a bit of troublesome, please use `Roulette.HugePart`.
 
-Create `Roulette.HugePart`.
+### About Roulette.HugePart
+This struct does not need both degrees from start to end precisely like the following.
+Just, specify `delegate` and `kind`.
 
 ```swift
 rouletteView.configure(parts: [
@@ -131,6 +115,13 @@ rouletteView.configure(parts: [
 
 **IMPORTANT: can not combine Huge with Angle in RouletteView().configure.**
 
+---
+
+## Contributing
+
+Pull requests, bug reports and feature requests are welcome 🚀  
+
+---
 
 ## License
 [MIT LICENSE](https://github.com/fummicc1/SimpleRoulette/blob/master/LICENSE)

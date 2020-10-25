@@ -9,7 +9,16 @@
 /* Begin PBXBuildFile section */
 		D3112F7F2486B3B900F1E174 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3112F7E2486B3B900F1E174 /* Calculation.swift */; };
 		D316BBE424868C8000D1844A /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316BBE324868C8000D1844A /* OperatorTests.swift */; };
-		D326FBC9252F3FD9004BFB89 /* RouletteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D326FBC8252F3FD9004BFB89 /* RouletteConfig.swift */; };
+		D33835A72545515200403222 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835A62545515200403222 /* AppDelegate.swift */; };
+		D33835A92545515200403222 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835A82545515200403222 /* SceneDelegate.swift */; };
+		D33835AB2545515200403222 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835AA2545515200403222 /* ViewController.swift */; };
+		D33835AE2545515200403222 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33835AC2545515200403222 /* Main.storyboard */; };
+		D33835B02545515300403222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33835AF2545515300403222 /* Assets.xcassets */; };
+		D33835B32545515300403222 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33835B12545515300403222 /* LaunchScreen.storyboard */; };
+		D33835D32545522E00403222 /* SimpleRouletteDemoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835D22545522E00403222 /* SimpleRouletteDemoSwiftUIApp.swift */; };
+		D33835D52545522E00403222 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835D42545522E00403222 /* ContentView.swift */; };
+		D33835D72545523000403222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33835D62545523000403222 /* Assets.xcassets */; };
+		D33835DA2545523000403222 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33835D92545523000403222 /* Preview Assets.xcassets */; };
 		D34054EA248643C2005D54FB /* RouletteAngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054E9248643C2005D54FB /* RouletteAngleTests.swift */; };
 		D35C37292480A1F70029CDA8 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
 		D35C37302480A1F70029CDA8 /* SimpleRoulette.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C37222480A1F70029CDA8 /* SimpleRoulette.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -20,8 +29,6 @@
 		D35C374C2480A2290029CDA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */; };
 		D35C37572480A2290029CDA8 /* SimpleRouletteDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */; };
 		D35C37622480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */; };
-		D3693B092487DEDF00CDAB41 /* IBRouletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3693B082487DEDF00CDAB41 /* IBRouletteViewController.swift */; };
-		D3693B0C2487DEF000CDAB41 /* IBRouletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3693B0B2487DEF000CDAB41 /* IBRouletteViewController.storyboard */; };
 		D37D9345251CB44D00607AD0 /* Double+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9335251CB44D00607AD0 /* Double+Ex.swift */; };
 		D37D9346251CB44D00607AD0 /* CGFloat+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9336251CB44D00607AD0 /* CGFloat+Ex.swift */; };
 		D37D9347251CB44D00607AD0 /* RoulettePointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9338251CB44D00607AD0 /* RoulettePointView.swift */; };
@@ -94,7 +101,20 @@
 /* Begin PBXFileReference section */
 		D3112F7E2486B3B900F1E174 /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		D316BBE324868C8000D1844A /* OperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
-		D326FBC8252F3FD9004BFB89 /* RouletteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteConfig.swift; sourceTree = "<group>"; };
+		D33835A42545515200403222 /* SimpleRouletteDemoStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRouletteDemoStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D33835A62545515200403222 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D33835A82545515200403222 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D33835AA2545515200403222 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D33835AD2545515200403222 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D33835AF2545515300403222 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D33835B22545515300403222 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D33835B42545515300403222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D33835D02545522E00403222 /* SimpleRouletteDemoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRouletteDemoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D33835D22545522E00403222 /* SimpleRouletteDemoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoSwiftUIApp.swift; sourceTree = "<group>"; };
+		D33835D42545522E00403222 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D33835D62545523000403222 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D33835D92545523000403222 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D33835DB2545523000403222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34054E9248643C2005D54FB /* RouletteAngleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAngleTests.swift; sourceTree = "<group>"; };
 		D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleRoulette.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C37222480A1F70029CDA8 /* SimpleRoulette.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleRoulette.h; sourceTree = "<group>"; };
@@ -114,8 +134,6 @@
 		D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoUITests.swift; sourceTree = "<group>"; };
 		D35C37632480A22A0029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3693B082487DEDF00CDAB41 /* IBRouletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBRouletteViewController.swift; sourceTree = "<group>"; };
-		D3693B0B2487DEF000CDAB41 /* IBRouletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IBRouletteViewController.storyboard; sourceTree = "<group>"; };
 		D37D9335251CB44D00607AD0 /* Double+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Ex.swift"; sourceTree = "<group>"; };
 		D37D9336251CB44D00607AD0 /* CGFloat+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ex.swift"; sourceTree = "<group>"; };
 		D37D9338251CB44D00607AD0 /* RoulettePointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoulettePointView.swift; sourceTree = "<group>"; };
@@ -139,6 +157,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D33835A12545515200403222 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D33835CD2545522E00403222 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D35C371C2480A1F70029CDA8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -179,6 +211,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D33835A52545515200403222 /* SimpleRouletteDemoStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				D33835A62545515200403222 /* AppDelegate.swift */,
+				D33835A82545515200403222 /* SceneDelegate.swift */,
+				D33835AA2545515200403222 /* ViewController.swift */,
+				D33835AC2545515200403222 /* Main.storyboard */,
+				D33835AF2545515300403222 /* Assets.xcassets */,
+				D33835B12545515300403222 /* LaunchScreen.storyboard */,
+				D33835B42545515300403222 /* Info.plist */,
+			);
+			path = SimpleRouletteDemoStoryboard;
+			sourceTree = "<group>";
+		};
+		D33835D12545522E00403222 /* SimpleRouletteDemoSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				D33835D22545522E00403222 /* SimpleRouletteDemoSwiftUIApp.swift */,
+				D33835D42545522E00403222 /* ContentView.swift */,
+				D33835D62545523000403222 /* Assets.xcassets */,
+				D33835DB2545523000403222 /* Info.plist */,
+				D33835D82545523000403222 /* Preview Content */,
+			);
+			path = SimpleRouletteDemoSwiftUI;
+			sourceTree = "<group>";
+		};
+		D33835D82545523000403222 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D33835D92545523000403222 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		D35C37152480A1F70029CDA8 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +254,8 @@
 				D35C373E2480A2260029CDA8 /* SimpleRouletteDemo */,
 				D35C37552480A2290029CDA8 /* SimpleRouletteDemoTests */,
 				D35C37602480A22A0029CDA8 /* SimpleRouletteDemoUITests */,
+				D33835A52545515200403222 /* SimpleRouletteDemoStoryboard */,
+				D33835D12545522E00403222 /* SimpleRouletteDemoSwiftUI */,
 				D35C37202480A1F70029CDA8 /* Products */,
 				D3C1267524827B470057D327 /* Frameworks */,
 			);
@@ -201,6 +269,8 @@
 				D35C373D2480A2260029CDA8 /* SimpleRouletteDemo.app */,
 				D35C37522480A2290029CDA8 /* SimpleRouletteDemoTests.xctest */,
 				D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */,
+				D33835A42545515200403222 /* SimpleRouletteDemoStoryboard.app */,
+				D33835D02545522E00403222 /* SimpleRouletteDemoSwiftUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,7 +304,6 @@
 				D35C37412480A2260029CDA8 /* SceneDelegate.swift */,
 				D35C37432480A2260029CDA8 /* ViewController.swift */,
 				D35C37482480A2290029CDA8 /* Assets.xcassets */,
-				D3693B0D2487DF5600CDAB41 /* IB */,
 				D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */,
 			);
 			path = SimpleRouletteDemo;
@@ -256,15 +325,6 @@
 				D35C37632480A22A0029CDA8 /* Info.plist */,
 			);
 			path = SimpleRouletteDemoUITests;
-			sourceTree = "<group>";
-		};
-		D3693B0D2487DF5600CDAB41 /* IB */ = {
-			isa = PBXGroup;
-			children = (
-				D3693B082487DEDF00CDAB41 /* IBRouletteViewController.swift */,
-				D3693B0B2487DEF000CDAB41 /* IBRouletteViewController.storyboard */,
-			);
-			path = IB;
 			sourceTree = "<group>";
 		};
 		D37D9333251CB44D00607AD0 /* Sources */ = {
@@ -327,7 +387,6 @@
 				D3D26B0B2524CE32002D2516 /* RouletteViewSwiftUI.swift */,
 				D3D26B112524D008002D2516 /* RouletteViewModel.swift */,
 				D3D26B172524E543002D2516 /* RouletteShape.swift */,
-				D326FBC8252F3FD9004BFB89 /* RouletteConfig.swift */,
 				D3C8F83E25303490008D7E08 /* RoulettePartSwiftUIView.swift */,
 			);
 			path = SwiftUI;
@@ -347,6 +406,40 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		D33835A32545515200403222 /* SimpleRouletteDemoStoryboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D33835B52545515300403222 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoStoryboard" */;
+			buildPhases = (
+				D33835A02545515200403222 /* Sources */,
+				D33835A12545515200403222 /* Frameworks */,
+				D33835A22545515200403222 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleRouletteDemoStoryboard;
+			productName = SimpleRouletteDemoStoryboard;
+			productReference = D33835A42545515200403222 /* SimpleRouletteDemoStoryboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D33835CF2545522E00403222 /* SimpleRouletteDemoSwiftUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D33835DC2545523000403222 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoSwiftUI" */;
+			buildPhases = (
+				D33835CC2545522E00403222 /* Sources */,
+				D33835CD2545522E00403222 /* Frameworks */,
+				D33835CE2545522E00403222 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleRouletteDemoSwiftUI;
+			productName = SimpleRouletteDemoSwiftUI;
+			productReference = D33835D02545522E00403222 /* SimpleRouletteDemoSwiftUI.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D35C371E2480A1F70029CDA8 /* SimpleRoulette */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D35C37332480A1F70029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRoulette" */;
@@ -444,10 +537,16 @@
 		D35C37162480A1F70029CDA8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Fumiya Tanaka";
 				TargetAttributes = {
+					D33835A32545515200403222 = {
+						CreatedOnToolsVersion = 12.1;
+					};
+					D33835CF2545522E00403222 = {
+						CreatedOnToolsVersion = 12.1;
+					};
 					D35C371E2480A1F70029CDA8 = {
 						CreatedOnToolsVersion = 11.5;
 						LastSwiftMigration = 1150;
@@ -486,11 +585,32 @@
 				D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */,
 				D35C37512480A2290029CDA8 /* SimpleRouletteDemoTests */,
 				D35C375C2480A2290029CDA8 /* SimpleRouletteDemoUITests */,
+				D33835A32545515200403222 /* SimpleRouletteDemoStoryboard */,
+				D33835CF2545522E00403222 /* SimpleRouletteDemoSwiftUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D33835A22545515200403222 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D33835B32545515300403222 /* LaunchScreen.storyboard in Resources */,
+				D33835B02545515300403222 /* Assets.xcassets in Resources */,
+				D33835AE2545515200403222 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D33835CE2545522E00403222 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D33835DA2545523000403222 /* Preview Assets.xcassets in Resources */,
+				D33835D72545523000403222 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D35C371D2480A1F70029CDA8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,7 +632,6 @@
 			files = (
 				D35C374C2480A2290029CDA8 /* LaunchScreen.storyboard in Resources */,
 				D35C37492480A2290029CDA8 /* Assets.xcassets in Resources */,
-				D3693B0C2487DEF000CDAB41 /* IBRouletteViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +652,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D33835A02545515200403222 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D33835AB2545515200403222 /* ViewController.swift in Sources */,
+				D33835A72545515200403222 /* AppDelegate.swift in Sources */,
+				D33835A92545515200403222 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D33835CC2545522E00403222 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D33835D52545522E00403222 /* ContentView.swift in Sources */,
+				D33835D32545522E00403222 /* SimpleRouletteDemoSwiftUIApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D35C371B2480A1F70029CDA8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -540,7 +678,6 @@
 				D37D9345251CB44D00607AD0 /* Double+Ex.swift in Sources */,
 				D37D934B251CB44D00607AD0 /* RoulettePartTextLayer.swift in Sources */,
 				D3D26B122524D008002D2516 /* RouletteViewModel.swift in Sources */,
-				D326FBC9252F3FD9004BFB89 /* RouletteConfig.swift in Sources */,
 				D3C8F845253037C4008D7E08 /* Color+Ex.swift in Sources */,
 				D37D934F251CB44D00607AD0 /* AccurateDouble.swift in Sources */,
 				D3C8F83F25303490008D7E08 /* RoulettePartSwiftUIView.swift in Sources */,
@@ -577,7 +714,6 @@
 				D35C37442480A2260029CDA8 /* ViewController.swift in Sources */,
 				D35C37402480A2260029CDA8 /* AppDelegate.swift in Sources */,
 				D35C37422480A2260029CDA8 /* SceneDelegate.swift in Sources */,
-				D3693B092487DEDF00CDAB41 /* IBRouletteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +759,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D33835AC2545515200403222 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D33835AD2545515200403222 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D33835B12545515300403222 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D33835B22545515300403222 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -634,6 +786,94 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D33835B62545515300403222 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				INFOPLIST_FILE = SimpleRouletteDemoStoryboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.sample.SimpleRouletteDemoStoryboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D33835B72545515300403222 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				INFOPLIST_FILE = SimpleRouletteDemoStoryboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.sample.SimpleRouletteDemoStoryboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D33835DD2545523000403222 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SimpleRouletteDemoSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SimpleRouletteDemoSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.sample.SimpleRouletteDemoSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D33835DE2545523000403222 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SimpleRouletteDemoSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SimpleRouletteDemoSwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.sample.SimpleRouletteDemoSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D35C37312480A1F70029CDA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -780,6 +1020,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.SimpleRoulette;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG SIMPLEROULETTE";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -861,6 +1102,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X6AD4W323;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"SIMPLEROULETTEDEMO=1",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = SimpleRouletteDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -869,6 +1115,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "SIMPLEROULETTEDEMO DEBUG";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -881,6 +1128,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X6AD4W323;
+				GCC_PREPROCESSOR_DEFINITIONS = "SIMPLEROULETTEDEMO=1";
 				INFOPLIST_FILE = SimpleRouletteDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -981,6 +1229,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D33835B52545515300403222 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoStoryboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D33835B62545515300403222 /* Debug */,
+				D33835B72545515300403222 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D33835DC2545523000403222 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D33835DD2545523000403222 /* Debug */,
+				D33835DE2545523000403222 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D35C37192480A1F70029CDA8 /* Build configuration list for PBXProject "SimpleRoulette" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

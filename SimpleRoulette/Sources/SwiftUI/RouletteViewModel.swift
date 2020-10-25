@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 public struct RouletteSpeed: ExpressibleByFloatLiteral {
     var value: Double
@@ -15,39 +16,56 @@ public struct RouletteSpeed: ExpressibleByFloatLiteral {
     public init(floatLiteral value: FloatLiteralType) {
         self.value = value
     }
+    
+    public static let normal: Self = .init(floatLiteral: 2000)
+    public static let slow: Self = .init(floatLiteral: 1000)
+    public static let fast: Self = .init(floatLiteral: 3000)
 }
 
 enum RouletteState {
     case start
-    case prepare
-    case run
-    case pause
-    case stop(location: RoulettePartType)
+    case run(angle: Angle, speed: RouletteSpeed)
+    case pause(angle: Angle, speed: RouletteSpeed)
+    case stop(location: RoulettePartType, angle: Angle)
+    
+    var angle: Angle {
+        let degrees: Double
+        if case RouletteState.run(let angle, _) = self {
+            degrees = angle.degrees
+        } else if case RouletteState.pause(let angle, _) = self {
+            degrees = angle.degrees
+        } else if case RouletteState.stop(_, let angle) = self {
+            degrees = angle.degrees
+        } else {
+            degrees = 0
+        }
+        return Angle(degrees: degrees)
+    }
+    
+    var speed: RouletteSpeed {
+        if case RouletteState.run(_, let speed) = self {
+            return speed
+        } else if case RouletteState.run(_, let speed) = self {
+            return speed
+        }
+        return .normal
+    }
     
     var canStart: Bool {
         switch self {
         case .start:
             return true
         
-        case .prepare, .run, .pause, .stop:
+        case .run, .pause, .stop:
             return false
         }
     }
     
     var isAnimating: Bool {
         switch self {
-        case .start, .prepare, .pause, .stop:
+        case .start, .pause, .stop:
             return false
         case .run:
-            return true
-        }
-    }
-    
-    var shouldsAnimate: Bool {
-        switch self {
-        case .start, .run, .pause, .stop:
-            return false
-        case .prepare:
             return true
         }
     }
@@ -56,27 +74,30 @@ enum RouletteState {
 public final class RouletteViewModel: ObservableObject {
     @Published private(set) var parts: [RoulettePartType] = []
     @Published private(set) var state: RouletteState = .start
+    @Published private(set) var duration: Double
     
-    private(set) var config: RouletteConfig = RouletteConfig()
-    
-    private var timer: Timer = Timer()
-    
-    private var onDecide: (RoulettePartType) -> Void
-    
-    public init(onDecide: @escaping (RoulettePartType) -> Void) {
-        self.onDecide = onDecide
+    private var onDecide: PassthroughSubject<RoulettePartType, Never>
+    public var onDecidePublisher: AnyPublisher<RoulettePartType, Never> {
+        onDecide.eraseToAnyPublisher()
     }
     
-    public func start(speed: RouletteSpeed = 3.0) {
+    public init(duration: Double, onDecide: PassthroughSubject<RoulettePartType, Never> = .init()) {
+        self.onDecide = onDecide
+        self.duration = duration
+        
+    }
+    
+    public func start(speed: RouletteSpeed = .normal, automaticallyStop: Bool = true) {
         if state.canStart {
-            state = .prepare
-            timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
-                self.state = .run
-                withAnimation {
-                    self.config.angle.degrees += speed.value
-                    self.objectWillChange.send()
+            var angle = Angle()
+            angle.degrees = speed.value
+            self.state = RouletteState.run(angle: angle, speed: speed)
+            self.objectWillChange.send()
+            if automaticallyStop {
+                DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                    self.stop()
                 }
-            })
+            }
         }
     }
     
@@ -84,32 +105,37 @@ public final class RouletteViewModel: ObservableObject {
         if !state.isAnimating {
             return
         }
-        timer.invalidate()
-        var angle = CGFloat(config.angle.degrees)
-        while angle < 0 {
-            angle += CGFloat.pi * 2
+        guard case let RouletteState.run(angle, _) = state else {
+            return
+        }
+        var degrees = CGFloat(angle.degrees)
+        #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
+        print("Pure Angle degreees: \(degrees)")
+        #endif
+        
+        while degrees > 360 {
+            degrees -= 360
         }
         
-        while angle > CGFloat.pi * 2 {
-            angle -= CGFloat.pi * 2
-        }
+        degrees =  360 - degrees
         
-        #if SIMPLEROULETTE
-        print("Angle: \(angle.degree())")
+        
+        #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
+        print("Processed Angle degreees: \(degrees)")
         #endif
 
         for part in parts {
-            let start = part.startRadianAngle + Double(angle)
-            let end = part.endRadianAngle + Double(angle)
-            #if SIMPLEROULETTE
-            print("start: \(start.degree())")
-            print("end: \(end.degree())")
+            let start = (part.startRadianAngle + Double.pi / 2).degree()
+            let end = (part.endRadianAngle + Double.pi / 2).degree()
+            #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
+            print("name: \(part.name)")
+            print("start: \(start)")
+            print("end: \(end)")
             #endif
             
-            if checkIfContainsPoint(from: CGFloat(start), to: CGFloat(end), point: CGFloat.pi * 1.5) {
-                state = .stop(location: part)
-                onDecide(part)
-                config.angle.degrees = 0
+            if checkIfContainsPoint(from: CGFloat(start), to: CGFloat(end), point: degrees) {
+                state = .stop(location: part, angle: angle)
+                onDecide.send(part)
                 objectWillChange.send()
                 break
             }
@@ -124,14 +150,6 @@ public final class RouletteViewModel: ObservableObject {
     }
     
     private func checkIfContainsPoint(from source: CGFloat, to destination: CGFloat, point: CGFloat) -> Bool {
-        var point = point
-        if destination - point > CGFloat.pi * 2 {
-            point += CGFloat.pi * 2
-        }
-        if point - destination > CGFloat.pi * 2 {
-            point -= CGFloat.pi * 2
-        }
-        print("Point: \(point.degree())")
         return source <= point && destination > point
     }
     
