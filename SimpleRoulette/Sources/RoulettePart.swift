@@ -13,15 +13,12 @@ public protocol RoulettePartType {
     var id: UUID { get }
     var name: String { get }
     var index: Int { get }
-    /// From [-1/2 pi, 3/2 pi)
+    /// From [0, 2pi)
     var startRadianAngle: Double { get }
-    /// From [-1/2 pi, 3/2 pi)
+    /// From [0, 2pi)
     var endRadianAngle: Double { get }
     var fillColor: UIColor { get }
     var strokeColor: UIColor { get }
-}
-
-extension RoulettePartType {
 }
 
 public enum Roulette {
@@ -40,7 +37,7 @@ public enum Roulette {
         public init(
             name: String,
             huge: Kind,
-            delegate: RoulettePartHugeDelegate,
+            delegate: RoulettePartHugeDelegate?,
             index: Int,
             fillColor: UIColor = .secondarySystemBackground,
             strokeColor: UIColor = .systemGray4
@@ -97,7 +94,6 @@ extension Roulette.HugePart: RoulettePartType {
     
     func getPreviousEndAngle() -> Double {
         guard let delegate = delegate else {
-            assert(false, "No delegate.")
             return .zero
         }
         var previousEndAngle: Double = 0
@@ -118,8 +114,7 @@ extension Roulette.HugePart: RoulettePartType {
     }
     
     public var endRadianAngle: Double {
-        guard let delegate = delegate else {
-            assert(false, "No delegate.")
+        guard let delegate = delegate else { 
             return .zero
         }
         let ratio = Double(huge.area) / Double(delegate.allHuge.reduce(0, { $0 + $1.area }))

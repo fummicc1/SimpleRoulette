@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SwiftUI
 import SimpleRoulette
 
-class IBRouletteViewController: UIViewController {
+class ViewController: UIViewController {
     
     @IBOutlet var rouletteView: RouletteView!
     @IBOutlet var secondRouletteView: RouletteView!
+    @IBOutlet var stackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +35,12 @@ class IBRouletteViewController: UIViewController {
             Roulette.HugePart(name: "Title J", huge: .normal, delegate: secondRouletteView, index: 5),
         ])
 
-//        rouletteView.start()
+        rouletteView.start()
         secondRouletteView.start(duration: 10)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//            self.rouletteView.stop()
+            self.rouletteView.stop()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             self.secondRouletteView.stop()
         }
     }
@@ -51,7 +55,7 @@ class IBRouletteViewController: UIViewController {
     }
 }
 
-extension IBRouletteViewController: RouletteViewDelegate {
+extension ViewController: RouletteViewDelegate {
     func rouletteView(_ rouletteView: RouletteView, didStopAt part: RoulettePartType) {
         let alert = UIAlertController(title: "結果", message: part.name, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))

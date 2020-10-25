@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SimpleRoulette"
-  spec.version      = "0.1.1"
+  spec.version      = "0.2.0"
   spec.summary      = "Create Roulette with ease."
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = "SimpleRoulette is a UIView to make customizable Roulette."
+  spec.description  = "SimpleRoulette helps you to create customizable Roulette both UIView and View."
 
   spec.homepage = "https://github.com/fummicc1/SimpleRoulette"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/fummicc1/SimpleRoulette.git", :tag => "v0.1.1" }
+  spec.source       = { :git => "https://github.com/fummicc1/SimpleRoulette.git", :tag => "v0.2.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
