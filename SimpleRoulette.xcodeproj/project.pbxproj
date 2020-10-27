@@ -253,6 +253,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D32F045425484AB7003C9BEA /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				D37D9338251CB44D00607AD0 /* RoulettePointView.swift */,
+				D37D9342251CB44D00607AD0 /* RouletteView.swift */,
+				D37D933C251CB44D00607AD0 /* RoulettePartTextLayer.swift */,
+				D37D933B251CB44D00607AD0 /* RoulettePartView.swift */,
+				D37D9339251CB44D00607AD0 /* PartContainerView.swift */,
+				D37D933A251CB44D00607AD0 /* RoulettePartShapeLayer.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		D32F045525484AC3003C9BEA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D37D933D251CB44D00607AD0 /* Accurate */,
+				D37D9344251CB44D00607AD0 /* RouletteAngle.swift */,
+				D37D9343251CB44D00607AD0 /* RoulettePart.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		D33835A52545515200403222 /* SimpleRouletteDemoStoryboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,12 +395,10 @@
 		D37D9333251CB44D00607AD0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D3D26B0A2524CE12002D2516 /* SwiftUI */,
+				D32F045525484AC3003C9BEA /* Common */,
 				D37D9334251CB44D00607AD0 /* Ex */,
-				D37D9337251CB44D00607AD0 /* Internal */,
-				D37D9342251CB44D00607AD0 /* RouletteView.swift */,
-				D37D9343251CB44D00607AD0 /* RoulettePart.swift */,
-				D37D9344251CB44D00607AD0 /* RouletteAngle.swift */,
+				D3D26B0A2524CE12002D2516 /* SwiftUI */,
+				D32F045425484AB7003C9BEA /* UIKit */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -390,19 +411,6 @@
 				D3C8F844253037C4008D7E08 /* Color+Ex.swift */,
 			);
 			path = Ex;
-			sourceTree = "<group>";
-		};
-		D37D9337251CB44D00607AD0 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				D37D9338251CB44D00607AD0 /* RoulettePointView.swift */,
-				D37D9339251CB44D00607AD0 /* PartContainerView.swift */,
-				D37D933A251CB44D00607AD0 /* RoulettePartShapeLayer.swift */,
-				D37D933B251CB44D00607AD0 /* RoulettePartView.swift */,
-				D37D933C251CB44D00607AD0 /* RoulettePartTextLayer.swift */,
-				D37D933D251CB44D00607AD0 /* Accurate */,
-			);
-			path = Internal;
 			sourceTree = "<group>";
 		};
 		D37D933D251CB44D00607AD0 /* Accurate */ = {
