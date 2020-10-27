@@ -18,7 +18,7 @@ SimpleRoulette helps you to create customizable Roulette, **both UIView and View
 
 |Dark Mode|Light Mode|SwiftUI|
 |---|---|---|
-|<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/demo_0.0.2.gif" width=320px>||<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/demo_0.0.5.gif" width=320px>||<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/Roulette_Ver_SwiftUI.gif" width=320px>|
+|<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/demo_0.0.2.gif" width=320px>|<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/demo_0.0.5.gif" width=320px>|<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/Roulette_Ver_SwiftUI.gif" width=320px>|
 
 ---
 
