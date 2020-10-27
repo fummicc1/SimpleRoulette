@@ -18,7 +18,9 @@ SimpleRoulette helps you to create customizable Roulette, **both UIView and View
 
 ||||
 |---|---|---|
-|![demo](https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/demo_0.0.2.gif)|![demo](https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/demo_0.0.5.gif)|![demo](https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/roulette_ver_swiftui.PNG)|
+|<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/demo_0.0.2.gif" width=30%>
+|<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/demo_0.0.5.gif" width=30%>
+|<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/roulette_ver_swiftui.PNG" width=30%>|
 
 ---
 
