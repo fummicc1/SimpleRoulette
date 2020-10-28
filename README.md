@@ -132,7 +132,7 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
 
 `RouletteViewDelegate` informs you when Roulette has been stopped.
 
-So you should set self, or something, as `RouletteViewDelegate` and add `func rouletteView(_: didStopAt: RoulettePartType)` implementation.
+So you should set self, or something, as `RouletteViewDelegate` and add `func rouletteView(_: didStopAt:)` implementation.
 
 ```swift
 rouletteView.delegate = self
