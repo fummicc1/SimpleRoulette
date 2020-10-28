@@ -74,7 +74,7 @@ You can also use `RouletteView` with UIStoryboard or Xib, though it can not visu
 @IBOutlet weak var rouletteView: RouletteView!
 ```
 
-#### Insert parts with `RouletteView#.configure`
+#### Insert parts with `RouletteView#configure`
 
 You can choose parts from [Roulette.AnglePart](https://github.com/fummicc1/SimpleRoulette/blob/2b0454ebb7d0f89b1a233f4e13ffa1cbe7f677a7/SimpleRoulette/Sources/Common/RoulettePart.swift#L54) or [Roulette.HugePart](https://github.com/fummicc1/SimpleRoulette/blob/2b0454ebb7d0f89b1a233f4e13ffa1cbe7f677a7/SimpleRoulette/Sources/Common/RoulettePart.swift#L26).
 
@@ -94,7 +94,7 @@ rouletteView.configure(parts: [
 ])
 ```
 
-#### Start Roulette by `RouletteView#.start`
+#### Start Roulette by `RouletteView#start`
 
 You can start Roulette by `start(duration: clockwise: animated:)` method.
 
@@ -148,7 +148,7 @@ extension HogeViewController: RouletteViewDelegate {
 
 ### SwiftUI
 
-Documentation is not ready. please contribute if possilble :)
+Documentation is not ready. I am looking forward to getting PullRequest :)
 
 ---
 
