@@ -150,6 +150,43 @@ extension HogeViewController: RouletteViewDelegate {
 
 Documentation is not ready. I am looking forward to getting PullRequest :)
 
+Mainly, you use `` and ``.
+
+#### RouletteViewSwiftUI
+`RouletteViewSwiftUI` confirms to `View`, so you can use it like the follwing.
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            RouletteViewSwiftUI(viewModel: RouletteViewModel(duration: 5))
+        }
+    }
+}
+```
+
+As for `RouletteViewModel`, please check [RouletteViewModel]()
+
+#### RouletteViewModel
+RouletteViewModel is ObservableObject to store the state of Roulette. In addition to it, RouletteViewModel has `onDecide: PassthroughSubject<RoulettePartType, Never>` to oberve when Roulette has stopped. About RoulettePartType, please check [About RoulettePatyType](https://github.com/fummicc1/SimpleRoulette#about-rouletteparttype)
+
+##### RouletteViewModel#init
+To initialize ROuletteViewMdel, you can no more than two params, `duration` and `onDecide`. `onDecide` can be saved.
+
+```swift
+let viewModel = RouletteViewModel(duration: 5)
+```
+
+Actually, though initializing is easy, you should configure content of Roulette by `RouletteViewModel#configureParts(_:)`.
+
+```swift
+viewModel.configureParts([
+    Roulette.HugePart(name: "Title A", huge: .large, delegate: viewModel, index: 0, fillColor: UIColor.systemTeal),
+    Roulette.HugePart(name: "Title B", huge: .small, delegate: viewModel, index: 1, fillColor: UIColor.systemBlue),
+    Roulette.HugePart(name: "Title C", huge: .normal, delegate: viewModel, index: 2, fillColor: UIColor.systemRed),
+]
+```
+
 ---
 
 ## Example [WIP]
