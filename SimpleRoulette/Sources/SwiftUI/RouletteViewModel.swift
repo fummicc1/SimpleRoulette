@@ -75,6 +75,7 @@ public final class RouletteViewModel: ObservableObject {
     @Published private(set) var parts: [RoulettePartType] = []
     @Published private(set) var state: RouletteState = .start
     @Published private(set) var duration: Double
+    @Published private(set) var mode: RouletteMode = .circular
     
     private var onDecide: PassthroughSubject<RoulettePartType, Never>
     public var onDecidePublisher: AnyPublisher<RoulettePartType, Never> {

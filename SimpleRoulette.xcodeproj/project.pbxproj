@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D3112F7F2486B3B900F1E174 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3112F7E2486B3B900F1E174 /* Calculation.swift */; };
 		D316BBE424868C8000D1844A /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316BBE324868C8000D1844A /* OperatorTests.swift */; };
+		D31CD731259C950B0033FB38 /* RouletteMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31CD730259C950B0033FB38 /* RouletteMode.swift */; };
 		D33835A72545515200403222 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835A62545515200403222 /* AppDelegate.swift */; };
 		D33835A92545515200403222 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835A82545515200403222 /* SceneDelegate.swift */; };
 		D33835AB2545515200403222 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835AA2545515200403222 /* ViewController.swift */; };
@@ -141,6 +142,7 @@
 /* Begin PBXFileReference section */
 		D3112F7E2486B3B900F1E174 /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		D316BBE324868C8000D1844A /* OperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
+		D31CD730259C950B0033FB38 /* RouletteMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteMode.swift; sourceTree = "<group>"; };
 		D33835A42545515200403222 /* SimpleRouletteDemoStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRouletteDemoStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33835A62545515200403222 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D33835A82545515200403222 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				D37D933D251CB44D00607AD0 /* Accurate */,
 				D37D9344251CB44D00607AD0 /* RouletteAngle.swift */,
 				D37D9343251CB44D00607AD0 /* RoulettePart.swift */,
+				D31CD730259C950B0033FB38 /* RouletteMode.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 				D37D934E251CB44D00607AD0 /* AccurateCGFloat.swift in Sources */,
 				D37D9347251CB44D00607AD0 /* RoulettePointView.swift in Sources */,
 				D37D9349251CB44D00607AD0 /* RoulettePartShapeLayer.swift in Sources */,
+				D31CD731259C950B0033FB38 /* RouletteMode.swift in Sources */,
 				D37D9351251CB44D00607AD0 /* RoulettePart.swift in Sources */,
 				D37D9346251CB44D00607AD0 /* CGFloat+Ex.swift in Sources */,
 				D37D9352251CB44D00607AD0 /* RouletteAngle.swift in Sources */,
