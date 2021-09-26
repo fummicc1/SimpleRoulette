@@ -51,11 +51,11 @@ public struct RouletteViewSwiftUI: View {
             return AnyView(
                 Text(part.name)
                     .offset(CGSize(width: { _ -> CGFloat in
-                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
+                        let mean = (part.startRadian + part.endRadian) / 2
                         let x: CGFloat = radius / 2 * CGFloat(cos(mean))
                         return x
                     }(()), height: { _ -> CGFloat in
-                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
+                        let mean = (part.startRadian + part.endRadian) / 2
                         let y: CGFloat = radius / 2 * CGFloat(sin(mean))
                         return y
                     }(())))
@@ -91,12 +91,24 @@ public struct RouletteViewSwiftUI: View {
 struct RouletteViewSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = RouletteViewModel(duration: 5)
-        viewModel.configureParts([
-            Roulette.HugePart(name: "Test A", huge: .normal, delegate: viewModel, index: 0),
-            Roulette.HugePart(name: "Test B", huge: .normal, delegate: viewModel, index: 1),
-            Roulette.HugePart(name: "Test C", huge: .normal, delegate: viewModel, index: 2),
-            Roulette.HugePart(name: "Test D", huge: .normal, delegate: viewModel, index: 3),
-        ])
+        viewModel.configureWithHuge(
+            RouletteHugeConfigurable(
+                name: "Test A",
+                huge: .normal
+            ),
+            RouletteHugeConfigurable(
+                name: "Test B",
+                huge: .normal
+            ),
+            RouletteHugeConfigurable(
+                name: "Test C",
+                huge: .normal
+            ),
+            RouletteHugeConfigurable(
+                name: "Test D",
+                huge: .normal
+            )
+        )
         return RouletteViewSwiftUI(viewModel: viewModel)
     }
 }

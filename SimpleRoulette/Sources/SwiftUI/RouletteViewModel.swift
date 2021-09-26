@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-public struct RouletteSpeed: ExpressibleByFloatLiteral {
+public struct RouletteSpeed: ExpressibleByFloatLiteral, Hashable {
     var value: Double
     
     public init(floatLiteral value: FloatLiteralType) {
@@ -22,7 +22,42 @@ public struct RouletteSpeed: ExpressibleByFloatLiteral {
     public static let fast: Self = .init(floatLiteral: 3000)
 }
 
-enum RouletteState {
+enum RouletteState: Hashable {
+    static func == (lhs: RouletteState, rhs: RouletteState) -> Bool {
+        switch lhs {
+        case .start:
+            if case RouletteState.start = rhs {
+                return true
+            }
+            return false
+            
+        case .run(let angle, let speed):
+            if case let RouletteState.run(rightAngle, rightSpeed) = rhs {
+                if angle == rightAngle && speed == rightSpeed {
+                    return true
+                }
+            }
+            return false
+            
+        case .pause(let angle, let speed):
+            if case let RouletteState.pause(rightAngle, rightSpeed) = rhs {
+                if angle == rightAngle && speed == rightSpeed {
+                    return true
+                }
+            }
+            return false
+            
+        case .stop(let location, let angle):
+            if case let RouletteState.stop(rightLocation, rightAngle) = rhs {
+                if angle == rightAngle && location.id == rightLocation.id {
+                    return true
+                }
+            }
+            return false
+            
+        }
+    }
+    
     case start
     case run(angle: Angle, speed: RouletteSpeed)
     case pause(angle: Angle, speed: RouletteSpeed)
@@ -45,18 +80,16 @@ enum RouletteState {
     var speed: RouletteSpeed {
         if case RouletteState.run(_, let speed) = self {
             return speed
-        } else if case RouletteState.run(_, let speed) = self {
-            return speed
         }
         return .normal
     }
     
     var canStart: Bool {
         switch self {
-        case .start:
+        case .start, .stop:
             return true
         
-        case .run, .pause, .stop:
+        case .run, .pause:
             return false
         }
     }
@@ -67,6 +100,26 @@ enum RouletteState {
             return false
         case .run:
             return true
+        }
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        switch self {
+        case .start:
+            break
+            
+        case .run(let angle, let speed):
+            hasher.combine(angle)
+            hasher.combine(speed)
+            
+        case .pause(let angle, let speed):
+            hasher.combine(angle)
+            hasher.combine(speed)
+            
+        case .stop(let location, let angle):
+            hasher.combine(location.id)
+            hasher.combine(angle)
+            
         }
     }
 }
@@ -84,7 +137,6 @@ public final class RouletteViewModel: ObservableObject {
     public init(duration: Double, onDecide: PassthroughSubject<RoulettePartType, Never> = .init()) {
         self.onDecide = onDecide
         self.duration = duration
-        
     }
     
     public func start(speed: RouletteSpeed = .normal, automaticallyStop: Bool = true) {
@@ -92,7 +144,6 @@ public final class RouletteViewModel: ObservableObject {
             var angle = Angle()
             angle.degrees = speed.value
             self.state = RouletteState.run(angle: angle, speed: speed)
-            self.objectWillChange.send()
             if automaticallyStop {
                 DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                     self.stop()
@@ -125,8 +176,8 @@ public final class RouletteViewModel: ObservableObject {
         #endif
 
         for part in parts {
-            let start = (part.startRadianAngle + Double.pi / 2).degree()
-            let end = (part.endRadianAngle + Double.pi / 2).degree()
+            let start = (part.startRadian + Double.pi / 2).degree()
+            let end = (part.endRadian + Double.pi / 2).degree()
             #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
             print("name: \(part.name)")
             print("start: \(start)")
@@ -153,8 +204,30 @@ public final class RouletteViewModel: ObservableObject {
         return source <= point && destination > point
     }
     
-    public func configureParts(_ parts: [RoulettePartType]) {
-        self.parts = parts
+    public func configureWithHuge(_ params: RouletteHugeConfigurable...) {
+        self.parts = params.enumerated().map({ (index, configurable) in
+            Roulette.HugePart(
+                name: configurable.name,
+                huge: configurable.huge,
+                delegate: self,
+                index: index,
+                fillColor: configurable.fill,
+                strokeColor: configurable.stroke
+            )
+        })
+    }
+    
+    public func configureWithAngle(_ parts: [RouletteAngleConfigurable]) {
+        self.parts = parts.enumerated().map({ (index, configurable) in
+            Roulette.AnglePart(
+                name: configurable.name,
+                startAngle: configurable.start,
+                endAngle: configurable.end,
+                index: index,
+                fillColor: configurable.fill,
+                strokeColor: configurable.stroke
+            )
+        })
     }
 }
 
@@ -166,4 +239,45 @@ extension RouletteViewModel: RoulettePartHugeDelegate {
     public var allHuge: [Roulette.HugePart.Kind] {
         parts.compactMap { $0 as? Roulette.HugePart }.map { $0.huge }
     }
+}
+
+public struct RouletteHugeConfigurable {
+    public init(
+        name: String,
+        huge: Roulette.HugePart.Kind,
+        fill: Color = UIColor.secondarySystemBackground.color,
+        stroke: Color = UIColor.systemGray4.color
+    ) {
+        self.name = name
+        self.huge = huge
+        self.fill = fill
+        self.stroke = stroke
+    }
+    
+    let name: String
+    let huge: Roulette.HugePart.Kind
+    let fill: Color
+    let stroke: Color
+}
+
+public struct RouletteAngleConfigurable {
+    public init(
+        name: String,
+        start: Roulette.Angle,
+        end: Roulette.Angle,
+        fill: Color = UIColor.secondarySystemBackground.color,
+        stroke: Color = UIColor.systemGray4.color
+    ) {
+        self.name = name
+        self.start = start
+        self.end = end
+        self.fill = fill
+        self.stroke = stroke
+    }
+    
+    let name: String
+    let start: Roulette.Angle
+    let end: Roulette.Angle
+    let fill: Color
+    let stroke: Color
 }

@@ -19,15 +19,15 @@ struct RoulettePartSwiftUIView: View {
     var body: some View {
         ZStack {
             RouletteShape(radius: radius, center: center, part: part)
-                .fill(fillContent: part.fillColor.color(), strokeContent: part.strokeColor.color())
+                .fill(fillContent: part.fillColor, strokeContent: part.strokeColor)
             Text(part.name)
                 .offset(
                     CGSize(width: { () -> CGFloat in
-                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
+                        let mean = (part.startRadian + part.endRadian) / 2
                         let x: CGFloat = radius / 1.5 * CGFloat(cos(mean))
                         return x
                     }(), height: { () -> CGFloat in
-                        let mean = (part.startRadianAngle + part.endRadianAngle) / 2
+                        let mean = (part.startRadian + part.endRadian) / 2
                         let y: CGFloat = radius / 1.5 * CGFloat(sin(mean))
                         return y
                     }())

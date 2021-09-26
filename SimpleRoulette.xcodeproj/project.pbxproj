@@ -9,46 +9,23 @@
 /* Begin PBXBuildFile section */
 		D3112F7F2486B3B900F1E174 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3112F7E2486B3B900F1E174 /* Calculation.swift */; };
 		D316BBE424868C8000D1844A /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316BBE324868C8000D1844A /* OperatorTests.swift */; };
-		D33835A72545515200403222 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835A62545515200403222 /* AppDelegate.swift */; };
-		D33835A92545515200403222 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835A82545515200403222 /* SceneDelegate.swift */; };
-		D33835AB2545515200403222 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835AA2545515200403222 /* ViewController.swift */; };
-		D33835AE2545515200403222 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33835AC2545515200403222 /* Main.storyboard */; };
-		D33835B02545515300403222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33835AF2545515300403222 /* Assets.xcassets */; };
-		D33835B32545515300403222 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33835B12545515300403222 /* LaunchScreen.storyboard */; };
 		D33835D32545522E00403222 /* SimpleRouletteDemoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835D22545522E00403222 /* SimpleRouletteDemoSwiftUIApp.swift */; };
 		D33835D52545522E00403222 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33835D42545522E00403222 /* ContentView.swift */; };
 		D33835D72545523000403222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33835D62545523000403222 /* Assets.xcassets */; };
 		D33835DA2545523000403222 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33835D92545523000403222 /* Preview Assets.xcassets */; };
-		D33835E525455DFC00403222 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
-		D33835E625455DFC00403222 /* SimpleRoulette.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D33835EF25455E0000403222 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
 		D33835F025455E0000403222 /* SimpleRoulette.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D34054EA248643C2005D54FB /* RouletteAngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34054E9248643C2005D54FB /* RouletteAngleTests.swift */; };
 		D35C37292480A1F70029CDA8 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
 		D35C37302480A1F70029CDA8 /* SimpleRoulette.h in Headers */ = {isa = PBXBuildFile; fileRef = D35C37222480A1F70029CDA8 /* SimpleRoulette.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D35C37402480A2260029CDA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C373F2480A2260029CDA8 /* AppDelegate.swift */; };
-		D35C37422480A2260029CDA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37412480A2260029CDA8 /* SceneDelegate.swift */; };
-		D35C37442480A2260029CDA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37432480A2260029CDA8 /* ViewController.swift */; };
-		D35C37492480A2290029CDA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35C37482480A2290029CDA8 /* Assets.xcassets */; };
-		D35C374C2480A2290029CDA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */; };
-		D35C37572480A2290029CDA8 /* SimpleRouletteDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */; };
-		D35C37622480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */; };
 		D37D9345251CB44D00607AD0 /* Double+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9335251CB44D00607AD0 /* Double+Ex.swift */; };
 		D37D9346251CB44D00607AD0 /* CGFloat+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9336251CB44D00607AD0 /* CGFloat+Ex.swift */; };
-		D37D9347251CB44D00607AD0 /* RoulettePointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9338251CB44D00607AD0 /* RoulettePointView.swift */; };
-		D37D9348251CB44D00607AD0 /* PartContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9339251CB44D00607AD0 /* PartContainerView.swift */; };
-		D37D9349251CB44D00607AD0 /* RoulettePartShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D933A251CB44D00607AD0 /* RoulettePartShapeLayer.swift */; };
-		D37D934A251CB44D00607AD0 /* RoulettePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D933B251CB44D00607AD0 /* RoulettePartView.swift */; };
-		D37D934B251CB44D00607AD0 /* RoulettePartTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D933C251CB44D00607AD0 /* RoulettePartTextLayer.swift */; };
 		D37D934C251CB44D00607AD0 /* AccuracyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D933E251CB44D00607AD0 /* AccuracyType.swift */; };
 		D37D934D251CB44D00607AD0 /* AccurateDegree.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D933F251CB44D00607AD0 /* AccurateDegree.swift */; };
 		D37D934E251CB44D00607AD0 /* AccurateCGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9340251CB44D00607AD0 /* AccurateCGFloat.swift */; };
 		D37D934F251CB44D00607AD0 /* AccurateDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9341251CB44D00607AD0 /* AccurateDouble.swift */; };
-		D37D9350251CB44D00607AD0 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9342251CB44D00607AD0 /* RouletteView.swift */; };
 		D37D9351251CB44D00607AD0 /* RoulettePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9343251CB44D00607AD0 /* RoulettePart.swift */; };
 		D37D9352251CB44D00607AD0 /* RouletteAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9344251CB44D00607AD0 /* RouletteAngle.swift */; };
-		D3C1267624827B470057D327 /* SimpleRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; };
-		D3C1267724827B470057D327 /* SimpleRoulette.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3C8F83F25303490008D7E08 /* RoulettePartSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C8F83E25303490008D7E08 /* RoulettePartSwiftUIView.swift */; };
 		D3C8F845253037C4008D7E08 /* Color+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C8F844253037C4008D7E08 /* Color+Ex.swift */; };
 		D3D26B0C2524CE32002D2516 /* RouletteViewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26B0B2524CE32002D2516 /* RouletteViewSwiftUI.swift */; };
@@ -58,13 +35,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D33835E725455DFC00403222 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35C37162480A1F70029CDA8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D35C371E2480A1F70029CDA8;
-			remoteInfo = SimpleRoulette;
-		};
 		D33835F125455E0000403222 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D35C37162480A1F70029CDA8 /* Project object */;
@@ -79,41 +49,9 @@
 			remoteGlobalIDString = D35C371E2480A1F70029CDA8;
 			remoteInfo = SimpleRoulette;
 		};
-		D35C37532480A2290029CDA8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35C37162480A1F70029CDA8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D35C373C2480A2260029CDA8;
-			remoteInfo = SimpleRouletteDemo;
-		};
-		D35C375E2480A22A0029CDA8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35C37162480A1F70029CDA8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D35C373C2480A2260029CDA8;
-			remoteInfo = SimpleRouletteDemo;
-		};
-		D3C1267824827B470057D327 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35C37162480A1F70029CDA8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D35C371E2480A1F70029CDA8;
-			remoteInfo = SimpleRoulette;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D33835E925455DFC00403222 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D33835E625455DFC00403222 /* SimpleRoulette.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D33835F325455E0000403222 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,30 +63,11 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D3C1267A24827B470057D327 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D3C1267724827B470057D327 /* SimpleRoulette.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D3112F7E2486B3B900F1E174 /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		D316BBE324868C8000D1844A /* OperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
-		D33835A42545515200403222 /* SimpleRouletteDemoStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRouletteDemoStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D33835A62545515200403222 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D33835A82545515200403222 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D33835AA2545515200403222 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D33835AD2545515200403222 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D33835AF2545515300403222 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D33835B22545515300403222 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D33835B42545515300403222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D33835D02545522E00403222 /* SimpleRouletteDemoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRouletteDemoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33835D22545522E00403222 /* SimpleRouletteDemoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoSwiftUIApp.swift; sourceTree = "<group>"; };
 		D33835D42545522E00403222 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,31 +80,12 @@
 		D35C37232480A1F70029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D35C37282480A1F70029CDA8 /* SimpleRouletteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C372F2480A1F70029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D35C373D2480A2260029CDA8 /* SimpleRouletteDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRouletteDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D35C373F2480A2260029CDA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D35C37412480A2260029CDA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D35C37432480A2260029CDA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D35C37482480A2290029CDA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D35C374B2480A2290029CDA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D35C374D2480A2290029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D35C37522480A2290029CDA8 /* SimpleRouletteDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoTests.swift; sourceTree = "<group>"; };
-		D35C37582480A2290029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleRouletteDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRouletteDemoUITests.swift; sourceTree = "<group>"; };
-		D35C37632480A22A0029CDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D37D9335251CB44D00607AD0 /* Double+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Ex.swift"; sourceTree = "<group>"; };
 		D37D9336251CB44D00607AD0 /* CGFloat+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ex.swift"; sourceTree = "<group>"; };
-		D37D9338251CB44D00607AD0 /* RoulettePointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoulettePointView.swift; sourceTree = "<group>"; };
-		D37D9339251CB44D00607AD0 /* PartContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartContainerView.swift; sourceTree = "<group>"; };
-		D37D933A251CB44D00607AD0 /* RoulettePartShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoulettePartShapeLayer.swift; sourceTree = "<group>"; };
-		D37D933B251CB44D00607AD0 /* RoulettePartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoulettePartView.swift; sourceTree = "<group>"; };
-		D37D933C251CB44D00607AD0 /* RoulettePartTextLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoulettePartTextLayer.swift; sourceTree = "<group>"; };
 		D37D933E251CB44D00607AD0 /* AccuracyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccuracyType.swift; sourceTree = "<group>"; };
 		D37D933F251CB44D00607AD0 /* AccurateDegree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccurateDegree.swift; sourceTree = "<group>"; };
 		D37D9340251CB44D00607AD0 /* AccurateCGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccurateCGFloat.swift; sourceTree = "<group>"; };
 		D37D9341251CB44D00607AD0 /* AccurateDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccurateDouble.swift; sourceTree = "<group>"; };
-		D37D9342251CB44D00607AD0 /* RouletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
 		D37D9343251CB44D00607AD0 /* RoulettePart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoulettePart.swift; sourceTree = "<group>"; };
 		D37D9344251CB44D00607AD0 /* RouletteAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteAngle.swift; sourceTree = "<group>"; };
 		D3C8F83E25303490008D7E08 /* RoulettePartSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePartSwiftUIView.swift; sourceTree = "<group>"; };
@@ -197,14 +97,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D33835A12545515200403222 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D33835E525455DFC00403222 /* SimpleRoulette.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D33835CD2545522E00403222 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,44 +120,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D35C373A2480A2260029CDA8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D3C1267624827B470057D327 /* SimpleRoulette.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35C374F2480A2290029CDA8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35C375A2480A2290029CDA8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D32F045425484AB7003C9BEA /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				D37D9338251CB44D00607AD0 /* RoulettePointView.swift */,
-				D37D9342251CB44D00607AD0 /* RouletteView.swift */,
-				D37D933C251CB44D00607AD0 /* RoulettePartTextLayer.swift */,
-				D37D933B251CB44D00607AD0 /* RoulettePartView.swift */,
-				D37D9339251CB44D00607AD0 /* PartContainerView.swift */,
-				D37D933A251CB44D00607AD0 /* RoulettePartShapeLayer.swift */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
 		D32F045525484AC3003C9BEA /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,20 +131,6 @@
 				D37D9343251CB44D00607AD0 /* RoulettePart.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		D33835A52545515200403222 /* SimpleRouletteDemoStoryboard */ = {
-			isa = PBXGroup;
-			children = (
-				D33835A62545515200403222 /* AppDelegate.swift */,
-				D33835A82545515200403222 /* SceneDelegate.swift */,
-				D33835AA2545515200403222 /* ViewController.swift */,
-				D33835AC2545515200403222 /* Main.storyboard */,
-				D33835AF2545515300403222 /* Assets.xcassets */,
-				D33835B12545515300403222 /* LaunchScreen.storyboard */,
-				D33835B42545515300403222 /* Info.plist */,
-			);
-			path = SimpleRouletteDemoStoryboard;
 			sourceTree = "<group>";
 		};
 		D33835D12545522E00403222 /* SimpleRouletteDemoSwiftUI */ = {
@@ -316,10 +159,6 @@
 				D3F0040B248F641600C81C87 /* README.md */,
 				D35C37212480A1F70029CDA8 /* SimpleRoulette */,
 				D35C372C2480A1F70029CDA8 /* SimpleRouletteTests */,
-				D35C373E2480A2260029CDA8 /* SimpleRouletteDemo */,
-				D35C37552480A2290029CDA8 /* SimpleRouletteDemoTests */,
-				D35C37602480A22A0029CDA8 /* SimpleRouletteDemoUITests */,
-				D33835A52545515200403222 /* SimpleRouletteDemoStoryboard */,
 				D33835D12545522E00403222 /* SimpleRouletteDemoSwiftUI */,
 				D35C37202480A1F70029CDA8 /* Products */,
 				D3C1267524827B470057D327 /* Frameworks */,
@@ -331,10 +170,6 @@
 			children = (
 				D35C371F2480A1F70029CDA8 /* SimpleRoulette.framework */,
 				D35C37282480A1F70029CDA8 /* SimpleRouletteTests.xctest */,
-				D35C373D2480A2260029CDA8 /* SimpleRouletteDemo.app */,
-				D35C37522480A2290029CDA8 /* SimpleRouletteDemoTests.xctest */,
-				D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */,
-				D33835A42545515200403222 /* SimpleRouletteDemoStoryboard.app */,
 				D33835D02545522E00403222 /* SimpleRouletteDemoSwiftUI.app */,
 			);
 			name = Products;
@@ -361,44 +196,12 @@
 			path = SimpleRouletteTests;
 			sourceTree = "<group>";
 		};
-		D35C373E2480A2260029CDA8 /* SimpleRouletteDemo */ = {
-			isa = PBXGroup;
-			children = (
-				D35C374D2480A2290029CDA8 /* Info.plist */,
-				D35C373F2480A2260029CDA8 /* AppDelegate.swift */,
-				D35C37412480A2260029CDA8 /* SceneDelegate.swift */,
-				D35C37432480A2260029CDA8 /* ViewController.swift */,
-				D35C37482480A2290029CDA8 /* Assets.xcassets */,
-				D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */,
-			);
-			path = SimpleRouletteDemo;
-			sourceTree = "<group>";
-		};
-		D35C37552480A2290029CDA8 /* SimpleRouletteDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				D35C37562480A2290029CDA8 /* SimpleRouletteDemoTests.swift */,
-				D35C37582480A2290029CDA8 /* Info.plist */,
-			);
-			path = SimpleRouletteDemoTests;
-			sourceTree = "<group>";
-		};
-		D35C37602480A22A0029CDA8 /* SimpleRouletteDemoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D35C37612480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift */,
-				D35C37632480A22A0029CDA8 /* Info.plist */,
-			);
-			path = SimpleRouletteDemoUITests;
-			sourceTree = "<group>";
-		};
 		D37D9333251CB44D00607AD0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				D32F045525484AC3003C9BEA /* Common */,
 				D37D9334251CB44D00607AD0 /* Ex */,
 				D3D26B0A2524CE12002D2516 /* SwiftUI */,
-				D32F045425484AB7003C9BEA /* UIKit */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -456,25 +259,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D33835A32545515200403222 /* SimpleRouletteDemoStoryboard */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D33835B52545515300403222 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoStoryboard" */;
-			buildPhases = (
-				D33835A02545515200403222 /* Sources */,
-				D33835A12545515200403222 /* Frameworks */,
-				D33835A22545515200403222 /* Resources */,
-				D33835E925455DFC00403222 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D33835E825455DFC00403222 /* PBXTargetDependency */,
-			);
-			name = SimpleRouletteDemoStoryboard;
-			productName = SimpleRouletteDemoStoryboard;
-			productReference = D33835A42545515200403222 /* SimpleRouletteDemoStoryboard.app */;
-			productType = "com.apple.product-type.application";
-		};
 		D33835CF2545522E00403222 /* SimpleRouletteDemoSwiftUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D33835DC2545523000403222 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoSwiftUI" */;
@@ -530,61 +314,6 @@
 			productReference = D35C37282480A1F70029CDA8 /* SimpleRouletteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D35C37642480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemo" */;
-			buildPhases = (
-				D35C37392480A2260029CDA8 /* Sources */,
-				D35C373A2480A2260029CDA8 /* Frameworks */,
-				D35C373B2480A2260029CDA8 /* Resources */,
-				D3C1267A24827B470057D327 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D3C1267924827B470057D327 /* PBXTargetDependency */,
-			);
-			name = SimpleRouletteDemo;
-			productName = SimpleRouletteDemo;
-			productReference = D35C373D2480A2260029CDA8 /* SimpleRouletteDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
-		D35C37512480A2290029CDA8 /* SimpleRouletteDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D35C37672480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoTests" */;
-			buildPhases = (
-				D35C374E2480A2290029CDA8 /* Sources */,
-				D35C374F2480A2290029CDA8 /* Frameworks */,
-				D35C37502480A2290029CDA8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D35C37542480A2290029CDA8 /* PBXTargetDependency */,
-			);
-			name = SimpleRouletteDemoTests;
-			productName = SimpleRouletteDemoTests;
-			productReference = D35C37522480A2290029CDA8 /* SimpleRouletteDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D35C375C2480A2290029CDA8 /* SimpleRouletteDemoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D35C376A2480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoUITests" */;
-			buildPhases = (
-				D35C37592480A2290029CDA8 /* Sources */,
-				D35C375A2480A2290029CDA8 /* Frameworks */,
-				D35C375B2480A2290029CDA8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D35C375F2480A22A0029CDA8 /* PBXTargetDependency */,
-			);
-			name = SimpleRouletteDemoUITests;
-			productName = SimpleRouletteDemoUITests;
-			productReference = D35C375D2480A22A0029CDA8 /* SimpleRouletteDemoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -595,9 +324,6 @@
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Fumiya Tanaka";
 				TargetAttributes = {
-					D33835A32545515200403222 = {
-						CreatedOnToolsVersion = 12.1;
-					};
 					D33835CF2545522E00403222 = {
 						CreatedOnToolsVersion = 12.1;
 					};
@@ -607,17 +333,6 @@
 					};
 					D35C37272480A1F70029CDA8 = {
 						CreatedOnToolsVersion = 11.5;
-					};
-					D35C373C2480A2260029CDA8 = {
-						CreatedOnToolsVersion = 11.5;
-					};
-					D35C37512480A2290029CDA8 = {
-						CreatedOnToolsVersion = 11.5;
-						TestTargetID = D35C373C2480A2260029CDA8;
-					};
-					D35C375C2480A2290029CDA8 = {
-						CreatedOnToolsVersion = 11.5;
-						TestTargetID = D35C373C2480A2260029CDA8;
 					};
 				};
 			};
@@ -636,26 +351,12 @@
 			targets = (
 				D35C371E2480A1F70029CDA8 /* SimpleRoulette */,
 				D35C37272480A1F70029CDA8 /* SimpleRouletteTests */,
-				D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */,
-				D35C37512480A2290029CDA8 /* SimpleRouletteDemoTests */,
-				D35C375C2480A2290029CDA8 /* SimpleRouletteDemoUITests */,
-				D33835A32545515200403222 /* SimpleRouletteDemoStoryboard */,
 				D33835CF2545522E00403222 /* SimpleRouletteDemoSwiftUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D33835A22545515200403222 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D33835B32545515300403222 /* LaunchScreen.storyboard in Resources */,
-				D33835B02545515300403222 /* Assets.xcassets in Resources */,
-				D33835AE2545515200403222 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D33835CE2545522E00403222 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -680,42 +381,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D35C373B2480A2260029CDA8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D35C374C2480A2290029CDA8 /* LaunchScreen.storyboard in Resources */,
-				D35C37492480A2290029CDA8 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35C37502480A2290029CDA8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35C375B2480A2290029CDA8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D33835A02545515200403222 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D33835AB2545515200403222 /* ViewController.swift in Sources */,
-				D33835A72545515200403222 /* AppDelegate.swift in Sources */,
-				D33835A92545515200403222 /* SceneDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D33835CC2545522E00403222 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -730,24 +398,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D37D9345251CB44D00607AD0 /* Double+Ex.swift in Sources */,
-				D37D934B251CB44D00607AD0 /* RoulettePartTextLayer.swift in Sources */,
 				D3D26B122524D008002D2516 /* RouletteViewModel.swift in Sources */,
 				D3C8F845253037C4008D7E08 /* Color+Ex.swift in Sources */,
 				D37D934F251CB44D00607AD0 /* AccurateDouble.swift in Sources */,
 				D3C8F83F25303490008D7E08 /* RoulettePartSwiftUIView.swift in Sources */,
 				D3D26B182524E543002D2516 /* RouletteShape.swift in Sources */,
 				D37D934C251CB44D00607AD0 /* AccuracyType.swift in Sources */,
-				D37D9350251CB44D00607AD0 /* RouletteView.swift in Sources */,
 				D3D26B0C2524CE32002D2516 /* RouletteViewSwiftUI.swift in Sources */,
-				D37D934A251CB44D00607AD0 /* RoulettePartView.swift in Sources */,
 				D37D934E251CB44D00607AD0 /* AccurateCGFloat.swift in Sources */,
-				D37D9347251CB44D00607AD0 /* RoulettePointView.swift in Sources */,
-				D37D9349251CB44D00607AD0 /* RoulettePartShapeLayer.swift in Sources */,
 				D37D9351251CB44D00607AD0 /* RoulettePart.swift in Sources */,
 				D37D9346251CB44D00607AD0 /* CGFloat+Ex.swift in Sources */,
 				D37D9352251CB44D00607AD0 /* RouletteAngle.swift in Sources */,
 				D37D934D251CB44D00607AD0 /* AccurateDegree.swift in Sources */,
-				D37D9348251CB44D00607AD0 /* PartContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,40 +423,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D35C37392480A2260029CDA8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D35C37442480A2260029CDA8 /* ViewController.swift in Sources */,
-				D35C37402480A2260029CDA8 /* AppDelegate.swift in Sources */,
-				D35C37422480A2260029CDA8 /* SceneDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35C374E2480A2290029CDA8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D35C37572480A2290029CDA8 /* SimpleRouletteDemoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35C37592480A2290029CDA8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D35C37622480A22A0029CDA8 /* SimpleRouletteDemoUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D33835E825455DFC00403222 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D35C371E2480A1F70029CDA8 /* SimpleRoulette */;
-			targetProxy = D33835E725455DFC00403222 /* PBXContainerItemProxy */;
-		};
 		D33835F225455E0000403222 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D35C371E2480A1F70029CDA8 /* SimpleRoulette */;
@@ -805,93 +436,9 @@
 			target = D35C371E2480A1F70029CDA8 /* SimpleRoulette */;
 			targetProxy = D35C372A2480A1F70029CDA8 /* PBXContainerItemProxy */;
 		};
-		D35C37542480A2290029CDA8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */;
-			targetProxy = D35C37532480A2290029CDA8 /* PBXContainerItemProxy */;
-		};
-		D35C375F2480A22A0029CDA8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D35C373C2480A2260029CDA8 /* SimpleRouletteDemo */;
-			targetProxy = D35C375E2480A22A0029CDA8 /* PBXContainerItemProxy */;
-		};
-		D3C1267924827B470057D327 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D35C371E2480A1F70029CDA8 /* SimpleRoulette */;
-			targetProxy = D3C1267824827B470057D327 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		D33835AC2545515200403222 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D33835AD2545515200403222 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D33835B12545515300403222 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D33835B22545515300403222 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		D35C374A2480A2290029CDA8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D35C374B2480A2290029CDA8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		D33835B62545515300403222 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2X6AD4W323;
-				INFOPLIST_FILE = SimpleRouletteDemoStoryboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.sample.SimpleRouletteDemoStoryboard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D33835B72545515300403222 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2X6AD4W323;
-				INFOPLIST_FILE = SimpleRouletteDemoStoryboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.sample.SimpleRouletteDemoStoryboard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		D33835DD2545523000403222 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1159,149 +706,9 @@
 			};
 			name = Release;
 		};
-		D35C37652480A22A0029CDA8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2X6AD4W323;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"SIMPLEROULETTEDEMO=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SimpleRouletteDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "SIMPLEROULETTEDEMO DEBUG";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D35C37662480A22A0029CDA8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2X6AD4W323;
-				GCC_PREPROCESSOR_DEFINITIONS = "SIMPLEROULETTEDEMO=1";
-				INFOPLIST_FILE = SimpleRouletteDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D35C37682480A22A0029CDA8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2X6AD4W323;
-				INFOPLIST_FILE = SimpleRouletteDemoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleRouletteDemo.app/SimpleRouletteDemo";
-			};
-			name = Debug;
-		};
-		D35C37692480A22A0029CDA8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2X6AD4W323;
-				INFOPLIST_FILE = SimpleRouletteDemoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleRouletteDemo.app/SimpleRouletteDemo";
-			};
-			name = Release;
-		};
-		D35C376B2480A22A0029CDA8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2X6AD4W323;
-				INFOPLIST_FILE = SimpleRouletteDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SimpleRouletteDemo;
-			};
-			name = Debug;
-		};
-		D35C376C2480A22A0029CDA8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2X6AD4W323;
-				INFOPLIST_FILE = SimpleRouletteDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.fummicc1.demo.SimpleRouletteDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SimpleRouletteDemo;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D33835B52545515300403222 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoStoryboard" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D33835B62545515300403222 /* Debug */,
-				D33835B72545515300403222 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D33835DC2545523000403222 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoSwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1334,33 +741,6 @@
 			buildConfigurations = (
 				D35C37372480A1F70029CDA8 /* Debug */,
 				D35C37382480A1F70029CDA8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D35C37642480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D35C37652480A22A0029CDA8 /* Debug */,
-				D35C37662480A22A0029CDA8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D35C37672480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D35C37682480A22A0029CDA8 /* Debug */,
-				D35C37692480A22A0029CDA8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D35C376A2480A22A0029CDA8 /* Build configuration list for PBXNativeTarget "SimpleRouletteDemoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D35C376B2480A22A0029CDA8 /* Debug */,
-				D35C376C2480A22A0029CDA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

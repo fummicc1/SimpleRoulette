@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import SwiftUI
 
-extension UIColor {
-    func color() -> Color {
+public extension UIColor {
+    var color: Color {
         Color(self)
     }
 }
