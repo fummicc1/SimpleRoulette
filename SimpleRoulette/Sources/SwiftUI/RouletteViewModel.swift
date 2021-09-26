@@ -17,8 +17,8 @@ public struct RouletteSpeed: ExpressibleByFloatLiteral, Hashable {
         self.value = value
     }
     
-    public static let normal: Self = .init(floatLiteral: 2000)
     public static let slow: Self = .init(floatLiteral: 1000)
+    public static let normal: Self = .init(floatLiteral: 2000)
     public static let fast: Self = .init(floatLiteral: 3000)
 }
 
@@ -141,8 +141,8 @@ public final class RouletteViewModel: ObservableObject {
     
     public func start(speed: RouletteSpeed = .normal, automaticallyStop: Bool = true) {
         if state.canStart {
-            var angle = Angle()
-            angle.degrees = speed.value
+            var angle = state.angle
+            angle.degrees += speed.value
             self.state = RouletteState.run(angle: angle, speed: speed)
             if automaticallyStop {
                 DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
