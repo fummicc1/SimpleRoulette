@@ -7,40 +7,40 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
 public protocol RoulettePartType {
-    var id: UUID { get }
+    var id: String { get }
     var name: String { get }
     var index: Int { get }
-    /// From [0, 2pi)
-    var startRadianAngle: Double { get }
-    /// From [0, 2pi)
-    var endRadianAngle: Double { get }
-    var fillColor: UIColor { get }
-    var strokeColor: UIColor { get }
+    /// [0, 2pi)
+    var startRadian: Double { get }
+    /// [0, 2pi)
+    var endRadian: Double { get }
+    var fillColor: Color { get }
+    var strokeColor: Color { get }
 }
 
 public enum Roulette {
     
     public struct HugePart {
-        public var id: UUID = .init()
+        public var id: String = UUID().uuidString
         /// text to display on Roulette.
         public var name: String
         public var huge: Kind
         public weak var delegate: RoulettePartHugeDelegate?
-        /// position. Start from 0.
+        /// position. Begin with 0.
         public var index: Int
-        public var fillColor: UIColor
-        public var strokeColor: UIColor
+        public var fillColor: Color
+        public var strokeColor: Color
         
         public init(
             name: String,
             huge: Kind,
             delegate: RoulettePartHugeDelegate?,
             index: Int,
-            fillColor: UIColor = .secondarySystemBackground,
-            strokeColor: UIColor = .systemGray4
+            fillColor: Color,
+            strokeColor: Color
         ) {
             self.name = name
             self.huge = huge
@@ -52,23 +52,23 @@ public enum Roulette {
     }
     
     public struct AnglePart {
-        public var id: UUID = .init()
+        public var id: String = UUID().uuidString
         /// text to display on Roulette.
         public var name: String
         public var startAngle: Roulette.Angle
         public var endAngle: Roulette.Angle
         /// position.
         public var index: Int
-        public var fillColor: UIColor
-        public var strokeColor: UIColor
+        public var fillColor: Color
+        public var strokeColor: Color
         
         public init(
             name: String,
             startAngle: Roulette.Angle,
             endAngle: Roulette.Angle,
             index: Int,
-            fillColor: UIColor = .secondarySystemBackground,
-            strokeColor: UIColor = .systemGray4
+            fillColor: Color,
+            strokeColor: Color
         ) {
             self.name = name
             self.startAngle = startAngle
@@ -81,18 +81,18 @@ public enum Roulette {
 }
 
 extension Roulette.AnglePart: RoulettePartType {
-    public var startRadianAngle: Double {
+    public var startRadian: Double {
         startAngle.value
     }
     
-    public var endRadianAngle: Double {
+    public var endRadian: Double {
         endAngle.value
     }
 }
 
 extension Roulette.HugePart: RoulettePartType {
     
-    func getPreviousEndAngle() -> Double {
+    private func getPreviousEndAngle() -> Double {
         guard let delegate = delegate else {
             return .zero
         }
@@ -109,11 +109,11 @@ extension Roulette.HugePart: RoulettePartType {
         return previousEndAngle
     }
     
-    public var startRadianAngle: Double {
+    public var startRadian: Double {
         return getPreviousEndAngle()
     }
     
-    public var endRadianAngle: Double {
+    public var endRadian: Double {
         guard let delegate = delegate else { 
             return .zero
         }
