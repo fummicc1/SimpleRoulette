@@ -22,15 +22,18 @@ struct RoulettePartSwiftUIView: View {
                 .fill(fillContent: part.fillColor, strokeContent: part.strokeColor)
             Text(part.name)
                 .offset(
-                    CGSize(width: { () -> CGFloat in
-                        let mean = (part.startRadian + part.endRadian) / 2
-                        let x: CGFloat = radius / 1.5 * CGFloat(cos(mean))
-                        return x
-                    }(), height: { () -> CGFloat in
-                        let mean = (part.startRadian + part.endRadian) / 2
-                        let y: CGFloat = radius / 1.5 * CGFloat(sin(mean))
-                        return y
-                    }())
+                    CGSize(
+                        width: { () -> CGFloat in
+                            let mean = (part.startRadian + part.endRadian) / 2
+                            let x: CGFloat = radius / 1.5 * CGFloat(cos(mean))
+                            return x
+                        }(),
+                        height: { () -> CGFloat in
+                            let mean = (part.startRadian + part.endRadian) / 2
+                            let y: CGFloat = radius / 1.5 * CGFloat(sin(mean))
+                            return y
+                        }()
+                    )
                 )
                 .lineLimit(nil)
                 .frame(width: radius / 1.5, height: radius / 1.5)

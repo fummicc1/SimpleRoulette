@@ -9,7 +9,7 @@
 import SwiftUI
 import UIKit
 
-public struct RouletteViewSwiftUI: View {
+public struct RouletteView: View {
     
     @ObservedObject var viewModel: RouletteViewModel
     
@@ -88,7 +88,7 @@ public struct RouletteViewSwiftUI: View {
     }
 }
 
-struct RouletteViewSwiftUI_Previews: PreviewProvider {
+struct RouletteView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = RouletteViewModel(duration: 5)
         viewModel.configureWithHuge(
@@ -109,6 +109,6 @@ struct RouletteViewSwiftUI_Previews: PreviewProvider {
                 huge: .normal
             )
         )
-        return RouletteViewSwiftUI(viewModel: viewModel)
+        return RouletteView(viewModel: viewModel)
     }
 }
