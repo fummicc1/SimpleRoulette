@@ -15,9 +15,9 @@ public struct SlotRouletteState: Identifiable {
         type: SlotRouletteState.Status = .ready,
         worker: RouletteWorker,
         speed: SlotRouletteSpeed,
-        value: String,
+        value: SlotRouletteItem,
         index: Int,
-        result: SlotRouletteState.Result = .yet
+        result: SlotRouletteState.Result? = nil
     ) {
         self.type = type
         self.worker = worker
@@ -34,13 +34,10 @@ public struct SlotRouletteState: Identifiable {
     public var type: Status
     public var worker: RouletteWorker
     public var speed: SlotRouletteSpeed
-    public var value: String
+    public var value: SlotRouletteItem
     public var index: Int
-    public var result: Result
-
-    func getAngle() {
-
-    }
+    public var result: Result?
+    public var angle: Angle = .zero
 }
 
 public extension SlotRouletteState {
@@ -51,16 +48,27 @@ public extension SlotRouletteState {
     }
 
     enum Result {
-        case yet
-        case selected
+        case selected(String)
         case wrong
     }
+}
+
+public struct SlotRouletteItem {
+    public init(value: String, foregroundColor: Color, backgroundColor: Color) {
+        self.value = value
+        self.foregroundColor = foregroundColor
+        self.backgroundColor = backgroundColor
+    }
+
+    public var value: String
+    public var foregroundColor: Color
+    public var backgroundColor: Color
 }
 
 public class SlotRouletteModel: ObservableObject {
 
     public init(
-        values: [String],
+        values: [SlotRouletteItem],
         count: Int,
         speed: SlotRouletteSpeed = .normal
     ) {
@@ -68,8 +76,7 @@ public class SlotRouletteModel: ObservableObject {
         let start = values[0]
         states = (0..<count).map({ index in
             let worker = RouletteWorker(
-                angle: .zero,
-                speed: .normal
+                speed: .random()
             )
             return SlotRouletteState(
                 worker: worker,
@@ -81,14 +88,19 @@ public class SlotRouletteModel: ObservableObject {
     }
 
     @Published var states: [SlotRouletteState]
-    private let values: [String]
+    private let values: [SlotRouletteItem]
     private let onDecideSubject: PassthroughSubject<[SlotRouletteState], Never> = .init()
     public var onDecide: AnyPublisher<[SlotRouletteState], Never> {
         onDecideSubject.eraseToAnyPublisher()
     }
 
     public func start() {
-
+        for i in states.indices {
+            let state = states[i]
+            state.worker.start { angle in
+                self.states[i].angle = angle
+            }
+        }
     }
 
     public func pause() { }

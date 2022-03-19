@@ -11,7 +11,7 @@ import UIKit
 
 public struct RouletteView: View {
     
-    @ObservedObject var viewModel: RouletteViewModel
+    @StateObject var viewModel: RouletteViewModel
     
     @State private var radius: CGFloat = 0
     @State private var center: CGPoint = .zero
@@ -79,7 +79,7 @@ public struct RouletteView: View {
     }
     
     public init(viewModel: RouletteViewModel, pointView: AnyView? = nil) {
-        self.viewModel = viewModel
+        self._viewModel = StateObject(wrappedValue: viewModel)
         if let pointView = pointView {
             self.pointView = pointView
         } else {

@@ -7,16 +7,23 @@
 
 import SwiftUI
 
-struct SlotRouletteView: View {
+public struct SlotRouletteView: View {
 
-    @ObservedObject var model: SlotRouletteModel
+    @StateObject public var model: SlotRouletteModel
 
-    var body: some View {
+    public init(model: SlotRouletteModel) {
+        self._model = StateObject(wrappedValue: model)
+    }
+
+    public var body: some View {
         HStack {
             ForEach($model.states) { state in
                 SlotRouletteZoneView(
-                    angle: state.worker.angle,
-                    title: state.value
+                    angle: state.angle,
+                    title: state.value.value,
+                    speed: state.speed,
+                    foregroundColor: state.value.foregroundColor.wrappedValue,
+                    backgroundColor: state.value.backgroundColor.wrappedValue
                 )
             }
         }
@@ -27,7 +34,13 @@ struct SlotRouletteView_Previews: PreviewProvider {
     static var previews: some View {
         SlotRouletteView(
             model: SlotRouletteModel(
-                values: ["ゲーム", "ラーメン", "テスト"],
+                values: ["ゲーム", "ラーメン", "テスト"].map {
+                    SlotRouletteItem(
+                        value: $0,
+                        foregroundColor: Color.white,
+                        backgroundColor: Color.blue
+                    )
+                },
                 count: 3
             )
         )

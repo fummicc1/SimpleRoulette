@@ -10,15 +10,13 @@ import SwiftUI
 
 public class RouletteWorker {
 
-    public var angle: Angle
+    private var angle: Angle = .zero
     public var speed: SlotRouletteSpeed
     var timer: Timer?
 
     public init(
-        angle: Angle,
         speed: SlotRouletteSpeed
     ) {
-        self.angle = angle
         self.speed = speed
     }
 
@@ -28,6 +26,7 @@ public class RouletteWorker {
         }
         timer = Timer.scheduledTimer(withTimeInterval: 1 / speed.value, repeats: true, block: { timer in
             self.angle.degrees += 1
+            callback(self.angle)
         })
     }
 

@@ -24,7 +24,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Spacer()
-            RouletteViewSwiftUI(viewModel: viewModel)
+            RouletteView(viewModel: viewModel)
             Button("Start") {
                 viewModel.start(speed: .slow)
             }

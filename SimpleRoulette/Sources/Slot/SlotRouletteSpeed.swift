@@ -14,10 +14,16 @@ public struct SlotRouletteSpeed: ExpressibleByFloatLiteral, Hashable {
         self.value = value
     }
 
-    /// 1秒で10回転
-    public static var normal = SlotRouletteSpeed(floatLiteral: 360 * 10)
-    /// 1秒で3回転
-    public static var slow = SlotRouletteSpeed(floatLiteral: 360 * 3)
-    /// 1秒で15回転
-    public static var hight = SlotRouletteSpeed(floatLiteral: 360 * 15)
+    // Note: 1秒ごとに角度が1増える
+    /// 1秒で1回転
+    public static var normal = SlotRouletteSpeed(floatLiteral: 360)
+    /// 2秒で1回転
+    public static var slow = SlotRouletteSpeed(floatLiteral: 180)
+    /// 1秒で2回転
+    public static var hight = SlotRouletteSpeed(floatLiteral: 720)
+
+    public static func random() -> SlotRouletteSpeed {
+        let random = Int.random(in: 180...720)
+        return SlotRouletteSpeed(floatLiteral: FloatLiteralType(random))
+    }
 }
