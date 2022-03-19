@@ -16,17 +16,30 @@ public struct SlotRouletteView: View {
     }
 
     public var body: some View {
-        HStack {
-            ForEach($model.states) { state in
-                SlotRouletteZoneView(
-                    angle: state.angle,
-                    title: state.value.value,
-                    speed: state.speed,
-                    foregroundColor: state.value.foregroundColor.wrappedValue,
-                    backgroundColor: state.value.backgroundColor.wrappedValue
-                )
+        ZStack {
+            VStack {
+                ForEach(model.state.values) { value in
+                    Text(value.value)
+                        .font(.title)
+                        .bold()
+                        .padding()
+                        .foregroundColor(value.foregroundColor)
+                        .background(value.backgroundColor)
+                        .cornerRadius(8)
+                        .frame(height: 40)
+                }
             }
+            // If I assign 0 to y, z axis, `ignoring singular matrix` warning will appear.
+            .rotation3DEffect(
+                model.state.angle,
+                axis: (x: 1, y: 0.001, z: 0.001),
+                anchorZ: -50
+            )
+            .zIndex(Double(-(Int(model.state.angle.degrees) % 360) + 80))
+            Color.black.zIndex(-5)
         }
+        .frame(height: CGFloat(model.state.values.count) * 40)
+        .clipped()
     }
 }
 

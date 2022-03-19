@@ -29,7 +29,6 @@
 		D3BA582C27E6243A00254CAD /* SlotRouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582727E6243A00254CAD /* SlotRouletteView.swift */; };
 		D3BA582D27E6243A00254CAD /* SlotRouletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582827E6243A00254CAD /* SlotRouletteModel.swift */; };
 		D3BA582E27E6243A00254CAD /* RouletteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582927E6243A00254CAD /* RouletteWorker.swift */; };
-		D3BA582F27E6243A00254CAD /* SlotRouletteZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582A27E6243A00254CAD /* SlotRouletteZoneView.swift */; };
 		D3BA583027E6243A00254CAD /* SlotRouletteSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582B27E6243A00254CAD /* SlotRouletteSpeed.swift */; };
 		D3BA583227E62ADD00254CAD /* SlotExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA583127E62ADD00254CAD /* SlotExampleView.swift */; };
 		D3BA583427E636AA00254CAD /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA583327E636AA00254CAD /* RouletteView.swift */; };
@@ -97,7 +96,6 @@
 		D3BA582727E6243A00254CAD /* SlotRouletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotRouletteView.swift; sourceTree = "<group>"; };
 		D3BA582827E6243A00254CAD /* SlotRouletteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotRouletteModel.swift; sourceTree = "<group>"; };
 		D3BA582927E6243A00254CAD /* RouletteWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteWorker.swift; sourceTree = "<group>"; };
-		D3BA582A27E6243A00254CAD /* SlotRouletteZoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotRouletteZoneView.swift; sourceTree = "<group>"; };
 		D3BA582B27E6243A00254CAD /* SlotRouletteSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotRouletteSpeed.swift; sourceTree = "<group>"; };
 		D3BA583127E62ADD00254CAD /* SlotExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotExampleView.swift; sourceTree = "<group>"; };
 		D3BA583327E636AA00254CAD /* RouletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
@@ -247,7 +245,6 @@
 				D3BA582727E6243A00254CAD /* SlotRouletteView.swift */,
 				D3BA582827E6243A00254CAD /* SlotRouletteModel.swift */,
 				D3BA582927E6243A00254CAD /* RouletteWorker.swift */,
-				D3BA582A27E6243A00254CAD /* SlotRouletteZoneView.swift */,
 				D3BA582B27E6243A00254CAD /* SlotRouletteSpeed.swift */,
 			);
 			path = Slot;
@@ -431,7 +428,6 @@
 				D37D934F251CB44D00607AD0 /* AccurateDouble.swift in Sources */,
 				D3C8F83F25303490008D7E08 /* RoulettePartSwiftUIView.swift in Sources */,
 				D3D26B182524E543002D2516 /* RouletteShape.swift in Sources */,
-				D3BA582F27E6243A00254CAD /* SlotRouletteZoneView.swift in Sources */,
 				D37D934C251CB44D00607AD0 /* AccuracyType.swift in Sources */,
 				D37D934E251CB44D00607AD0 /* AccurateCGFloat.swift in Sources */,
 				D37D9351251CB44D00607AD0 /* RoulettePart.swift in Sources */,

@@ -10,7 +10,7 @@ import SwiftUI
 
 public class RouletteWorker {
 
-    private var angle: Angle = .zero
+    private var value: Int = 0
     public var speed: SlotRouletteSpeed
     var timer: Timer?
 
@@ -20,13 +20,13 @@ public class RouletteWorker {
         self.speed = speed
     }
 
-    func start(callback: @escaping (Angle) -> Void) {
+    func start(callback: @escaping (Int) -> Void) {
         if timer?.isValid ?? false {
             timer?.invalidate()
         }
         timer = Timer.scheduledTimer(withTimeInterval: 1 / speed.value, repeats: true, block: { timer in
-            self.angle.degrees += 1
-            callback(self.angle)
+            self.value += 1
+            callback(self.value)
         })
     }
 

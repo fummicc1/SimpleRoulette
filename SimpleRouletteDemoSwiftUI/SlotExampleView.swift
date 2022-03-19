@@ -14,10 +14,24 @@ struct SlotExampleView: View {
     @StateObject var model: SlotRouletteModel
 
     var body: some View {
-        SlotRouletteView(model: model)
-            .onAppear {
-                model.start()
+        VStack {
+            SlotRouletteView(model: model)
+            Button {
+                model.stop()
+            } label: {
+                Text("STOP")
             }
+            .padding()
+            Button {
+                model.start()
+            } label: {
+                Text("START")
+            }
+            .padding()
+        }
+        .onAppear {
+            model.start()
+        }
     }
 }
 
