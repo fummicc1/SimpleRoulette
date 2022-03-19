@@ -8,15 +8,15 @@
 import Foundation
 import SwiftUI
 
-public actor RouletteWorker {
+public class RouletteWorker {
 
     public var angle: Angle
     public var speed: SlotRouletteSpeed
     var timer: Timer?
 
     public init(
-        angle: Angle = .zero,
-        speed: SlotRouletteSpeed = .normal
+        angle: Angle,
+        speed: SlotRouletteSpeed
     ) {
         self.angle = angle
         self.speed = speed

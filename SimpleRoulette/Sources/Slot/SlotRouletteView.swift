@@ -9,15 +9,27 @@ import SwiftUI
 
 struct SlotRouletteView: View {
 
-
+    @ObservedObject var model: SlotRouletteModel
 
     var body: some View {
-        Text("Hello, World!")
+        HStack {
+            ForEach($model.states) { state in
+                SlotRouletteZoneView(
+                    angle: state.worker.angle,
+                    title: state.value
+                )
+            }
+        }
     }
 }
 
 struct SlotRouletteView_Previews: PreviewProvider {
     static var previews: some View {
-        SlotRouletteView()
+        SlotRouletteView(
+            model: SlotRouletteModel(
+                values: ["ゲーム", "ラーメン", "テスト"],
+                count: 3
+            )
+        )
     }
 }

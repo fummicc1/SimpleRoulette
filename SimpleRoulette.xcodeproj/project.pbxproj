@@ -26,9 +26,14 @@
 		D37D934F251CB44D00607AD0 /* AccurateDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9341251CB44D00607AD0 /* AccurateDouble.swift */; };
 		D37D9351251CB44D00607AD0 /* RoulettePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9343251CB44D00607AD0 /* RoulettePart.swift */; };
 		D37D9352251CB44D00607AD0 /* RouletteAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37D9344251CB44D00607AD0 /* RouletteAngle.swift */; };
+		D3BA582C27E6243A00254CAD /* SlotRouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582727E6243A00254CAD /* SlotRouletteView.swift */; };
+		D3BA582D27E6243A00254CAD /* SlotRouletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582827E6243A00254CAD /* SlotRouletteModel.swift */; };
+		D3BA582E27E6243A00254CAD /* RouletteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582927E6243A00254CAD /* RouletteWorker.swift */; };
+		D3BA582F27E6243A00254CAD /* SlotRouletteZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582A27E6243A00254CAD /* SlotRouletteZoneView.swift */; };
+		D3BA583027E6243A00254CAD /* SlotRouletteSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA582B27E6243A00254CAD /* SlotRouletteSpeed.swift */; };
+		D3BA583227E62ADD00254CAD /* SlotExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA583127E62ADD00254CAD /* SlotExampleView.swift */; };
 		D3C8F83F25303490008D7E08 /* RoulettePartSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C8F83E25303490008D7E08 /* RoulettePartSwiftUIView.swift */; };
 		D3C8F845253037C4008D7E08 /* Color+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C8F844253037C4008D7E08 /* Color+Ex.swift */; };
-		D3D26B0C2524CE32002D2516 /* RouletteViewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26B0B2524CE32002D2516 /* RouletteViewSwiftUI.swift */; };
 		D3D26B122524D008002D2516 /* RouletteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26B112524D008002D2516 /* RouletteViewModel.swift */; };
 		D3D26B182524E543002D2516 /* RouletteShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26B172524E543002D2516 /* RouletteShape.swift */; };
 		D3F0040C248F641600C81C87 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D3F0040B248F641600C81C87 /* README.md */; };
@@ -88,9 +93,14 @@
 		D37D9341251CB44D00607AD0 /* AccurateDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccurateDouble.swift; sourceTree = "<group>"; };
 		D37D9343251CB44D00607AD0 /* RoulettePart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoulettePart.swift; sourceTree = "<group>"; };
 		D37D9344251CB44D00607AD0 /* RouletteAngle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteAngle.swift; sourceTree = "<group>"; };
+		D3BA582727E6243A00254CAD /* SlotRouletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotRouletteView.swift; sourceTree = "<group>"; };
+		D3BA582827E6243A00254CAD /* SlotRouletteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotRouletteModel.swift; sourceTree = "<group>"; };
+		D3BA582927E6243A00254CAD /* RouletteWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteWorker.swift; sourceTree = "<group>"; };
+		D3BA582A27E6243A00254CAD /* SlotRouletteZoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotRouletteZoneView.swift; sourceTree = "<group>"; };
+		D3BA582B27E6243A00254CAD /* SlotRouletteSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotRouletteSpeed.swift; sourceTree = "<group>"; };
+		D3BA583127E62ADD00254CAD /* SlotExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotExampleView.swift; sourceTree = "<group>"; };
 		D3C8F83E25303490008D7E08 /* RoulettePartSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoulettePartSwiftUIView.swift; sourceTree = "<group>"; };
 		D3C8F844253037C4008D7E08 /* Color+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ex.swift"; sourceTree = "<group>"; };
-		D3D26B0B2524CE32002D2516 /* RouletteViewSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewSwiftUI.swift; sourceTree = "<group>"; };
 		D3D26B112524D008002D2516 /* RouletteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewModel.swift; sourceTree = "<group>"; };
 		D3D26B172524E543002D2516 /* RouletteShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteShape.swift; sourceTree = "<group>"; };
 		D3F0040B248F641600C81C87 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -141,6 +151,7 @@
 				D33835D62545523000403222 /* Assets.xcassets */,
 				D33835DB2545523000403222 /* Info.plist */,
 				D33835D82545523000403222 /* Preview Content */,
+				D3BA583127E62ADD00254CAD /* SlotExampleView.swift */,
 			);
 			path = SimpleRouletteDemoSwiftUI;
 			sourceTree = "<group>";
@@ -199,6 +210,7 @@
 		D37D9333251CB44D00607AD0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D3BA582627E6243A00254CAD /* Slot */,
 				D32F045525484AC3003C9BEA /* Common */,
 				D37D9334251CB44D00607AD0 /* Ex */,
 				D3D26B0A2524CE12002D2516 /* SwiftUI */,
@@ -227,6 +239,18 @@
 			path = Accurate;
 			sourceTree = "<group>";
 		};
+		D3BA582627E6243A00254CAD /* Slot */ = {
+			isa = PBXGroup;
+			children = (
+				D3BA582727E6243A00254CAD /* SlotRouletteView.swift */,
+				D3BA582827E6243A00254CAD /* SlotRouletteModel.swift */,
+				D3BA582927E6243A00254CAD /* RouletteWorker.swift */,
+				D3BA582A27E6243A00254CAD /* SlotRouletteZoneView.swift */,
+				D3BA582B27E6243A00254CAD /* SlotRouletteSpeed.swift */,
+			);
+			path = Slot;
+			sourceTree = "<group>";
+		};
 		D3C1267524827B470057D327 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +261,6 @@
 		D3D26B0A2524CE12002D2516 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				D3D26B0B2524CE32002D2516 /* RouletteViewSwiftUI.swift */,
 				D3D26B112524D008002D2516 /* RouletteViewModel.swift */,
 				D3D26B172524E543002D2516 /* RouletteShape.swift */,
 				D3C8F83E25303490008D7E08 /* RoulettePartSwiftUIView.swift */,
@@ -390,6 +413,7 @@
 			files = (
 				D33835D52545522E00403222 /* ContentView.swift in Sources */,
 				D33835D32545522E00403222 /* SimpleRouletteDemoSwiftUIApp.swift in Sources */,
+				D3BA583227E62ADD00254CAD /* SlotExampleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,16 +423,20 @@
 			files = (
 				D37D9345251CB44D00607AD0 /* Double+Ex.swift in Sources */,
 				D3D26B122524D008002D2516 /* RouletteViewModel.swift in Sources */,
+				D3BA582C27E6243A00254CAD /* SlotRouletteView.swift in Sources */,
 				D3C8F845253037C4008D7E08 /* Color+Ex.swift in Sources */,
 				D37D934F251CB44D00607AD0 /* AccurateDouble.swift in Sources */,
 				D3C8F83F25303490008D7E08 /* RoulettePartSwiftUIView.swift in Sources */,
 				D3D26B182524E543002D2516 /* RouletteShape.swift in Sources */,
+				D3BA582F27E6243A00254CAD /* SlotRouletteZoneView.swift in Sources */,
 				D37D934C251CB44D00607AD0 /* AccuracyType.swift in Sources */,
-				D3D26B0C2524CE32002D2516 /* RouletteViewSwiftUI.swift in Sources */,
 				D37D934E251CB44D00607AD0 /* AccurateCGFloat.swift in Sources */,
 				D37D9351251CB44D00607AD0 /* RoulettePart.swift in Sources */,
 				D37D9346251CB44D00607AD0 /* CGFloat+Ex.swift in Sources */,
 				D37D9352251CB44D00607AD0 /* RouletteAngle.swift in Sources */,
+				D3BA582E27E6243A00254CAD /* RouletteWorker.swift in Sources */,
+				D3BA583027E6243A00254CAD /* SlotRouletteSpeed.swift in Sources */,
+				D3BA582D27E6243A00254CAD /* SlotRouletteModel.swift in Sources */,
 				D37D934D251CB44D00607AD0 /* AccurateDegree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
