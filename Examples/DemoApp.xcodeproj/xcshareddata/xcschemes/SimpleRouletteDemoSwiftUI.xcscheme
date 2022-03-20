@@ -17,7 +17,7 @@
                BlueprintIdentifier = "D33835CF2545522E00403222"
                BuildableName = "SimpleRouletteDemoSwiftUI.app"
                BlueprintName = "SimpleRouletteDemoSwiftUI"
-               ReferencedContainer = "container:SimpleRoulette.xcodeproj">
+               ReferencedContainer = "container:DemoApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "D33835CF2545522E00403222"
             BuildableName = "SimpleRouletteDemoSwiftUI.app"
             BlueprintName = "SimpleRouletteDemoSwiftUI"
-            ReferencedContainer = "container:SimpleRoulette.xcodeproj">
+            ReferencedContainer = "container:DemoApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "D33835CF2545522E00403222"
             BuildableName = "SimpleRouletteDemoSwiftUI.app"
             BlueprintName = "SimpleRouletteDemoSwiftUI"
-            ReferencedContainer = "container:SimpleRoulette.xcodeproj">
+            ReferencedContainer = "container:DemoApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

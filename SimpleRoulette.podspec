@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SimpleRoulette"
-  spec.version      = "0.2.0"
+  spec.version      = "1.0.0"
   spec.summary      = "Create Roulette with ease."
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = "SimpleRoulette helps you to create customizable Roulette both UIView and View."
+  spec.description  = "SimpleRoulette helps you to create customizable Roulette."
 
   spec.homepage = "https://github.com/fummicc1/SimpleRoulette"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -54,7 +54,7 @@ Pod::Spec.new do |spec|
   spec.author             = { "fummicc1" => "fumiya.tennis1@gmail.com" }
   # Or just: spec.author    = "fummicc1"
   # spec.authors            = { "fummicc1" => "fumiya.tennis1@gmail.com" }
-  # spec.social_media_url   = "https://twitter.com/fummicc1"
+  spec.social_media_url   = "https://twitter.com/fummicc1"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -62,17 +62,18 @@ Pod::Spec.new do |spec|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  spec.platform     = :ios, "13.0"
   # spec.platform     = :ios, "5.0"
 
   #  When using multiple platforms
+  spec.ios.deployment_target = "14.0"
+  spec.osx.deployment_target = "11.0"
   # spec.ios.deployment_target = "5.0"
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
 
   # Swift Version
-  spec.swift_version = "5.2"
+  spec.swift_version = "5.5"
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -80,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/fummicc1/SimpleRoulette.git", :tag => "v0.2.0" }
+  spec.source       = { :git => "https://github.com/fummicc1/SimpleRoulette.git", :tag => "v1.0.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -91,7 +92,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "SimpleRoulette/**/*.{swift}"
+  spec.source_files  = "Sources/SimpleRoulette/**/*.{swift}"
 
   # spec.public_header_files = "Classes/**/*.h"
 

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D35C371E2480A1F70029CDA8"
-               BuildableName = "SimpleRoulette.framework"
-               BlueprintName = "SimpleRoulette"
-               ReferencedContainer = "container:SimpleRoulette.xcodeproj">
+               BuildableName = "DemoApp.framework"
+               BlueprintName = "DemoApp"
+               ReferencedContainer = "container:DemoApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D35C37272480A1F70029CDA8"
-               BuildableName = "SimpleRouletteTests.xctest"
-               BlueprintName = "SimpleRouletteTests"
-               ReferencedContainer = "container:SimpleRoulette.xcodeproj">
+               BuildableName = "DemoAppTests.xctest"
+               BlueprintName = "DemoAppTests"
+               ReferencedContainer = "container:DemoApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D35C371E2480A1F70029CDA8"
-            BuildableName = "SimpleRoulette.framework"
-            BlueprintName = "SimpleRoulette"
-            ReferencedContainer = "container:SimpleRoulette.xcodeproj">
+            BuildableName = "DemoApp.framework"
+            BlueprintName = "DemoApp"
+            ReferencedContainer = "container:DemoApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
