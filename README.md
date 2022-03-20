@@ -6,19 +6,14 @@
 ![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
 ![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)
 
----
 
 ## SimpleRoulette
 
 SimpleRoulette helps you to create customizable Roulette, with **SwiftUI**. (Compatible with both MacOS and iOS.)
 
----
-
 ## Demo
 
-```
-Because of GiF, demo is a little broken, if you have interests in SimpleRoulette, please check on local machine.
-```
+**Because of GiF, demo is a little broken, if you have interests in SimpleRoulette, please check on local machine.**
 
 |iOS (with `Text` Content)|iOS (with `AnyView(Image)` Content)|
 |---|---|
