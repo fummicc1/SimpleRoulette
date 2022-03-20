@@ -125,21 +125,55 @@ enum RouletteState: Hashable {
 }
 
 public final class RouletteViewModel: ObservableObject {
-    @Published private(set) var parts: [RoulettePartType] = []
+    @Published var parts: [RoulettePartType] = []
     @Published private(set) var state: RouletteState = .start
-    @Published private(set) var duration: Double
+    @Published var duration: Double
     
     private var onDecide: PassthroughSubject<RoulettePartType, Never>
     public var onDecidePublisher: AnyPublisher<RoulettePartType, Never> {
         onDecide.eraseToAnyPublisher()
     }
     
-    public init(duration: Double, onDecide: PassthroughSubject<RoulettePartType, Never> = .init()) {
+    public init(
+        duration: Double,
+        onDecide: PassthroughSubject<RoulettePartType, Never> = .init(),
+        parts: [RoulettePartType] = []
+    ) {
         self.onDecide = onDecide
         self.duration = duration
+        self.parts = parts
+    }
+
+    public convenience init(
+        duration: Double,
+        onDecide: PassthroughSubject<RoulettePartType, Never> = .init(),
+        huges: [Roulette.HugePart.Config]
+    ) {
+        self.init(
+            duration: duration,
+            onDecide: onDecide,
+            parts: []
+        )
+        configureWithHuge(huges)
+    }
+
+    public convenience init(
+        duration: Double,
+        onDecide: PassthroughSubject<RoulettePartType, Never> = .init(),
+        angles: [Roulette.AnglePart.Config]
+    ) {
+        self.init(
+            duration: duration,
+            onDecide: onDecide,
+            parts: []
+        )
+        configureWithAngle(angles)
     }
     
-    public func start(speed: RouletteSpeed = .normal, automaticallyStop: Bool = true) {
+    public func start(
+        speed: RouletteSpeed = .normal,
+        automaticallyStop: Bool = true
+    ) {
         if state.canStart {
             var angle = state.angle
             angle.degrees += speed.value
@@ -179,7 +213,7 @@ public final class RouletteViewModel: ObservableObject {
             let start = (part.startRadian + Double.pi / 2).degree()
             let end = (part.endRadian + Double.pi / 2).degree()
             #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
-            print("name: \(part.name)")
+            print("label: \(part.label)")
             print("start: \(start)")
             print("end: \(end)")
             #endif
@@ -203,31 +237,41 @@ public final class RouletteViewModel: ObservableObject {
     private func checkIfContainsPoint(from source: CGFloat, to destination: CGFloat, point: CGFloat) -> Bool {
         return source <= point && destination > point
     }
-    
-    public func configureWithHuge(_ params: RouletteHugeConfigurable...) {
-        self.parts = params.enumerated().map({ (index, configurable) in
+
+    func convertHugeConfig(_ parts: [Roulette.HugePart.Config]) -> [RoulettePartType] {
+        return parts.enumerated().map({ (index, configurable) in
             Roulette.HugePart(
-                name: configurable.name,
+                label: configurable.label,
                 huge: configurable.huge,
-                delegate: self,
                 index: index,
                 fillColor: configurable.fill,
-                strokeColor: configurable.stroke
+                strokeColor: configurable.stroke,
+                content: configurable.content,
+                delegate: self
             )
         })
     }
-    
-    public func configureWithAngle(_ parts: [RouletteAngleConfigurable]) {
-        self.parts = parts.enumerated().map({ (index, configurable) in
+
+    public func configureWithHuge(_ parts: [Roulette.HugePart.Config]) {
+        self.parts = convertHugeConfig(parts)
+    }
+
+    func convertAngleConfig(_ parts: [Roulette.AnglePart.Config]) -> [RoulettePartType] {
+        return parts.enumerated().map({ (index, configurable) in
             Roulette.AnglePart(
-                name: configurable.name,
+                label: configurable.label,
                 startAngle: configurable.start,
                 endAngle: configurable.end,
                 index: index,
                 fillColor: configurable.fill,
-                strokeColor: configurable.stroke
+                strokeColor: configurable.stroke,
+                content: configurable.content
             )
         })
+    }
+
+    public func configureWithAngle(_ parts: [Roulette.AnglePart.Config]) {
+        self.parts = convertAngleConfig(parts)
     }
 }
 
@@ -241,43 +285,53 @@ extension RouletteViewModel: RoulettePartHugeDelegate {
     }
 }
 
-public struct RouletteHugeConfigurable {
-    public init(
-        name: String,
-        huge: Roulette.HugePart.Kind,
-        fill: Color = UIColor.secondarySystemBackground.color,
-        stroke: Color = UIColor.systemGray4.color
-    ) {
-        self.name = name
-        self.huge = huge
-        self.fill = fill
-        self.stroke = stroke
+extension Roulette.HugePart {
+    public struct Config {
+        public init(
+            label: String,
+            huge: Roulette.HugePart.Kind,
+            fill: Color = Color.secondarySystemBackground,
+            stroke: Color = .systemGray,
+            content: (() -> AnyView)? = nil
+        ) {
+            self.label = label
+            self.content = content
+            self.huge = huge
+            self.fill = fill
+            self.stroke = stroke
+        }
+
+        let label: String
+        let huge: Roulette.HugePart.Kind
+        let fill: Color
+        let stroke: Color
+        let content: (() -> AnyView)?
     }
-    
-    let name: String
-    let huge: Roulette.HugePart.Kind
-    let fill: Color
-    let stroke: Color
 }
 
-public struct RouletteAngleConfigurable {
-    public init(
-        name: String,
-        start: Roulette.Angle,
-        end: Roulette.Angle,
-        fill: Color = UIColor.secondarySystemBackground.color,
-        stroke: Color = UIColor.systemGray4.color
-    ) {
-        self.name = name
-        self.start = start
-        self.end = end
-        self.fill = fill
-        self.stroke = stroke
+extension Roulette.AnglePart {
+    public struct Config {
+        public init(
+            label: String,
+            start: Roulette.Angle,
+            end: Roulette.Angle,
+            fill: Color = .secondarySystemBackground,
+            stroke: Color = .systemGray,
+            content: (() -> AnyView)?
+        ) {
+            self.label = label
+            self.start = start
+            self.end = end
+            self.fill = fill
+            self.stroke = stroke
+            self.content = content
+        }
+
+        let label: String
+        let start: Roulette.Angle
+        let end: Roulette.Angle
+        let fill: Color
+        let stroke: Color
+        let content: (() -> AnyView)?
     }
-    
-    let name: String
-    let start: Roulette.Angle
-    let end: Roulette.Angle
-    let fill: Color
-    let stroke: Color
 }
