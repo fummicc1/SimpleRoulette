@@ -24,8 +24,6 @@ SimpleRoulette helps you to create customizable Roulette, with **SwiftUI**. (Com
 |<img src="https://user-images.githubusercontent.com/44002126/159145747-29f4e41c-0005-47f3-a343-604d887a3975.gif" width=640px>|
 
 
----
-
 ## Install
 
 ### Swift Package Manager
@@ -56,7 +54,6 @@ Create `Cartfile` and add dependency like the following.
 github "fummicc1/SimpleRoulette"
 ```
 
----
 
 ## Usage
 
@@ -128,13 +125,11 @@ viewModel.configureParts([
 ]
 ```
 
----
 
 ## Example [Documentation is under construction]
 
 - [DemoApp]()
 
----
 
 ## About RoulettePartType
 
@@ -160,13 +155,10 @@ model.configureWithHuge([
 
 **IMPORTANT: in current state, it is not possible to combine both `Roulette.HugePart` and `Roulette.AnglePart` in singule `RouletteView`**.
 
----
-
 ## Contributing
 
 Pull requests, bug reports and feature requests are welcome 🚀  
 
----
 
 ## License
 [MIT LICENSE](https://github.com/fummicc1/SimpleRoulette/blob/main/LICENSE)
