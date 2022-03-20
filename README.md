@@ -6,19 +6,23 @@
 ![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
 ![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)
 
----
 
 ## SimpleRoulette
 
-SimpleRoulette helps you to create customizable Roulette, with **SwiftUI**.
-
----
+SimpleRoulette helps you to create customizable Roulette, with **SwiftUI**. (Compatible with both MacOS and iOS.)
 
 ## Demo
 
-|SwiftUI|
+**Because of GiF, demo is a little broken, if you have interests in SimpleRoulette, please check on local machine.**
+
+|iOS (with `Text` Content)|iOS (with `AnyView(Image)` Content)|
+|---|---|
+|<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/Roulette_Ver_SwiftUI.gif" width=320px>|<img src="https://user-images.githubusercontent.com/44002126/159145680-abc1cf83-9860-4a7b-91b5-60122c193973.gif" width=320px>|
+
+|MacOS (with `AnyView(Image)` Content)|
 |---|
-|<img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/Roulette_Ver_SwiftUI.gif" width=320px>|
+|<img src="https://user-images.githubusercontent.com/44002126/159145747-29f4e41c-0005-47f3-a343-604d887a3975.gif" width=640px>|
+
 
 ---
 
@@ -30,7 +34,7 @@ Create `Package.swift` and add dependency like the following.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "0.2.0")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "1.0.0")
     // or
     .package(url: "https://github.com/fummicc1/SimpleRoulette.git", branch: "main")
 ]
@@ -41,7 +45,7 @@ dependencies: [
 Create `Podfile` and add dependency like the following.
 
 ```ruby
-pod 'SimpleRoulette', '~> 0.2'
+pod 'SimpleRoulette', '~> 1.0'
 ```
 
 ### Carthage
@@ -56,50 +60,79 @@ github "fummicc1/SimpleRoulette"
 
 ## Usage
 
-### SwiftUI
 
-Documentation works in progress. I am looking forward to getting PullRequest :)
-
-#### RouletteViewSwiftUI
-`RouletteViewSwiftUI` confirms to `View`, so you can use it like the follwing.
+### RouletteView
+`RouletteView` confirms to `View`, so you can use it like the follwing.
 
 ```swift
 struct ContentView: View {
+
+    @ObservedObject var model: RouletteModel
+
     var body: some View {
         VStack {
-            RouletteViewSwiftUI(viewModel: RouletteViewModel(duration: 5))
+            RouletteView(
+                model: model
+            )
         }
     }
 }
+
+// Call ContentView
+ContentView(
+    model: RouletteModel(duration: 5)
+)
 ```
 
-As for `RouletteViewModel`, please check [RouletteViewModel]()
 
-#### RouletteViewModel
-RouletteViewModel is ObservableObject to store the state of Roulette. In addition to it, RouletteViewModel has `onDecide: PassthroughSubject<RoulettePartType, Never>` to oberve when Roulette has stopped. About RoulettePartType, please check [About RoulettePatyType](https://github.com/fummicc1/SimpleRoulette#about-rouletteparttype)
 
-##### RouletteViewModel#init
-To initialize ROuletteViewMdel, you can no more than two params, `duration` and `onDecide`. `onDecide` can be saved.
+### RouletteModel
+RouletteModel is ObservableObject to manage the state of Roulette. In addition to it, RouletteModel has `onDecide: PassthroughSubject<RoulettePartType, Never>` to send the event when Roulette has stopped.
+
+#### RouletteModel#init
+To initialize RouletteModel, you need 3 parameters, `duration`, `onDecide` and `parts'. `onDecide` and `parts` have default values.
 
 ```swift
-let viewModel = RouletteViewModel(duration: 5)
+// most simple way
+let model = RouletteModel(duration: 5)
+// if you want manage `onDecide` event, please generate `PassthroughSubject` by yourself.
+let myOnDecide = PassthroughSubject<RoulettePartType, Never> = .init()
+let model = RouletteModel(duration: 10, onDecide: myOnDecide)
+
+// Setup parts with `HugePart` right now.
+let huges: [Roulette.HugePart.Config] = (0...4).map { index in
+    Roulette.HugePart.Config(
+        label: "\(index)",
+        huge: .normal
+    ) {
+        AnyView(
+            Image(systemName: "\(index).square")
+                .resizable()
+                .frame(width: 32, height: 32)
+        )
+    }
+}
+let model = RouletteModel(
+    duration: 5,
+    huges: huges
+)
 ```
 
-Actually, though initializing is easy, you should configure content of Roulette by `RouletteViewModel#configureParts(_:)`.
+You can configure `part` after model's initialization.
 
 ```swift
 viewModel.configureParts([
-    Roulette.HugePart(name: "Title A", huge: .large, delegate: viewModel, index: 0, fillColor: UIColor.systemTeal),
-    Roulette.HugePart(name: "Title B", huge: .small, delegate: viewModel, index: 1, fillColor: UIColor.systemBlue),
-    Roulette.HugePart(name: "Title C", huge: .normal, delegate: viewModel, index: 2, fillColor: UIColor.systemRed),
+    Roulette.HugePart.Config(label: "Title A", huge: .large, fillColor: UIColor.systemTeal),
+    Roulette.HugePart.Config(label: "Title B", huge: .small, fillColor: UIColor.systemBlue),
+    Roulette.HugePart.Config(label: "Title C", huge: .normal, fillColor: UIColor.systemRed),
 ]
 ```
 
 ---
 
-## Example [WIP]
+## Example [Documentation is under construction]
 
-- [SwiftUI](https://github.com/fummicc1/SimpleRoulette/tree/v0.2.0/SimpleRouletteDemoSwiftUI)
+- [DemoApp]()
 
 ---
 
@@ -107,38 +140,25 @@ viewModel.configureParts([
 
 `RoulettePartType` is either `Roulette.HugePart` or `Roulette.AnglePart`.
 
-Both PartType's initializer has `name` and `index` parameters in common.
-
-### About Roulette.AnglePart
-
-This struct's initializer has `start` and `end` degrees in addition to common args.
-
-```swift
-rouletteView.configure(parts: [
-    Roulette.AnglePart(name: "Title A", startAngle: .init(degree: 0), endAngle: .init(degree: 90), index: 0),
-    Roulette.AnglePart(name: "Title B", startAngle: .init(degree: 90), endAngle: .init(degree: 200), index: 1),
-    Roulette.AnglePart(name: "Title C", startAngle: .init(degree: 200), endAngle: .init(degree: 360), index: 2)
-])
-```
-
-If you think configuring each degree is troublesome, it's time to use `Roulette.HugePart`.
+Both PartType's initializer has `label`, `index` and `content` parameters in common.
 
 ### About Roulette.HugePart
 
-This struct's initializer has neither `start` nor `end`.
-Instead of them, it has `huge` and `delegate` parameters which makes you to configure percentage of each RoulettePart intuitively。
+`HugePart` is easier than `AnglePart`.  
+We can separate elements intuitively using `Roulette.HugePart.Kind` enum.
 
-you set `RouletteView` as `delegate` while using UIKit.
+When initializing `Roulette.HugePart`, it is recommended to use `Roulette.HugePart.Config` struct and `RouletteModel.configureWithHuge` method.
 
 ```swift
-rouletteView.configure(parts: [
-    Roulette.HugePart(name: "Title A", huge: .small, delegate: rouletteView, index: 0),
-    Roulette.HugePart(name: "Title B", huge: .large, delegate: rouletteView, index: 1),
-    Roulette.HugePart(name: "Title C", huge: .normal, delegate: rouletteView, index: 2),
+let model: RouletteModel
+model.configureWithHuge([
+    Roulette.HugePart.Config(label: "Title A", huge: .small),
+    Roulette.HugePart.Config(label: "Title B", huge: .large),
+    Roulette.HugePart.Config(label: "Title C", huge: .normal),
 ])
 ```
 
-**IMPORTANT: can not combine Huge with Angle in RouletteView().configure.**
+**IMPORTANT: in current state, it is not possible to combine both `Roulette.HugePart` and `Roulette.AnglePart` in singule `RouletteView`**.
 
 ---
 
