@@ -10,18 +10,18 @@ import SwiftUI
 import SimpleRoulette
 
 struct ContentView: View {
-    @ObservedObject var viewModel: RouletteViewModel
+    @ObservedObject var model: RouletteModel
     @State private var decidedPart: RoulettePartType?
     let length: CGFloat
 
     var body: some View {
         VStack {
             RouletteView(
-                viewModel: viewModel,
+                model: model,
                 length: length
             )
             Button("Start") {
-                viewModel.start(
+                model.start(
                     speed: [RouletteSpeed.slow, .normal, .fast].randomElement()!
                 )
             }
@@ -31,7 +31,7 @@ struct ContentView: View {
                 part.content?() ?? AnyView(Text(part.label))
             }
         }
-        .onReceive(viewModel.onDecidePublisher) { part in
+        .onReceive(model.onDecidePublisher) { part in
             decidedPart = part
         }
     }
@@ -39,8 +39,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 
-    static func defaultModel() -> RouletteViewModel {
-        let viewModel = RouletteViewModel(
+    static func defaultModel() -> RouletteModel {
+        let viewModel = RouletteModel(
             duration: 5,
             huges: [
                 .init(
@@ -93,9 +93,9 @@ struct ContentView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        ContentView(viewModel: defaultModel(), length: 240)
+        ContentView(model: defaultModel(), length: 240)
             .previewInterfaceOrientation(.landscapeLeft)
-        ContentView(viewModel: defaultModel(), length: 240)
+        ContentView(model: defaultModel(), length: 240)
             .previewDevice(PreviewDevice(rawValue: "iPhone 13 mini"))
     }
 }
