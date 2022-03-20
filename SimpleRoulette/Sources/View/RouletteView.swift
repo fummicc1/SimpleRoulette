@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct RouletteView: View {
     
-    @StateObject var viewModel: RouletteViewModel
+    @StateObject var model: RouletteModel
     
     @State private var length: CGFloat
     @State private var radius: CGFloat = 0
@@ -33,8 +33,8 @@ public struct RouletteView: View {
                         center = CGPoint(x: centerValue, y: centerValue)
                         radius = centerValue
                     })
-                    .onReceive(viewModel.$state, perform: { state in
-                        withAnimation(.easeOut(duration: viewModel.duration)) {
+                    .onReceive(model.$state, perform: { state in
+                        withAnimation(.easeOut(duration: model.duration)) {
                             self.currentAngle = state.angle
                         }
                     })
@@ -44,13 +44,13 @@ public struct RouletteView: View {
     }
     
     private var content: some View {
-        ForEach(viewModel.parts.indices, id: \.self) { (index: Int) -> PartView in
-            let part = viewModel.parts[index]
+        ForEach(model.parts.indices, id: \.self) { (index: Int) -> PartView in
+            let part = model.parts[index]
             return PartView(
                 radius: radius,
                 center: center,
                 part: part,
-                currentAngle: viewModel.state.angle
+                currentAngle: model.state.angle
             )
         }
     }
@@ -60,12 +60,12 @@ public struct RouletteView: View {
     }
     
     public init(
-        viewModel: RouletteViewModel,
+        model: RouletteModel,
         pointView: AnyView? = nil,
         length: CGFloat = 320
     ) {
         self._length = State(initialValue: length)
-        self._viewModel = StateObject(wrappedValue: viewModel)
+        self._model = StateObject(wrappedValue: model)
         if let pointView = pointView {
             self.pointView = pointView
         } else {
@@ -81,7 +81,7 @@ public struct RouletteView: View {
 
 struct RouletteView_Previews: PreviewProvider {
 
-    static private let viewModel = RouletteViewModel(
+    static private let model = RouletteModel(
         duration: 5,
         huges: [
             .init(
@@ -133,7 +133,7 @@ struct RouletteView_Previews: PreviewProvider {
 
     static var previews: some View {
         return RouletteView(
-            viewModel: viewModel,
+            model: model,
             length: 240
         )
     }

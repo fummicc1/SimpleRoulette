@@ -1,5 +1,5 @@
 //
-//  RouletteViewModel.swift
+//  RouletteModel.swift
 //  SimpleRoulette
 //
 //  Created by Fumiya Tanaka on 2020/09/30.
@@ -124,7 +124,7 @@ enum RouletteState: Hashable {
     }
 }
 
-public final class RouletteViewModel: ObservableObject {
+public final class RouletteModel: ObservableObject {
     @Published var parts: [RoulettePartType] = []
     @Published private(set) var state: RouletteState = .start
     @Published var duration: Double
@@ -275,7 +275,7 @@ public final class RouletteViewModel: ObservableObject {
     }
 }
 
-extension RouletteViewModel: RoulettePartHugeDelegate {
+extension RouletteModel: RoulettePartHugeDelegate {
     public var total: Double {
         Double.pi * 2
     }

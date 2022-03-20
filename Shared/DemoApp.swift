@@ -45,7 +45,7 @@ struct DemoApp: App {
         WindowGroup {
             TabView {
                 ContentView(
-                    viewModel: RouletteViewModel(
+                    model: RouletteModel(
                         duration: 5,
                         huges: generateFirstRouletteParts()
                     ),
@@ -56,7 +56,7 @@ struct DemoApp: App {
                 }
                 HStack {
                     ContentView(
-                        viewModel: RouletteViewModel(
+                        model: RouletteModel(
                             duration: 5,
                             huges: generateFirstRouletteParts()
                         ),
@@ -65,7 +65,7 @@ struct DemoApp: App {
                     Spacer()
                         .frame(width: 12)
                     ContentView(
-                        viewModel: RouletteViewModel(
+                        model: RouletteModel(
                             duration: 5,
                             huges: generateSecondRouletteParts()
                         ),
