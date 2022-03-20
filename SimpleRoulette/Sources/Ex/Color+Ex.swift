@@ -7,11 +7,27 @@
 //
 
 import Foundation
-import UIKit
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
-public extension UIColor {
-    var color: Color {
-        Color(self)
+public extension Color {
+    static var secondarySystemBackground: Color {
+        #if canImport(UIKit)
+        return Color(UIColor.secondarySystemBackground)
+        #elseif canImport(AppKit)
+        return Color(NSColor.windowBackgroundColor)
+        #endif
+    }
+
+    static var systemGray: Color {
+        #if canImport(UIKit)
+        return Color(UIColor.systemGray)
+        #elseif canImport(AppKit)
+        return Color(NSColor.systemGray)
+        #endif
     }
 }

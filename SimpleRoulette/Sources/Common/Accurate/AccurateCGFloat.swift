@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
+#endif
 
 extension CGFloat: AccuracyType {
     mutating func add(_ v: CGFloat, mutate: Bool) -> CGFloat {

@@ -29,7 +29,14 @@ struct RouletteShape: Shape {
     func path(in rect: CGRect) -> Path {
         Path { path in
             path.move(to: center)
-            path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false, transform: .identity)
+            path.addArc(
+                center: center,
+                radius: radius,
+                startAngle: startAngle,
+                endAngle: endAngle,
+                clockwise: false,
+                transform: .identity
+            )
         }
     }
 }
@@ -44,11 +51,5 @@ extension Shape {
             self.fill(fillContent)
             self.stroke(strokeContent)
         }
-    }
-}
-
-struct RouletteShape_Previews: PreviewProvider {
-    static var previews: some View {
-        RouletteShape(radius: 96, center: .init(x: 100, y: 100), part: Roulette.HugePart(name: "Test A", huge: .normal, delegate: nil, index: 0, fillColor: .red, strokeColor: .blue))
     }
 }

@@ -1,11 +1,11 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.5
 
 import PackageDescription
 
 let package = Package(
     name: "SimpleRoulette",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v14), .macOS(.v11)
     ],
     products: [
         .library(

@@ -11,7 +11,8 @@ import SwiftUI
 
 public protocol RoulettePartType {
     var id: String { get }
-    var name: String { get }
+    var content: (() -> AnyView)? { get }
+    var label: String { get }
     var index: Int { get }
     /// [0, 2pi)
     var startRadian: Double { get }
@@ -24,9 +25,11 @@ public protocol RoulettePartType {
 public enum Roulette {
     
     public struct HugePart {
-        public var id: String = UUID().uuidString
-        /// text to display on Roulette.
-        public var name: String
+        public var id: String {
+            label
+        }
+        public var label: String
+        public var content: (() -> AnyView)?
         public var huge: Kind
         public weak var delegate: RoulettePartHugeDelegate?
         /// position. Begin with 0.
@@ -35,14 +38,16 @@ public enum Roulette {
         public var strokeColor: Color
         
         public init(
-            name: String,
+            label: String,
             huge: Kind,
-            delegate: RoulettePartHugeDelegate?,
             index: Int,
             fillColor: Color,
-            strokeColor: Color
+            strokeColor: Color,
+            content: (() -> AnyView)?,
+            delegate: RoulettePartHugeDelegate?
         ) {
-            self.name = name
+            self.content = content
+            self.label = label
             self.huge = huge
             self.delegate = delegate
             self.index = index
@@ -52,9 +57,11 @@ public enum Roulette {
     }
     
     public struct AnglePart {
-        public var id: String = UUID().uuidString
-        /// text to display on Roulette.
-        public var name: String
+        public var id: String {
+            label
+        }
+        public var label: String
+        public var content: (() -> AnyView)?
         public var startAngle: Roulette.Angle
         public var endAngle: Roulette.Angle
         /// position.
@@ -63,19 +70,21 @@ public enum Roulette {
         public var strokeColor: Color
         
         public init(
-            name: String,
+            label: String,
             startAngle: Roulette.Angle,
             endAngle: Roulette.Angle,
             index: Int,
             fillColor: Color,
-            strokeColor: Color
+            strokeColor: Color,
+            content: (() -> AnyView)?
         ) {
-            self.name = name
+            self.label = label
             self.startAngle = startAngle
             self.endAngle = endAngle
             self.index = index
             self.fillColor = fillColor
             self.strokeColor = strokeColor
+            self.content = content
         }
     }
 }
