@@ -30,22 +30,36 @@ struct RoulettePart: View {
 
     var body: some View {
         ZStack {
-            Path { path in
-                path.move(to: center)
-                path.addArc(
-                    center: center,
-                    radius: radius,
-                    startAngle: data.startAngle,
-                    endAngle: data.endAngle,
-                    clockwise: false,
-                    transform: .identity
-                )
-                path.closeSubpath()
-            }
-            .stroke(lineWidth: data.lineWidth)
-            .fill(data.strokeColor)
-            .background(data.fillColor)
+            path()
+                .fill(data.fillColor)
+            path()
+                .stroke(data.strokeColor, style: StrokeStyle(
+                    lineWidth: data.lineWidth
+                ))
             data.content.view
+                .alignmentGuide(HorizontalAlignment.center) { d in
+                    let mid = (data.startAngle + data.endAngle) / 2
+                    return center.x + radius * sin(mid.radians)
+                }
+                .alignmentGuide(VerticalAlignment.center) { d in
+                    let mid = (data.startAngle + data.endAngle) / 2
+                    return center.x + radius * cos(mid.radians)
+                }
+        }
+    }
+
+    private func path() -> Path {
+        Path { path in
+            path.move(to: center)
+            path.addArc(
+                center: center,
+                radius: radius,
+                startAngle: data.startAngle,
+                endAngle: data.endAngle,
+                clockwise: false,
+                transform: .identity
+            )
+            path.closeSubpath()
         }
     }
 }
