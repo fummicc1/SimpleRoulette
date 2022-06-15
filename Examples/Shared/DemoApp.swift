@@ -9,17 +9,25 @@
 import SwiftUI
 import SimpleRoulette
 
-func generateFirstRouletteParts() -> [Roulette.HugePart.Config] {
+func generateFirstRouletteParts() -> [PartData] {
     return (0...4).map { index in
-        Roulette.HugePart.Config(
-            label: "\(index)",
-            huge: .normal
-        ) {
+        let content = Content.custom(
             AnyView(
                 Image(systemName: "\(index).square")
                     .resizable()
                     .frame(width: 32, height: 32)
             )
+        )
+        return PartData(
+            index: index,
+            content: content,
+            area: .flex(1),
+            fillColor: <#T##Color#>, strokeColor: <#T##Color#>, lineWidth: <#T##Double#>, delegate: <#T##RoulettePartHugeDelegate?#>)
+        Roulette.HugePart.Config(
+            label: "\(index)",
+            huge: .normal
+        ) {
+
         }
     }
 }

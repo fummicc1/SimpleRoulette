@@ -22,7 +22,13 @@ public protocol RoulettePartHugeDelegate: AnyObject {
 
 
 public final class RouletteModel: ObservableObject {
-    @Published public var parts: [PartData] = []
+    @Published public var parts: [PartData] = [] {
+        didSet {
+            for i in 0..<parts.count {
+                parts[i].delegate = self
+            }
+        }
+    }
     @Published private(set) var state: RouletteState = .start
     @Published public var duration: Double
     
@@ -32,13 +38,17 @@ public final class RouletteModel: ObservableObject {
     }
     
     public init(
-        duration: Double,
+        duration: Double = 5,
         onDecide: PassthroughSubject<PartData, Never> = .init(),
-        parts: [PartData] = []
+        parts: [PartData]
     ) {
         self.onDecide = onDecide
         self.duration = duration
         self.parts = parts
+
+        for i in 0..<parts.count {
+            self.parts[i].delegate = self
+        }
     }
     
     public func start(

@@ -63,10 +63,10 @@ public struct PartData: Identifiable, Hashable {
         index: Int,
         content: Content,
         area: PartArea,
-        fillColor: Color,
-        strokeColor: Color,
-        lineWidth: Double,
-        delegate: RoulettePartHugeDelegate?
+        fillColor: Color = .secondarySystemBackground,
+        strokeColor: Color = .systemGray,
+        lineWidth: Double = 2,
+        delegate: RoulettePartHugeDelegate? = nil
     ) {
         self.index = index
         self.content = content

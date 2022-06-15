@@ -17,11 +17,11 @@ public struct RouletteView: View {
     @State private var center: CGPoint = .zero
     @State private var length: CGFloat
 
-    let stopView: () -> AnyView
+    let stopView: AnyView
     
     public var body: some View {
         VStack {
-            stopView()
+            stopView
             GeometryReader { geometry in
                 content
                     .aspectRatio(1, contentMode: .fit)
@@ -58,7 +58,7 @@ public struct RouletteView: View {
     
     public init(
         model: RouletteModel,
-        stopView: (() -> AnyView)?,
+        stopView: AnyView? = nil,
         length: CGFloat = 320
     ) {
         self._length = State(initialValue: length)
@@ -66,13 +66,11 @@ public struct RouletteView: View {
         if let stopView = stopView {
             self.stopView = stopView
         } else {
-            self.stopView = {
-                AnyView(
-                    Image(systemName: "arrowtriangle.down")
-                        .font(.system(.title))
-                        .fixedSize()
-                )
-            }
+            self.stopView = AnyView(
+                Image(systemName: "arrowtriangle.down")
+                    .font(.system(.title))
+                    .fixedSize()
+            )
         }
     }
 }

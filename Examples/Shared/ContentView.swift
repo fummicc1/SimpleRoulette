@@ -11,14 +11,13 @@ import SimpleRoulette
 
 struct ContentView: View {
     @ObservedObject var model: RouletteModel
-    @State private var decidedPart: RoulettePartType?
+    @State private var decidedPart: PartData?
     let length: CGFloat
 
     var body: some View {
         VStack {
             RouletteView(
-                model: model,
-                length: length
+                model: model
             )
             Button("Start") {
                 model.start(
@@ -28,7 +27,7 @@ struct ContentView: View {
             .buttonStyle(.bordered)
             .font(.title)
             if let part = decidedPart {
-                part.content?() ?? AnyView(Text(part.label))
+                part.content.view
             }
         }
         .onReceive(model.onDecidePublisher) { part in

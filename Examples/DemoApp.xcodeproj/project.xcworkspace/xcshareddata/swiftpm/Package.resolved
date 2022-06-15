@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/fummicc1/SimpleRoulette",
       "state" : {
-        "branch" : "main",
-        "revision" : "8f2f8e631dfe9c9bf4fe962c01f93cfeba8c179f"
+        "branch" : "feature/simplify",
+        "revision" : "5bd40ea6ed391bbf111919bfc3db695698ab2e68"
       }
     }
   ],

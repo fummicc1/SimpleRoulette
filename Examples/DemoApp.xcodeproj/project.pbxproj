@@ -531,7 +531,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fummicc1/SimpleRoulette";
 			requirement = {
-				branch = main;
+				branch = feature/simplify;
 				kind = branch;
 			};
 		};
