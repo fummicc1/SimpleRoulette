@@ -11,16 +11,17 @@ import SwiftUI
 public struct RouletteView: View {
     
     @StateObject var model: RouletteModel
-    
-    @Binding var length: CGFloat
-    @Binding var radius: CGFloat
-    @Binding var center: CGPoint
 
-    let pointView: AnyView
+    @State private var currentAngle: Angle = .init()
+    @State private var radius: CGFloat = 0
+    @State private var center: CGPoint = .zero
+    @State private var length: CGFloat
+
+    let stopView: () -> AnyView
     
     public var body: some View {
         VStack {
-            self.makePointView()
+            stopView()
             GeometryReader { geometry in
                 content
                     .aspectRatio(1, contentMode: .fit)
@@ -29,7 +30,10 @@ public struct RouletteView: View {
                         let midX = geometry.frame(in: .local).midX
                         let midY = geometry.frame(in: .local).midY
                         let centerValue = min(midX, midY)
-                        center = CGPoint(x: centerValue, y: centerValue)
+                        center = CGPoint(
+                            x: centerValue,
+                            y: centerValue
+                        )
                         radius = centerValue
                     })
                     .onReceive(model.$state, perform: { state in
@@ -43,94 +47,32 @@ public struct RouletteView: View {
     }
     
     private var content: some View {
-        ForEach(model.parts.indices, id: \.self) { (index: Int) -> RoulettePart in
-            let part = model.parts[index]
+        ForEach(model.parts, id: \.self) { (part) -> RoulettePart in
             RoulettePart(
-                index: index,
-                radians: <#T##Double#>, initialRadians: <#T##Double#>, radius: <#T##Double#>, center: <#T##CGPoint#>, delegate: <#T##RoulettePartHugeDelegate?#>, fillColor: <#T##Color#>, strokeColor: <#T##Color#>)
+                data: part,
+                center: center,
+                radius: radius
+            )
         }
-    }
-
-    private func makePointView() -> some View {
-        return pointView
     }
     
     public init(
         model: RouletteModel,
-        pointView: AnyView? = nil,
+        stopView: (() -> AnyView)?,
         length: CGFloat = 320
     ) {
         self._length = State(initialValue: length)
         self._model = StateObject(wrappedValue: model)
-        if let pointView = pointView {
-            self.pointView = pointView
+        if let stopView = stopView {
+            self.stopView = stopView
         } else {
-            self.pointView = AnyView(
-                Image(systemName: "arrowtriangle.down")
-                    .font(.system(.title))
-                    .fixedSize()
-            )
+            self.stopView = {
+                AnyView(
+                    Image(systemName: "arrowtriangle.down")
+                        .font(.system(.title))
+                        .fixedSize()
+                )
+            }
         }
-    }
-}
-
-
-struct RouletteView_Previews: PreviewProvider {
-
-    static private let model = RouletteModel(
-        duration: 5,
-        huges: [
-            .init(
-                label: "10",
-                huge: .normal,
-                content: {
-                    AnyView(
-                        Image(systemName: "10.square")
-                            .resizable()
-                            .frame(width: 56, height: 56)
-                    )
-                }
-            ),
-            .init(
-                label: "2",
-                huge: .normal,
-                content: {
-                    AnyView(
-                        Image(systemName: "2.square")
-                            .resizable()
-                            .frame(width: 56, height: 56)
-                    )
-                }
-            ),
-            .init(
-                label: "5",
-                huge: .normal,
-                content: {
-                    AnyView(
-                        Image(systemName: "5.square")
-                            .resizable()
-                            .frame(width: 56, height: 56)
-                    )
-                }
-            ),
-            .init(
-                label: "3",
-                huge: .normal,
-                content: {
-                    AnyView(
-                        Image(systemName: "3.square")
-                            .resizable()
-                            .frame(width: 56, height: 56)
-                    )
-                }
-            )
-        ]
-    )
-
-    static var previews: some View {
-        return RouletteView(
-            model: model,
-            length: 240
-        )
     }
 }

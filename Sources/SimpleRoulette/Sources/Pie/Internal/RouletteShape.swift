@@ -10,10 +10,10 @@ import SwiftUI
 
 struct RouletteShape: Shape {
     var startAngle: Angle {
-        Angle(radians: part.startRadian)
+        part.startAngle
     }
     var endAngle: Angle {
-        Angle(radians: part.endRadian)
+        part.endAngle
     }
     var radius: CGFloat
     var center: CGPoint
@@ -24,7 +24,7 @@ struct RouletteShape: Shape {
         part.strokeColor
     }
     
-    var part: RoulettePartType
+    var part: PartData
     
     func path(in rect: CGRect) -> Path {
         Path { path in

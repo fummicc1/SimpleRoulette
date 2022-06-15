@@ -42,7 +42,7 @@ enum RouletteState: Hashable {
     case start
     case run(angle: Angle, speed: RouletteSpeed)
     case pause(angle: Angle, speed: RouletteSpeed)
-    case stop(location: RoulettePartType, angle: Angle)
+    case stop(location: PartData, angle: Angle)
 
     var angle: Angle {
         let degrees: Double
