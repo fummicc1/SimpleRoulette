@@ -7,12 +7,12 @@
 		<key>Demo (iOS).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Demo (macOS).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>SimpleRoulette.xcscheme_^#shared#^_</key>
 		<dict>
@@ -55,6 +55,11 @@
 			<true/>
 		</dict>
 		<key>D35C375C2480A2290029CDA8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3BA583C27E6BFE900254CAD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

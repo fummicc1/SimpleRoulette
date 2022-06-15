@@ -9,73 +9,52 @@
 import SwiftUI
 import SimpleRoulette
 
-func generateFirstRouletteParts() -> [Roulette.HugePart.Config] {
-    return (0...4).map { index in
-        Roulette.HugePart.Config(
-            label: "\(index)",
-            huge: .normal
-        ) {
-            AnyView(
-                Image(systemName: "\(index).square")
-                    .resizable()
-                    .frame(width: 32, height: 32)
-            )
-        }
-    }
-}
-
-func generateSecondRouletteParts() -> [Roulette.HugePart.Config] {
-    return (0...4).map { index in
-        Roulette.HugePart.Config(
-            label: "\(index)",
-            huge: index % 2 == 0 ? .small : .large
-        ) {
-            AnyView(
-                Image(systemName: "\(index).square")
-                    .resizable()
-                    .frame(width: 32, height: 32)
-            )
-        }
-    }
-}
-
 @main
 struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
-            TabView {
-                ContentView(
-                    model: RouletteModel(
-                        duration: 5,
-                        huges: generateFirstRouletteParts()
-                    ),
-                    length: 320
+            ContentView(
+                model: RouletteModel(
+                    parts: [
+                        PartData(
+                            index: 0,
+                            content: .label("Swift"),
+                            area: .flex(3),
+                            fillColor: Color.red
+                        ),
+                        PartData(
+                            index: 1,
+                            content: .label("Kotlin"),
+                            area: .flex(1),
+                            fillColor: Color.purple
+                        ),
+                        PartData(
+                            index: 2,
+                            content: .label("JavaScript"),
+                            area: .flex(2),
+                            fillColor: Color.yellow
+                        ),
+                        PartData(
+                            index: 3,
+                            content: .label("Dart"),
+                            area: .flex(1),
+                            fillColor: Color.green
+                        ),
+                        PartData(
+                            index: 4,
+                            content: .label("Python"),
+                            area: .flex(2),
+                            fillColor: Color.blue
+                        ),
+                        PartData(
+                            index: 5,
+                            content: .label("C++"),
+                            area: .degree(60),
+                            fillColor: Color.orange
+                        ),
+                    ]
                 )
-                .tabItem {
-                    Text("Single")
-                }
-                HStack {
-                    ContentView(
-                        model: RouletteModel(
-                            duration: 5,
-                            huges: generateFirstRouletteParts()
-                        ),
-                        length: 160
-                    )
-                    Spacer()
-                        .frame(width: 12)
-                    ContentView(
-                        model: RouletteModel(
-                            duration: 5,
-                            huges: generateSecondRouletteParts()
-                        ),
-                        length: 160
-                    )
-                }
-                .tabItem {
-                    Text("HStack")
-                }
-            }
+            )
         }
     }
 }
