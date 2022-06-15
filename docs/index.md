@@ -1,10 +1,12 @@
-![Images](https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/SimpleRoulette.png)
+![SimpleRoulette](https://user-images.githubusercontent.com/44002126/173889690-70e5ca45-4864-4261-bb8d-4387c59158fe.png)
+
 
 ![Pod Platform](https://img.shields.io/cocoapods/p/SimpleRoulette.svg?style=flat)
 ![Pod License](https://img.shields.io/cocoapods/l/SimpleRoulette.svg?style=flat)
 [![Pod Version](https://img.shields.io/cocoapods/v/SimpleRoulette.svg?style=flat)](http://cocoapods.org/pods/SimpleRoulette)
 ![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
 ![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)
+
 
 ## SimpleRoulette
 
@@ -126,7 +128,7 @@ RouletteModel is `ObservableObject`. You can observe the notification when roule
 
 documentation is under construction.
 
-- [Beta documentation page](https://fummicc1.github.io/SimpleRoulette)
+- [Beta documentation page](https://fummicc1.github.io/SimpleRoulette/SimpleRoulette)
 
 ## Contributing
 
