@@ -14,13 +14,12 @@ SimpleRoulette helps you to create customizable Roulette, with **SwiftUI**. (Com
 
 **Because of GiF, demo lags**
 
-| iOS (with Label Content)                                                                                     | iOS (with `AnyView(Image)` Content)                                                                                           |
-| ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/fummicc1/SimpleRoulette/blob/main/Assets/Roulette_Ver_SwiftUI.gif" width=320px> | <img src="https://user-images.githubusercontent.com/44002126/159145680-abc1cf83-9860-4a7b-91b5-60122c193973.gif" width=320px> |
+| iOS |MacOS|
+| --- |---|
+| <img src="https://user-images.githubusercontent.com/44002126/173885473-a111528e-18f9-404d-85a5-ce6ebf4afd84.gif" width="320px"> | <img src="https://user-images.githubusercontent.com/44002126/173885181-8df3150c-2e36-468b-90e4-83f9b615d74e.gif" width="320px"> |
 
-| MacOS (with `AnyView(Image)` Content)                                                                                         |
-| ----------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://user-images.githubusercontent.com/44002126/159145747-29f4e41c-0005-47f3-a343-604d887a3975.gif" width=640px> |
+
+
 
 ## Install
 
@@ -68,7 +67,7 @@ struct ContentView: View {
             RouletteView(
                 model: model
             )
-        }
+        }.onAppear { model.start() } 
     }
 }
 
@@ -127,7 +126,7 @@ RouletteModel is `ObservableObject`. You can observe the notification when roule
 
 documentation is under construction.
 
-- [Beta document page](https://fummicc1.github.io/SimpleRoulette)
+- [Beta documentation page](https://fummicc1.github.io/SimpleRoulette)
 
 ## Contributing
 
