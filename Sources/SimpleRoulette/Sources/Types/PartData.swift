@@ -13,7 +13,7 @@ public enum Content {
     case label(String)
     case custom(AnyView)
 
-    var view: AnyView {
+    public var view: AnyView {
         switch self {
         case .label(let string):
             return AnyView(Text(string))
