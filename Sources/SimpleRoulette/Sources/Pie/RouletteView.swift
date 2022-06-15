@@ -37,7 +37,9 @@ public struct RouletteView: View {
                         radius = centerValue
                     })
                     .onReceive(model.$state, perform: { state in
-                        withAnimation(.easeOut(duration: model.duration)) {
+                        withAnimation(
+                            .easeOut(duration: model.duration)
+                        ) {
                             self.currentAngle = state.angle
                         }
                     })
@@ -47,12 +49,21 @@ public struct RouletteView: View {
     }
     
     private var content: some View {
-        ForEach(model.parts, id: \.self) { (part) -> RoulettePart in
-            RoulettePart(
-                data: part,
-                center: center,
-                radius: radius
-            )
+        ForEach(model.parts, id: \.self) { (part) -> ZStack in
+            ZStack {
+                RoulettePart(
+                    data: part,
+                    center: center,
+                    radius: radius
+                )
+                .fill(part.fillColor)
+                RoulettePart(
+                    data: part,
+                    center: center,
+                    radius: radius
+                )
+                .stroke(part.strokeColor, lineWidth: part.lineWidth)
+            }
         }
     }
     
