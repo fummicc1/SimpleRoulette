@@ -126,7 +126,7 @@ RouletteModel is `ObservableObject`. You can observe the notification when roule
 
 documentation is under construction.
 
-- [Beta documentation page](https://fummicc1.github.io/SimpleRoulette)
+- [Beta documentation page](https://fummicc1.github.io/SimpleRoulette/SimpleRoulette)
 
 ## Contributing
 
