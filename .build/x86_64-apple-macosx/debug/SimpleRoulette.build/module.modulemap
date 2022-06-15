@@ -1,4 +1,0 @@
-module SimpleRoulette {
-    header "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/SimpleRoulette-Swift.h"
-    requires objc
-}
