@@ -37,7 +37,8 @@ struct RoulettePart: View {
                     radius: radius,
                     startAngle: data.startAngle,
                     endAngle: data.endAngle,
-                    clockwise: false
+                    clockwise: false,
+                    transform: .identity
                 )
                 path.closeSubpath()
             }

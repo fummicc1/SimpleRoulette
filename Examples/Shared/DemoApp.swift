@@ -9,44 +9,6 @@
 import SwiftUI
 import SimpleRoulette
 
-func generateFirstRouletteParts() -> [PartData] {
-    return (0...4).map { index in
-        let content = Content.custom(
-            AnyView(
-                Image(systemName: "\(index).square")
-                    .resizable()
-                    .frame(width: 32, height: 32)
-            )
-        )
-        return PartData(
-            index: index,
-            content: content,
-            area: .flex(1),
-            fillColor: <#T##Color#>, strokeColor: <#T##Color#>, lineWidth: <#T##Double#>, delegate: <#T##RoulettePartHugeDelegate?#>)
-        Roulette.HugePart.Config(
-            label: "\(index)",
-            huge: .normal
-        ) {
-
-        }
-    }
-}
-
-func generateSecondRouletteParts() -> [Roulette.HugePart.Config] {
-    return (0...4).map { index in
-        Roulette.HugePart.Config(
-            label: "\(index)",
-            huge: index % 2 == 0 ? .small : .large
-        ) {
-            AnyView(
-                Image(systemName: "\(index).square")
-                    .resizable()
-                    .frame(width: 32, height: 32)
-            )
-        }
-    }
-}
-
 @main
 struct DemoApp: App {
     var body: some Scene {
@@ -54,8 +16,11 @@ struct DemoApp: App {
             TabView {
                 ContentView(
                     model: RouletteModel(
-                        duration: 5,
-                        huges: generateFirstRouletteParts()
+                        parts: [
+                            PartData(index: 0, content: .label("Swift"), area: .flex(3)),
+                            PartData(index: 1, content: .label("Kotlin"), area: .flex(1)),
+                            PartData(index: 2, content: .label("JavaScript"), area: .flex(2)),
+                        ]
                     ),
                     length: 320
                 )
@@ -65,8 +30,11 @@ struct DemoApp: App {
                 HStack {
                     ContentView(
                         model: RouletteModel(
-                            duration: 5,
-                            huges: generateFirstRouletteParts()
+                            parts: [
+                                PartData(index: 0, content: .label("Ramen"), area: .flex(3)),
+                                PartData(index: 1, content: .label("Tomato"), area: .flex(1)),
+                                PartData(index: 2, content: .label("Udon"), area: .flex(2)),
+                            ]
                         ),
                         length: 160
                     )
@@ -74,8 +42,11 @@ struct DemoApp: App {
                         .frame(width: 12)
                     ContentView(
                         model: RouletteModel(
-                            duration: 5,
-                            huges: generateSecondRouletteParts()
+                            parts: [
+                                PartData(index: 0, content: .label("Pizza"), area: .flex(3)),
+                                PartData(index: 1, content: .label("IceCream"), area: .flex(1)),
+                                PartData(index: 2, content: .label("Sushi"), area: .flex(2)),
+                            ]
                         ),
                         length: 160
                     )

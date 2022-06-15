@@ -17,7 +17,8 @@ struct ContentView: View {
     var body: some View {
         VStack {
             RouletteView(
-                model: model
+                model: model,
+                length: length
             )
             Button("Start") {
                 model.start(
@@ -40,52 +41,11 @@ struct ContentView_Previews: PreviewProvider {
 
     static func defaultModel() -> RouletteModel {
         let viewModel = RouletteModel(
-            duration: 5,
-            huges: [
-                .init(
-                    label: "10",
-                    huge: .normal,
-                    content: {
-                        AnyView(
-                            Image(systemName: "10.square")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                        )
-                    }
-                ),
-                .init(
-                    label: "2",
-                    huge: .normal,
-                    content: {
-                        AnyView(
-                            Image(systemName: "2.square")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                        )
-                    }
-                ),
-                .init(
-                    label: "5",
-                    huge: .normal,
-                    content: {
-                        AnyView(
-                            Image(systemName: "5.square")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                        )
-                    }
-                ),
-                .init(
-                    label: "3",
-                    huge: .normal,
-                    content: {
-                        AnyView(
-                            Image(systemName: "3.square")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                        )
-                    }
-                )
+            parts: [
+                PartData(index: 0, content: .label("0"), area: .flex(1)),
+                PartData(index: 1, content: .label("1"), area: .flex(1)),
+                PartData(index: 2, content: .label("2"), area: .flex(1)),
+                PartData(index: 3, content: .label("3"), area: .flex(1))
             ]
         )
         return viewModel
