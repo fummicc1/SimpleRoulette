@@ -9,9 +9,8 @@
 import Foundation
 import SwiftUI
 
-struct RoulettePart: Shape {
+struct RoulettePart: View {
 
-    private let bezier: UIBezierPath
     init(
         data: PartData,
         center: CGPoint,
@@ -20,30 +19,6 @@ struct RoulettePart: Shape {
         self.data = data
         self.center = center
         self.radius = radius
-
-        self.bezier = {
-            let path = UIBezierPath()
-            path.move(to: center)
-            let x1 = center.x + cos(data.startAngle.radians)
-            let y1 = center.y + sin(data.endAngle.radians)
-            path.addLine(to: CGPoint(x: x1, y: y1))
-            let x2 = center.x + cos(data.endAngle.radians)
-            let y2 = center.y + sin(data.endAngle.radians)
-            let midX = (x1 + x2) / 2
-            let midY = (y1 + y2) / 2
-            path.addQuadCurve(
-                to: CGPoint(
-                    x: x2,
-                    y: y2
-                ),
-                controlPoint: CGPoint(
-                    x: midX,
-                    y: midY
-                )
-            )
-            return path
-        }()
-
     }
 
 
@@ -53,24 +28,15 @@ struct RoulettePart: Shape {
     var radius: Double
 
 
-    func path(in rect: CGRect) -> Path {
-        let path = Path(bezier.cgPath)
-        let multiplier = min(rect.width, rect.height)
-        let transform = CGAffineTransform(
-            scaleX: multiplier,
-            y: multiplier
-        )
-        return path.applying(transform)
-    }
-
-    var xPadding: Double {
-        let mid = (data.startAngle + data.endAngle) / 2
-        return center.x + radius * cos(mid.radians)
-    }
-
-    var yPadding: Double {
-        let mid = (data.startAngle + data.endAngle) / 2
-        return center.x + radius * sin(mid.radians)
+    var body: some View {
+        ZStack {
+            path()
+                .fill(data.fillColor)
+            path()
+                .stroke(data.strokeColor, style: StrokeStyle(
+                    lineWidth: data.lineWidth
+                ))
+        }
     }
 
     private func path() -> Path {
@@ -84,6 +50,7 @@ struct RoulettePart: Shape {
                 clockwise: false,
                 transform: .identity
             )
+            path.closeSubpath()
         }
     }
 }

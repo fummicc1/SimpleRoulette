@@ -1,0 +1,71 @@
+{
+  "": {
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/master.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Ex/Color+Ex.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Ex/Color+Ex.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Ex/Color+Ex.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Ex/Color+Ex~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Ex/Color+Ex.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Pie/RouletteModel.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RouletteModel.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RouletteModel.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RouletteModel~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RouletteModel.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Pie/RoulettePart.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RoulettePart.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RoulettePart.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RoulettePart~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RoulettePart.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Pie/RouletteView.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RouletteView.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RouletteView.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RouletteView~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Pie/RouletteView.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Slot/RouletteWorker.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/RouletteWorker.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/RouletteWorker.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/RouletteWorker~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/RouletteWorker.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Slot/SlotRouletteModel.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteModel.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteModel.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteModel~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteModel.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Slot/SlotRouletteSpeed.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteSpeed.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteSpeed.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteSpeed~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteSpeed.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Slot/SlotRouletteView.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteView.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteView.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteView~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Slot/SlotRouletteView.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Types/PartData.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/PartData.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/PartData.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/PartData~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/PartData.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Types/RouletteSpeed.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/RouletteSpeed.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/RouletteSpeed.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/RouletteSpeed~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/RouletteSpeed.swiftdeps"
+  },
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Types/RouletteState.swift": {
+    "dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/RouletteState.d",
+    "object": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/RouletteState.swift.o",
+    "swiftmodule": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/RouletteState~partial.swiftmodule",
+    "swift-dependencies": "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/.build/x86_64-apple-macosx/debug/SimpleRoulette.build/Sources/Types/RouletteState.swiftdeps"
+  }
+}

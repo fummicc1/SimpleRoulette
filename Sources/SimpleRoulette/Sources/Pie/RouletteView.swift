@@ -49,20 +49,32 @@ public struct RouletteView: View {
     }
     
     private var content: some View {
-        ForEach(model.parts, id: \.self) { (part) -> ZStack in
-            ZStack {
-                RoulettePart(
-                    data: part,
-                    center: center,
-                    radius: radius
-                )
-                .fill(part.fillColor)
-                RoulettePart(
-                    data: part,
-                    center: center,
-                    radius: radius
-                )
-                .stroke(part.strokeColor, lineWidth: part.lineWidth)
+        ZStack {
+            ForEach(model.parts, id: \.self) { (part) -> ZStack in
+                ZStack {
+                    RoulettePart(
+                        data: part,
+                        center: center,
+                        radius: radius
+                    )
+                }
+            }
+            ForEach(model.parts, id: \.self) { (part) -> ZStack in
+                ZStack {
+                    part.content.view
+                        .offset(
+                            CGSize(
+                                width: { () -> Double in
+                                    let mean = (part.startAngle + part.endAngle) / 2
+                                    return radius * 1/2 * cos(mean.radians)
+                                }(),
+                                height: { () -> Double in
+                                    let mean = (part.startAngle + part.endAngle) / 2
+                                    return radius * 1/2 * sin(mean.radians)
+                                }()
+                            )
+                        )
+                }
             }
         }
     }
@@ -78,7 +90,7 @@ public struct RouletteView: View {
             self.stopView = stopView
         } else {
             self.stopView = AnyView(
-                Image(systemName: "arrowtriangle.down")
+                Image(systemName: "arrowtriangle.down.fill")
                     .font(.system(.title))
                     .fixedSize()
             )

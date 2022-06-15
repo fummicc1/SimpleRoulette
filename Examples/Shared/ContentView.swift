@@ -12,24 +12,37 @@ import SimpleRoulette
 struct ContentView: View {
     @ObservedObject var model: RouletteModel
     @State private var decidedPart: PartData?
-    let length: CGFloat
+    @State private var length: CGFloat = 320
 
     var body: some View {
-        VStack {
-            RouletteView(
-                model: model,
-                length: length
-            )
-            Button("Start") {
-                model.start(
-                    speed: [RouletteSpeed.slow, .normal, .fast].randomElement()!
+        HStack {
+            Spacer()
+            VStack {
+                Spacer()
+                Text("Decide favorite language !")
+                    .font(.largeTitle)
+                    .bold().italic()
+                    .padding()
+                if let decidedPart = decidedPart, let text = decidedPart.content.text {
+                    Text("It is \(text)")
+                        .font(.title)
+                        .italic()
+                        .bold()
+                        .padding()
+                }
+                RouletteView(
+                    model: model,
+                    length: length
                 )
+                Button("Start") {
+                    model.start()
+                }
+                .buttonStyle(.bordered)
+                .font(.title)
+                .padding()
+                Spacer()
             }
-            .buttonStyle(.bordered)
-            .font(.title)
-            if let part = decidedPart {
-                part.content.view
-            }
+            Spacer()
         }
         .onReceive(model.onDecidePublisher) { part in
             decidedPart = part
@@ -52,9 +65,9 @@ struct ContentView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        ContentView(model: defaultModel(), length: 240)
+        ContentView(model: defaultModel())
             .previewInterfaceOrientation(.landscapeLeft)
-        ContentView(model: defaultModel(), length: 240)
+        ContentView(model: defaultModel())
             .previewDevice(PreviewDevice(rawValue: "iPhone 13 mini"))
     }
 }

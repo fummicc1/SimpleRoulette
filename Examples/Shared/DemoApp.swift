@@ -13,48 +13,48 @@ import SimpleRoulette
 struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
-            TabView {
-                ContentView(
-                    model: RouletteModel(
-                        parts: [
-                            PartData(index: 0, content: .label("Swift"), area: .flex(3)),
-                            PartData(index: 1, content: .label("Kotlin"), area: .flex(1)),
-                            PartData(index: 2, content: .label("JavaScript"), area: .flex(2)),
-                        ]
-                    ),
-                    length: 320
+            ContentView(
+                model: RouletteModel(
+                    parts: [
+                        PartData(
+                            index: 0,
+                            content: .label("Swift"),
+                            area: .flex(3),
+                            fillColor: Color.red
+                        ),
+                        PartData(
+                            index: 1,
+                            content: .label("Kotlin"),
+                            area: .flex(1),
+                            fillColor: Color.purple
+                        ),
+                        PartData(
+                            index: 2,
+                            content: .label("JavaScript"),
+                            area: .flex(2),
+                            fillColor: Color.yellow
+                        ),
+                        PartData(
+                            index: 3,
+                            content: .label("Dart"),
+                            area: .flex(1),
+                            fillColor: Color.green
+                        ),
+                        PartData(
+                            index: 4,
+                            content: .label("Python"),
+                            area: .flex(2),
+                            fillColor: Color.blue
+                        ),
+                        PartData(
+                            index: 5,
+                            content: .label("C++"),
+                            area: .degree(60),
+                            fillColor: Color.orange
+                        ),
+                    ]
                 )
-                .tabItem {
-                    Text("Single")
-                }
-                HStack {
-                    ContentView(
-                        model: RouletteModel(
-                            parts: [
-                                PartData(index: 0, content: .label("Ramen"), area: .flex(3)),
-                                PartData(index: 1, content: .label("Tomato"), area: .flex(1)),
-                                PartData(index: 2, content: .label("Udon"), area: .flex(2)),
-                            ]
-                        ),
-                        length: 160
-                    )
-                    Spacer()
-                        .frame(width: 12)
-                    ContentView(
-                        model: RouletteModel(
-                            parts: [
-                                PartData(index: 0, content: .label("Pizza"), area: .flex(3)),
-                                PartData(index: 1, content: .label("IceCream"), area: .flex(1)),
-                                PartData(index: 2, content: .label("Sushi"), area: .flex(2)),
-                            ]
-                        ),
-                        length: 160
-                    )
-                }
-                .tabItem {
-                    Text("HStack")
-                }
-            }
+            )
         }
     }
 }

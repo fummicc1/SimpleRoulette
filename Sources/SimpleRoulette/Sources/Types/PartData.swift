@@ -21,6 +21,15 @@ public enum Content {
             return anyView
         }
     }
+
+    public var text: String? {
+        switch self {
+        case .label(let string):
+            return string
+        case .custom:
+            return nil
+        }
+    }
 }
 
 public enum PartArea {
@@ -120,5 +129,15 @@ public struct PartData: Identifiable, Hashable {
         public init(integerLiteral value: IntegerLiteralType) {
             self.value = value
         }
+    }
+
+    func paddingX(radius: Double) -> Double {
+        let mid = (startAngle + endAngle) / 2
+        return radius / 2 * cos(mid.radians)
+    }
+
+    func paddingY(radius: Double) -> Double {
+        let mid = (startAngle + endAngle) / 2
+        return radius / 2 * sin(mid.radians)
     }
 }

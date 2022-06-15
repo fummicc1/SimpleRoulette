@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D3068184285A216300FF3784 /* SimpleRoulette in Frameworks */ = {isa = PBXBuildFile; productRef = D3068183285A216300FF3784 /* SimpleRoulette */; };
-		D3068186285A216B00FF3784 /* SimpleRoulette in Frameworks */ = {isa = PBXBuildFile; productRef = D3068185285A216B00FF3784 /* SimpleRoulette */; };
 		D3BA584527E6BFE900254CAD /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA583627E6BFE700254CAD /* DemoApp.swift */; };
 		D3BA584627E6BFE900254CAD /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA583627E6BFE700254CAD /* DemoApp.swift */; };
 		D3BA584727E6BFE900254CAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA583727E6BFE700254CAD /* ContentView.swift */; };
 		D3BA584827E6BFE900254CAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA583727E6BFE700254CAD /* ContentView.swift */; };
 		D3BA584927E6BFE900254CAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BA583827E6BFE900254CAD /* Assets.xcassets */; };
 		D3BA584A27E6BFE900254CAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BA583827E6BFE900254CAD /* Assets.xcassets */; };
+		D3D7AD31285A2B2C00330438 /* SimpleRoulette in Frameworks */ = {isa = PBXBuildFile; productRef = D3D7AD30285A2B2C00330438 /* SimpleRoulette */; };
+		D3D7AD33285A2B3800330438 /* SimpleRoulette in Frameworks */ = {isa = PBXBuildFile; productRef = D3D7AD32285A2B3800330438 /* SimpleRoulette */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +48,7 @@
 		D3BA584227E6BFE900254CAD /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3BA584427E6BFE900254CAD /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		D3BA585B27E6D03100254CAD /* Demo--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Demo--iOS--Info.plist"; sourceTree = "<group>"; };
+		D3D7AD2F285A2A7200330438 /* SimpleRoulette */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SimpleRoulette; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3068184285A216300FF3784 /* SimpleRoulette in Frameworks */,
+				D3D7AD31285A2B2C00330438 /* SimpleRoulette in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3068186285A216B00FF3784 /* SimpleRoulette in Frameworks */,
+				D3D7AD33285A2B3800330438 /* SimpleRoulette in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +74,7 @@
 		D35C37152480A1F70029CDA8 = {
 			isa = PBXGroup;
 			children = (
+				D3D7AD2E285A2A7200330438 /* Packages */,
 				D3BA585B27E6D03100254CAD /* Demo--iOS--Info.plist */,
 				D3BA583527E6BFE700254CAD /* Shared */,
 				D3BA584327E6BFE900254CAD /* macOS */,
@@ -115,6 +117,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D3D7AD2E285A2A7200330438 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				D3D7AD2F285A2A7200330438 /* SimpleRoulette */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,7 +143,7 @@
 			);
 			name = "Demo (iOS)";
 			packageProductDependencies = (
-				D3068183285A216300FF3784 /* SimpleRoulette */,
+				D3D7AD30285A2B2C00330438 /* SimpleRoulette */,
 			);
 			productName = "Demo (iOS)";
 			productReference = D3BA583D27E6BFE900254CAD /* Demo.app */;
@@ -154,7 +164,7 @@
 			);
 			name = "Demo (macOS)";
 			packageProductDependencies = (
-				D3068185285A216B00FF3784 /* SimpleRoulette */,
+				D3D7AD32285A2B3800330438 /* SimpleRoulette */,
 			);
 			productName = "Demo (macOS)";
 			productReference = D3BA584227E6BFE900254CAD /* Demo.app */;
@@ -188,7 +198,6 @@
 			);
 			mainGroup = D35C37152480A1F70029CDA8;
 			packageReferences = (
-				D3068182285A216300FF3784 /* XCRemoteSwiftPackageReference "SimpleRoulette" */,
 			);
 			productRefGroup = D35C37202480A1F70029CDA8 /* Products */;
 			projectDirPath = "";
@@ -374,6 +383,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S8WBNKMKYU;
 				ENABLE_PREVIEWS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "SIMPLEROULETTEDEMO=1";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Demo--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -407,6 +417,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S8WBNKMKYU;
 				ENABLE_PREVIEWS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "SIMPLEROULETTEDEMO=1";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Demo--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,6 +456,10 @@
 				DEVELOPMENT_TEAM = S8WBNKMKYU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SIMPLEROULETTEDEMO=1",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Fumiya Tanaka. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -477,6 +492,10 @@
 				DEVELOPMENT_TEAM = S8WBNKMKYU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SIMPLEROULETTEDEMO=1",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Fumiya Tanaka. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -526,26 +545,13 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		D3068182285A216300FF3784 /* XCRemoteSwiftPackageReference "SimpleRoulette" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fummicc1/SimpleRoulette";
-			requirement = {
-				branch = feature/simplify;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		D3068183285A216300FF3784 /* SimpleRoulette */ = {
+		D3D7AD30285A2B2C00330438 /* SimpleRoulette */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D3068182285A216300FF3784 /* XCRemoteSwiftPackageReference "SimpleRoulette" */;
 			productName = SimpleRoulette;
 		};
-		D3068185285A216B00FF3784 /* SimpleRoulette */ = {
+		D3D7AD32285A2B3800330438 /* SimpleRoulette */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D3068182285A216300FF3784 /* XCRemoteSwiftPackageReference "SimpleRoulette" */;
 			productName = SimpleRoulette;
 		};
 /* End XCSwiftPackageProductDependency section */

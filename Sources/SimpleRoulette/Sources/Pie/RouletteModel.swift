@@ -32,7 +32,7 @@ public final class RouletteModel: ObservableObject {
     }
     
     public init(
-        duration: Double = 5,
+        duration: Double = 3,
         onDecide: PassthroughSubject<PartData, Never> = .init(),
         parts: [PartData]
     ) {
@@ -55,9 +55,10 @@ public final class RouletteModel: ObservableObject {
     }
     
     public func start(
-        speed: RouletteSpeed = .normal,
+        speed _speed: RouletteSpeed? = nil,
         automaticallyStop: Bool = true
     ) {
+        let speed = _speed ?? RouletteSpeed.random()
         if state.canStart {
             var angle = state.angle
             angle.degrees += speed.value
@@ -79,49 +80,44 @@ public final class RouletteModel: ObservableObject {
         guard case let RouletteState.run(angle, _) = state else {
             return
         }
-        var degrees = CGFloat(angle.degrees)
+        var degrees = angle.degrees
         #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
         print("Pure Angle degreees: \(degrees)")
         #endif
         
-        while degrees > 360 {
+        while degrees >= 360 {
             degrees -= 360
         }
-        
-        degrees =  360 - degrees
-        
         
         #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
         print("Processed Angle degreees: \(degrees)")
         #endif
 
         for part in parts {
-            let start = (part.startAngle.degrees + Double.pi / 2).degree()
-            let end = (part.endAngle.degrees + Double.pi / 2).degree()
+            let start = part.startAngle.degrees + degrees
+            let end = part.endAngle.degrees + degrees
             #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
             print("label: \(part.label)")
             print("start: \(start)")
             print("end: \(end)")
             #endif
-            
-            if checkIfContainsPoint(from: CGFloat(start), to: CGFloat(end), point: degrees) {
+
+            // Angle of ▼
+            let stopDegree: Double = 270 + 360 * Double(Int(start) / 360)
+
+            if start <= stopDegree && end >= stopDegree {
                 state = .stop(location: part, angle: angle)
                 onDecide.send(part)
                 objectWillChange.send()
-                break
+                return
             }
         }
-
     }
     
     func update<State, V: Equatable>(to state: inout State, keypath: WritableKeyPath<State, V>, _ value: V) {
         if state[keyPath: keypath] != value {
             state[keyPath: keypath] = value
         }
-    }
-    
-    private func checkIfContainsPoint(from source: CGFloat, to destination: CGFloat, point: CGFloat) -> Bool {
-        return source <= point && destination > point
     }
 }
 

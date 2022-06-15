@@ -1,0 +1,16 @@
+version: "Apple Swift version 5.7 (swiftlang-5.7.0.113.202 clang-1400.0.16.2)"
+options: "8f91f5c080ee05dfa082fbbdc06113a444cc9a4781f02ab54a8aa8fd08142ceb"
+build_start_time: [1655312580, 391744136]
+build_end_time: [1655312590, 29350996]
+inputs:
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Ex/Color+Ex.swift": [1647744736, 262118339]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Pie/RouletteModel.swift": [1655310664, 857338428]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Pie/RoulettePart.swift": [1655305471, 183411121]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Pie/RouletteView.swift": [1655311464, 33689975]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Slot/RouletteWorker.swift": [1647744736, 262395381]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Slot/SlotRouletteModel.swift": [1647744736, 262594223]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Slot/SlotRouletteSpeed.swift": [1655297140, 559520244]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Slot/SlotRouletteView.swift": [1647744736, 262998819]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Types/PartData.swift": [1655310123, 941311836]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Types/RouletteSpeed.swift": [1655309847, 44303417]
+  "/Users/fumiyatanaka/Work/iOSDev/SimpleRoulette/Sources/SimpleRoulette/Sources/Types/RouletteState.swift": [1655297566, 821424722]
