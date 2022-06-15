@@ -12,10 +12,9 @@ public struct RouletteView: View {
     
     @StateObject var model: RouletteModel
     
-    @State private var length: CGFloat
-    @State private var radius: CGFloat = 0
-    @State private var center: CGPoint = .zero
-    @State private var currentAngle: Angle = .init()
+    @Binding var length: CGFloat
+    @Binding var radius: CGFloat
+    @Binding var center: CGPoint
 
     let pointView: AnyView
     
@@ -44,14 +43,11 @@ public struct RouletteView: View {
     }
     
     private var content: some View {
-        ForEach(model.parts.indices, id: \.self) { (index: Int) -> PartView in
+        ForEach(model.parts.indices, id: \.self) { (index: Int) -> RoulettePart in
             let part = model.parts[index]
-            return PartView(
-                radius: radius,
-                center: center,
-                part: part,
-                currentAngle: model.state.angle
-            )
+            RoulettePart(
+                index: index,
+                radians: <#T##Double#>, initialRadians: <#T##Double#>, radius: <#T##Double#>, center: <#T##CGPoint#>, delegate: <#T##RoulettePartHugeDelegate?#>, fillColor: <#T##Color#>, strokeColor: <#T##Color#>)
         }
     }
 
