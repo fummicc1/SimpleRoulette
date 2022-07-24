@@ -8,7 +8,7 @@
 
 ## SimpleRoulette
 
-SimpleRoulette helps you to create customizable Roulette, with **SwiftUI**. (Compatible with both MacOS and iOS.)
+SimpleRoulette helps you to create customizable Roulette, with SwiftUI. (Compatible with both macOS and iOS.)
 
 ## Demo
 
@@ -122,7 +122,7 @@ RouletteModel is `ObservableObject`. You can observe the event that roulette has
 
 ## Usage
 
-`RouletteModel.start` function immediately start roulette. Please specify the duration of roulette rotation at `automaticallyStopAfter: Double` parameter.
+`RouletteModel.start` function immediately start roulette. If you would stop roulette automatically, please specify the duration in seconds of rotation at `automaticallyStopAfter: Double?` parameter. Default value of `automaticallyStopAfter` is nil which means that roulette continues rotating unless you call `RouletteModel.stop` method.
 
 ## Documentation
 
