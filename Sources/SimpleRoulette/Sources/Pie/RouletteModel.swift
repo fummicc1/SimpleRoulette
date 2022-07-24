@@ -77,6 +77,23 @@ public final class RouletteModel: ObservableObject {
             }
         }
     }
+
+    public func restart() {
+        guard case let RouletteState.run(angle, speed) = state else {
+            return
+        }
+        state = .run(angle: angle, speed: speed)
+    }
+
+    public func pause() {
+        if !state.isAnimating {
+            return
+        }
+        guard case let RouletteState.run(angle, speed) = state else {
+            return
+        }
+        state = .pause(angle: angle, speed: speed)
+    }
     
     public func stop() {
         if !state.isAnimating {

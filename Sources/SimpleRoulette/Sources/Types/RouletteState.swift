@@ -61,6 +61,8 @@ public enum RouletteState: Hashable {
     public var speed: RouletteSpeed {
         if case RouletteState.run(_, let speed) = self {
             return speed
+        } else if case let RouletteState.pause(_, speed) = self {
+            return speed
         }
         return .idle
     }
@@ -100,7 +102,6 @@ public enum RouletteState: Hashable {
         case .stop(let location, let angle):
             hasher.combine(location.id)
             hasher.combine(angle)
-
         }
     }
 }
