@@ -8,15 +8,20 @@
 
 ## SimpleRoulette
 
-SimpleRoulette helps you to create customizable Roulette, with **SwiftUI**. (Compatible with both MacOS and iOS.)
+SimpleRoulette helps you to create customizable Roulette, with SwiftUI. (Compatible with both macOS and iOS.)
 
 ## Demo
 
-**Because of GiF, demo lags**
 
-| iOS                                                                                                                             | MacOS                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://user-images.githubusercontent.com/44002126/173885473-a111528e-18f9-404d-85a5-ce6ebf4afd84.gif" width="320px"> | <img src="https://user-images.githubusercontent.com/44002126/173885181-8df3150c-2e36-468b-90e4-83f9b615d74e.gif" width="320px"> |
+### iOS
+
+https://user-images.githubusercontent.com/44002126/180652910-914fdd65-0f32-492d-92eb-dd0f66f77363.mov
+
+
+### macOS
+
+https://user-images.githubusercontent.com/44002126/180653405-fc6314b6-b9c2-4a64-8edb-8d0f265ad49c.mov
+
 
 ## Install
 
@@ -64,7 +69,7 @@ struct ContentView: View {
             RouletteView(
                 model: model
             )
-        }.onAppear { model.start() }
+        }.onAppear { model.start(speed: .random()) }
     }
 }
 
@@ -117,7 +122,7 @@ RouletteModel is `ObservableObject`. You can observe the event that roulette has
 
 ## Usage
 
-`RouletteModel.start` function immediately start roulette. Please specify the duration of roulette rotation at `automaticallyStopAfter: Double` parameter.
+`RouletteModel.start` function immediately start roulette. If you would stop roulette automatically, please specify the duration in seconds of rotation at `automaticallyStopAfter: Double?` parameter. Default value of `automaticallyStopAfter` is nil which means that roulette continues rotating unless you call `RouletteModel.stop` method.
 
 ## Documentation
 
