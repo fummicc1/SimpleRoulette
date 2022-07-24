@@ -10,6 +10,7 @@ public struct RouletteSpeed: ExpressibleByFloatLiteral, Hashable {
     public static let slow: Self = .init(floatLiteral: 1000)
     public static let normal: Self = .init(floatLiteral: 2000)
     public static let fast: Self = .init(floatLiteral: 3000)
+    public static let idle: Self = .init(floatLiteral: 0)
 
     /// Decide speed randomly
     public static func random() -> RouletteSpeed {

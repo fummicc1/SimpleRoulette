@@ -16,6 +16,7 @@ let package = Package(
         .target(
             name: "SimpleRoulette",
             dependencies: []
-        )
+        ),
+        .testTarget(name: "SimpleRouletteTests", dependencies: ["SimpleRoulette"])
     ]
 )

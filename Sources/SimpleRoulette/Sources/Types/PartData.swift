@@ -74,8 +74,7 @@ public struct PartData: Identifiable, Hashable {
         area: PartArea,
         fillColor: Color = .secondarySystemBackground,
         strokeColor: Color = .systemGray,
-        lineWidth: Double = 2,
-        delegate: RouletteDataDelegate? = nil
+        lineWidth: Double = 2
     ) {
         self.index = index
         self.content = content
@@ -83,10 +82,6 @@ public struct PartData: Identifiable, Hashable {
         self.fillColor = fillColor
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
-        if let delegate = delegate {
-            self.delegate = delegate
-            onAssignedDelegate()
-        }
     }
 
     public var id: String {
@@ -123,6 +118,11 @@ public struct PartData: Identifiable, Hashable {
     func paddingY(radius: Double) -> Double {
         let mid = (startAngle + endAngle) / 2
         return radius / 2 * sin(mid.radians)
+    }
+
+    mutating public func assignDelegate(_ delegate: RouletteDataDelegate) {
+        self.delegate = delegate
+        onAssignedDelegate()
     }
 
     mutating func onAssignedDelegate() {

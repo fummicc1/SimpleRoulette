@@ -62,7 +62,7 @@ public enum RouletteState: Hashable {
         if case RouletteState.run(_, let speed) = self {
             return speed
         }
-        return .normal
+        return .idle
     }
 
     public var canStart: Bool {
