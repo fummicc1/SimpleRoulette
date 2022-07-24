@@ -16,20 +16,23 @@ struct ContentView: View {
 
     var body: some View {
         HStack {
-            Spacer()
             VStack {
-                Spacer()
+                Spacer().frame(height: 120)
                 Text("Decide favorite language !")
-                    .font(.largeTitle)
+                    .font(.title)
                     .bold().italic()
                     .padding()
-                if let decidedPart = decidedPart, let text = decidedPart.content.text {
-                    Text("It is \(text)")
-                        .font(.title)
-                        .italic()
-                        .bold()
-                        .padding()
-                }
+                Group {
+                    if let decidedPart = decidedPart, let text = decidedPart.content.text {
+                        Text("It is \(text)")
+                            .font(.title)
+                            .italic()
+                            .bold()
+                            .padding()
+                    } else {
+                        Text("Nothing")
+                    }
+                }.frame(height: 40)
                 RouletteView(
                     model: model,
                     length: length
@@ -54,7 +57,6 @@ struct ContentView: View {
                 }
                 Spacer()
             }
-            Spacer()
         }
         .onReceive(model.onDecidePublisher) { part in
             decidedPart = part

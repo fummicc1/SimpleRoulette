@@ -26,7 +26,6 @@ public protocol RouletteDataDelegate: AnyObject {
 }
 
 /// ``RouletteModel`` is a model that interact with ``View`` and manage state of Roulette.
-@MainActor
 public final class RouletteModel: ObservableObject {
     @Published public var parts: [PartData] = []
     @Published public var state: RouletteState = .start
@@ -37,14 +36,14 @@ public final class RouletteModel: ObservableObject {
         self.stop()
     }
     private let worker: RouletteWorker = .init()
-    private let onDecide: PassthroughSubject<PartData, Never>
-    public var onDecidePublisher: AnyPublisher<PartData, Never> {
+    private let onDecide: PassthroughSubject<PartData?, Never>
+    public var onDecidePublisher: AnyPublisher<PartData?, Never> {
         onDecide.eraseToAnyPublisher()
     }
     
     public init(
         duration: Double = 5,
-        onDecide: PassthroughSubject<PartData, Never> = .init(),
+        onDecide: PassthroughSubject<PartData?, Never> = .init(),
         parts: [PartData]
     ) {
         self.onDecide = onDecide
@@ -74,6 +73,7 @@ public final class RouletteModel: ObservableObject {
         if state.isAnimating {
             return
         }
+        onDecide.send(nil)
         if case let RouletteState.pause(angle, speed) = state, isConitnue {
             startFromCheckPoint(angle: angle, speed: speed)
         } else {
