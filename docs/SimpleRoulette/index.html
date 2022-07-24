@@ -16,7 +16,7 @@
     <a title="SimpleRoulette  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">SimpleRoulette 1.1.0 Docs</a> (26% documented)</p>
+        <p><a href="index.html">SimpleRoulette 1.2.0 Docs</a> (26% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -131,22 +131,14 @@
 <img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="Swift Package Manager compatible"></p>
 <h2 id='simpleroulette' class='heading'>SimpleRoulette</h2>
 
-<p>SimpleRoulette helps you to create customizable Roulette, with <strong>SwiftUI</strong>. (Compatible with both MacOS and iOS.)</p>
+<p>SimpleRoulette helps you to create customizable Roulette, with SwiftUI. (Compatible with both macOS and iOS.)</p>
 <h2 id='demo' class='heading'>Demo</h2>
+<h3 id='ios' class='heading'>iOS</h3>
 
-<p><strong>Because of GiF, demo lags</strong></p>
+<p><a href="https://user-images.githubusercontent.com/44002126/180652910-914fdd65-0f32-492d-92eb-dd0f66f77363.mov">https://user-images.githubusercontent.com/44002126/180652910-914fdd65-0f32-492d-92eb-dd0f66f77363.mov</a></p>
+<h3 id='macos' class='heading'>macOS</h3>
 
-<table><thead>
-<tr>
-<th>iOS</th>
-<th>MacOS</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><img src="https://user-images.githubusercontent.com/44002126/173885473-a111528e-18f9-404d-85a5-ce6ebf4afd84.gif" width="320px"></td>
-<td><img src="https://user-images.githubusercontent.com/44002126/173885181-8df3150c-2e36-468b-90e4-83f9b615d74e.gif" width="320px"></td>
-</tr>
-</tbody></table>
+<p><a href="https://user-images.githubusercontent.com/44002126/180653405-fc6314b6-b9c2-4a64-8edb-8d0f265ad49c.mov">https://user-images.githubusercontent.com/44002126/180653405-fc6314b6-b9c2-4a64-8edb-8d0f265ad49c.mov</a></p>
 <h2 id='install' class='heading'>Install</h2>
 <h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
 
@@ -180,7 +172,7 @@
             <span class="kt">RouletteView</span><span class="p">(</span>
                 <span class="nv">model</span><span class="p">:</span> <span class="n">model</span>
             <span class="p">)</span>
-        <span class="p">}</span><span class="o">.</span><span class="n">onAppear</span> <span class="p">{</span> <span class="n">model</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span> <span class="p">}</span>
+        <span class="p">}</span><span class="o">.</span><span class="n">onAppear</span> <span class="p">{</span> <span class="n">model</span><span class="o">.</span><span class="nf">start</span><span class="p">(</span><span class="nv">speed</span><span class="p">:</span> <span class="o">.</span><span class="nf">random</span><span class="p">())</span> <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -231,7 +223,7 @@
 <p>RouletteModel is <code>ObservableObject</code>. You can observe the event that roulette has been stopped and what is the stop via <code>onDecide</code> Publisher.</p>
 <h2 id='usage' class='heading'>Usage</h2>
 
-<p><code>RouletteModel.start</code> function immediately start roulette. Please specify the duration of roulette rotation at <code>automaticallyStopAfter: Double</code> parameter.</p>
+<p><code>RouletteModel.start</code> function immediately start roulette. If you would stop roulette automatically, please specify the duration in seconds of rotation at <code>automaticallyStopAfter: Double?</code> parameter. Default value of <code>automaticallyStopAfter</code> is nil which means that roulette continues rotating unless you call <code>RouletteModel.stop</code> method.</p>
 <h2 id='documentation' class='heading'>Documentation</h2>
 
 <ul>
