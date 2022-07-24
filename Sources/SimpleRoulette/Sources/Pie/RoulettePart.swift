@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+/// ``RoulettePart`` is a `View` which shows ``PartData``.
 struct RoulettePart: View {
 
     init(

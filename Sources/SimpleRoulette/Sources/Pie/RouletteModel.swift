@@ -10,17 +10,22 @@ import Foundation
 import SwiftUI
 import Combine
 
-public protocol RoulettePartHugeDelegate: AnyObject {
+/// ``RouletteDataDelegate`` is delegate that manages all of ``PartData`` which are shown at ``RouletteView``.
+public protocol RouletteDataDelegate: AnyObject {
+
+    /// Total degree of Roulette.
+    /// - Note: This is usually 360° degree.
     var total: Double {
         get
     }
 
+    /// all of ``PartData`` which are used in Roulette should be included in ``allParts``.
     var allParts: [PartData] {
         get
     }
 }
 
-
+/// ``RouletteModel`` is a model that interact with ``View`` and manage state of Roulette.
 public final class RouletteModel: ObservableObject {
     @Published public var parts: [PartData] = []
     @Published public var state: RouletteState = .start
@@ -121,7 +126,7 @@ public final class RouletteModel: ObservableObject {
     }
 }
 
-extension RouletteModel: RoulettePartHugeDelegate {
+extension RouletteModel: RouletteDataDelegate {
     public var total: Double {
         Double.pi * 2
     }

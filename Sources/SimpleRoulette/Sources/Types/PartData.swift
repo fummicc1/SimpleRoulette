@@ -75,7 +75,7 @@ public struct PartData: Identifiable, Hashable {
         fillColor: Color = .secondarySystemBackground,
         strokeColor: Color = .systemGray,
         lineWidth: Double = 2,
-        delegate: RoulettePartHugeDelegate? = nil
+        delegate: RouletteDataDelegate? = nil
     ) {
         self.index = index
         self.content = content
@@ -100,7 +100,7 @@ public struct PartData: Identifiable, Hashable {
     public var lineWidth: Double
     public var startAngle: Angle!
     public var endAngle: Angle!
-    public weak var delegate: RoulettePartHugeDelegate? {
+    public weak var delegate: RouletteDataDelegate? {
         didSet {
             onAssignedDelegate()
         }

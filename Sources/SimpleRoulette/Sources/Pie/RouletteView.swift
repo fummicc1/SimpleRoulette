@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// ``RouletteView`` is a `View`, a single Roulette and displays all of ``RoulettePart``
 public struct RouletteView: View {
     
     @StateObject var model: RouletteModel
