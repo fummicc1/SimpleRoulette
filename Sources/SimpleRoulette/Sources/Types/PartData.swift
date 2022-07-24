@@ -83,6 +83,10 @@ public struct PartData: Identifiable, Hashable {
         self.fillColor = fillColor
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
+        if let delegate = delegate {
+            self.delegate = delegate
+            onAssignedDelegate()
+        }
     }
 
     public var id: String {
@@ -98,27 +102,7 @@ public struct PartData: Identifiable, Hashable {
     public var endAngle: Angle!
     public weak var delegate: RoulettePartHugeDelegate? {
         didSet {
-            guard let delegate = delegate else {
-                return
-            }
-            let all = delegate.allParts
-            var startAngle = Angle()
-            for element in all {
-                if element.index == index {
-                    break
-                }
-                let area = element.area
-                let deg = area.getDegree(
-                    all: all.map(\.area)
-                )
-                startAngle += Angle.degrees(deg)
-            }
-            self.startAngle = startAngle
-            self.endAngle = startAngle + Angle.degrees(
-                area.getDegree(
-                    all: all.map(\.area)
-                )
-            )
+            onAssignedDelegate()
         }
     }
 
@@ -139,5 +123,29 @@ public struct PartData: Identifiable, Hashable {
     func paddingY(radius: Double) -> Double {
         let mid = (startAngle + endAngle) / 2
         return radius / 2 * sin(mid.radians)
+    }
+
+    mutating func onAssignedDelegate() {
+        guard let delegate = delegate else {
+            return
+        }
+        let all = delegate.allParts
+        var startAngle = Angle()
+        for element in all {
+            if element.index == index {
+                break
+            }
+            let area = element.area
+            let deg = area.getDegree(
+                all: all.map(\.area)
+            )
+            startAngle += Angle.degrees(deg)
+        }
+        self.startAngle = startAngle
+        self.endAngle = startAngle + Angle.degrees(
+            area.getDegree(
+                all: all.map(\.area)
+            )
+        )
     }
 }
