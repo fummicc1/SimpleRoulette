@@ -27,7 +27,7 @@ final class RouletteStateTests: XCTestCase {
         // MARK: Arrange
         state = .start
         // MARK: Assert
-        XCTAssertEqual(state.angle, .zero)
+        XCTAssertEqual(state.angle, nil)
         XCTAssertEqual(state.speed, .idle)
         XCTAssertEqual(state.canStart, true)
         XCTAssertEqual(state.isAnimating, false)

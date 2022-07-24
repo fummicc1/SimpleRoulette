@@ -60,7 +60,7 @@ public final class RouletteModel: ObservableObject {
     }
 
     public func start(
-        speed _speed: RouletteSpeed? = nil,
+        speed _speed: RouletteSpeed = .random(),
         isConitnue: Bool = false,
         automaticallyStopAfter: Double? = nil
     ) {
@@ -77,10 +77,9 @@ public final class RouletteModel: ObservableObject {
     }
 
     private func startCompletely(
-        speed _speed: RouletteSpeed?,
+        speed: RouletteSpeed,
         automaticallyStopAfter: Double?
     ) {
-        let speed = _speed ?? RouletteSpeed.random()
         state = .run(angle: .zero, speed: speed)
         worker.start(speed: speed) { degrees in
             if case RouletteState.run = self.state {

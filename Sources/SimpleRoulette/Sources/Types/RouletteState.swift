@@ -44,8 +44,8 @@ public enum RouletteState: Hashable {
     case pause(angle: Angle, speed: RouletteSpeed)
     case stop(location: PartData, angle: Angle)
 
-    public var angle: Angle {
-        let degrees: Double
+    public var angle: Angle? {
+        let degrees: Double?
         if case RouletteState.run(let angle, _) = self {
             degrees = angle.degrees
         } else if case RouletteState.pause(let angle, _) = self {
@@ -53,7 +53,10 @@ public enum RouletteState: Hashable {
         } else if case RouletteState.stop(_, let angle) = self {
             degrees = angle.degrees
         } else {
-            degrees = 0
+            degrees = nil
+        }
+        guard let degrees = degrees else {
+            return nil
         }
         return Angle(degrees: degrees)
     }
