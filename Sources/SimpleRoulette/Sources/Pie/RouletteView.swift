@@ -38,11 +38,7 @@ public struct RouletteView: View {
                         radius = centerValue
                     })
                     .onReceive(model.$state, perform: { state in
-                        withAnimation(
-                            .easeOut(duration: model.duration)
-                        ) {
-                            self.currentAngle = state.angle
-                        }
+                        self.currentAngle = state.angle
                     })
             }
             .frame(width: length, height: length)

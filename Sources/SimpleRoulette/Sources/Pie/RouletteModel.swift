@@ -141,7 +141,6 @@ public final class RouletteModel: ObservableObject {
         guard case let RouletteState.run(angle, _) = state else {
             return
         }
-        state = .prepareForStop(angle: angle)
         worker.stop()
         var degrees = angle.degrees
         #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
