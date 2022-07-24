@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public class RouletteWorker {
+public class SlotRouletteWorker {
 
     private var value: Int = 0
     public var speed: SlotRouletteSpeed

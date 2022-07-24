@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// ``RouletteView`` is a `View`, a single Roulette and displays all of ``RoulettePart``
 public struct RouletteView: View {
     
     @StateObject var model: RouletteModel
@@ -16,6 +17,7 @@ public struct RouletteView: View {
     @State private var radius: CGFloat = 0
     @State private var center: CGPoint = .zero
     @State private var length: CGFloat
+    @State private var startsAnimate: Bool = false
 
     let stopView: AnyView
     
@@ -37,11 +39,10 @@ public struct RouletteView: View {
                         radius = centerValue
                     })
                     .onReceive(model.$state, perform: { state in
-                        withAnimation(
-                            .easeOut(duration: model.duration)
-                        ) {
-                            self.currentAngle = state.angle
+                        guard let angle = state.angle else {
+                            return
                         }
+                        self.currentAngle = angle
                     })
             }
             .frame(width: length, height: length)

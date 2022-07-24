@@ -3,8 +3,8 @@ import SwiftUI
 import Combine
 
 
-enum RouletteState: Hashable {
-    static func == (lhs: RouletteState, rhs: RouletteState) -> Bool {
+public enum RouletteState: Hashable {
+    public static func == (lhs: RouletteState, rhs: RouletteState) -> Bool {
         switch lhs {
         case .start:
             if case RouletteState.start = rhs {
@@ -44,8 +44,8 @@ enum RouletteState: Hashable {
     case pause(angle: Angle, speed: RouletteSpeed)
     case stop(location: PartData, angle: Angle)
 
-    var angle: Angle {
-        let degrees: Double
+    public var angle: Angle? {
+        let degrees: Double?
         if case RouletteState.run(let angle, _) = self {
             degrees = angle.degrees
         } else if case RouletteState.pause(let angle, _) = self {
@@ -53,19 +53,24 @@ enum RouletteState: Hashable {
         } else if case RouletteState.stop(_, let angle) = self {
             degrees = angle.degrees
         } else {
-            degrees = 0
+            degrees = nil
+        }
+        guard let degrees = degrees else {
+            return nil
         }
         return Angle(degrees: degrees)
     }
 
-    var speed: RouletteSpeed {
+    public var speed: RouletteSpeed {
         if case RouletteState.run(_, let speed) = self {
             return speed
+        } else if case let RouletteState.pause(_, speed) = self {
+            return speed
         }
-        return .normal
+        return .idle
     }
 
-    var canStart: Bool {
+    public var canStart: Bool {
         switch self {
         case .start, .stop:
             return true
@@ -75,7 +80,7 @@ enum RouletteState: Hashable {
         }
     }
 
-    var isAnimating: Bool {
+    public var isAnimating: Bool {
         switch self {
         case .start, .pause, .stop:
             return false
@@ -84,7 +89,7 @@ enum RouletteState: Hashable {
         }
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         switch self {
         case .start:
             break
@@ -100,7 +105,6 @@ enum RouletteState: Hashable {
         case .stop(let location, let angle):
             hasher.combine(location.id)
             hasher.combine(angle)
-
         }
     }
 }
