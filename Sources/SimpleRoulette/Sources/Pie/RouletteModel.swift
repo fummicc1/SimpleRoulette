@@ -22,11 +22,11 @@ public protocol RoulettePartHugeDelegate: AnyObject {
 
 
 public final class RouletteModel: ObservableObject {
-    @Published public private(set) var parts: [PartData] = []
-    @Published private(set) var state: RouletteState = .start
+    @Published public var parts: [PartData] = []
+    @Published public var state: RouletteState = .start
     @Published public var duration: Double
     
-    private var onDecide: PassthroughSubject<PartData, Never>
+    public var onDecide: PassthroughSubject<PartData, Never>
     public var onDecidePublisher: AnyPublisher<PartData, Never> {
         onDecide.eraseToAnyPublisher()
     }

@@ -3,8 +3,8 @@ import SwiftUI
 import Combine
 
 
-enum RouletteState: Hashable {
-    static func == (lhs: RouletteState, rhs: RouletteState) -> Bool {
+public enum RouletteState: Hashable {
+    public static func == (lhs: RouletteState, rhs: RouletteState) -> Bool {
         switch lhs {
         case .start:
             if case RouletteState.start = rhs {
@@ -44,7 +44,7 @@ enum RouletteState: Hashable {
     case pause(angle: Angle, speed: RouletteSpeed)
     case stop(location: PartData, angle: Angle)
 
-    var angle: Angle {
+    public var angle: Angle {
         let degrees: Double
         if case RouletteState.run(let angle, _) = self {
             degrees = angle.degrees
@@ -58,14 +58,14 @@ enum RouletteState: Hashable {
         return Angle(degrees: degrees)
     }
 
-    var speed: RouletteSpeed {
+    public var speed: RouletteSpeed {
         if case RouletteState.run(_, let speed) = self {
             return speed
         }
         return .normal
     }
 
-    var canStart: Bool {
+    public var canStart: Bool {
         switch self {
         case .start, .stop:
             return true
@@ -75,7 +75,7 @@ enum RouletteState: Hashable {
         }
     }
 
-    var isAnimating: Bool {
+    public var isAnimating: Bool {
         switch self {
         case .start, .pause, .stop:
             return false
@@ -84,7 +84,7 @@ enum RouletteState: Hashable {
         }
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         switch self {
         case .start:
             break
