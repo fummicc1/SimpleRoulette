@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RouletteModel Class Reference</title>
+    <title>RouletteState Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/RouletteModel" class="dashAnchor"></a>
-    <a title="RouletteModel Class Reference"></a>
+    <a name="//apple_ref/swift/Enum/RouletteState" class="dashAnchor"></a>
+    <a title="RouletteState Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">SimpleRoulette 1.1.0 Docs</a> (26% documented)</p>
@@ -29,7 +29,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">SimpleRoulette Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        RouletteModel Class Reference
+        RouletteState Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -122,16 +122,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>RouletteModel</h1>
+            <h1>RouletteState</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">RouletteModel</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
-<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">RouletteModel</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RouletteDataDelegate.html">RouletteDataDelegate</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">RouletteState</span> <span class="p">:</span> <span class="kt">Hashable</span></code></pre>
 
                 </div>
               </div>
-            <p><code>RouletteModel</code> is a model that interact with <code>View</code> and manage state of Roulette.</p>
+            <p>Undocumented</p>
 
           </section>
           <section class="section task-group-section">
@@ -140,261 +139,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14SimpleRoulette0B5ModelC5partsSayAA8PartDataVGvp"></a>
-                    <a name="//apple_ref/swift/Property/parts" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B5ModelC5partsSayAA8PartDataVGvp">parts</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@Published</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">parts</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/PartData.html">PartData</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14SimpleRoulette0B5ModelC5stateAA0B5StateOvp"></a>
-                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B5ModelC5stateAA0B5StateOvp">state</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@Published</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Enums/RouletteState.html">RouletteState</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14SimpleRoulette0B5ModelC17onDecidePublisher7Combine03AnyF0VyAA8PartDataVSgs5NeverOGvp"></a>
-                    <a name="//apple_ref/swift/Property/onDecidePublisher" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B5ModelC17onDecidePublisher7Combine03AnyF0VyAA8PartDataVSgs5NeverOGvp">onDecidePublisher</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">onDecidePublisher</span><span class="p">:</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/PartData.html">PartData</a></span><span class="p">?,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14SimpleRoulette0B5ModelC8onDecide5partsAC7Combine18PassthroughSubjectCyAA8PartDataVSgs5NeverOG_SayAJGtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(onDecide:parts:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B5ModelC8onDecide5partsAC7Combine18PassthroughSubjectCyAA8PartDataVSgs5NeverOG_SayAJGtcfc">init(onDecide:<wbr>parts:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
-    <span class="nv">onDecide</span><span class="p">:</span> <span class="kt">PassthroughSubject</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/PartData.html">PartData</a></span><span class="p">?,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
-    <span class="nv">parts</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/PartData.html">PartData</a></span><span class="p">]</span>
-<span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14SimpleRoulette0B5ModelC11updatePartsyySayAA8PartDataVGF"></a>
-                    <a name="//apple_ref/swift/Method/updateParts(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B5ModelC11updatePartsyySayAA8PartDataVGF">updateParts(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">updateParts</span><span class="p">(</span><span class="n">_</span> <span class="nv">parts</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/PartData.html">PartData</a></span><span class="p">])</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14SimpleRoulette0B5ModelC5start5speed10isConitnue22automaticallyStopAfteryAA0B5SpeedV_SbSdSgtF"></a>
-                    <a name="//apple_ref/swift/Method/start(speed:isConitnue:automaticallyStopAfter:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B5ModelC5start5speed10isConitnue22automaticallyStopAfteryAA0B5SpeedV_SbSdSgtF">start(speed:<wbr>isConitnue:<wbr>automaticallyStopAfter:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">start</span><span class="p">(</span>
-    <span class="n">speed</span> <span class="nv">_speed</span><span class="p">:</span> <span class="kt"><a href="../Structs/RouletteSpeed.html">RouletteSpeed</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">random</span><span class="p">(),</span>
-    <span class="nv">isConitnue</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nv">automaticallyStopAfter</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
-<span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14SimpleRoulette0B5ModelC7restartyyF"></a>
-                    <a name="//apple_ref/swift/Method/restart()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B5ModelC7restartyyF">restart()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">restart</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14SimpleRoulette0B5ModelC5pauseyyF"></a>
-                    <a name="//apple_ref/swift/Method/pause()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B5ModelC5pauseyyF">pause()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">pause</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14SimpleRoulette0B5ModelC4stopyyF"></a>
-                    <a name="//apple_ref/swift/Method/stop()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B5ModelC4stopyyF">stop()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stop</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:14SimpleRoulette0B12DataDelegateP5totalSdvp"></a>
-                    <a name="//apple_ref/swift/Property/total" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B12DataDelegateP5totalSdvp">total</a>
+                    <a name="/s:SQ2eeoiySbx_xtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SQ2eeoiySbx_xtFZ">==(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -408,7 +155,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">total</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">RouletteState</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">RouletteState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -418,9 +165,225 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14SimpleRoulette0B12DataDelegateP8allPartsSayAA04PartC0VGvp"></a>
-                    <a name="//apple_ref/swift/Property/allParts" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B12DataDelegateP8allPartsSayAA04PartC0VGvp">allParts</a>
+                    <a name="/s:14SimpleRoulette0B5StateO5startyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/start" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SimpleRoulette0B5StateO5startyA2CmF">start</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">start</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14SimpleRoulette0B5StateO3runyAC7SwiftUI5AngleV_AA0B5SpeedVtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/run(angle:speed:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SimpleRoulette0B5StateO3runyAC7SwiftUI5AngleV_AA0B5SpeedVtcACmF">run(angle:<wbr>speed:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">run</span><span class="p">(</span><span class="nv">angle</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">,</span> <span class="nv">speed</span><span class="p">:</span> <span class="kt"><a href="../Structs/RouletteSpeed.html">RouletteSpeed</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14SimpleRoulette0B5StateO5pauseyAC7SwiftUI5AngleV_AA0B5SpeedVtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/pause(angle:speed:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SimpleRoulette0B5StateO5pauseyAC7SwiftUI5AngleV_AA0B5SpeedVtcACmF">pause(angle:<wbr>speed:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">pause</span><span class="p">(</span><span class="nv">angle</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">,</span> <span class="nv">speed</span><span class="p">:</span> <span class="kt"><a href="../Structs/RouletteSpeed.html">RouletteSpeed</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14SimpleRoulette0B5StateO4stopyAcA8PartDataV_7SwiftUI5AngleVtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/stop(location:angle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SimpleRoulette0B5StateO4stopyAcA8PartDataV_7SwiftUI5AngleVtcACmF">stop(location:<wbr>angle:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">stop</span><span class="p">(</span><span class="nv">location</span><span class="p">:</span> <span class="kt"><a href="../Structs/PartData.html">PartData</a></span><span class="p">,</span> <span class="nv">angle</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14SimpleRoulette0B5StateO5angle7SwiftUI5AngleVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/angle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SimpleRoulette0B5StateO5angle7SwiftUI5AngleVSgvp">angle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">angle</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14SimpleRoulette0B5StateO5speedAA0B5SpeedVvp"></a>
+                    <a name="//apple_ref/swift/Property/speed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SimpleRoulette0B5StateO5speedAA0B5SpeedVvp">speed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">speed</span><span class="p">:</span> <span class="kt"><a href="../Structs/RouletteSpeed.html">RouletteSpeed</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14SimpleRoulette0B5StateO8canStartSbvp"></a>
+                    <a name="//apple_ref/swift/Property/canStart" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SimpleRoulette0B5StateO8canStartSbvp">canStart</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">canStart</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14SimpleRoulette0B5StateO11isAnimatingSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isAnimating" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14SimpleRoulette0B5StateO11isAnimatingSbvp">isAnimating</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isAnimating</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SH4hash4intoys6HasherVz_tF"></a>
+                    <a name="//apple_ref/swift/Method/hash(into:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SH4hash4intoys6HasherVz_tF">hash(into:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -434,7 +397,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">allParts</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/PartData.html">PartData</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hash</span><span class="p">(</span><span class="n">into</span> <span class="nv">hasher</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Hasher</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

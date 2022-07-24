@@ -17,7 +17,7 @@
     <a title="SlotRouletteState Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SimpleRoulette 1.1.0 Docs</a> (16% documented)</p>
+        <p><a href="../index.html">SimpleRoulette 1.1.0 Docs</a> (26% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -47,6 +47,9 @@
               <li class="nav-group-task">
                 <a href="../Classes/SlotRouletteModel.html">SlotRouletteModel</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SlotRouletteWorker.html">SlotRouletteWorker</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -57,6 +60,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/PartArea.html">PartArea</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RouletteState.html">RouletteState</a>
               </li>
             </ul>
           </li>
@@ -72,7 +78,7 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/RoulettePartHugeDelegate.html">RoulettePartHugeDelegate</a>
+                <a href="../Protocols/RouletteDataDelegate.html">RouletteDataDelegate</a>
               </li>
             </ul>
           </li>
@@ -133,9 +139,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14SimpleRoulette04SlotB5StateV4type6worker5speed6values5index6resultA2C6StatusO_AA0B6WorkerCAA0cB5SpeedVSayAA0cB4ItemVGSiAC6ResultOSgtcfc"></a>
+                    <a name="/s:14SimpleRoulette04SlotB5StateV4type6worker5speed6values5index6resultA2C6StatusO_AA0cB6WorkerCAA0cB5SpeedVSayAA0cB4ItemVGSiAC6ResultOSgtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(type:worker:speed:values:index:result:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette04SlotB5StateV4type6worker5speed6values5index6resultA2C6StatusO_AA0B6WorkerCAA0cB5SpeedVSayAA0cB4ItemVGSiAC6ResultOSgtcfc">init(type:<wbr>worker:<wbr>speed:<wbr>values:<wbr>index:<wbr>result:<wbr>)</a>
+                    <a class="token" href="#/s:14SimpleRoulette04SlotB5StateV4type6worker5speed6values5index6resultA2C6StatusO_AA0cB6WorkerCAA0cB5SpeedVSayAA0cB4ItemVGSiAC6ResultOSgtcfc">init(type:<wbr>worker:<wbr>speed:<wbr>values:<wbr>index:<wbr>result:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -152,7 +158,7 @@
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
     <span class="nv">type</span><span class="p">:</span> <span class="kt">SlotRouletteState</span><span class="o">.</span><span class="kt"><a href="../Structs/SlotRouletteState/Status.html">Status</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">ready</span><span class="p">,</span>
-    <span class="nv">worker</span><span class="p">:</span> <span class="kt"><a href="../Classes/RouletteWorker.html">RouletteWorker</a></span><span class="p">,</span>
+    <span class="nv">worker</span><span class="p">:</span> <span class="kt"><a href="../Classes/SlotRouletteWorker.html">SlotRouletteWorker</a></span><span class="p">,</span>
     <span class="nv">speed</span><span class="p">:</span> <span class="kt"><a href="../Structs/SlotRouletteSpeed.html">SlotRouletteSpeed</a></span><span class="p">,</span>
     <span class="nv">values</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/SlotRouletteItem.html">SlotRouletteItem</a></span><span class="p">],</span>
     <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span>
@@ -220,9 +226,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14SimpleRoulette04SlotB5StateV6workerAA0B6WorkerCvp"></a>
+                    <a name="/s:14SimpleRoulette04SlotB5StateV6workerAA0cB6WorkerCvp"></a>
                     <a name="//apple_ref/swift/Property/worker" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette04SlotB5StateV6workerAA0B6WorkerCvp">worker</a>
+                    <a class="token" href="#/s:14SimpleRoulette04SlotB5StateV6workerAA0cB6WorkerCvp">worker</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -237,7 +243,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">worker</span><span class="p">:</span> <span class="kt"><a href="../Classes/RouletteWorker.html">RouletteWorker</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">worker</span><span class="p">:</span> <span class="kt"><a href="../Classes/SlotRouletteWorker.html">SlotRouletteWorker</a></span></code></pre>
 
                         </div>
                       </div>
@@ -440,7 +446,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://fummicc1.dev" target="_blank" rel="external noopener">fummicc1</a>. All rights reserved. (Last updated: 2022-06-16)</p>
+          <p>&copy; 2022 <a class="link" href="https://fummicc1.dev" target="_blank" rel="external noopener">fummicc1</a>. All rights reserved. (Last updated: 2022-07-25)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
