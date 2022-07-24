@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RoulettePartHugeDelegate Protocol Reference</title>
+    <title>RouletteDataDelegate Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,11 +13,11 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/RoulettePartHugeDelegate" class="dashAnchor"></a>
-    <a title="RoulettePartHugeDelegate Protocol Reference"></a>
+    <a name="//apple_ref/swift/Protocol/RouletteDataDelegate" class="dashAnchor"></a>
+    <a title="RouletteDataDelegate Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SimpleRoulette 1.1.0 Docs</a> (16% documented)</p>
+        <p><a href="../index.html">SimpleRoulette 1.1.0 Docs</a> (26% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -29,7 +29,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">SimpleRoulette Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        RoulettePartHugeDelegate Protocol Reference
+        RouletteDataDelegate Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -47,6 +47,9 @@
               <li class="nav-group-task">
                 <a href="../Classes/SlotRouletteModel.html">SlotRouletteModel</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SlotRouletteWorker.html">SlotRouletteWorker</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -57,6 +60,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/PartArea.html">PartArea</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RouletteState.html">RouletteState</a>
               </li>
             </ul>
           </li>
@@ -72,7 +78,7 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/RoulettePartHugeDelegate.html">RoulettePartHugeDelegate</a>
+                <a href="../Protocols/RouletteDataDelegate.html">RouletteDataDelegate</a>
               </li>
             </ul>
           </li>
@@ -116,15 +122,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>RoulettePartHugeDelegate</h1>
+            <h1>RouletteDataDelegate</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RoulettePartHugeDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RouletteDataDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p><code>RouletteDataDelegate</code> is delegate that manages all of <code><a href="../Structs/PartData.html">PartData</a></code> which are shown at <code><a href="../Structs/RouletteView.html">RouletteView</a></code>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -133,9 +139,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14SimpleRoulette0B16PartHugeDelegateP5totalSdvp"></a>
+                    <a name="/s:14SimpleRoulette0B12DataDelegateP5totalSdvp"></a>
                     <a name="//apple_ref/swift/Property/total" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B16PartHugeDelegateP5totalSdvp">total</a>
+                    <a class="token" href="#/s:14SimpleRoulette0B12DataDelegateP5totalSdvp">total</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -143,7 +149,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Total degree of Roulette.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This is usually 360° degree.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -160,9 +171,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14SimpleRoulette0B16PartHugeDelegateP8allPartsSayAA0C4DataVGvp"></a>
+                    <a name="/s:14SimpleRoulette0B12DataDelegateP8allPartsSayAA04PartC0VGvp"></a>
                     <a name="//apple_ref/swift/Property/allParts" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14SimpleRoulette0B16PartHugeDelegateP8allPartsSayAA0C4DataVGvp">allParts</a>
+                    <a class="token" href="#/s:14SimpleRoulette0B12DataDelegateP8allPartsSayAA04PartC0VGvp">allParts</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -170,7 +181,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>all of <code><a href="../Structs/PartData.html">PartData</a></code> which are used in Roulette should be included in <code>allParts</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -189,7 +200,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://fummicc1.dev" target="_blank" rel="external noopener">fummicc1</a>. All rights reserved. (Last updated: 2022-06-16)</p>
+          <p>&copy; 2022 <a class="link" href="https://fummicc1.dev" target="_blank" rel="external noopener">fummicc1</a>. All rights reserved. (Last updated: 2022-07-25)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
