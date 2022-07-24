@@ -11,6 +11,7 @@ import SwiftUI
 public class RouletteWorker {
 
     private var value: Double = 0
+    private var automaticallyStopAfter: Double?
     private weak var timer: Timer?
 
     public init() { }
@@ -18,11 +19,12 @@ public class RouletteWorker {
     public func start(
         speed: RouletteSpeed,
         from value: Double? = nil,
-        callback: @escaping (Double) -> Void
+        automaticallyStopAfter: Double?,
+        callback: @escaping (Double) -> Void,
+        onEnd: @escaping () -> Void
     ) {
-        if let value = value {
-            self.value = value
-        }
+        self.value = value ?? 0
+        self.automaticallyStopAfter = automaticallyStopAfter
 
         if let timer = timer, timer.isValid {
             timer.invalidate()
@@ -34,6 +36,14 @@ public class RouletteWorker {
             }
             self.value += speed.value * 0.001
             callback(self.value)
+
+            if var automaticallyStopAfter = self.automaticallyStopAfter {
+                automaticallyStopAfter -= 0.001
+                if automaticallyStopAfter <= 0 {
+                    onEnd()
+                }
+                self.automaticallyStopAfter = automaticallyStopAfter
+            }
         }
         RunLoop.current.add(timer, forMode: .common)
 

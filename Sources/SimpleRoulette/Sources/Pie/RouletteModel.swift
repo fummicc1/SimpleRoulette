@@ -81,29 +81,23 @@ public final class RouletteModel: ObservableObject {
         automaticallyStopAfter: Double?
     ) {
         state = .run(angle: .zero, speed: speed)
-        worker.start(speed: speed) { degrees in
+        worker.start(speed: speed, automaticallyStopAfter: automaticallyStopAfter) { degrees in
             if case RouletteState.run = self.state {
                 self.state = .run(angle: .degrees(degrees), speed: speed)
             }
-        }
-        if let automaticallyStopAfter = automaticallyStopAfter {
-            whenToStopHandler = { [weak self] in
-                self?.stop()
-            }
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + automaticallyStopAfter
-            ) { [weak self] in
-                self?.whenToStopHandler?()
-            }
+        } onEnd: {
+            self.stop()
         }
     }
 
     private func startFromCheckPoint(angle: Angle, speed: RouletteSpeed) {
         state = .run(angle: angle, speed: speed)
-        worker.start(speed: speed, from: angle.degrees) { degrees in
+        worker.start(speed: speed, from: angle.degrees, automaticallyStopAfter: nil) { degrees in
             if case RouletteState.run = self.state {
                 self.state = .run(angle: .degrees(degrees), speed: speed)
             }
+        } onEnd: {
+            self.stop()
         }
     }
 
