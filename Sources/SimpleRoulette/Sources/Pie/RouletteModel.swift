@@ -29,20 +29,20 @@ public protocol RouletteDataDelegate: AnyObject {
 public final class RouletteModel: ObservableObject {
     @Published public var parts: [PartData] = []
     @Published public var state: RouletteState = .start
-    @Published public var duration: Double
-    
-    public var onDecide: PassthroughSubject<PartData, Never>
-    public var onDecidePublisher: AnyPublisher<PartData, Never> {
+
+
+    private var whenToStopHandler: (() -> Void)?
+    private let worker: RouletteWorker = .init()
+    private let onDecide: PassthroughSubject<PartData?, Never>
+    public var onDecidePublisher: AnyPublisher<PartData?, Never> {
         onDecide.eraseToAnyPublisher()
     }
     
     public init(
-        duration: Double = 3,
-        onDecide: PassthroughSubject<PartData, Never> = .init(),
+        onDecide: PassthroughSubject<PartData?, Never> = .init(),
         parts: [PartData]
     ) {
         self.onDecide = onDecide
-        self.duration = duration
         self.parts = parts
 
         updateDelegate()
@@ -58,24 +58,66 @@ public final class RouletteModel: ObservableObject {
             parts[i].delegate = self
         }
     }
-    
+
     public func start(
-        speed _speed: RouletteSpeed? = nil,
-        automaticallyStop: Bool = true
+        speed _speed: RouletteSpeed = .random(),
+        isConitnue: Bool = false,
+        automaticallyStopAfter: Double? = nil
     ) {
-        let speed = _speed ?? RouletteSpeed.random()
-        if state.canStart {
-            var angle = state.angle
-            angle.degrees += speed.value
-            self.state = RouletteState.run(angle: angle, speed: speed)
-            if automaticallyStop {
-                DispatchQueue.main.asyncAfter(
-                    deadline: .now() + duration
-                ) {
-                    self.stop()
-                }
-            }
+        assert(!(isConitnue && automaticallyStopAfter != nil))
+        if state.isAnimating {
+            return
         }
+        onDecide.send(nil)
+        if case let RouletteState.pause(angle, speed) = state, isConitnue {
+            startFromCheckPoint(angle: angle, speed: speed)
+        } else {
+            startCompletely(speed: _speed, automaticallyStopAfter: automaticallyStopAfter)
+        }
+    }
+
+    private func startCompletely(
+        speed: RouletteSpeed,
+        automaticallyStopAfter: Double?
+    ) {
+        state = .run(angle: .zero, speed: speed)
+        worker.start(speed: speed, automaticallyStopAfter: automaticallyStopAfter) { degrees in
+            if case RouletteState.run = self.state {
+                self.state = .run(angle: .degrees(degrees), speed: speed)
+            }
+        } onEnd: {
+            self.stop()
+        }
+    }
+
+    private func startFromCheckPoint(angle: Angle, speed: RouletteSpeed) {
+        state = .run(angle: angle, speed: speed)
+        worker.start(speed: speed, from: angle.degrees, automaticallyStopAfter: nil) { degrees in
+            if case RouletteState.run = self.state {
+                self.state = .run(angle: .degrees(degrees), speed: speed)
+            }
+        } onEnd: {
+            self.stop()
+        }
+    }
+
+    public func restart() {
+        guard case let RouletteState.pause(angle, speed) = state else {
+            return
+        }
+        startFromCheckPoint(angle: angle, speed: speed)
+    }
+
+    public func pause() {
+        if !state.isAnimating {
+            return
+        }
+        guard case let RouletteState.run(angle, speed) = state else {
+            return
+        }
+        state = .pause(angle: angle, speed: speed)
+        whenToStopHandler = nil
+        worker.pause()
     }
     
     public func stop() {
@@ -85,6 +127,7 @@ public final class RouletteModel: ObservableObject {
         guard case let RouletteState.run(angle, _) = state else {
             return
         }
+        worker.stop()
         var degrees = angle.degrees
         #if SIMPLEROULETTE || SIMPLEROULETTEDEMO
         print("Pure Angle degreees: \(degrees)")
