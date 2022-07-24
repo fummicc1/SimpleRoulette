@@ -12,11 +12,17 @@ SimpleRoulette helps you to create customizable Roulette, with **SwiftUI**. (Com
 
 ## Demo
 
-**Because of GiF, demo lags**
 
-| iOS                                                                                                                             | MacOS                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://user-images.githubusercontent.com/44002126/173885473-a111528e-18f9-404d-85a5-ce6ebf4afd84.gif" width="320px"> | <img src="https://user-images.githubusercontent.com/44002126/173885181-8df3150c-2e36-468b-90e4-83f9b615d74e.gif" width="320px"> |
+### iOS
+
+https://user-images.githubusercontent.com/44002126/180652910-914fdd65-0f32-492d-92eb-dd0f66f77363.mov
+
+
+### macOS
+
+
+
+
 
 ## Install
 
@@ -64,7 +70,7 @@ struct ContentView: View {
             RouletteView(
                 model: model
             )
-        }.onAppear { model.start() }
+        }.onAppear { model.start(speed: .random()) }
     }
 }
 
