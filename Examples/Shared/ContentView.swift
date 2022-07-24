@@ -16,33 +16,47 @@ struct ContentView: View {
 
     var body: some View {
         HStack {
-            Spacer()
             VStack {
-                Spacer()
+                Spacer().frame(height: 120)
                 Text("Decide favorite language !")
-                    .font(.largeTitle)
+                    .font(.title)
                     .bold().italic()
                     .padding()
-                if let decidedPart = decidedPart, let text = decidedPart.content.text {
-                    Text("It is \(text)")
-                        .font(.title)
-                        .italic()
-                        .bold()
-                        .padding()
-                }
+                Group {
+                    if let decidedPart = decidedPart, let text = decidedPart.content.text {
+                        Text("It is \(text)")
+                            .font(.title)
+                            .italic()
+                            .bold()
+                            .padding()
+                    } else {
+                        Text("Nothing")
+                    }
+                }.frame(height: 40)
                 RouletteView(
                     model: model,
                     length: length
                 )
-                Button("Start") {
-                    model.start()
+                HStack {
+                    Group {
+                        Button(model.state.isAnimating ? "Pause" : "Start") {
+                            if model.state.isAnimating {
+                                model.pause()
+                            } else {
+                                model.start(speed: .random(), automaticallyStopAfter: 5)
+                            }
+                        }
+                        Button("Stop") {
+                            model.stop()
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .font(.title)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
                 }
-                .buttonStyle(.bordered)
-                .font(.title)
-                .padding()
                 Spacer()
             }
-            Spacer()
         }
         .onReceive(model.onDecidePublisher) { part in
             decidedPart = part

@@ -14,12 +14,9 @@ SimpleRoulette helps you to create customizable Roulette, with **SwiftUI**. (Com
 
 **Because of GiF, demo lags**
 
-| iOS |MacOS|
-| --- |---|
+| iOS                                                                                                                             | MacOS                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | <img src="https://user-images.githubusercontent.com/44002126/173885473-a111528e-18f9-404d-85a5-ce6ebf4afd84.gif" width="320px"> | <img src="https://user-images.githubusercontent.com/44002126/173885181-8df3150c-2e36-468b-90e4-83f9b615d74e.gif" width="320px"> |
-
-
-
 
 ## Install
 
@@ -29,7 +26,7 @@ Create `Package.swift` and add dependency like the following.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "1.1.0")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "1.2.0")
     // or
     .package(url: "https://github.com/fummicc1/SimpleRoulette.git", branch: "main")
 ]
@@ -40,7 +37,7 @@ dependencies: [
 Create `Podfile` and add dependency like the following.
 
 ```ruby
-pod 'SimpleRoulette', '~> 1.0'
+pod 'SimpleRoulette', '~> 1.2'
 ```
 
 ### Carthage
@@ -67,7 +64,7 @@ struct ContentView: View {
             RouletteView(
                 model: model
             )
-        }.onAppear { model.start() } 
+        }.onAppear { model.start() }
     }
 }
 
@@ -75,10 +72,10 @@ struct ContentView: View {
 ContentView(
     model: RouletteModel(
         PartData(
-        index: 0,
-        content: .label("Swift"),
-        area: .flex(3),
-        fillColor: Color.red
+            index: 0,
+            content: .label("Swift"),
+            area: .flex(3),
+            fillColor: Color.red
         ),
         PartData(
             index: 1,
@@ -116,17 +113,15 @@ ContentView(
 
 ### RouletteModel
 
-RouletteModel is `ObservableObject`. You can observe the notification when roulette has stopped and what has been chosen via `onDecide` Publisher.
+RouletteModel is `ObservableObject`. You can observe the event that roulette has been stopped and what is the stop via `onDecide` Publisher.
 
 ## Usage
 
-`RouletteModel.start` function immediately start roulette. By default, roulette will set when-to-stop roulette automatically whenever roulette has started.
+`RouletteModel.start` function immediately start roulette. Please specify the duration of roulette rotation at `automaticallyStopAfter: Double` parameter.
 
 ## Documentation
 
-documentation is under construction.
-
-- [Beta documentation page](https://fummicc1.github.io/SimpleRoulette/SimpleRoulette)
+- [Documentation](https://fummicc1.github.io/SimpleRoulette/SimpleRoulette)
 
 ## Contributing
 
