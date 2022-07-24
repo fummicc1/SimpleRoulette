@@ -20,8 +20,7 @@ https://user-images.githubusercontent.com/44002126/180652910-914fdd65-0f32-492d-
 
 ### macOS
 
-
-
+https://user-images.githubusercontent.com/44002126/180653405-fc6314b6-b9c2-4a64-8edb-8d0f265ad49c.mov
 
 
 ## Install
