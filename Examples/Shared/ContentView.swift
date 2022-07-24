@@ -43,7 +43,7 @@ struct ContentView: View {
                             if model.state.isAnimating {
                                 model.pause()
                             } else {
-                                model.start()
+                                model.start(automaticallyStopAfter: 5)
                             }
                         }
                         Button("Stop") {

@@ -29,12 +29,9 @@ public protocol RouletteDataDelegate: AnyObject {
 public final class RouletteModel: ObservableObject {
     @Published public var parts: [PartData] = []
     @Published public var state: RouletteState = .start
-    @Published public var duration: Double
 
 
-    private lazy var stopWorkItem: DispatchWorkItem = DispatchWorkItem() {
-        self.stop()
-    }
+    private var whenToStopHandler: (() -> Void)?
     private let worker: RouletteWorker = .init()
     private let onDecide: PassthroughSubject<PartData?, Never>
     public var onDecidePublisher: AnyPublisher<PartData?, Never> {
@@ -42,12 +39,10 @@ public final class RouletteModel: ObservableObject {
     }
     
     public init(
-        duration: Double = 5,
         onDecide: PassthroughSubject<PartData?, Never> = .init(),
         parts: [PartData]
     ) {
         self.onDecide = onDecide
-        self.duration = duration
         self.parts = parts
 
         updateDelegate()
@@ -63,13 +58,13 @@ public final class RouletteModel: ObservableObject {
             parts[i].delegate = self
         }
     }
-    
+
     public func start(
         speed _speed: RouletteSpeed? = nil,
-        isConitnue: Bool = true,
-        automaticallyStop: Bool = false
+        isConitnue: Bool = false,
+        automaticallyStopAfter: Double? = nil
     ) {
-        assert(!(isConitnue && automaticallyStop))
+        assert(!(isConitnue && automaticallyStopAfter != nil))
         if state.isAnimating {
             return
         }
@@ -77,13 +72,13 @@ public final class RouletteModel: ObservableObject {
         if case let RouletteState.pause(angle, speed) = state, isConitnue {
             startFromCheckPoint(angle: angle, speed: speed)
         } else {
-            startCompletely(speed: _speed, automaticallyStop: automaticallyStop)
+            startCompletely(speed: _speed, automaticallyStopAfter: automaticallyStopAfter)
         }
     }
 
     private func startCompletely(
         speed _speed: RouletteSpeed?,
-        automaticallyStop: Bool
+        automaticallyStopAfter: Double?
     ) {
         let speed = _speed ?? RouletteSpeed.random()
         state = .run(angle: .zero, speed: speed)
@@ -92,12 +87,15 @@ public final class RouletteModel: ObservableObject {
                 self.state = .run(angle: .degrees(degrees), speed: speed)
             }
         }
-        if automaticallyStop {
-            stopWorkItem.cancel()
+        if let automaticallyStopAfter = automaticallyStopAfter {
+            whenToStopHandler = { [weak self] in
+                self?.stop()
+            }
             DispatchQueue.main.asyncAfter(
-                deadline: .now() + duration,
-                execute: stopWorkItem
-            )
+                deadline: .now() + automaticallyStopAfter
+            ) { [weak self] in
+                self?.whenToStopHandler?()
+            }
         }
     }
 
@@ -114,12 +112,7 @@ public final class RouletteModel: ObservableObject {
         guard case let RouletteState.pause(angle, speed) = state else {
             return
         }
-        state = .run(angle: angle, speed: speed)
-        worker.start(speed: speed, from: angle.degrees) { degrees in
-            if case RouletteState.run = self.state {
-                self.state = .run(angle: .degrees(degrees), speed: speed)
-            }
-        }
+        startFromCheckPoint(angle: angle, speed: speed)
     }
 
     public func pause() {
@@ -130,7 +123,7 @@ public final class RouletteModel: ObservableObject {
             return
         }
         state = .pause(angle: angle, speed: speed)
-        stopWorkItem.cancel()
+        whenToStopHandler = nil
         worker.pause()
     }
     
