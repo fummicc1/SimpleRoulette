@@ -28,6 +28,14 @@ public enum RouletteState: Hashable {
             }
             return false
 
+        case .prepareForStop(let angle):
+            if case let RouletteState.prepareForStop(rightAngle) = rhs {
+                if angle == rightAngle {
+                    return true
+                }
+            }
+            return false
+
         case .stop(let location, let angle):
             if case let RouletteState.stop(rightLocation, rightAngle) = rhs {
                 if angle == rightAngle && location.id == rightLocation.id {
@@ -42,6 +50,7 @@ public enum RouletteState: Hashable {
     case start
     case run(angle: Angle, speed: RouletteSpeed)
     case pause(angle: Angle, speed: RouletteSpeed)
+    case prepareForStop(angle: Angle)
     case stop(location: PartData, angle: Angle)
 
     public var angle: Angle {
@@ -49,6 +58,8 @@ public enum RouletteState: Hashable {
         if case RouletteState.run(let angle, _) = self {
             degrees = angle.degrees
         } else if case RouletteState.pause(let angle, _) = self {
+            degrees = angle.degrees
+        } else if case RouletteState.prepareForStop(let angle) = self {
             degrees = angle.degrees
         } else if case RouletteState.stop(_, let angle) = self {
             degrees = angle.degrees
@@ -72,14 +83,14 @@ public enum RouletteState: Hashable {
         case .start, .stop:
             return true
 
-        case .run, .pause:
+        case .run, .pause, .prepareForStop:
             return false
         }
     }
 
     public var isAnimating: Bool {
         switch self {
-        case .start, .pause, .stop:
+        case .start, .pause, .prepareForStop, .stop:
             return false
         case .run:
             return true
@@ -98,6 +109,9 @@ public enum RouletteState: Hashable {
         case .pause(let angle, let speed):
             hasher.combine(angle)
             hasher.combine(speed)
+
+        case .prepareForStop(let angle):
+            hasher.combine(angle)
 
         case .stop(let location, let angle):
             hasher.combine(location.id)

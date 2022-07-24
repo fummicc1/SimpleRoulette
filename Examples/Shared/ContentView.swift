@@ -34,12 +34,24 @@ struct ContentView: View {
                     model: model,
                     length: length
                 )
-                Button("Start") {
-                    model.start()
+                HStack {
+                    Group {
+                        Button(model.state.isAnimating ? "Pause" : "Start") {
+                            if model.state.isAnimating {
+                                model.pause()
+                            } else {
+                                model.start()
+                            }
+                        }
+                        Button("Stop") {
+                            model.stop()
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .font(.title)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
                 }
-                .buttonStyle(.bordered)
-                .font(.title)
-                .padding()
                 Spacer()
             }
             Spacer()

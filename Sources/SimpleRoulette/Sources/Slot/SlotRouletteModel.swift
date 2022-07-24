@@ -13,7 +13,7 @@ public struct SlotRouletteState: Identifiable {
 
     public init(
         type: SlotRouletteState.Status = .ready,
-        worker: RouletteWorker,
+        worker: SlotRouletteWorker,
         speed: SlotRouletteSpeed,
         values: [SlotRouletteItem],
         index: Int,
@@ -32,7 +32,7 @@ public struct SlotRouletteState: Identifiable {
     }
 
     public var type: Status
-    public var worker: RouletteWorker
+    public var worker: SlotRouletteWorker
     public var speed: SlotRouletteSpeed
     public var values: [SlotRouletteItem]
     public var index: Int
@@ -76,7 +76,7 @@ public class SlotRouletteModel: ObservableObject {
         count: Int,
         speed: SlotRouletteSpeed = .normal
     ) {
-        let worker = RouletteWorker(
+        let worker = SlotRouletteWorker(
             speed: .random()
         )
         state = SlotRouletteState(
