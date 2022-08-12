@@ -4,7 +4,7 @@ swift package --allow-writing-to-directory docs \
     generate-documentation --target SimpleRoulette \
     --disable-indexing \
     --transform-for-static-hosting \
-    --hosting-base-path simpleroulette \
+    --hosting-base-path SimpleRoulette \
     --output-path docs
 
 rm docs/index.html

@@ -123,7 +123,7 @@ RouletteModel is `ObservableObject`. You can observe the event that roulette has
 
 ## Documentation
 
-- [Documentation](https://fummicc1.github.io/simpleroulette/documentation/simpleroulette)
+- [Documentation](https://fummicc1.github.io/SimpleRoulette/documentation/simpleroulette)
 
 ## Contributing
 
