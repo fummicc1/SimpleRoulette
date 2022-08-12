@@ -12,13 +12,18 @@ SimpleRoulette helps you to create customizable Roulette, with SwiftUI. (Compati
 
 ## Demo
 
+
 ### iOS
 
 <img src="https://user-images.githubusercontent.com/44002126/180654806-58f70b4f-9bbd-4345-b7a5-4e1ba5aebbd9.gif" width="30%">
 
+
+
 ### macOS
 
 <img src="https://user-images.githubusercontent.com/44002126/180655023-ccb71dce-9478-4f44-a8c1-b914184e607c.gif" width="30%">
+
+
 
 ## Install
 
