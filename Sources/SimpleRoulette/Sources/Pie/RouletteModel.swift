@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-/// ``RouletteDataDelegate`` is delegate that manages all of ``PartData`` which are shown at ``RouletteContentView``.
+/// ``RouletteDataDelegate`` is delegate that manages all of ``PartData`` which are shown at ``RouletteView``.
 public protocol RouletteDataDelegate: AnyObject {
 
     /// Total degree of Roulette.

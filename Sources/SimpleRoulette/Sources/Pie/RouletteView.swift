@@ -8,16 +8,16 @@
 
 import SwiftUI
 
-/// ``RouletteContentView`` is a `View` in `SwiftUI` framework.
+/// ``RouletteView`` is a `View` in `SwiftUI` framework.
 ///
-/// ``RouletteContentView`` contains multiple ``PartData`` which has each element of Roulette.
+/// ``RouletteView`` contains multiple ``PartData`` which has each element of Roulette.
 ///
 /// You can use it like the following way.
 ///
 ///
 ///       struct SelectionView: View {
 ///             var body: some View {
-///                 RouletteContentView(
+///                 RouletteView(
 ///                     model: RouletteModel(
 ///                         parts: [
 ///                             PartData(content: .label("Swift"), area: .flex(2)),
@@ -29,7 +29,7 @@ import SwiftUI
 ///             }
 ///       }
 ///
-public struct RouletteContentView: View {
+public struct RouletteView: View {
     
     @StateObject var model: RouletteModel
 
@@ -102,15 +102,15 @@ public struct RouletteContentView: View {
 
     /// Initialization
     ///
-    /// - Note: Please note that ``RouletteContentView`` is not rectangle but **square** (same width and height).
+    /// - Note: Please note that ``RouletteView`` is not rectangle but **square** (same width and height).
     ///
     /// - Parameters:
     ///     - model: please pass ``RouletteModel`` instance
-    ///     which manages many stufffs of ``RouletteContentView``.
+    ///     which manages many stufffs of ``RouletteView``.
     ///     - stopView: If you want to customize `stopView`, please pass `AnyView` to this parameter.
     ///     Default value is nil which means `Image(systemName: "arrowtriangle.down.fill")`
     ///     is used as a `stopView`.
-    ///     - length: set the frame length of ``RouletteContentView`` (square).
+    ///     - length: set the frame length of ``RouletteView`` (square).
     ///     Default value is `320`.
     public init(
         model: RouletteModel,
@@ -132,15 +132,15 @@ public struct RouletteContentView: View {
 
     /// Initialization
     ///
-    /// - Note: Please note that ``RouletteContentView`` is not rectangle but **square** (same width and height).
-    /// 
+    /// - Note: Please note that ``RouletteView`` is not rectangle but **square** (same width and height).
+    ///
     /// - Parameters:
     ///     - parts: please pass `Array` of ``PartData`` instance
     ///     which corresponds to each element inside Roulette.
     ///     - stopView: If you want to customize `stopView`, please pass `AnyView` to this parameter.
     ///     Default value is nil which means `Image(systemName: "arrowtriangle.down.fill")`
     ///     is used as a `stopView`.
-    ///     - length: set the frame length of ``RouletteContentView`` (square).
+    ///     - length: set the frame length of ``RouletteView`` (square).
     ///     Default value is `320`.
     public init(
         parts: [PartData],
@@ -162,7 +162,7 @@ public struct RouletteContentView: View {
     ///     If you called ``RouletteModel/pause()``, please pass `true` to this parameter.
     ///     Default value is `false`.
     ///     - automaticallyStopAfter: this value should be set to the duration (seconds) we want Roulette running.
-    ///     Default value is `nil` which means it will not automatically stop unless calling ``RouletteContentView/stop()``
+    ///     Default value is `nil` which means it will not automatically stop unless calling ``RouletteView/stop()``
     public func startOnAppear(
         speed: RouletteSpeed = .random(),
         isConitnue: Bool = false,
