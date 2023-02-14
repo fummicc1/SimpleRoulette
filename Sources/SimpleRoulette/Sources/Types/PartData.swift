@@ -60,6 +60,9 @@ public enum PartArea {
 
 
 public struct PartData: Identifiable, Hashable {
+
+    internal static var currentIndex: Int = 0
+
     public static func == (lhs: PartData, rhs: PartData) -> Bool {
         lhs.id == rhs.id
     }
@@ -69,19 +72,21 @@ public struct PartData: Identifiable, Hashable {
     }
 
     public init(
-        index: Int,
+        index: Int? = nil,
         content: Content,
         area: PartArea,
         fillColor: Color = .secondarySystemBackground,
         strokeColor: Color = .systemGray,
         lineWidth: Double = 2
     ) {
-        self.index = index
+        self.index = index ?? Self.currentIndex
         self.content = content
         self.area = area
         self.fillColor = fillColor
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
+
+        Self.currentIndex += 1
     }
 
     public var id: String {

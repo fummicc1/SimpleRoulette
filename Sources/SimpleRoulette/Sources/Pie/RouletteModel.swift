@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-/// ``RouletteDataDelegate`` is delegate that manages all of ``PartData`` which are shown at ``RouletteView``.
+/// ``RouletteDataDelegate`` is delegate that manages all of ``PartData`` which are shown at ``RouletteContentView``.
 public protocol RouletteDataDelegate: AnyObject {
 
     /// Total degree of Roulette.
@@ -59,6 +59,16 @@ public final class RouletteModel: ObservableObject {
         }
     }
 
+    /// Method that starts Roulette!
+    ///
+    /// - Parameters:
+    ///     - speed: You can set arbitrary speed with ``RouletteSpeed``
+    ///     By default, ``RouletteSpeed/random()`` is set.
+    ///     - isContinue: if this value is `true`, We recognize that current situation is `pause` and will resume the rotation.
+    ///     If you called ``RouletteModel/pause()``, please pass `true` to this parameter.
+    ///     Default value is `false`.
+    ///     - automaticallyStopAfter: this value should be set to the duration (seconds) we want Roulette running.
+    ///     Default value is `nil` which means it will not automatically stop unless calling ``RouletteModel/stop()``
     public func start(
         speed _speed: RouletteSpeed = .random(),
         isConitnue: Bool = false,
@@ -101,6 +111,7 @@ public final class RouletteModel: ObservableObject {
         }
     }
 
+    /// Method that restarts Roulette.
     public func restart() {
         guard case let RouletteState.pause(angle, speed) = state else {
             return
@@ -108,6 +119,7 @@ public final class RouletteModel: ObservableObject {
         startFromCheckPoint(angle: angle, speed: speed)
     }
 
+    /// Method that pause Roulette.
     public func pause() {
         if !state.isAnimating {
             return
@@ -119,7 +131,11 @@ public final class RouletteModel: ObservableObject {
         whenToStopHandler = nil
         worker.pause()
     }
-    
+
+    /// Method that stops Roulette.
+    ///
+    /// - Note: This method does not immediately stop Roulette.
+    /// a delay which makes us feel more realistic Roulette happens.
     public func stop() {
         if !state.isAnimating {
             return
