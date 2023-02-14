@@ -16,8 +16,8 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SimpleRoulette"
-  spec.version      = "1.2.0"
-  spec.summary      = "Create Roulette with ease."
+  spec.version      = "1.3.0"
+  spec.summary      = "SwiftUI library to create Roulette with ease."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/fummicc1/SimpleRoulette.git", :tag => "1.2.0" }
+  spec.source       = { :git => "https://github.com/fummicc1/SimpleRoulette.git", :tag => "1.3.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
