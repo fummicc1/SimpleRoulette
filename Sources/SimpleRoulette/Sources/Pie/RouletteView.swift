@@ -18,12 +18,10 @@ import SwiftUI
 ///       struct SelectionView: View {
 ///             var body: some View {
 ///                 RouletteView(
-///                     model: RouletteModel(
-///                         parts: [
-///                             PartData(content: .label("Swift"), area: .flex(2)),
-///                             PartData(content: .label("Dart"), area: .flex(1)),
-///                         ]
-///                     )
+///                     parts: [
+///                         PartData(content: .label("Swift"), area: .flex(2)),
+///                         PartData(content: .label("Dart"), area: .flex(1)),
+///                     ]
 ///                 )
 ///                 .startOnAppear()
 ///             }
@@ -31,7 +29,7 @@ import SwiftUI
 ///
 public struct RouletteView: View {
     
-    @StateObject var model: RouletteModel
+    private let model: RouletteModel
 
     @State private var currentAngle: Angle = .init()
     @State private var radius: CGFloat = 0
@@ -42,62 +40,8 @@ public struct RouletteView: View {
     let stopView: AnyView
     
     public var body: some View {
-        VStack {
-            stopView
-            GeometryReader { geometry in
-                content
-                    .aspectRatio(1, contentMode: .fit)
-                    .rotationEffect(currentAngle)
-                    .onAppear(perform: {
-                        let midX = geometry.frame(in: .local).midX
-                        let midY = geometry.frame(in: .local).midY
-                        let centerValue = min(midX, midY)
-                        center = CGPoint(
-                            x: centerValue,
-                            y: centerValue
-                        )
-                        radius = centerValue
-                    })
-                    .onReceive(model.$state, perform: { state in
-                        guard let angle = state.angle else {
-                            return
-                        }
-                        self.currentAngle = angle
-                    })
-            }
-            .frame(width: length, height: length)
-        }
-    }
-    
-    private var content: some View {
-        ZStack {
-            ForEach(model.parts, id: \.self) { (part) -> ZStack in
-                ZStack {
-                    RoulettePart(
-                        data: part,
-                        center: center,
-                        radius: radius
-                    )
-                }
-            }
-            ForEach(model.parts, id: \.self) { (part) -> ZStack in
-                ZStack {
-                    part.content.view
-                        .offset(
-                            CGSize(
-                                width: { () -> Double in
-                                    let mean = (part.startAngle + part.endAngle) / 2
-                                    return radius * 1/2 * cos(mean.radians)
-                                }(),
-                                height: { () -> Double in
-                                    let mean = (part.startAngle + part.endAngle) / 2
-                                    return radius * 1/2 * sin(mean.radians)
-                                }()
-                            )
-                        )
-                }
-            }
-        }
+        RouletteInternalView(stopView: stopView, length: length)
+            .environmentObject(model)
     }
 
     /// Initialization
@@ -118,7 +62,7 @@ public struct RouletteView: View {
         length: CGFloat = 320
     ) {
         self._length = State(initialValue: length)
-        self._model = StateObject(wrappedValue: model)
+        self.model = model
         if let stopView = stopView {
             self.stopView = stopView
         } else {
@@ -163,17 +107,40 @@ public struct RouletteView: View {
     ///     Default value is `false`.
     ///     - automaticallyStopAfter: this value should be set to the duration (seconds) we want Roulette running.
     ///     Default value is `nil` which means it will not automatically stop unless calling ``RouletteView/stop()``
+    ///     - didFinish: a closure that handles after Roulette has been finished.
+    ///     Default value is `nil` which means nothing will happen when Roulette stops.
+    ///     I recommend you to handle some operation like showing the result on View.
+    @ViewBuilder
     public func startOnAppear(
         speed: RouletteSpeed = .random(),
         isConitnue: Bool = false,
-        automaticallyStopAfter: Double? = nil
+        automaticallyStopAfter: Double? = nil,
+        didFinish: ((PartData) -> Void)? = nil
     ) -> some View {
-        return onAppear {
-            model.start(
-                speed: speed,
-                isConitnue: isConitnue,
-                automaticallyStopAfter: automaticallyStopAfter
-            )
+        Group {
+            if let didFinish {
+                onAppear {
+                    model.start(
+                        speed: speed,
+                        isConitnue: isConitnue,
+                        automaticallyStopAfter: automaticallyStopAfter
+                    )
+                }
+                .onReceive(model.onDecidePublisher) { part in
+                    guard let part else {
+                        return
+                    }
+                    didFinish(part)
+                }
+            } else {
+                onAppear {
+                    model.start(
+                        speed: speed,
+                        isConitnue: isConitnue,
+                        automaticallyStopAfter: automaticallyStopAfter
+                    )
+                }
+            }
         }
     }
 

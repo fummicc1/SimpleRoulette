@@ -133,9 +133,6 @@ public final class RouletteModel: ObservableObject {
     }
 
     /// Method that stops Roulette.
-    ///
-    /// - Note: This method does not immediately stop Roulette.
-    /// a delay which makes us feel more realistic Roulette happens.
     public func stop() {
         if !state.isAnimating {
             return
