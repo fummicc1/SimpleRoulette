@@ -1,8 +1,14 @@
 import Foundation
 
 
-/// ``RouletteSpeed`` expresses a speed of roulette rotation. value is corresponding to progressive degrees per second.
-/// - Note:
+/// ``RouletteSpeed`` expresses a speed of roulette rotation. value is corresponding to progressive degrees per
+///
+/// There are five predefined ``RouletteSpeed``.
+/// - ``RouletteSpeed/slow``: rotates View once per second.
+/// - ``RouletteSpeed/normal``:  rotates View twice per second.
+/// - ``RouletteSpeed/fast``: rotates View 4 times per second.
+/// - ``RouletteSpeed/idle``: never rotates.
+/// - ``RouletteSpeed/random()``: decide the speed in random.
 public struct RouletteSpeed: ExpressibleByFloatLiteral, Hashable {
     var value: Double
 

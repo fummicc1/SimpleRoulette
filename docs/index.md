@@ -28,7 +28,7 @@ Create `Package.swift` and add dependency like the following.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "1.2.0")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "1.3.0")
     // or
     .package(url: "https://github.com/fummicc1/SimpleRoulette.git", branch: "main")
 ]
@@ -39,7 +39,7 @@ dependencies: [
 Create `Podfile` and add dependency like the following.
 
 ```ruby
-pod 'SimpleRoulette', '~> 1.2'
+pod 'SimpleRoulette', '~> 1.3'
 ```
 
 ### Carthage
@@ -54,19 +54,83 @@ github "fummicc1/SimpleRoulette"
 
 ### RouletteView
 
+All you need to know is just `RouletteView` and `PartData`.
 `RouletteView` confirms to `View`, so you can use it like the follwing.
+
+````swift
+```swift
+struct ContentView: View {
+
+    var body: some View {
+        RouletteView(
+            parts: partDatas
+        )
+        .startOnAppear(automaticallyStopAfter: 5) { part in
+            guard let text = part.content.text else {
+                return
+            }
+            title = text
+        }
+    }
+
+    var partDatas: [PartData] {
+        [
+            PartData(
+                content: .label("Swift"),
+                area: .flex(3),
+                fillColor: Color.red
+            ),
+            PartData(
+                content: .label("Kotlin"),
+                area: .flex(1),
+                fillColor: Color.purple
+            ),
+            PartData(
+                content: .label("JavaScript"),
+                area: .flex(2),
+                fillColor: Color.yellow
+            ),
+            PartData(
+                content: .label("Dart"),
+                area: .flex(1),
+                fillColor: Color.green
+            ),
+            PartData(
+                content: .label("Python"),
+                area: .flex(2),
+                fillColor: Color.blue
+            ),
+            PartData(
+                content: .label("C++"),
+                area: .degree(60),
+                fillColor: Color.orange
+            ),
+        ]
+    }
+}
+````
+
+## RouletteModel
+
+If you want to pause / restart roulette. Please use `RouletteModel` like the following.
 
 ```swift
 struct ContentView: View {
 
-    @ObservedObject var model: RouletteModel
+    @StateObject var model: RouletteModel
 
     var body: some View {
         VStack {
-            RouletteView(
-                model: model
-            )
-        }.onAppear { model.start(speed: .random()) }
+            RouletteView(model: model)
+        }.onAppear {
+            model.start()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                model.pause() // you can pause
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    model.restart() // you can restart
+                }
+            }
+        }
     }
 }
 
@@ -74,37 +138,31 @@ struct ContentView: View {
 ContentView(
     model: RouletteModel(
         PartData(
-            index: 0,
             content: .label("Swift"),
             area: .flex(3),
             fillColor: Color.red
         ),
         PartData(
-            index: 1,
             content: .label("Kotlin"),
             area: .flex(1),
             fillColor: Color.purple
         ),
         PartData(
-            index: 2,
             content: .label("JavaScript"),
             area: .flex(2),
             fillColor: Color.yellow
         ),
         PartData(
-            index: 3,
             content: .label("Dart"),
             area: .flex(1),
             fillColor: Color.green
         ),
         PartData(
-            index: 4,
             content: .label("Python"),
             area: .flex(2),
             fillColor: Color.blue
         ),
         PartData(
-            index: 5,
             content: .label("C++"),
             area: .degree(60),
             fillColor: Color.orange
@@ -112,14 +170,6 @@ ContentView(
     )
 )
 ```
-
-### RouletteModel
-
-RouletteModel is `ObservableObject`. You can observe the event that roulette has been stopped and what is the stop via `onDecide` Publisher.
-
-## Usage
-
-`RouletteModel.start` function immediately start roulette. If you would stop roulette automatically, please specify the duration in seconds of rotation at `automaticallyStopAfter: Double?` parameter. Default value of `automaticallyStopAfter` is nil which means that roulette continues rotating unless you call `RouletteModel.stop` method.
 
 ## Documentation
 
