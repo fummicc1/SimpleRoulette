@@ -66,11 +66,11 @@ public struct RouletteInternalView: View {
                             CGSize(
                                 width: { () -> Double in
                                     let mean = (part.startAngle + part.endAngle) / 2
-                                    return radius * 1/2 * cos(mean.radians)
+                                    return radius * 0.5 * cos(mean.radians)
                                 }(),
                                 height: { () -> Double in
                                     let mean = (part.startAngle + part.endAngle) / 2
-                                    return radius * 1/2 * sin(mean.radians)
+                                    return radius * 0.5 * sin(mean.radians)
                                 }()
                             )
                         )
