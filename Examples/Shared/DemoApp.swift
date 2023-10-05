@@ -17,8 +17,8 @@ struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
             /// please change ``DemoApp/roulette`` and ``DemoApp/content``
-            roulette.navigationTitle(title)
-            // content
+//            roulette.navigationTitle(title)
+             content
         }
     }
 

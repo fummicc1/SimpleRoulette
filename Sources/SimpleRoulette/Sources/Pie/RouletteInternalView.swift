@@ -60,8 +60,10 @@ public struct RouletteInternalView: View {
                 }
             }
             ForEach(model.parts, id: \.self) { (part) -> ZStack in
+                let angle = ((part.endAngle + part.startAngle) / 2) + Angle(degrees: 90)
                 ZStack {
                     part.content.view
+                        .rotationEffect(angle)
                         .offset(
                             CGSize(
                                 width: { () -> Double in
