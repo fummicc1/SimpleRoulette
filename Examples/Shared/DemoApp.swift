@@ -45,37 +45,21 @@ struct DemoApp: App {
     }
 
     var partDatas: [PartData] {
-        [
-            PartData(
-                content: .label("Swift"),
-                area: .flex(3),
-                fillColor: Color.red
-            ),
-            PartData(
-                content: .label("Kotlin"),
-                area: .flex(1),
-                fillColor: Color.purple
-            ),
-            PartData(
-                content: .label("JavaScript"),
-                area: .flex(2),
-                fillColor: Color.yellow
-            ),
-            PartData(
-                content: .label("Dart"),
-                area: .flex(1),
-                fillColor: Color.green
-            ),
-            PartData(
-                content: .label("Python"),
-                area: .flex(2),
-                fillColor: Color.blue
-            ),
-            PartData(
-                content: .label("C++"),
-                area: .degree(60),
-                fillColor: Color.orange
-            ),
+        let elements: [(content: Content, area: PartArea, color: Color)] = [
+            (.label("Swift"),      .flex(3),    .red),
+            (.label("Kotlin"),     .flex(1),    .purple),
+            (.label("JavaScript"), .flex(2),    .yellow),
+            (.label("Dart"),       .flex(1),    .green),
+            (.label("Python"),     .flex(2),    .blue),
+            (.label("C++"),        .degree(60), .orange),
         ]
+        return elements.enumerated().map { index, element in
+            PartData(
+                index: index,
+                content: element.content,
+                area: element.area,
+                fillColor: element.color
+            )
+        }
     }
 }

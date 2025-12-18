@@ -10,7 +10,7 @@ import SwiftUI
 import SimpleRoulette
 
 struct ContentView: View {
-    @ObservedObject var model: RouletteModel
+    @State var model: RouletteModel
     @State private var decidedPart: PartData?
     @State private var length: CGFloat = 320
 
@@ -57,9 +57,6 @@ struct ContentView: View {
                 }
                 Spacer()
             }
-        }
-        .onReceive(model.onDecidePublisher) { part in
-            decidedPart = part
         }
     }
 }
