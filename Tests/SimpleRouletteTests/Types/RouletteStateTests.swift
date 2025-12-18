@@ -1,60 +1,58 @@
 //
 //  RouletteStateTests.swift
-//  
+//
 //
 //  Created by Fumiya Tanaka on 2022/07/24.
 //
 
-import XCTest
+import Testing
 @testable import SimpleRoulette
 
+@Suite("RouletteState Tests")
+struct RouletteStateTests {
 
-final class RouletteStateTests: XCTestCase {
+    @Test("Run state properties")
+    func runState() {
+        let state: RouletteState = .run(angle: .zero, speed: .normal)
 
-    var state: RouletteState!
-
-    func test_initial_run_state() {
-        // MARK: Arrange
-        state = .run(angle: .zero, speed: .normal)
-        // MARK: Assert
-        XCTAssertEqual(state.canStart, false)
-        XCTAssertEqual(state.isAnimating, true)
-        XCTAssertEqual(state.speed, .normal)
-        XCTAssertEqual(state.angle, .zero)
+        #expect(state.canStart == false)
+        #expect(state.isAnimating == true)
+        #expect(state.speed == .normal)
+        #expect(state.angle == .zero)
     }
 
-    func test_initial_start_state() {
-        // MARK: Arrange
-        state = .start
-        // MARK: Assert
-        XCTAssertEqual(state.angle, nil)
-        XCTAssertEqual(state.speed, .idle)
-        XCTAssertEqual(state.canStart, true)
-        XCTAssertEqual(state.isAnimating, false)
+    @Test("Start state properties")
+    func startState() {
+        let state: RouletteState = .start
+
+        #expect(state.angle == nil)
+        #expect(state.speed == .idle)
+        #expect(state.canStart == true)
+        #expect(state.isAnimating == false)
     }
 
-    func test_initial_pause_state() {
-        // MARK: Arrange
-        state = .pause(angle: .zero, speed: .normal)
-        // MARK: Assert
-        XCTAssertEqual(state.angle, .zero)
-        XCTAssertEqual(state.speed, .normal)
-        XCTAssertEqual(state.canStart, false)
-        XCTAssertEqual(state.isAnimating, false)
+    @Test("Pause state properties")
+    func pauseState() {
+        let state: RouletteState = .pause(angle: .zero, speed: .normal)
+
+        #expect(state.angle == .zero)
+        #expect(state.speed == .normal)
+        #expect(state.canStart == false)
+        #expect(state.isAnimating == false)
     }
 
-    func test_initial_stop_state() {
-        // MARK: Arrange
+    @Test("Stop state properties")
+    func stopState() {
         let stop = PartData(
             index: 0,
             content: .label("Stop"),
             area: .flex(1)
         )
-        state = .stop(location: stop, angle: .zero)
-        // MARK: Assert
-        XCTAssertEqual(state.angle, .zero)
-        XCTAssertEqual(state.speed, .idle)
-        XCTAssertEqual(state.canStart, true)
-        XCTAssertEqual(state.isAnimating, false)
+        let state: RouletteState = .stop(location: stop, angle: .zero)
+
+        #expect(state.angle == .zero)
+        #expect(state.speed == .idle)
+        #expect(state.canStart == true)
+        #expect(state.isAnimating == false)
     }
 }
