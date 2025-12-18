@@ -13,38 +13,51 @@ import SimpleRoulette
 struct DemoApp: App {
 
     @State private var title: String = "Demo"
+    @State private var model: RouletteModel
+    
+    init() {
+        self._model = .init(
+            initialValue: RouletteModel(
+                parts: Self.partDatas
+            )
+        )
+    }
 
     var body: some Scene {
         WindowGroup {
             /// please change ``DemoApp/roulette`` and ``DemoApp/content``
-            NavigationView {
-                roulette.navigationTitle(title)
-            }
-//             content
+//            NavigationStack {
+//                roulette.navigationTitle(title)
+//            }
+             content
         }
     }
 
     var roulette: some View {
         RouletteView(
-            parts: partDatas
+            model: model
         )
-        .startOnAppear(automaticallyStopAfter: 5) { part in
-            guard let text = part.content.text else {
-                return
+        .onChange(of: model.state) { _, newState in
+            if case .stop(let part, _) = newState, let text = part.content.text {
+                title = text
             }
-            title = text
+        }
+        .task {
+            try? await Task.sleep(for: .milliseconds(100))
+            model.start(
+                speed: .random(),
+                automaticallyStopAfter: 5
+            )
         }
     }
 
     var content: some View {
         ContentView(
-            model: RouletteModel(
-                parts: partDatas
-            )
+            model: model
         )
     }
 
-    var partDatas: [PartData] {
+    private static var partDatas: [PartData] {
         let elements: [(content: Content, area: PartArea, color: Color)] = [
             (.label("Swift"),      .flex(3),    .red),
             (.label("Kotlin"),     .flex(1),    .purple),
