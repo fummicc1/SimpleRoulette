@@ -81,19 +81,19 @@ public struct RouletteView<StopView: View>: View {
         automaticallyStopAfter: Double? = nil,
         didFinish: ((PartData) -> Void)? = nil
     ) -> some View {
-        onAppear {
-            if let didFinish {
-                model.onDecide = { part in
-                    guard let part else { return }
+        self
+            .onAppear {
+                model.start(
+                    speed: speed,
+                    isContinue: isContinue,
+                    automaticallyStopAfter: automaticallyStopAfter
+                )
+            }
+            .onChange(of: model.state) { _, newState in
+                if let didFinish, case .stop(let part, _) = newState {
                     didFinish(part)
                 }
             }
-            model.start(
-                speed: speed,
-                isContinue: isContinue,
-                automaticallyStopAfter: automaticallyStopAfter
-            )
-        }
     }
 
     /// Method that stops Roulette.

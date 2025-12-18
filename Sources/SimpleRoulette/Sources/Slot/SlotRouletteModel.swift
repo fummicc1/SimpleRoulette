@@ -87,9 +87,6 @@ public final class SlotRouletteModel {
     public var state: SlotRouletteState
     private let worker: RouletteWorker = .init()
 
-    /// Callback invoked when the roulette decides on a result.
-    public var onDecide: (([SlotRouletteState]) -> Void)?
-
     public func start() {
         state.type = .running
         let speed = state.speed
@@ -113,6 +110,5 @@ public final class SlotRouletteModel {
     public func stop() {
         worker.stop()
         state.type = .finished
-        onDecide?([state])
     }
 }

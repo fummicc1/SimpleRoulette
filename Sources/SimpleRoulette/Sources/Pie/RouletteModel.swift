@@ -20,8 +20,14 @@ public final class RouletteModel {
     private var whenToStopHandler: (() -> Void)?
     private let worker: RouletteWorker = .init()
 
-    /// Callback that is invoked when the roulette stops and a part is selected.
-    public var onDecide: ((PartData?) -> Void)?
+    /// The part that was selected when the roulette stopped.
+    /// Returns `nil` if the roulette hasn't stopped yet.
+    public var decidedPart: PartData? {
+        guard case .stop(let part, _) = state else {
+            return nil
+        }
+        return part
+    }
 
     public init(parts: [PartData]) {
         self.parts = parts
@@ -52,7 +58,6 @@ public final class RouletteModel {
         if state.isAnimating {
             return
         }
-        onDecide?(nil)
         if case let RouletteState.pause(angle, speed) = state, isContinue {
             startFromCheckPoint(angle: angle, speed: speed)
         } else {
@@ -130,7 +135,6 @@ public final class RouletteModel {
 
             if start <= stopDegree && end >= stopDegree {
                 state = .stop(location: part, angle: angle)
-                onDecide?(part)
                 return
             }
         }

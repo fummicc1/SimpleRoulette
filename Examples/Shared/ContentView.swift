@@ -58,6 +58,11 @@ struct ContentView: View {
                 Spacer()
             }
         }
+        .onChange(of: model.state) { _, newState in
+            if case .stop(let part, _) = newState {
+                decidedPart = part
+            }
+        }
     }
 }
 
