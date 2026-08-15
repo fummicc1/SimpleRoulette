@@ -21,15 +21,16 @@ jobs:
       - name: Select iOS Simulator
         id: simulator
         run: |
-          DEVICE_NAME=$(xcrun simctl list devices available | grep -E '^\s*iPhone' | head -1 | sed -E 's/^ *//; s/ \([^)]*\) \([^)]*\)$//')
-          echo "Using simulator: $DEVICE_NAME"
-          echo "name=$DEVICE_NAME" >> "$GITHUB_OUTPUT"
+          DEVICE_LINE=$(xcrun simctl list devices available | grep iPhone | head -1)
+          DEVICE_ID=$(echo "$DEVICE_LINE" | grep -oE '[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}')
+          echo "Using simulator: $DEVICE_LINE"
+          echo "id=$DEVICE_ID" >> "$GITHUB_OUTPUT"
       - name: Build and Test
         run: |
           set -o pipefail && \
           xcodebuild -scheme SimpleRoulette \
           clean build test \
-          -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }}" \
+          -destination "platform=iOS Simulator,id=${{ steps.simulator.outputs.id }}" \
           | xcbeautify
 
   test-macos:
