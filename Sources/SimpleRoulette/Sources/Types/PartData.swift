@@ -11,20 +11,41 @@ import SwiftUI
 
 /// Content displayed inside a roulette part.
 public enum Content: Sendable {
+    /// A plain text label.
     case label(String)
+
+    /// An arbitrary SwiftUI view.
+    ///
+    /// The view is built lazily by a `@Sendable` closure rather than stored
+    /// directly, because `AnyView` is not `Sendable` and ``PartData`` must be.
+    /// Anything the closure captures therefore has to be `Sendable` too.
+    ///
+    /// ```swift
+    /// PartData(
+    ///     index: 0,
+    ///     content: .custom { AnyView(Image(systemName: "star.fill")) },
+    ///     area: .flex(1)
+    /// )
+    /// ```
+    case custom(@Sendable () -> AnyView)
 
     @ViewBuilder
     public var view: some View {
         switch self {
         case .label(let string):
             Text(string)
+        case .custom(let build):
+            build()
         }
     }
 
+    /// The text of a ``Content/label(_:)`` part, or `nil` for a custom view.
     public var text: String? {
         switch self {
         case .label(let string):
             return string
+        case .custom:
+            return nil
         }
     }
 }

@@ -95,6 +95,24 @@ let partDatas: [PartData] = [
 ]
 ```
 
+### Custom content
+
+A part can render any SwiftUI view instead of a plain label. The view is built
+lazily by a `@Sendable` closure so that `PartData` stays `Sendable` under Swift 6
+strict concurrency — everything the closure captures must be `Sendable` too.
+
+```swift
+PartData(
+    index: 0,
+    content: .custom { AnyView(Image(systemName: "star.fill")) },
+    area: .flex(1),
+    fillColor: .red
+)
+```
+
+`content.text` returns `nil` for custom content, so check for it when you read
+the result of a spin.
+
 ## RouletteModel
 
 `RouletteModel` uses the `@Observable` macro from the Observation framework. You can observe the roulette state directly via `model.state`.

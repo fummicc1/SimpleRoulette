@@ -69,4 +69,30 @@ struct PartDataTests {
         #expect(abs(parts[2].startAngle.degrees - 160) < accuracy)
         #expect(abs(parts[2].endAngle.degrees - 360) < accuracy) // 160 + 200
     }
+
+    @Test("Label content exposes its text, custom content does not")
+    func contentText() {
+        #expect(Content.label("Swift").text == "Swift")
+        #expect(Content.custom { AnyView(Text("Swift")) }.text == nil)
+    }
+
+    @Test("Custom content parts take part in angle calculation")
+    func customContentAngles() {
+        var parts = [
+            PartData(index: 0, content: .custom { AnyView(Image(systemName: "star.fill")) }, area: .flex(1)),
+            PartData(index: 1, content: .label("Label"), area: .flex(1))
+        ]
+
+        parts.calculateAngles()
+
+        let accuracy = 0.0001
+        #expect(abs(parts[0].startAngle.degrees - 0) < accuracy)
+        #expect(abs(parts[0].endAngle.degrees - 180) < accuracy)
+        #expect(abs(parts[1].startAngle.degrees - 180) < accuracy)
+        #expect(abs(parts[1].endAngle.degrees - 360) < accuracy)
+
+        // Identity stays index-based, so parts remain distinguishable
+        // even though custom content cannot be compared.
+        #expect(parts[0] != parts[1])
+    }
 }
