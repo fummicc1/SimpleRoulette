@@ -18,7 +18,7 @@ struct RouletteStyleTests {
     func defaultStyle() {
         let style = RouletteStyle.default
 
-        #expect(style.labelOrientation == .radial)
+        #expect(style.labelOrientation == .radialUpright)
         #expect(style.labelPosition > 0.5)
         #expect(style.innerRadiusRatio > 0)
     }
@@ -48,6 +48,33 @@ struct RouletteStyleTests {
         let mid = Angle(degrees: 45)
         let rotation = RouletteLabelOrientation.radial.rotation(midAngle: mid)
         #expect(abs(rotation.degrees - 45) < accuracy)
+    }
+
+    @Test("Upright labels are flipped only on the half where text would be inverted")
+    func radialUprightRotation() {
+        let orientation = RouletteLabelOrientation.radialUpright
+
+        // Right half reads outward already, so it is left alone.
+        #expect(abs(orientation.rotation(midAngle: .degrees(45)).degrees - 45) < accuracy)
+        #expect(abs(orientation.rotation(midAngle: .degrees(315)).degrees - 315) < accuracy)
+
+        // Left half would be upside down, so it gets a further 180 degrees.
+        #expect(abs(orientation.rotation(midAngle: .degrees(135)).degrees - 315) < accuracy)
+        #expect(abs(orientation.rotation(midAngle: .degrees(180)).degrees - 360) < accuracy)
+
+        // Boundaries stay unflipped.
+        #expect(abs(orientation.rotation(midAngle: .degrees(90)).degrees - 90) < accuracy)
+        #expect(abs(orientation.rotation(midAngle: .degrees(270)).degrees - 270) < accuracy)
+    }
+
+    @Test("Upright flipping survives angles outside 0..<360")
+    func radialUprightWrapping() {
+        let orientation = RouletteLabelOrientation.radialUpright
+
+        // 495 wraps to 135, which is on the flipped half.
+        #expect(abs(orientation.rotation(midAngle: .degrees(495)).degrees - 675) < accuracy)
+        // -225 wraps to 135 as well.
+        #expect(abs(orientation.rotation(midAngle: .degrees(-225)).degrees - (-45)) < accuracy)
     }
 
     @Test("Tangential labels sit perpendicular to the radius")

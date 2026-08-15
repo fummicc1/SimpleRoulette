@@ -11,8 +11,14 @@ import SwiftUI
 /// How a part's label is rotated inside its wedge.
 public enum RouletteLabelOrientation: Sendable, Hashable {
 
-    /// Reads outward from the hub, following the wedge, the way a real roulette is laid out.
+    /// Reads outward from the hub, following the wedge, the way a real roulette is
+    /// laid out. Labels on the left half of the wheel therefore sit upside down —
+    /// fine for numbers, harder to read for words.
     case radial
+
+    /// Follows the wedge like ``radial``, but labels on the left half of the wheel
+    /// are turned a further 180° so every one of them reads upright at rest.
+    case radialUpright
 
     /// Runs across the wedge, perpendicular to the radius.
     case tangential
@@ -25,11 +31,21 @@ public enum RouletteLabelOrientation: Sendable, Hashable {
         switch self {
         case .radial:
             return midAngle
+        case .radialUpright:
+            return isOnLeftHalf(midAngle) ? midAngle + .degrees(180) : midAngle
         case .tangential:
             return midAngle + .degrees(90)
         case .fixed:
             return .zero
         }
+    }
+
+    /// Whether a wedge centred on `angle` points into the half of the wheel where
+    /// radial text would read upside down.
+    private func isOnLeftHalf(_ angle: Angle) -> Bool {
+        let wrapped = angle.degrees.truncatingRemainder(dividingBy: 360)
+        let positive = wrapped < 0 ? wrapped + 360 : wrapped
+        return positive > 90 && positive < 270
     }
 }
 
@@ -60,7 +76,7 @@ public struct RouletteStyle: Sendable, Hashable {
     ///     - innerRadiusRatio: clamped to `0...1`.
     public init(
         labelPosition: Double = 0.72,
-        labelOrientation: RouletteLabelOrientation = .radial,
+        labelOrientation: RouletteLabelOrientation = .radialUpright,
         innerRadiusRatio: Double = 0.18
     ) {
         self.labelPosition = min(max(labelPosition, 0), 1)

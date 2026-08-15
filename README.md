@@ -126,11 +126,18 @@ RouletteView(parts: partDatas)
     .rouletteStyle(
         RouletteStyle(
             labelPosition: 0.8,          // 0 = centre, 1 = outer edge
-            labelOrientation: .radial,   // .radial, .tangential or .fixed
+            labelOrientation: .radialUpright, // see the table below
             innerRadiusRatio: 0.25       // size of the hub, 0 for a full pie
         )
     )
 ```
+
+| `labelOrientation` | Effect |
+|---|---|
+| `.radialUpright` | Follows the wedge, flipped on the left half so every label reads upright. The default. |
+| `.radial` | Follows the wedge and reads outward, exactly like a real roulette. Labels on the left half sit upside down — good for numbers, awkward for words. |
+| `.tangential` | Runs across the wedge, perpendicular to the radius. The 1.x behaviour. |
+| `.fixed` | Always upright, whatever angle the wedge sits at. |
 
 `RouletteStyle.pie` restores the 1.x appearance — labels halfway out, laid
 across the wedge, with no hub:
