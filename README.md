@@ -34,7 +34,7 @@ Create `Package.swift` and add dependency like the following.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "1.3.0")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "2.0.0")
     // or
     .package(url: "https://github.com/fummicc1/SimpleRoulette.git", branch: "main")
 ]
@@ -45,7 +45,7 @@ dependencies: [
 Create `Podfile` and add dependency like the following.
 
 ```ruby
-pod 'SimpleRoulette', '~> 1.3'
+pod 'SimpleRoulette', '~> 2.0'
 ```
 
 ### Carthage
