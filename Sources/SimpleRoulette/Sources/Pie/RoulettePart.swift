@@ -15,11 +15,13 @@ struct RoulettePart: View {
     init(
         data: PartData,
         center: CGPoint,
-        radius: Double
+        radius: Double,
+        innerRadius: Double = 0
     ) {
         self.data = data
         self.center = center
         self.radius = radius
+        self.innerRadius = innerRadius
     }
 
 
@@ -27,6 +29,8 @@ struct RoulettePart: View {
     var data: PartData
     var center: CGPoint
     var radius: Double
+    /// Radius of the hub left empty in the middle. `0` draws a full wedge.
+    var innerRadius: Double
 
 
     var body: some View {
@@ -42,13 +46,34 @@ struct RoulettePart: View {
 
     private func path() -> Path {
         Path { path in
-            path.move(to: center)
+            guard innerRadius > 0 else {
+                path.move(to: center)
+                path.addArc(
+                    center: center,
+                    radius: radius,
+                    startAngle: data.startAngle,
+                    endAngle: data.endAngle,
+                    clockwise: false,
+                    transform: .identity
+                )
+                path.closeSubpath()
+                return
+            }
+            // Annular sector: out along the rim, back along the hub.
             path.addArc(
                 center: center,
                 radius: radius,
                 startAngle: data.startAngle,
                 endAngle: data.endAngle,
                 clockwise: false,
+                transform: .identity
+            )
+            path.addArc(
+                center: center,
+                radius: innerRadius,
+                startAngle: data.endAngle,
+                endAngle: data.startAngle,
+                clockwise: true,
                 transform: .identity
             )
             path.closeSubpath()

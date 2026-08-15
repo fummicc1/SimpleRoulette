@@ -113,6 +113,33 @@ PartData(
 `content.text` returns `nil` for custom content, so check for it when you read
 the result of a spin.
 
+### Styling
+
+By default a roulette is laid out the way you would expect one to look: labels
+sit near the rim, rotated to follow their wedge, and the separators stop short
+of the middle to leave a hub.
+
+Override any of that with `.rouletteStyle(_:)`:
+
+```swift
+RouletteView(parts: partDatas)
+    .rouletteStyle(
+        RouletteStyle(
+            labelPosition: 0.8,          // 0 = centre, 1 = outer edge
+            labelOrientation: .radial,   // .radial, .tangential or .fixed
+            innerRadiusRatio: 0.25       // size of the hub, 0 for a full pie
+        )
+    )
+```
+
+`RouletteStyle.pie` restores the 1.x appearance — labels halfway out, laid
+across the wedge, with no hub:
+
+```swift
+RouletteView(parts: partDatas)
+    .rouletteStyle(.pie)
+```
+
 ## RouletteModel
 
 `RouletteModel` uses the `@Observable` macro from the Observation framework. You can observe the roulette state directly via `model.state`.
