@@ -1,26 +1,45 @@
 name: Build and Test Sources
 
-on: 
+on:
   push:
     branches:
       - main
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  test:
-    name: "Build Sources"
-    runs-on: macos-12
+  test-ios:
+    name: "Build and Test (iOS)"
+    runs-on: macos-15
     steps:
-      - uses: actions/checkout@v3
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable      
-      - name: Install xcpretty
-        run: bundle install      
+      - uses: actions/checkout@v4
+      - name: Show Xcode version
+        run: xcodebuild -version
+      - name: Select iOS Simulator
+        id: simulator
+        run: |
+          DEVICE_NAME=$(xcrun simctl list devices available | grep -E '^\s*iPhone' | head -1 | sed -E 's/^ *//; s/ \([^)]*\) \([^)]*\)$//')
+          echo "Using simulator: $DEVICE_NAME"
+          echo "name=$DEVICE_NAME" >> "$GITHUB_OUTPUT"
       - name: Build and Test
         run: |
           set -o pipefail && \
           xcodebuild -scheme SimpleRoulette \
           clean build test \
-          -destination "name=iPhone 12" \
-          | bundle exec xcpretty
+          -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }}" \
+          | xcbeautify
+
+  test-macos:
+    name: "Build and Test (macOS)"
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show Swift version
+        run: swift --version
+      - name: Build
+        run: swift build -v
+      - name: Test
+        run: swift test -v

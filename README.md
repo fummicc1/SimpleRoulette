@@ -57,7 +57,6 @@ github "fummicc1/SimpleRoulette"
 All you need to know is just `RouletteView` and `PartData`.
 `RouletteView` confirms to `View`, so you can use it like the follwing.
 
-````swift
 ```swift
 struct ContentView: View {
 
@@ -108,7 +107,7 @@ struct ContentView: View {
         ]
     }
 }
-````
+```
 
 ## RouletteModel
 
