@@ -14,13 +14,27 @@ struct RouletteStyleTests {
 
     private let accuracy = 0.0001
 
-    @Test("Default style places labels near the rim, following the wedge, with a hub")
+    @Test("Default style lays the wheel out like a real roulette")
     func defaultStyle() {
         let style = RouletteStyle.default
 
-        #expect(style.labelOrientation == .radialUpright)
+        // Faithful radial layout, labels out at the rim, hub in the middle.
+        #expect(style.labelOrientation == .radial)
         #expect(style.labelPosition > 0.5)
         #expect(style.innerRadiusRatio > 0)
+    }
+
+    @Test("Every orientation stays selectable alongside the default")
+    func orientationsRemainAvailable() {
+        for orientation in [
+            RouletteLabelOrientation.radial,
+            .radialUpright,
+            .tangential,
+            .fixed
+        ] {
+            let style = RouletteStyle(labelOrientation: orientation)
+            #expect(style.labelOrientation == orientation)
+        }
     }
 
     @Test("Pie style reproduces the 1.x look")

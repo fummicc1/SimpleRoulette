@@ -75,19 +75,27 @@ public struct RouletteStyle: Sendable, Hashable {
     ///     - labelOrientation: how each label is rotated.
     ///     - innerRadiusRatio: clamped to `0...1`.
     public init(
-        labelPosition: Double = 0.72,
-        labelOrientation: RouletteLabelOrientation = .radialUpright,
-        innerRadiusRatio: Double = 0.18
+        labelPosition: Double = 0.74,
+        labelOrientation: RouletteLabelOrientation = .radial,
+        innerRadiusRatio: Double = 0.22
     ) {
         self.labelPosition = min(max(labelPosition, 0), 1)
         self.labelOrientation = labelOrientation
         self.innerRadiusRatio = min(max(innerRadiusRatio, 0), 1)
     }
 
-    /// Labels near the rim, rotated to follow their wedge, with a hub in the middle.
+    /// Labels out at the rim, laid out radially, with a hub in the middle — the way
+    /// a real roulette wheel is arranged. Used when no style is applied.
     ///
-    /// This is what a roulette is normally expected to look like, and is the
-    /// style used when none is applied.
+    /// Being a faithful radial layout, labels on the left half of the wheel sit
+    /// upside down, exactly as the numbers on a real wheel do. If your labels are
+    /// words rather than numbers and you would rather every one of them stayed
+    /// readable, use ``RouletteLabelOrientation/radialUpright``:
+    ///
+    /// ```swift
+    /// RouletteView(parts: parts)
+    ///     .rouletteStyle(RouletteStyle(labelOrientation: .radialUpright))
+    /// ```
     public static let `default` = RouletteStyle()
 
     /// The 1.x look: labels halfway out, laid across the wedge, no hub.
