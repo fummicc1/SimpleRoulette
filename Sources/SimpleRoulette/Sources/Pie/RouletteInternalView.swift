@@ -12,6 +12,8 @@ public struct RouletteInternalView<StopView: View>: View {
 
     var model: RouletteModel
 
+    @Environment(\.rouletteStyle) private var style
+
     @State private var currentAngle: Angle = .init()
     @State private var radius: CGFloat = 0
     @State private var center: CGPoint = .zero
@@ -54,23 +56,19 @@ public struct RouletteInternalView<StopView: View>: View {
                 RoulettePart(
                     data: part,
                     center: center,
-                    radius: radius
+                    radius: radius,
+                    innerRadius: radius * style.innerRadiusRatio
                 )
             }
             ForEach(model.parts) { part in
-                let angle = ((part.endAngle + part.startAngle) / 2) + Angle(degrees: 90)
+                let mean = (part.startAngle + part.endAngle) / 2
+                let distance = radius * style.labelPosition
                 part.content.view
-                    .rotationEffect(angle)
+                    .rotationEffect(style.labelOrientation.rotation(midAngle: mean))
                     .offset(
                         CGSize(
-                            width: { () -> Double in
-                                let mean = (part.startAngle + part.endAngle) / 2
-                                return radius * 0.5 * cos(mean.radians)
-                            }(),
-                            height: { () -> Double in
-                                let mean = (part.startAngle + part.endAngle) / 2
-                                return radius * 0.5 * sin(mean.radians)
-                            }()
+                            width: distance * cos(mean.radians),
+                            height: distance * sin(mean.radians)
                         )
                     )
             }
