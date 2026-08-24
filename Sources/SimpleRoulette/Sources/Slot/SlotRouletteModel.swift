@@ -1,26 +1,24 @@
 //
 //  SlotRouletteModel.swift
-//  
+//
 //
 //  Created by Fumiya Tanaka on 2022/02/06.
 //
 
 import Foundation
 import SwiftUI
-import Combine
 
-public struct SlotRouletteState: Identifiable {
+/// State for a single slot roulette component.
+public struct SlotRouletteState: Identifiable, Sendable {
 
     public init(
         type: SlotRouletteState.Status = .ready,
-        worker: SlotRouletteWorker,
-        speed: SlotRouletteSpeed,
+        speed: RouletteSpeed,
         values: [SlotRouletteItem],
         index: Int,
         result: SlotRouletteState.Result? = nil
     ) {
         self.type = type
-        self.worker = worker
         self.speed = speed
         self.values = values
         self.index = index
@@ -32,8 +30,7 @@ public struct SlotRouletteState: Identifiable {
     }
 
     public var type: Status
-    public var worker: SlotRouletteWorker
-    public var speed: SlotRouletteSpeed
+    public var speed: RouletteSpeed
     public var values: [SlotRouletteItem]
     public var index: Int
     public var result: Result?
@@ -41,19 +38,20 @@ public struct SlotRouletteState: Identifiable {
 }
 
 public extension SlotRouletteState {
-    enum Status {
+    enum Status: Sendable {
         case ready
         case running
         case finished
     }
 
-    enum Result {
+    enum Result: Sendable {
         case selected(String)
         case wrong
     }
 }
 
-public struct SlotRouletteItem: Identifiable {
+/// Item displayed in a slot roulette.
+public struct SlotRouletteItem: Identifiable, Sendable {
     public init(value: String, foregroundColor: Color, backgroundColor: Color) {
         self.value = value
         self.foregroundColor = foregroundColor
@@ -69,41 +67,48 @@ public struct SlotRouletteItem: Identifiable {
     public var backgroundColor: Color
 }
 
-public class SlotRouletteModel: ObservableObject {
+/// Model for managing slot roulette animations.
+@Observable
+@MainActor
+public final class SlotRouletteModel {
 
     public init(
         values: [SlotRouletteItem],
         count: Int,
-        speed: SlotRouletteSpeed = .normal
+        speed: RouletteSpeed = .normal
     ) {
-        let worker = SlotRouletteWorker(
-            speed: .random()
-        )
         state = SlotRouletteState(
-            worker: worker,
             speed: speed,
             values: values,
             index: 0
         )
     }
 
-    @Published var state: SlotRouletteState
-    private let onDecideSubject: PassthroughSubject<[SlotRouletteState], Never> = .init()
-    public var onDecide: AnyPublisher<[SlotRouletteState], Never> {
-        onDecideSubject.eraseToAnyPublisher()
-    }
+    public var state: SlotRouletteState
+    private let worker: RouletteWorker = .init()
 
     public func start() {
-        state.worker.start { angle in
-            self.state.angle = .degrees(Double(angle))
+        state.type = .running
+        let speed = state.speed
+        Task { @MainActor in
+            let stream = worker.start(speed: speed)
+            for await degrees in stream {
+                self.state.angle = .degrees(degrees)
+            }
+            self.state.type = .finished
         }
     }
 
-    public func pause() { }
+    public func pause() {
+        worker.pause()
+    }
 
-    public func resume() {}
+    public func resume() {
+        start()
+    }
 
     public func stop() {
-        state.worker.stop()
+        worker.stop()
+        state.type = .finished
     }
 }

@@ -9,19 +9,37 @@
 import Foundation
 import SwiftUI
 
-public enum Content {
+/// Content displayed inside a roulette part.
+public enum Content: Sendable {
+    /// A plain text label.
     case label(String)
-    case custom(AnyView)
 
-    public var view: AnyView {
+    /// An arbitrary SwiftUI view.
+    ///
+    /// The view is built lazily by a `@Sendable` closure rather than stored
+    /// directly, because `AnyView` is not `Sendable` and ``PartData`` must be.
+    /// Anything the closure captures therefore has to be `Sendable` too.
+    ///
+    /// ```swift
+    /// PartData(
+    ///     index: 0,
+    ///     content: .custom { AnyView(Image(systemName: "star.fill")) },
+    ///     area: .flex(1)
+    /// )
+    /// ```
+    case custom(@Sendable () -> AnyView)
+
+    @ViewBuilder
+    public var view: some View {
         switch self {
         case .label(let string):
-            return AnyView(Text(string))
-        case .custom(let anyView):
-            return anyView
+            Text(string)
+        case .custom(let build):
+            build()
         }
     }
 
+    /// The text of a ``Content/label(_:)`` part, or `nil` for a custom view.
     public var text: String? {
         switch self {
         case .label(let string):
@@ -32,7 +50,8 @@ public enum Content {
     }
 }
 
-public enum PartArea {
+/// Defines the area (angle) of a roulette part.
+public enum PartArea: Sendable {
     case degree(Double)
     case flex(PartData.Flex)
 
@@ -52,16 +71,17 @@ public enum PartArea {
                 }
             }
             let remain = 360 - fixed
-            let rate = Double(flex.value) / Double(flexes.map(\.value).reduce(0, { $0 + $1 }))
+            let total = flexes.map(\.value).reduce(0, +)
+            guard total > 0 else { return 0 }
+            let rate = Double(flex.value) / Double(total)
             return remain * rate
         }
     }
 }
 
 
-public struct PartData: Identifiable, Hashable {
-
-    internal static var currentIndex: Int = 0
+/// Data representing a single part of the roulette.
+public struct PartData: Identifiable, Hashable, Sendable {
 
     public static func == (lhs: PartData, rhs: PartData) -> Bool {
         lhs.id == rhs.id
@@ -72,21 +92,19 @@ public struct PartData: Identifiable, Hashable {
     }
 
     public init(
-        index: Int? = nil,
+        index: Int,
         content: Content,
         area: PartArea,
         fillColor: Color = .secondarySystemBackground,
         strokeColor: Color = .systemGray,
         lineWidth: Double = 2
     ) {
-        self.index = index ?? Self.currentIndex
+        self.index = index
         self.content = content
         self.area = area
         self.fillColor = fillColor
         self.strokeColor = strokeColor
         self.lineWidth = lineWidth
-
-        Self.currentIndex += 1
     }
 
     public var id: String {
@@ -98,15 +116,10 @@ public struct PartData: Identifiable, Hashable {
     public var fillColor: Color
     public var strokeColor: Color
     public var lineWidth: Double
-    public var startAngle: Angle!
-    public var endAngle: Angle!
-    public weak var delegate: RouletteDataDelegate? {
-        didSet {
-            onAssignedDelegate()
-        }
-    }
+    public var startAngle: Angle = .zero
+    public var endAngle: Angle = .zero
 
-    public struct Flex: ExpressibleByIntegerLiteral, Hashable {
+    public struct Flex: ExpressibleByIntegerLiteral, Hashable, Sendable {
 
         public var value: Int
 
@@ -124,33 +137,20 @@ public struct PartData: Identifiable, Hashable {
         let mid = (startAngle + endAngle) / 2
         return radius / 2 * sin(mid.radians)
     }
+}
 
-    mutating public func assignDelegate(_ delegate: RouletteDataDelegate) {
-        self.delegate = delegate
-        onAssignedDelegate()
-    }
+// MARK: - Angle Calculation
 
-    mutating func onAssignedDelegate() {
-        guard let delegate = delegate else {
-            return
+extension Array where Element == PartData {
+    /// Calculates and assigns start/end angles to each part based on their areas.
+    public mutating func calculateAngles() {
+        let areas = self.map(\.area)
+        var currentAngle = Angle.zero
+        for i in indices {
+            self[i].startAngle = currentAngle
+            let degrees = self[i].area.getDegree(all: areas)
+            self[i].endAngle = currentAngle + .degrees(degrees)
+            currentAngle = self[i].endAngle
         }
-        let all = delegate.allParts
-        var startAngle = Angle()
-        for element in all {
-            if element.index == index {
-                break
-            }
-            let area = element.area
-            let deg = area.getDegree(
-                all: all.map(\.area)
-            )
-            startAngle += Angle.degrees(deg)
-        }
-        self.startAngle = startAngle
-        self.endAngle = startAngle + Angle.degrees(
-            area.getDegree(
-                all: all.map(\.area)
-            )
-        )
     }
 }

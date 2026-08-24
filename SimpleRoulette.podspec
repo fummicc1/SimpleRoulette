@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SimpleRoulette"
-  spec.version      = "1.3.0"
+  spec.version      = "2.0.0"
   spec.summary      = "SwiftUI library to create Roulette with ease."
 
   # This description is used to generate tags and improve search results.
@@ -65,15 +65,15 @@ Pod::Spec.new do |spec|
   # spec.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  spec.ios.deployment_target = "14.0"
-  spec.osx.deployment_target = "11.0"
+  spec.ios.deployment_target = "17.0"
+  spec.osx.deployment_target = "14.0"
   # spec.ios.deployment_target = "5.0"
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
 
   # Swift Version
-  spec.swift_version = "5.5"
+  spec.swift_version = "6.0"
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/fummicc1/SimpleRoulette.git", :tag => "1.3.0" }
+  spec.source       = { :git => "https://github.com/fummicc1/SimpleRoulette.git", :tag => "2.0.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

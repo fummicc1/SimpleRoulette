@@ -1,6 +1,6 @@
 //
 //  RouletteWorker.swift
-//  
+//  SimpleRoulette
 //
 //  Created by Fumiya Tanaka on 2022/02/06.
 //
@@ -8,54 +8,107 @@
 import Foundation
 import SwiftUI
 
-public class RouletteWorker {
+/// A worker that manages the rotation animation for roulette components.
+///
+/// This class uses Swift Concurrency to drive smooth animations.
+@MainActor
+public final class RouletteWorker: Sendable {
 
-    private var value: Double = 0
-    private var automaticallyStopAfter: Double?
-    private weak var timer: Timer?
+    private var animationTask: Task<Void, Never>?
+    private var currentValue: Double = 0
+    private var continuation: AsyncStream<Double>.Continuation?
 
-    public init() { }
+    public init() {}
 
+    /// Starts the animation and returns an async stream of angle values.
+    ///
+    /// - Parameters:
+    ///   - speed: The rotation speed.
+    ///   - value: Optional starting angle in degrees.
+    ///   - automaticallyStopAfter: Optional duration after which the animation stops.
+    /// - Returns: An async stream of angle values in degrees.
+    public func start(
+        speed: RouletteSpeed,
+        from value: Double? = nil,
+        automaticallyStopAfter: Duration? = nil
+    ) -> AsyncStream<Double> {
+        stop()
+
+        currentValue = value ?? 0
+
+        return AsyncStream { continuation in
+            self.continuation = continuation
+
+            self.animationTask = Task { @MainActor in
+                let startTime = ContinuousClock.now
+                let intervalNanoseconds: UInt64 = 16_666_667 // ~60fps (1/60 second)
+
+                while !Task.isCancelled {
+                    try? await Task.sleep(nanoseconds: intervalNanoseconds)
+
+                    guard !Task.isCancelled else { break }
+
+                    self.currentValue += speed.degreesPerSecond * (Double(intervalNanoseconds) / 1_000_000_000)
+                    continuation.yield(self.currentValue)
+
+                    if let stopAfter = automaticallyStopAfter {
+                        let elapsed = ContinuousClock.now - startTime
+                        if elapsed >= stopAfter {
+                            break
+                        }
+                    }
+                }
+                continuation.finish()
+            }
+
+            continuation.onTermination = { @Sendable _ in
+                Task { @MainActor in
+                    self.animationTask?.cancel()
+                }
+            }
+        }
+    }
+
+    /// Legacy start method for backward compatibility.
+    ///
+    /// - Parameters:
+    ///   - speed: The rotation speed.
+    ///   - value: Optional starting angle in degrees.
+    ///   - automaticallyStopAfter: Optional duration in seconds after which the animation stops.
+    ///   - callback: Called with the current angle value.
+    ///   - onEnd: Called when the animation ends.
     public func start(
         speed: RouletteSpeed,
         from value: Double? = nil,
         automaticallyStopAfter: Double?,
-        callback: @escaping (Double) -> Void,
-        onEnd: @escaping () -> Void
+        callback: @escaping @MainActor (Double) -> Void,
+        onEnd: @escaping @MainActor () -> Void
     ) {
-        self.value = value ?? 0
-        self.automaticallyStopAfter = automaticallyStopAfter
+        let duration: Duration? = automaticallyStopAfter.map { .seconds($0) }
+        let stream = start(speed: speed, from: value, automaticallyStopAfter: duration)
 
-        if let timer = timer, timer.isValid {
-            timer.invalidate()
-        }
-
-        let timer = Timer(timeInterval: 0.001, repeats: true) { [weak self] _ in
-            guard let self = self else {
-                return
+        Task { @MainActor in
+            for await degrees in stream {
+                callback(degrees)
             }
-            self.value += speed.value * 0.001
-            callback(self.value)
-
-            if var automaticallyStopAfter = self.automaticallyStopAfter {
-                automaticallyStopAfter -= 0.001
-                if automaticallyStopAfter <= 0 {
-                    onEnd()
-                }
-                self.automaticallyStopAfter = automaticallyStopAfter
-            }
+            onEnd()
         }
-        RunLoop.current.add(timer, forMode: .common)
-
-        self.timer = timer
     }
 
+    /// Stops the animation and resets the state.
     public func stop() {
-        value = 0
-        timer?.invalidate()
+        animationTask?.cancel()
+        animationTask = nil
+        continuation?.finish()
+        continuation = nil
+        currentValue = 0
     }
 
+    /// Pauses the animation, preserving the current value.
     public func pause() {
-        timer?.invalidate()
+        animationTask?.cancel()
+        animationTask = nil
+        continuation?.finish()
+        continuation = nil
     }
 }

@@ -1,11 +1,11 @@
-// swift-tools-version:5.5
+// swift-tools-version:6.0
 
 import PackageDescription
 
 let package = Package(
     name: "SimpleRoulette",
     platforms: [
-        .iOS(.v14), .macOS(.v11)
+        .iOS(.v17), .macOS(.v14)
     ],
     products: [
         .library(
@@ -17,12 +17,19 @@ let package = Package(
         .package(
             url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"
         ),
-    ],  
+    ],
     targets: [
         .target(
             name: "SimpleRoulette",
-            dependencies: []
+            dependencies: [],
+            exclude: ["Info.plist"],
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency")
+            ]
         ),
-        .testTarget(name: "SimpleRouletteTests", dependencies: ["SimpleRoulette"])
+        .testTarget(
+            name: "SimpleRouletteTests",
+            dependencies: ["SimpleRoulette"]
+        )
     ]
 )

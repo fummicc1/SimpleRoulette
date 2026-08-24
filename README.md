@@ -10,6 +10,12 @@
 
 SimpleRoulette helps you to create customizable Roulette, with SwiftUI. (Compatible with both macOS and iOS.)
 
+### Requirements
+
+- iOS 17.0+ / macOS 14.0+
+- Swift 6.0+
+- Xcode 16.0+
+
 ## Demo
 
 ### iOS
@@ -28,7 +34,7 @@ Create `Package.swift` and add dependency like the following.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "1.3.0")
+    .package(url: "https://github.com/fummicc1/SimpleRoulette.git", from: "2.0.0")
     // or
     .package(url: "https://github.com/fummicc1/SimpleRoulette.git", branch: "main")
 ]
@@ -39,7 +45,7 @@ dependencies: [
 Create `Podfile` and add dependency like the following.
 
 ```ruby
-pod 'SimpleRoulette', '~> 1.3'
+pod 'SimpleRoulette', '~> 2.0'
 ```
 
 ### Carthage
@@ -55,119 +61,157 @@ github "fummicc1/SimpleRoulette"
 ### RouletteView
 
 All you need to know is just `RouletteView` and `PartData`.
-`RouletteView` confirms to `View`, so you can use it like the follwing.
+`RouletteView` conforms to `View`, so you can use it like the following.
 
 ```swift
 struct ContentView: View {
+    @State private var model = RouletteModel(parts: partDatas)
+    @State private var result: String = ""
 
     var body: some View {
-        RouletteView(
-            parts: partDatas
-        )
-        .startOnAppear(automaticallyStopAfter: 5) { part in
-            guard let text = part.content.text else {
-                return
+        VStack {
+            Text(result)
+            RouletteView(model: model)
+        }
+        .onChange(of: model.state) { _, newState in
+            if case .stop(let part, _) = newState,
+               let text = part.content.text {
+                result = text
             }
-            title = text
+        }
+        .task {
+            model.start(speed: .random(), automaticallyStopAfter: 5)
         }
     }
-
-    var partDatas: [PartData] {
-        [
-            PartData(
-                content: .label("Swift"),
-                area: .flex(3),
-                fillColor: Color.red
-            ),
-            PartData(
-                content: .label("Kotlin"),
-                area: .flex(1),
-                fillColor: Color.purple
-            ),
-            PartData(
-                content: .label("JavaScript"),
-                area: .flex(2),
-                fillColor: Color.yellow
-            ),
-            PartData(
-                content: .label("Dart"),
-                area: .flex(1),
-                fillColor: Color.green
-            ),
-            PartData(
-                content: .label("Python"),
-                area: .flex(2),
-                fillColor: Color.blue
-            ),
-            PartData(
-                content: .label("C++"),
-                area: .degree(60),
-                fillColor: Color.orange
-            ),
-        ]
-    }
 }
+
+let partDatas: [PartData] = [
+    PartData(index: 0, content: .label("Swift"), area: .flex(3), fillColor: .red),
+    PartData(index: 1, content: .label("Kotlin"), area: .flex(1), fillColor: .purple),
+    PartData(index: 2, content: .label("JavaScript"), area: .flex(2), fillColor: .yellow),
+    PartData(index: 3, content: .label("Dart"), area: .flex(1), fillColor: .green),
+    PartData(index: 4, content: .label("Python"), area: .flex(2), fillColor: .blue),
+    PartData(index: 5, content: .label("C++"), area: .degree(60), fillColor: .orange),
+]
+```
+
+### Custom content
+
+A part can render any SwiftUI view instead of a plain label. The view is built
+lazily by a `@Sendable` closure so that `PartData` stays `Sendable` under Swift 6
+strict concurrency — everything the closure captures must be `Sendable` too.
+
+```swift
+PartData(
+    index: 0,
+    content: .custom { AnyView(Image(systemName: "star.fill")) },
+    area: .flex(1),
+    fillColor: .red
+)
+```
+
+`content.text` returns `nil` for custom content, so check for it when you read
+the result of a spin.
+
+### Styling
+
+By default a roulette is laid out the way a real wheel is: labels out at the rim,
+arranged radially, and the separators stop short of the middle to leave a hub.
+As on a real wheel, labels on the left half therefore sit upside down.
+
+Override any of that with `.rouletteStyle(_:)`:
+
+```swift
+RouletteView(parts: partDatas)
+    .rouletteStyle(
+        RouletteStyle(
+            labelPosition: 0.8,          // 0 = centre, 1 = outer edge
+            labelOrientation: .radial,   // see the table below
+            innerRadiusRatio: 0.25       // size of the hub, 0 for a full pie
+        )
+    )
+```
+
+| `labelOrientation` | Effect |
+|---|---|
+| `.radial` | Reads outward from the hub, exactly like a real roulette. Labels on the left half sit upside down. **The default.** |
+| `.radialUpright` | Same radial layout, but the left half is flipped so every label reads upright. Better when your labels are words rather than numbers. |
+| `.tangential` | Runs across the wedge, perpendicular to the radius. The 1.x behaviour. |
+| `.fixed` | Always upright, whatever angle the wedge sits at. |
+
+If the upside-down half does not suit your labels, one line switches it:
+
+```swift
+RouletteView(parts: partDatas)
+    .rouletteStyle(RouletteStyle(labelOrientation: .radialUpright))
+```
+
+`RouletteStyle.pie` restores the 1.x appearance — labels halfway out, laid
+across the wedge, with no hub:
+
+```swift
+RouletteView(parts: partDatas)
+    .rouletteStyle(.pie)
 ```
 
 ## RouletteModel
 
-If you want to pause / restart roulette. Please use `RouletteModel` like the following.
+`RouletteModel` uses the `@Observable` macro from the Observation framework. You can observe the roulette state directly via `model.state`.
+
+### State Observation
+
+```swift
+// Get the decided part when roulette stops
+.onChange(of: model.state) { _, newState in
+    if case .stop(let part, _) = newState {
+        // Handle the result
+    }
+}
+
+// Or use the convenience property
+if let part = model.decidedPart {
+    // The roulette has stopped and selected this part
+}
+```
+
+### Pause / Restart
 
 ```swift
 struct ContentView: View {
-
-    @StateObject var model: RouletteModel
+    @State private var model = RouletteModel(parts: partDatas)
 
     var body: some View {
         VStack {
             RouletteView(model: model)
-        }.onAppear {
-            model.start()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                model.pause() // you can pause
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    model.restart() // you can restart
+
+            HStack {
+                Button(model.state.isAnimating ? "Pause" : "Start") {
+                    if model.state.isAnimating {
+                        model.pause()
+                    } else {
+                        model.start(speed: .random())
+                    }
+                }
+                Button("Stop") {
+                    model.stop()
                 }
             }
         }
     }
 }
+```
 
-// Call ContentView
-ContentView(
-    model: RouletteModel(
-        PartData(
-            content: .label("Swift"),
-            area: .flex(3),
-            fillColor: Color.red
-        ),
-        PartData(
-            content: .label("Kotlin"),
-            area: .flex(1),
-            fillColor: Color.purple
-        ),
-        PartData(
-            content: .label("JavaScript"),
-            area: .flex(2),
-            fillColor: Color.yellow
-        ),
-        PartData(
-            content: .label("Dart"),
-            area: .flex(1),
-            fillColor: Color.green
-        ),
-        PartData(
-            content: .label("Python"),
-            area: .flex(2),
-            fillColor: Color.blue
-        ),
-        PartData(
-            content: .label("C++"),
-            area: .degree(60),
-            fillColor: Color.orange
-        ),
-    )
-)
+### RouletteState
+
+The state machine has four states:
+
+```swift
+public enum RouletteState {
+    case start                                    // Initial state
+    case run(angle: Angle, speed: RouletteSpeed)  // Currently rotating
+    case pause(angle: Angle, speed: RouletteSpeed) // Paused mid-rotation
+    case stop(location: PartData, angle: Angle)   // Stopped with selected part
+}
 ```
 
 ## Documentation

@@ -1,5 +1,5 @@
 //
-//  RouletteViewSwiftUI.swift
+//  RouletteView.swift
 //  SimpleRoulette
 //
 //  Created by Fumiya Tanaka on 2020/09/30.
@@ -27,21 +27,16 @@ import SwiftUI
 ///             }
 ///       }
 ///
-public struct RouletteView: View {
-    
+public struct RouletteView<StopView: View>: View {
+
     private let model: RouletteModel
 
-    @State private var currentAngle: Angle = .init()
-    @State private var radius: CGFloat = 0
-    @State private var center: CGPoint = .zero
     @State private var length: CGFloat
-    @State private var startsAnimate: Bool = false
 
-    let stopView: AnyView
-    
+    let stopView: StopView
+
     public var body: some View {
-        RouletteInternalView(stopView: stopView, length: length)
-            .environmentObject(model)
+        RouletteInternalView(model: model, stopView: stopView, length: length)
     }
 
     /// Initialization
@@ -50,54 +45,23 @@ public struct RouletteView: View {
     ///
     /// - Parameters:
     ///     - model: please pass ``RouletteModel`` instance
-    ///     which manages many stufffs of ``RouletteView``.
-    ///     - stopView: If you want to customize `stopView`, please pass `AnyView` to this parameter.
-    ///     Default value is nil which means `Image(systemName: "arrowtriangle.down.fill")`
-    ///     is used as a `stopView`.
+    ///     which manages many stuffs of ``RouletteView``.
+    ///     - stopView: View displayed as the stop indicator.
     ///     - length: set the frame length of ``RouletteView`` (square).
     ///     Default value is `320`.
     public init(
         model: RouletteModel,
-        stopView: AnyView? = nil,
+        stopView: StopView,
         length: CGFloat = 320
     ) {
         self._length = State(initialValue: length)
         self.model = model
-        if let stopView = stopView {
-            self.stopView = stopView
-        } else {
-            self.stopView = AnyView(
-                Image(systemName: "arrowtriangle.down.fill")
-                    .font(.system(.title))
-                    .fixedSize()
-            )
-        }
-    }
-
-    /// Initialization
-    ///
-    /// - Note: Please note that ``RouletteView`` is not rectangle but **square** (same width and height).
-    ///
-    /// - Parameters:
-    ///     - parts: please pass `Array` of ``PartData`` instance
-    ///     which corresponds to each element inside Roulette.
-    ///     - stopView: If you want to customize `stopView`, please pass `AnyView` to this parameter.
-    ///     Default value is nil which means `Image(systemName: "arrowtriangle.down.fill")`
-    ///     is used as a `stopView`.
-    ///     - length: set the frame length of ``RouletteView`` (square).
-    ///     Default value is `320`.
-    public init(
-        parts: [PartData],
-        stopView: AnyView? = nil,
-        length: CGFloat = 320
-    ) {
-        let model = RouletteModel(parts: parts)
-        self.init(model: model, stopView: stopView, length: length)
+        self.stopView = stopView
     }
 
     /// Method that starts Roulette!
     ///
-    /// This method is kind of syntax suger of ``RouletteModel/start(speed:isConitnue:automaticallyStopAfter:)``.
+    /// This method is kind of syntax sugar of ``RouletteModel/start(speed:isContinue:automaticallyStopAfter:)``.
     ///
     /// - Parameters:
     ///     - speed: You can set arbitrary speed with ``RouletteSpeed``
@@ -113,43 +77,93 @@ public struct RouletteView: View {
     @ViewBuilder
     public func startOnAppear(
         speed: RouletteSpeed = .random(),
-        isConitnue: Bool = false,
+        isContinue: Bool = false,
         automaticallyStopAfter: Double? = nil,
         didFinish: ((PartData) -> Void)? = nil
     ) -> some View {
-        Group {
-            if let didFinish {
-                onAppear {
-                    model.start(
-                        speed: speed,
-                        isConitnue: isConitnue,
-                        automaticallyStopAfter: automaticallyStopAfter
-                    )
-                }
-                .onReceive(model.onDecidePublisher) { part in
-                    guard let part else {
-                        return
-                    }
+        self
+            .onAppear {
+                model.start(
+                    speed: speed,
+                    isContinue: isContinue,
+                    automaticallyStopAfter: automaticallyStopAfter
+                )
+            }
+            .onChange(of: model.state) { _, newState in
+                if let didFinish, case .stop(let part, _) = newState {
                     didFinish(part)
                 }
-            } else {
-                onAppear {
-                    model.start(
-                        speed: speed,
-                        isConitnue: isConitnue,
-                        automaticallyStopAfter: automaticallyStopAfter
-                    )
-                }
             }
-        }
     }
 
     /// Method that stops Roulette.
     ///
-    /// This method is kind of syntax suger of ``RouletteModel/stop()``.
+    /// This method is kind of syntax sugar of ``RouletteModel/stop()``.
     /// - Note: This method does not immediately stop Roulette.
     /// a delay which makes us feel more realistic Roulette happens.
     public func stop() {
         model.stop()
+    }
+}
+
+// MARK: - Convenience initializers
+
+extension RouletteView where StopView == Image {
+    /// Initialization with default stop view.
+    ///
+    /// - Note: Please note that ``RouletteView`` is not rectangle but **square** (same width and height).
+    ///
+    /// - Parameters:
+    ///     - model: please pass ``RouletteModel`` instance
+    ///     which manages many stuffs of ``RouletteView``.
+    ///     - length: set the frame length of ``RouletteView`` (square).
+    ///     Default value is `320`.
+    public init(
+        model: RouletteModel,
+        length: CGFloat = 320
+    ) {
+        self.init(
+            model: model,
+            stopView: Image(systemName: "arrowtriangle.down.fill"),
+            length: length
+        )
+    }
+
+    /// Initialization with parts array.
+    ///
+    /// - Note: Please note that ``RouletteView`` is not rectangle but **square** (same width and height).
+    ///
+    /// - Parameters:
+    ///     - parts: please pass `Array` of ``PartData`` instance
+    ///     which corresponds to each element inside Roulette.
+    ///     - length: set the frame length of ``RouletteView`` (square).
+    ///     Default value is `320`.
+    public init(
+        parts: [PartData],
+        length: CGFloat = 320
+    ) {
+        let model = RouletteModel(parts: parts)
+        self.init(model: model, length: length)
+    }
+}
+
+extension RouletteView {
+    /// Initialization with parts array and custom stop view.
+    ///
+    /// - Note: Please note that ``RouletteView`` is not rectangle but **square** (same width and height).
+    ///
+    /// - Parameters:
+    ///     - parts: please pass `Array` of ``PartData`` instance
+    ///     which corresponds to each element inside Roulette.
+    ///     - stopView: View displayed as the stop indicator.
+    ///     - length: set the frame length of ``RouletteView`` (square).
+    ///     Default value is `320`.
+    public init(
+        parts: [PartData],
+        stopView: StopView,
+        length: CGFloat = 320
+    ) {
+        let model = RouletteModel(parts: parts)
+        self.init(model: model, stopView: stopView, length: length)
     }
 }

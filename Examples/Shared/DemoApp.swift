@@ -13,69 +13,66 @@ import SimpleRoulette
 struct DemoApp: App {
 
     @State private var title: String = "Demo"
+    @State private var model: RouletteModel
+    
+    init() {
+        self._model = .init(
+            initialValue: RouletteModel(
+                parts: Self.partDatas
+            )
+        )
+    }
 
     var body: some Scene {
         WindowGroup {
             /// please change ``DemoApp/roulette`` and ``DemoApp/content``
-            NavigationView {
-                roulette.navigationTitle(title)
-            }
-//             content
+//            NavigationStack {
+//                roulette.navigationTitle(title)
+//            }
+             content
         }
     }
 
     var roulette: some View {
         RouletteView(
-            parts: partDatas
+            model: model
         )
-        .startOnAppear(automaticallyStopAfter: 5) { part in
-            guard let text = part.content.text else {
-                return
+        .onChange(of: model.state) { _, newState in
+            if case .stop(let part, _) = newState, let text = part.content.text {
+                title = text
             }
-            title = text
+        }
+        .task {
+            try? await Task.sleep(for: .milliseconds(100))
+            model.start(
+                speed: .random(),
+                automaticallyStopAfter: 5
+            )
         }
     }
 
     var content: some View {
         ContentView(
-            model: RouletteModel(
-                parts: partDatas
-            )
+            model: model
         )
     }
 
-    var partDatas: [PartData] {
-        [
-            PartData(
-                content: .label("Swift"),
-                area: .flex(3),
-                fillColor: Color.red
-            ),
-            PartData(
-                content: .label("Kotlin"),
-                area: .flex(1),
-                fillColor: Color.purple
-            ),
-            PartData(
-                content: .label("JavaScript"),
-                area: .flex(2),
-                fillColor: Color.yellow
-            ),
-            PartData(
-                content: .label("Dart"),
-                area: .flex(1),
-                fillColor: Color.green
-            ),
-            PartData(
-                content: .label("Python"),
-                area: .flex(2),
-                fillColor: Color.blue
-            ),
-            PartData(
-                content: .label("C++"),
-                area: .degree(60),
-                fillColor: Color.orange
-            ),
+    private static var partDatas: [PartData] {
+        let elements: [(content: Content, area: PartArea, color: Color)] = [
+            (.label("Swift"),      .flex(3),    .red),
+            (.label("Kotlin"),     .flex(1),    .purple),
+            (.label("JavaScript"), .flex(2),    .yellow),
+            (.label("Dart"),       .flex(1),    .green),
+            (.label("Python"),     .flex(2),    .blue),
+            (.label("C++"),        .degree(60), .orange),
         ]
+        return elements.enumerated().map { index, element in
+            PartData(
+                index: index,
+                content: element.content,
+                area: element.area,
+                fillColor: element.color
+            )
+        }
     }
 }

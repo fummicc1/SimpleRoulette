@@ -1,6 +1,6 @@
 //
 //  RouletteInternalView.swift
-//  
+//  SimpleRoulette
 //
 //  Created by Fumiya Tanaka on 2023/02/14.
 //
@@ -8,9 +8,11 @@
 import Foundation
 import SwiftUI
 
-public struct RouletteInternalView: View {
+public struct RouletteInternalView<StopView: View>: View {
 
-    @EnvironmentObject var model: RouletteModel
+    var model: RouletteModel
+
+    @Environment(\.rouletteStyle) private var style
 
     @State private var currentAngle: Angle = .init()
     @State private var radius: CGFloat = 0
@@ -18,7 +20,7 @@ public struct RouletteInternalView: View {
     @State private var length: CGFloat
     @State private var startsAnimate: Bool = false
 
-    let stopView: AnyView
+    let stopView: StopView
 
     public var body: some View {
         VStack {
@@ -37,12 +39,12 @@ public struct RouletteInternalView: View {
                         )
                         radius = centerValue
                     })
-                    .onReceive(model.$state, perform: { state in
-                        guard let angle = state.angle else {
+                    .onChange(of: model.state) { _, newState in
+                        guard let angle = newState.angle else {
                             return
                         }
                         self.currentAngle = angle
-                    })
+                    }
             }
             .frame(width: length, height: length)
         }
@@ -50,33 +52,25 @@ public struct RouletteInternalView: View {
 
     private var content: some View {
         ZStack {
-            ForEach(model.parts, id: \.self) { (part) -> ZStack in
-                ZStack {
-                    RoulettePart(
-                        data: part,
-                        center: center,
-                        radius: radius
-                    )
-                }
+            ForEach(model.parts) { part in
+                RoulettePart(
+                    data: part,
+                    center: center,
+                    radius: radius,
+                    innerRadius: radius * style.innerRadiusRatio
+                )
             }
-            ForEach(model.parts, id: \.self) { (part) -> ZStack in
-                let angle = ((part.endAngle + part.startAngle) / 2) + Angle(degrees: 90)
-                ZStack {
-                    part.content.view
-                        .rotationEffect(angle)
-                        .offset(
-                            CGSize(
-                                width: { () -> Double in
-                                    let mean = (part.startAngle + part.endAngle) / 2
-                                    return radius * 0.5 * cos(mean.radians)
-                                }(),
-                                height: { () -> Double in
-                                    let mean = (part.startAngle + part.endAngle) / 2
-                                    return radius * 0.5 * sin(mean.radians)
-                                }()
-                            )
+            ForEach(model.parts) { part in
+                let mean = (part.startAngle + part.endAngle) / 2
+                let distance = radius * style.labelPosition
+                part.content.view
+                    .rotationEffect(style.labelOrientation.rotation(midAngle: mean))
+                    .offset(
+                        CGSize(
+                            width: distance * cos(mean.radians),
+                            height: distance * sin(mean.radians)
                         )
-                }
+                    )
             }
         }
     }
@@ -86,24 +80,31 @@ public struct RouletteInternalView: View {
     /// - Note: Please note that ``RouletteView`` is not rectangle but **square** (same width and height).
     ///
     /// - Parameters:
-    ///     - stopView: If you want to customize `stopView`, please pass `AnyView` to this parameter.
-    ///     Default value is nil which means `Image(systemName: "arrowtriangle.down.fill")`
-    ///     is used as a `stopView`.
+    ///     - model: The roulette model to observe.
+    ///     - stopView: View displayed as the stop indicator.
     ///     - length: set the frame length of ``RouletteView`` (square).
     ///     Default value is `320`.
     public init(
-        stopView: AnyView? = nil,
+        model: RouletteModel,
+        stopView: StopView,
         length: CGFloat = 320
     ) {
+        self.model = model
         self._length = State(initialValue: length)
-        if let stopView = stopView {
-            self.stopView = stopView
-        } else {
-            self.stopView = AnyView(
-                Image(systemName: "arrowtriangle.down.fill")
-                    .font(.system(.title))
-                    .fixedSize()
-            )
-        }
+        self.stopView = stopView
+    }
+}
+
+extension RouletteInternalView where StopView == Image {
+    /// Convenience initializer with default stop view.
+    public init(
+        model: RouletteModel,
+        length: CGFloat = 320
+    ) {
+        self.init(
+            model: model,
+            stopView: Image(systemName: "arrowtriangle.down.fill"),
+            length: length
+        )
     }
 }
