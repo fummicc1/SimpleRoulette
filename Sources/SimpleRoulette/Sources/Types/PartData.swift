@@ -33,7 +33,11 @@ public enum Content: Sendable {
     public var view: some View {
         switch self {
         case .label(let string):
+            // Shrink rather than spill out of the wheel; a very long label
+            // truncates as a last resort. Custom views are left to their author.
             Text(string)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
         case .custom(let build):
             build()
         }

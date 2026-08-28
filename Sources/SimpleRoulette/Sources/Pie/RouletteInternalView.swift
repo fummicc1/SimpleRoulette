@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+/// Distance kept between the hub and the inner end of a radial label band.
+private let labelHubInset: CGFloat = 4
+
 public struct RouletteInternalView<StopView: View>: View {
 
     var model: RouletteModel
@@ -61,17 +64,43 @@ public struct RouletteInternalView<StopView: View>: View {
                 )
             }
             ForEach(model.parts) { part in
-                let mean = (part.startAngle + part.endAngle) / 2
-                let distance = radius * style.labelPosition
-                part.content.view
-                    .rotationEffect(style.labelOrientation.rotation(midAngle: mean))
-                    .offset(
-                        CGSize(
-                            width: distance * cos(mean.radians),
-                            height: distance * sin(mean.radians)
-                        )
-                    )
+                label(for: part)
             }
+        }
+    }
+
+    @ViewBuilder
+    private func label(for part: PartData) -> some View {
+        let mid = (part.startAngle + part.endAngle) / 2
+        let rotation = style.labelOrientation.rotation(midAngle: mid)
+        if style.labelOrientation.isRadial {
+            // The label lives in a band spanning hub to anchor radius, rotated as
+            // one piece and anchored to its outer end, so every label's outer end
+            // lands on the same circle regardless of the label's own width.
+            let hubEdge = radius * style.innerRadiusRatio + labelHubInset
+            let rimEdge = radius * style.resolvedLabelPosition
+            let span = max(rimEdge - hubEdge, 0)
+            let bandCenter = (hubEdge + rimEdge) / 2
+            let flipped = style.labelOrientation.isFlippedUpright(midAngle: mid)
+            part.content.view
+                .frame(width: span, alignment: flipped ? .leading : .trailing)
+                .rotationEffect(rotation)
+                .offset(
+                    CGSize(
+                        width: bandCenter * cos(mid.radians),
+                        height: bandCenter * sin(mid.radians)
+                    )
+                )
+        } else {
+            let distance = radius * style.resolvedLabelPosition
+            part.content.view
+                .rotationEffect(rotation)
+                .offset(
+                    CGSize(
+                        width: distance * cos(mid.radians),
+                        height: distance * sin(mid.radians)
+                    )
+                )
         }
     }
 

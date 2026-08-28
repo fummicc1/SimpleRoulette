@@ -18,10 +18,36 @@ struct RouletteStyleTests {
     func defaultStyle() {
         let style = RouletteStyle.default
 
-        // Faithful radial layout, labels out at the rim, hub in the middle.
+        // Faithful radial layout, labels anchored near the rim, hub in the middle.
         #expect(style.labelOrientation == .radial)
-        #expect(style.labelPosition > 0.5)
+        #expect(style.labelPosition == nil)
+        #expect(style.resolvedLabelPosition > 0.9)
         #expect(style.innerRadiusRatio > 0)
+    }
+
+    @Test("Anchor radius resolves per orientation when unspecified")
+    func labelPositionResolution() {
+        #expect(RouletteStyle(labelOrientation: .radial).resolvedLabelPosition == 0.95)
+        #expect(RouletteStyle(labelOrientation: .radialUpright).resolvedLabelPosition == 0.95)
+        #expect(RouletteStyle(labelOrientation: .tangential).resolvedLabelPosition == 0.5)
+        #expect(RouletteStyle(labelOrientation: .fixed).resolvedLabelPosition == 0.5)
+
+        // An explicit value always wins.
+        #expect(RouletteStyle(labelPosition: 0.8, labelOrientation: .radial).resolvedLabelPosition == 0.8)
+        #expect(RouletteStyle(labelPosition: 0.8, labelOrientation: .fixed).resolvedLabelPosition == 0.8)
+    }
+
+    @Test("Only radialUpright's left half swaps the anchored end of the band")
+    func flippedUpright() {
+        // The flip tracks exactly where radialUpright's rotation flips.
+        #expect(RouletteLabelOrientation.radialUpright.isFlippedUpright(midAngle: .degrees(180)))
+        #expect(!RouletteLabelOrientation.radialUpright.isFlippedUpright(midAngle: .degrees(0)))
+        #expect(!RouletteLabelOrientation.radialUpright.isFlippedUpright(midAngle: .degrees(90)))
+
+        // No other orientation ever flips.
+        for orientation in [RouletteLabelOrientation.radial, .tangential, .fixed] {
+            #expect(!orientation.isFlippedUpright(midAngle: .degrees(180)))
+        }
     }
 
     @Test("Every orientation stays selectable alongside the default")
@@ -42,7 +68,8 @@ struct RouletteStyleTests {
         let style = RouletteStyle.pie
 
         #expect(style.labelOrientation == .tangential)
-        #expect(abs(style.labelPosition - 0.5) < accuracy)
+        #expect(style.labelPosition == 0.5)
+        #expect(abs(style.resolvedLabelPosition - 0.5) < accuracy)
         #expect(style.innerRadiusRatio == 0)
     }
 

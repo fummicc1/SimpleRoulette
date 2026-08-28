@@ -40,6 +40,19 @@ public enum RouletteLabelOrientation: Sendable, Hashable {
         }
     }
 
+    /// Whether the label runs along the radius, from hub to rim.
+    var isRadial: Bool {
+        self == .radial || self == .radialUpright
+    }
+
+    /// Whether ``radialUpright`` turns the label at this angle a further 180°.
+    ///
+    /// A flipped label's leading edge faces the rim, so rim-anchored layout has to
+    /// swap which end of the band the text clings to.
+    func isFlippedUpright(midAngle: Angle) -> Bool {
+        self == .radialUpright && isOnLeftHalf(midAngle)
+    }
+
     /// Whether a wedge centred on `angle` points into the half of the wheel where
     /// radial text would read upside down.
     private func isOnLeftHalf(_ angle: Angle) -> Bool {
@@ -59,8 +72,17 @@ public enum RouletteLabelOrientation: Sendable, Hashable {
 /// ```
 public struct RouletteStyle: Sendable, Hashable {
 
-    /// Where a label sits between the centre (`0`) and the outer edge (`1`).
-    public var labelPosition: Double
+    /// The radius the label is anchored to, between the centre (`0`) and the outer
+    /// edge (`1`).
+    ///
+    /// Radial orientations align the label's **outer end** to this radius, so every
+    /// label's outer end sits on the same circle whatever its length — the way the
+    /// numbers on a real wheel line up. ``RouletteLabelOrientation/tangential`` and
+    /// ``RouletteLabelOrientation/fixed`` centre the label on it instead.
+    ///
+    /// `nil` picks a default suited to the orientation: `0.95` for radial
+    /// orientations, `0.5` for the others.
+    public var labelPosition: Double?
 
     /// How a label is rotated within its wedge.
     public var labelOrientation: RouletteLabelOrientation
@@ -71,21 +93,27 @@ public struct RouletteStyle: Sendable, Hashable {
     public var innerRadiusRatio: Double
 
     /// - Parameters:
-    ///     - labelPosition: clamped to `0...1`.
+    ///     - labelPosition: clamped to `0...1`; `nil` picks a default per orientation.
     ///     - labelOrientation: how each label is rotated.
     ///     - innerRadiusRatio: clamped to `0...1`.
     public init(
-        labelPosition: Double = 0.74,
+        labelPosition: Double? = nil,
         labelOrientation: RouletteLabelOrientation = .radial,
         innerRadiusRatio: Double = 0.22
     ) {
-        self.labelPosition = min(max(labelPosition, 0), 1)
+        self.labelPosition = labelPosition.map { min(max($0, 0), 1) }
         self.labelOrientation = labelOrientation
         self.innerRadiusRatio = min(max(innerRadiusRatio, 0), 1)
     }
 
-    /// Labels out at the rim, laid out radially, with a hub in the middle — the way
-    /// a real roulette wheel is arranged. Used when no style is applied.
+    /// The anchor radius in effect, resolving `nil` to the orientation's default.
+    var resolvedLabelPosition: Double {
+        labelPosition ?? (labelOrientation.isRadial ? 0.95 : 0.5)
+    }
+
+    /// Labels anchored at the rim, laid out radially, with a hub in the middle —
+    /// the way a real roulette wheel is arranged. Every label's outer end sits on
+    /// the same circle whatever its length. Used when no style is applied.
     ///
     /// Being a faithful radial layout, labels on the left half of the wheel sit
     /// upside down, exactly as the numbers on a real wheel do. If your labels are
