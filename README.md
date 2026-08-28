@@ -115,9 +115,11 @@ the result of a spin.
 
 ### Styling
 
-By default a roulette is laid out the way a real wheel is: labels out at the rim,
-arranged radially, and the separators stop short of the middle to leave a hub.
-As on a real wheel, labels on the left half therefore sit upside down.
+By default a roulette is laid out the way a real wheel is: labels anchored at the
+rim, arranged radially, and the separators stop short of the middle to leave a
+hub. Every label's outer end sits on the same circle whatever its length, and
+labels shrink (down to half size) rather than spill out of the wheel.
+As on a real wheel, labels on the left half read upside down.
 
 Override any of that with `.rouletteStyle(_:)`:
 
@@ -125,12 +127,16 @@ Override any of that with `.rouletteStyle(_:)`:
 RouletteView(parts: partDatas)
     .rouletteStyle(
         RouletteStyle(
-            labelPosition: 0.8,          // 0 = centre, 1 = outer edge
+            labelPosition: 0.9,          // anchor radius: 0 = centre, 1 = rim
             labelOrientation: .radial,   // see the table below
             innerRadiusRatio: 0.25       // size of the hub, 0 for a full pie
         )
     )
 ```
+
+Radial orientations align the label's **outer end** to `labelPosition`;
+`.tangential` and `.fixed` centre the label on it. Leave it out (or pass `nil`)
+to get `0.95` for radial orientations and `0.5` for the others.
 
 | `labelOrientation` | Effect |
 |---|---|
