@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+/// Distance kept between the hub and the inner end of a radial label band.
+private let labelHubInset: CGFloat = 4
+
 public struct RouletteInternalView<StopView: View>: View {
 
     var model: RouletteModel
@@ -66,9 +69,6 @@ public struct RouletteInternalView<StopView: View>: View {
         }
     }
 
-    /// Distance kept between the hub and the inner end of a radial label band.
-    private static let labelHubInset: CGFloat = 4
-
     @ViewBuilder
     private func label(for part: PartData) -> some View {
         let mid = (part.startAngle + part.endAngle) / 2
@@ -77,7 +77,7 @@ public struct RouletteInternalView<StopView: View>: View {
             // The label lives in a band spanning hub to anchor radius, rotated as
             // one piece and anchored to its outer end, so every label's outer end
             // lands on the same circle regardless of the label's own width.
-            let hubEdge = radius * style.innerRadiusRatio + Self.labelHubInset
+            let hubEdge = radius * style.innerRadiusRatio + labelHubInset
             let rimEdge = radius * style.resolvedLabelPosition
             let span = max(rimEdge - hubEdge, 0)
             let bandCenter = (hubEdge + rimEdge) / 2
