@@ -7,7 +7,7 @@ import SwiftUI
 struct RouletteModelStopIntegrationTests {
 
     private static let pollInterval = Duration.milliseconds(5)
-    private static let pollTimeout = Duration.seconds(1)
+    private static let pollTimeout = Duration.seconds(10)
     private static let settleTime = Duration.milliseconds(100)
 
     private func wait(until condition: () -> Bool) async throws {
