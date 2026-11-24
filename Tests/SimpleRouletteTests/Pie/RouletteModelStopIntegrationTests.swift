@@ -7,13 +7,16 @@ import SwiftUI
 struct RouletteModelStopIntegrationTests {
 
     private static let pollInterval = Duration.milliseconds(5)
-    private static let pollTimeout = Duration.seconds(10)
+    private static let maxPolls = 1000
     private static let settleTime = Duration.milliseconds(100)
 
+    // Bounded by polls, not wall-clock time: a CI simulator can freeze the whole
+    // test process for tens of seconds, which would run out any deadline.
     private func wait(until condition: () -> Bool) async throws {
-        let deadline = ContinuousClock.now + Self.pollTimeout
+        var polls = 0
         while !condition() {
-            try #require(ContinuousClock.now < deadline, "Timed out waiting for the roulette")
+            try #require(polls < Self.maxPolls, "The roulette never reached the expected state")
+            polls += 1
             try await Task.sleep(for: Self.pollInterval)
         }
     }
