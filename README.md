@@ -207,6 +207,23 @@ struct ContentView: View {
 }
 ```
 
+### Stop at an angle
+
+`stop(at:additionalTurns:)` stops the roulette at an angle you choose. Call it inside `withAnimation` to animate the wheel to that angle.
+
+```swift
+withAnimation(.easeOut(duration: 3)) {
+    model.stop(at: .degrees(90), additionalTurns: 2)
+} completion: {
+    result = model.decidedPart?.content.text ?? ""
+}
+```
+
+- The angle is the rotation of the whole wheel, the same value `RouletteState.stop` carries. The part under the pointer (▼) at that rotation becomes `decidedPart`.
+- The angle is read modulo 360°, and the wheel moves forward from its current rotation to reach it. The angle stored in `model.state` can therefore be larger than the one you pass. Use `additionalTurns` to add full turns before the wheel stops.
+- `model.state` becomes `.stop` as soon as the animation starts. Use the animation's `completion` to show the result after the wheel has come to rest.
+- It can be called in any state, including while the roulette is running.
+
 ### RouletteState
 
 The state machine has four states:
