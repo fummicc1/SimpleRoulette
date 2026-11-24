@@ -99,8 +99,6 @@ public struct RouletteView<StopView: View>: View {
     /// Method that stops Roulette.
     ///
     /// This method is kind of syntax sugar of ``RouletteModel/stop()``.
-    /// - Note: This method does not immediately stop Roulette.
-    /// a delay which makes us feel more realistic Roulette happens.
     public func stop() {
         model.stop()
     }
