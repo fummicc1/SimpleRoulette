@@ -157,4 +157,20 @@ extension Array where Element == PartData {
             currentAngle = self[i].endAngle
         }
     }
+
+    func part(atRotation rotation: Angle) -> PartData? {
+        let fullTurn = Angle.fullTurn.degrees
+        let offset = (Angle.roulettePointer.degrees - rotation.degrees)
+            .truncatingRemainder(dividingBy: fullTurn)
+        guard offset.isFinite else { return nil }
+        let pointerOnWheel = (offset + fullTurn).truncatingRemainder(dividingBy: fullTurn)
+        return first { part in
+            part.startAngle.degrees <= pointerOnWheel && pointerOnWheel <= part.endAngle.degrees
+        }
+    }
+}
+
+extension Angle {
+    static let roulettePointer = Angle.degrees(270)
+    static let fullTurn = Angle.degrees(360)
 }

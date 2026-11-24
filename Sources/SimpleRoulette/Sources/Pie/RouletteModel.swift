@@ -122,22 +122,52 @@ public final class RouletteModel {
             return
         }
         worker.stop()
-        var degrees = angle.degrees
-
-        degrees = degrees.truncatingRemainder(dividingBy: 360)
-
-        for part in parts {
-            let start = part.startAngle.degrees + degrees
-            let end = part.endAngle.degrees + degrees
-
-            // Angle of ▼
-            let stopDegree: Double = 270 + 360 * Double(Int(start) / 360)
-
-            if start <= stopDegree && end >= stopDegree {
-                state = .stop(location: part, angle: angle)
-                return
-            }
+        guard let part = parts.part(atRotation: angle) else {
+            return
         }
+        state = .stop(location: part, angle: angle)
+    }
+
+    /// Stops the roulette at the given rotation angle.
+    ///
+    /// `angle` is the rotation of the whole wheel, the same value that
+    /// ``RouletteState/stop(location:angle:)`` carries. It is read modulo 360°,
+    /// and the wheel only moves forward from its current angle, so the angle
+    /// stored in the state can be larger than the one passed in.
+    /// The part under the pointer at that angle becomes ``decidedPart``.
+    /// On a boundary between two parts, the one that comes first in ``parts`` wins.
+    ///
+    /// This method can be called in any state. Call it inside `withAnimation`
+    /// to animate the wheel to the angle. The state becomes `.stop` as soon as
+    /// the animation starts, so use the animation's completion to react
+    /// once the wheel has come to rest.
+    ///
+    /// ```swift
+    /// withAnimation(.easeOut(duration: 3)) {
+    ///     model.stop(at: .degrees(90), additionalTurns: 2)
+    /// } completion: {
+    ///     result = model.decidedPart?.content.text ?? ""
+    /// }
+    /// ```
+    ///
+    /// Nothing happens when no part is under the pointer at that angle
+    /// (``parts`` is empty or leaves a gap there), or when `angle` is not finite.
+    ///
+    /// - Parameters:
+    ///     - angle: The rotation at which the wheel comes to rest.
+    ///     - additionalTurns: Full turns to add before the wheel stops.
+    ///     Negative values count as `0`. There is no upper limit.
+    public func stop(at angle: Angle, additionalTurns: Int = 0) {
+        let fullTurn = Angle.fullTurn.degrees
+        let current = state.angle?.degrees ?? 0
+        let offset = (angle.degrees - current).truncatingRemainder(dividingBy: fullTurn)
+        let forward = offset < 0 ? offset + fullTurn : offset
+        let target = Angle.degrees(current + forward + fullTurn * Double(max(additionalTurns, 0)))
+        guard let part = parts.part(atRotation: target) else {
+            return
+        }
+        worker.stop()
+        state = .stop(location: part, angle: target)
     }
 }
 

@@ -12,6 +12,11 @@ import SimpleRoulette
 struct ContentView: View {
     @State var model: RouletteModel
     @State private var length: CGFloat = 320
+    @State private var landedText: String?
+
+    private static let stopAngle = Angle.degrees(90)
+    private static let stopTurns = 2
+    private static let stopAnimation = Animation.easeOut(duration: 3)
 
     var body: some View {
         HStack {
@@ -54,6 +59,22 @@ struct ContentView: View {
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
                 }
+                HStack {
+                    Button("Stop at 90° (animated)") {
+                        landedText = nil
+                        withAnimation(Self.stopAnimation) {
+                            model.stop(at: Self.stopAngle, additionalTurns: Self.stopTurns)
+                        } completion: {
+                            landedText = model.decidedPart?.content.text
+                        }
+                    }
+                    Button("Jump to 90°") {
+                        model.stop(at: Self.stopAngle)
+                        landedText = model.decidedPart?.content.text
+                    }
+                }
+                .buttonStyle(.bordered)
+                Text(landedText.map { "Landed on \($0)" } ?? " ")
                 Spacer()
             }
         }

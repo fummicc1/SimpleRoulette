@@ -17,7 +17,6 @@ public struct RouletteInternalView<StopView: View>: View {
 
     @Environment(\.rouletteStyle) private var style
 
-    @State private var currentAngle: Angle = .init()
     @State private var radius: CGFloat = 0
     @State private var center: CGPoint = .zero
     @State private var length: CGFloat
@@ -31,7 +30,7 @@ public struct RouletteInternalView<StopView: View>: View {
             GeometryReader { geometry in
                 content
                     .aspectRatio(1, contentMode: .fit)
-                    .rotationEffect(currentAngle)
+                    .rotationEffect(model.state.angle ?? .zero)
                     .onAppear(perform: {
                         let midX = geometry.frame(in: .local).midX
                         let midY = geometry.frame(in: .local).midY
@@ -42,12 +41,6 @@ public struct RouletteInternalView<StopView: View>: View {
                         )
                         radius = centerValue
                     })
-                    .onChange(of: model.state) { _, newState in
-                        guard let angle = newState.angle else {
-                            return
-                        }
-                        self.currentAngle = angle
-                    }
             }
             .frame(width: length, height: length)
         }
